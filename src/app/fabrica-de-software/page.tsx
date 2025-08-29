@@ -34,6 +34,8 @@ import {
   Lock,
   Layers,
   Rocket,
+  CheckCircle,
+  Globe,
 } from "lucide-react";
 import Link from "next/link";
 import { SITE_NAME, SITE_URL, SITE_EMAIL, SITE_PHONE } from "@/constants";
@@ -401,6 +403,173 @@ export default function SoftwareFactoryPage() {
             que a tecnologia trabalhe a seu favor.
           </Text>
         </Box>
+      </Section>
+
+      {/* Specialized Services Section */}
+      <Section
+        title="Nossos Serviços Especializados"
+        subtitle="Duas verticais especializadas para atender diferentes necessidades do seu negócio digital."
+        centered
+        variant="glass"
+      >
+        <SimpleGrid columns={{ base: 1, lg: 2 }} gap={{ base: 8, md: 12 }}>
+          {/* SaaS Development */}
+          <Box
+            p={{ base: 6, md: 8 }}
+            rounded="2xl"
+            bg="{colors.blue.500/10}"
+            border="1px solid {colors.blue.500/20}"
+            transition="all 0.3s ease"
+            _hover={{
+              transform: "translateY(-4px)",
+              borderColor: "{colors.blue.500/40}",
+            }}
+          >
+            <VStack align="flex-start" gap={6}>
+              <HStack gap={4}>
+                <Box
+                  p={4}
+                  rounded="xl"
+                  bg="{colors.blue.500}"
+                  color="white"
+                >
+                  <Rocket size={24} />
+                </Box>
+                <VStack align="flex-start" gap={1}>
+                  <Heading
+                    as="h3"
+                    size="xl"
+                    fontWeight="700"
+                    color="fg"
+                  >
+                    Construa seu SaaS
+                  </Heading>
+                  <Text color="blue.solid" fontSize="sm" fontWeight="600">
+                    Plataformas Escaláveis
+                  </Text>
+                </VStack>
+              </HStack>
+
+              <Text
+                color="fg.muted"
+                fontSize="lg"
+                lineHeight="tall"
+              >
+                Transforme sua ideia em um SaaS rentável. Desenvolvemos
+                plataformas completas, escaláveis e prontas para conquistar o
+                mercado. Da MVP ao produto final.
+              </Text>
+
+              <VStack align="flex-start" gap={3} w="full">
+                {[
+                  "Arquitetura Multi-tenant",
+                  "Sistema de Billing",
+                  "MVP em 8-12 semanas",
+                  "Escalabilidade garantida",
+                ].map((feature) => (
+                  <HStack key={feature} gap={3}>
+                    <CheckCircle size={20} color="{colors.blue.500}" />
+                    <Text color="fg.muted" fontSize="md">
+                      {feature}
+                    </Text>
+                  </HStack>
+                ))}
+              </VStack>
+
+              <Link href="/fabrica-de-software/construa-seu-saas" passHref>
+                <Button
+                  size="lg"
+                  variant="solid"
+                  colorPalette="blue"
+                  w="full"
+                  mt={4}
+                >
+                  Explorar SaaS Development
+                  <ChevronRight size={18} style={{ marginLeft: "8px" }} />
+                </Button>
+              </Link>
+            </VStack>
+          </Box>
+
+          {/* Web Development */}
+          <Box
+            p={{ base: 6, md: 8 }}
+            rounded="2xl"
+            bg="{colors.whiteAlpha.50}"
+            border="1px solid {colors.whiteAlpha.200}"
+            transition="all 0.3s ease"
+            _hover={{
+              transform: "translateY(-4px)",
+              borderColor: "{colors.blue.500/40}",
+              bg: "{colors.whiteAlpha.100}",
+            }}
+          >
+            <VStack align="flex-start" gap={6}>
+              <HStack gap={4}>
+                <Box
+                  p={4}
+                  rounded="xl"
+                  bg="{colors.blue.500/10}"
+                  color="blue.solid"
+                >
+                  <Globe size={24} />
+                </Box>
+                <VStack align="flex-start" gap={1}>
+                  <Heading
+                    as="h3"
+                    size="xl"
+                    fontWeight="700"
+                    color="fg"
+                  >
+                    Seu Negócio na Web
+                  </Heading>
+                  <Text color="blue.solid" fontSize="sm" fontWeight="600">
+                    Sites & E-commerce
+                  </Text>
+                </VStack>
+              </HStack>
+
+              <Text
+                color="fg.muted"
+                fontSize="lg"
+                lineHeight="tall"
+              >
+                Sites e e-commerces profissionais que transformam visitantes em
+                clientes. Presença digital que realmente vende e gera
+                resultados para seu negócio.
+              </Text>
+
+              <VStack align="flex-start" gap={3} w="full">
+                {[
+                  "Design Responsivo",
+                  "SEO Otimizado",
+                  "E-commerce Completo",
+                  "Performance Máxima",
+                ].map((feature) => (
+                  <HStack key={feature} gap={3}>
+                    <CheckCircle size={20} color="{colors.blue.500}" />
+                    <Text color="fg.muted" fontSize="md">
+                      {feature}
+                    </Text>
+                  </HStack>
+                ))}
+              </VStack>
+
+              <Link href="/fabrica-de-software/seu-negocio-na-web" passHref>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  colorPalette="blue"
+                  w="full"
+                  mt={4}
+                >
+                  Explorar Web Development
+                  <ChevronRight size={18} style={{ marginLeft: "8px" }} />
+                </Button>
+              </Link>
+            </VStack>
+          </Box>
+        </SimpleGrid>
       </Section>
 
       {/* Solutions by Category */}

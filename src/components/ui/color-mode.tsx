@@ -1,7 +1,8 @@
 "use client";
 
 import type { IconButtonProps } from "@chakra-ui/react";
-import { ClientOnly, IconButton, Skeleton } from "@chakra-ui/react";
+import { IconButton, Skeleton } from "@chakra-ui/react";
+import { ClientOnly } from "./client-only";
 import { ThemeProvider, useTheme } from "next-themes";
 import type { ThemeProviderProps } from "next-themes";
 import * as React from "react";
@@ -15,7 +16,7 @@ export function ColorModeProvider(props: ColorModeProviderProps) {
       attribute="class"
       defaultTheme="light"
       forcedTheme="light"
-      enableSystem
+      enableSystem={false}
       disableTransitionOnChange
       {...props}
     />

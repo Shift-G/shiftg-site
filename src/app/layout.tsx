@@ -118,7 +118,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={poppins.className}>
+      <body className={poppins.className} suppressHydrationWarning>
         <Provider>
           <Toaster />
           {children}
