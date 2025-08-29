@@ -12,7 +12,21 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { Mail, MapPin, Phone, Linkedin, Instagram } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  Phone,
+  Linkedin,
+  Instagram,
+  MessageCircle,
+} from "lucide-react";
+import {
+  SITE_NAME,
+  SITE_EMAIL,
+  SITE_PHONE,
+  SITE_ADDRESS,
+  INSTAGRAM_URL,
+} from "@/constants";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -32,7 +46,7 @@ export function Footer() {
               bgGradient="linear-gradient(0deg, {colors.blue.500}, {colors.blue.600})"
               bgClip="text"
             >
-              SHIFT+G
+              {SITE_NAME}
             </Text>
             <Text fontSize="sm" color="fg.muted" lineHeight="tall">
               Especialistas em IA e Analytics para empresas que querem
@@ -97,19 +111,33 @@ export function Footer() {
               <HStack gap={2}>
                 <Mail size={16} />
                 <ChakraLink
-                  href="mailto:contato@shiftg.com.br"
+                  href={`mailto:${SITE_EMAIL}`}
                   fontSize="sm"
                   color="fg.muted"
                   _hover={{ color: "blue.fg" }}
                   transition="color 0.2s"
                 >
-                  contato@shiftg.com.br
+                  {SITE_EMAIL}
+                </ChakraLink>
+              </HStack>
+              <HStack gap={2}>
+                <MessageCircle size={16} />
+                <ChakraLink
+                  href={`https://wa.me/${SITE_PHONE.replace(/[^\d]/g, "")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  fontSize="sm"
+                  color="fg.muted"
+                  _hover={{ color: "blue.fg" }}
+                  transition="color 0.2s"
+                >
+                  {SITE_PHONE}
                 </ChakraLink>
               </HStack>
               <HStack gap={2}>
                 <MapPin size={16} />
                 <Text fontSize="sm" color="fg.muted">
-                  Curitiba, Paraná, Brasil
+                  {SITE_ADDRESS}
                 </Text>
               </HStack>
               <HStack gap={3} mt={2}>
@@ -124,7 +152,7 @@ export function Footer() {
                   <Linkedin size={20} />
                 </ChakraLink>
                 <ChakraLink
-                  href="https://instagram.com/shiftg.ai"
+                  href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
@@ -149,7 +177,7 @@ export function Footer() {
           gap={4}
         >
           <Text fontSize="sm" color="fg.muted">
-            © {currentYear} Shift+G. Todos os direitos reservados.
+            © {currentYear} {SITE_NAME}. Todos os direitos reservados.
           </Text>
           <HStack gap={6}>
             <ChakraLink

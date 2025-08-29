@@ -8,7 +8,6 @@ import {
   Text,
   Button,
   HStack,
-  Icon,
 } from "@chakra-ui/react";
 import { Page } from "@/components/layout/page";
 import { Navbar } from "@/components/layout/navbar";
@@ -30,11 +29,13 @@ import {
   Rocket,
   ChevronRight,
   Mail,
+  MessageCircle,
 } from "lucide-react";
 import Link from "next/link";
+import { SITE_NAME, SITE_URL, SITE_EMAIL, SITE_PHONE } from "@/constants";
 
 export const metadata: Metadata = {
-  title: "SHIFT+G | IA e Dados que Multiplicam Resultados",
+  title: `${SITE_NAME} | IA e Dados que Multiplicam Resultados`,
   description:
     "Transforme dados brutos em vantagem competitiva. Desenvolvemos soluções de IA e analytics que aumentam produtividade em até 300% e geram ROI garantido em 6 meses.",
   keywords: [
@@ -52,17 +53,17 @@ export const metadata: Metadata = {
     "automação processos",
   ],
   openGraph: {
-    title: "SHIFT+G | IA e Dados que Multiplicam Resultados",
+    title: `${SITE_NAME} | IA e Dados que Multiplicam Resultados`,
     description:
       "Aumente produtividade em 300% e garanta ROI em 6 meses com nossas soluções de IA e analytics personalizadas para sua empresa",
     type: "website",
     locale: "pt_BR",
-    url: "https://shiftg.com.br",
-    siteName: "SHIFT+G - IA & Dados Empresariais",
+    url: SITE_URL,
+    siteName: `${SITE_NAME} - IA & Dados Empresariais`,
   },
   twitter: {
     card: "summary_large_image",
-    title: "SHIFT+G | IA e Dados que Multiplicam Resultados",
+    title: `${SITE_NAME} | IA e Dados que Multiplicam Resultados`,
     description:
       "Aumente produtividade em 300% e garanta ROI em 6 meses com nossas soluções de IA e analytics personalizadas",
   },
@@ -156,18 +157,16 @@ const differentials = [
   },
 ];
 
-
-
 export default function HomePage() {
   return (
     <Page>
       <Navbar />
-      
+
       {/* Hero Section */}
       <Hero />
 
-       {/* Traditional vs AI Comparison */}
-       <TraditionalVsAI />
+      {/* Traditional vs AI Comparison */}
+      <TraditionalVsAI />
 
       {/* Problems Section */}
       <ProblemsSection />
@@ -226,8 +225,6 @@ export default function HomePage() {
         </SimpleGrid>
       </Section>
 
-     
-
       {/* Use Cases Section */}
       <UseCasesBento />
 
@@ -245,7 +242,8 @@ export default function HomePage() {
           inset={0}
           bgGradient="radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/50}, transparent)"
           _dark={{
-            bgGradient: "radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/20}, transparent)"
+            bgGradient:
+              "radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/20}, transparent)",
           }}
           zIndex={-1}
         />
@@ -264,7 +262,7 @@ export default function HomePage() {
           animation="float 10s ease-in-out infinite"
           zIndex={-1}
         />
-        
+
         <Box
           position="absolute"
           bottom="10%"
@@ -299,7 +297,7 @@ export default function HomePage() {
                 </Text>{" "}
                 seus dados?
               </Heading>
-              
+
               <Text
                 fontSize={{ base: "xl", md: "2xl" }}
                 color="fg.muted"
@@ -307,14 +305,19 @@ export default function HomePage() {
                 lineHeight="tall"
                 fontWeight="400"
               >
-                Agende uma consultoria gratuita de 30 minutos. Vamos mapear seus processos,
-                identificar oportunidades de automação e apresentar um plano com ROI
-                projetado em até 6 meses. Sem compromisso, apenas resultados claros.
+                Agende uma consultoria gratuita de 30 minutos. Vamos mapear seus
+                processos, identificar oportunidades de automação e apresentar
+                um plano com ROI projetado em até 6 meses. Sem compromisso,
+                apenas resultados claros.
               </Text>
             </VStack>
 
             <VStack gap={8} w="full" maxW="lg">
-              <Link href="mailto:contato@shiftg.com.br" passHref>
+              <Link
+                href={`https://wa.me/${SITE_PHONE.replace(/[^\d]/g, "")}`}
+                target="_blank"
+                passHref
+              >
                 <Button
                   size="xl"
                   px={12}
@@ -329,7 +332,7 @@ export default function HomePage() {
                   _hover={{
                     transform: "translateY(-3px)",
                     boxShadow: "0 20px 60px {colors.blue.500/50}",
-                    bg: "linear-gradient(135deg, {colors.blue.600}, {colors.blue.800})"
+                    bg: "linear-gradient(135deg, {colors.blue.600}, {colors.blue.800})",
                   }}
                   _active={{
                     transform: "translateY(0px)",
@@ -337,29 +340,38 @@ export default function HomePage() {
                   transition="all 0.3s ease"
                   w={{ base: "full", sm: "auto" }}
                 >
-                  Agendar Consultoria Gratuita
-                  <ChevronRight size={20} style={{ marginLeft: '12px' }} />
+                  <MessageCircle size={20} style={{ marginRight: "12px" }} />
+                  Agendar pelo WhatsApp
+                  <ChevronRight size={20} style={{ marginLeft: "12px" }} />
                 </Button>
               </Link>
-              
-              <Box
-                px={8}
-                py={4}
-                rounded="xl"
-                bg="{colors.whiteAlpha.200}"
-                backdropFilter="blur(20px)"
-                border="1px solid {colors.whiteAlpha.300}"
-              >
-                <HStack gap={3} justify="center">
-                  <Mail size={20} color="blue.500" />
-                  <Text fontSize="lg" color="fg.muted" fontWeight="500">
-                    Preferir por e-mail?{" "}
-                    <Text as="span" fontWeight="700" color="blue.solid">
-                      contato@shiftg.com.br
+
+              <HStack gap={6} wrap="wrap" justify="center">
+                <Box
+                  px={6}
+                  py={3}
+                  rounded="xl"
+                  bg="{colors.whiteAlpha.200}"
+                  backdropFilter="blur(20px)"
+                  border="1px solid {colors.whiteAlpha.300}"
+                >
+                  <HStack gap={3} justify="center">
+                    <Mail size={18} color="blue.500" />
+                    <Text fontSize="md" color="fg.muted" fontWeight="500">
+                      <Link href={`mailto:${SITE_EMAIL}`}>
+                        <Text
+                          as="span"
+                          fontWeight="700"
+                          color="blue.solid"
+                          _hover={{ textDecoration: "underline" }}
+                        >
+                          {SITE_EMAIL}
+                        </Text>
+                      </Link>
                     </Text>
-                  </Text>
-                </HStack>
-              </Box>
+                  </HStack>
+                </Box>
+              </HStack>
             </VStack>
           </VStack>
         </Container>

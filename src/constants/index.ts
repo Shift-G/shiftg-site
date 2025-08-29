@@ -1,0 +1,10 @@
+export const SITE_NAME = "SHIFT+G";
+export const SITE_URL = "https://shiftg.com.br";
+export const SITE_EMAIL = "contato@shiftg.com.br";
+export const SITE_PHONE = "+55 (42) 98889 4010";
+export const SITE_ADDRESS = "Curitiba, Paraná, Brasil";
+export const SITE_CITY = "Curitiba";
+export const SITE_STATE = "PR";
+export const SITE_COUNTRY = "Brasil";
+export const SITE_ZIP = "80420-180";
+export const INSTAGRAM_URL = "https://instagram.com/shiftgnosis";

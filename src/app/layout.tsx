@@ -1,6 +1,7 @@
 import { Provider } from "@/components/ui/provider";
 import { Poppins } from "next/font/google";
 import type { Metadata } from "next";
+import { SITE_NAME, SITE_URL, SITE_EMAIL, INSTAGRAM_URL, SITE_CITY, SITE_COUNTRY, SITE_STATE } from "@/constants";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -12,10 +13,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://shiftg.com.br"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    template: "%s | SHIFT+G AI & Data",
-    default: "SHIFT+G | Inteligência Artificial e Dados sob medida",
+    template: `%s | ${SITE_NAME} AI & Data`,
+    default: `${SITE_NAME} | Inteligência Artificial e Dados sob medida`,
   },
   description:
     "Desenvolvemos soluções de software que transformam dados complexos em decisões estratégicas, entregando autonomia e eficiência para sua empresa.",
@@ -31,14 +32,14 @@ export const metadata: Metadata = {
     "software sob medida",
     "transformação digital",
   ],
-  authors: [{ name: "SHIFT+G" }],
-  creator: "SHIFT+G",
-  publisher: "SHIFT+G",
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://shiftg.com.br",
-    siteName: "SHIFT+G AI & Data",
+    url: SITE_URL,
+    siteName: `${SITE_NAME} AI & Data`,
     images: [
       {
         url: "/og-image.png",
@@ -92,26 +93,26 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "SHIFT+G AI & Data",
-              "alternateName": "SHIFT+G",
-              "url": "https://shiftg.com.br",
-              "logo": "https://shiftg.com.br/apple-icon.png",
+              "name": `${SITE_NAME} AI & Data`,
+              "alternateName": SITE_NAME,
+              "url": SITE_URL,
+              "logo": `${SITE_URL}/apple-icon.png`,
               "description": "Desenvolvemos soluções de software que transformam dados complexos em decisões estratégicas, entregando autonomia e eficiência para sua empresa.",
               "contactPoint": {
                 "@type": "ContactPoint",
-                "email": "contato@shiftg.com.br",
+                "email": SITE_EMAIL,
                 "contactType": "customer service",
                 "availableLanguage": "Portuguese"
               },
               "sameAs": [
                 "https://linkedin.com/company/shiftg",
-                "https://instagram.com/shiftg.ai"
+                INSTAGRAM_URL
               ],
               "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "Curitiba",
-                "addressRegion": "PR",
-                "addressCountry": "BR"
+                "addressLocality": SITE_CITY,
+                "addressRegion": SITE_STATE,
+                "addressCountry": SITE_COUNTRY
               }
             })
           }}

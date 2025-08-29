@@ -11,10 +11,11 @@ import { Page } from "@/components/layout/page";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import Link from "next/link";
+import { SITE_NAME, SITE_EMAIL } from "@/constants";
 
 export const metadata: Metadata = {
   title: "Termos de Uso",
-  description: "Termos de Uso da SHIFT+G AI & Data",
+  description: `Termos de Uso da ${SITE_NAME} AI & Data`,
 };
 
 export default function TermosDeUso() {
@@ -142,11 +143,11 @@ export default function TermosDeUso() {
                 Se você tiver alguma dúvida sobre estes Termos de Uso, entre em 
                 contato conosco através do e-mail:{" "}
                 <ChakraLink
-                  href="mailto:contato@shiftg.com.br"
+                  href={`mailto:${SITE_EMAIL}`}
                   color="blue.500"
                   _hover={{ textDecoration: "underline" }}
                 >
-                  contato@shiftg.com.br
+                  {SITE_EMAIL}
                 </ChakraLink>
               </Text>
             </Box>

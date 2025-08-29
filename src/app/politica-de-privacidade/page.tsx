@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { ChevronRight, Mail, Phone, Shield, Info } from "lucide-react";
 import { Metadata } from "next";
+import { SITE_NAME, SITE_EMAIL } from "@/constants";
 
 export const metadata: Metadata = {
   title:
@@ -460,7 +461,7 @@ export default function PoliticaPrivacidadePage() {
                     questão sobre o tratamento dos seus dados pessoais.
                   </Text>
                   <Link
-                    href="mailto:william@shiftg.com.br"
+                    href={`mailto:${SITE_EMAIL}`}
                     color="blue.600"
                     fontWeight="semibold"
                     fontSize="lg"
