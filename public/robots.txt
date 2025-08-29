@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+# Allow Google bots
+User-agent: Googlebot
+Allow: /
+
+# Allow Bing bots
+User-agent: Bingbot
+Allow: /
+
+# Crawl delay
+Crawl-delay: 1
+
+Sitemap: https://harrisonassessoria.com.br/sitemap.xml

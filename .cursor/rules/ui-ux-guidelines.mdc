@@ -1,0 +1,108 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+## Objetivo
+
+Crie interfaces modernas no padrão dos sites de IA: **minimalistas, sem sombras**, tipografia limpa, alto contraste, foco em conteúdo e consistência entre páginas. **Evite redundância** de código: componha com pequenos componentes reutilizáveis.
+
+Definir princípios de design holístico que unem ciência, tecnologia e consistência visual, criando experiências que transmitem confiança, inovação e clareza. O foco é alinhar estética, funcionalidade e propósito em uniformidade total em todas as páginas.
+
+Princípios Holísticos
+
+Clareza acima de tudo — cada elemento deve ter função explícita; nada supérfluo.
+
+Ciência e Tecnologia como estética — use tipografia geométrica, cores inspiradas em dados (azuis, cinzas, verdes suaves) e layouts que evocam precisão.
+
+Consistência uniforme — todos os componentes seguem o mesmo grid, espaçamento e tipografia. Nenhum estilo isolado.
+
+Equilíbrio — harmonia entre texto, espaço negativo, cor e hierarquia; tudo deve “respirar”.
+
+Acessibilidade científica — contraste elevado, navegação clara, linguagem simples mas precisa.
+
+## Stack & Padrões
+
+* **Framework**: React + Next.js (App Router) com TypeScript.
+* **UI**: Chakra UI (estritamente). Não usar tailwind/inline styles.
+* **Estado**: Zustand quando necessário; senão, componentes controlados simples.
+* **Estilo**: **Sem box-shadows**. Use bordas sutis, espaçamento generoso e variações de opacidade.
+* **Acessibilidade**: Respeitar ARIA, foco visível, contraste >= 4.5:1.
+
+## Tema Chakra (obrigatório)
+
+* Preferir `tokens` (semantic tokens) a cores fixas.
+
+## Layout & Grid
+
+* Use `Container` com `maxW="6xl"` ou `7xl`.
+* Grid 12 colunas com `SimpleGrid`/`Grid`.
+* Espaçamentos: `8, 10, 12` para seções; `4, 6` para elementos internos.
+* **Nenhuma sombra**; separar áreas com `borderColor="border"` e `bg="surface"`.
+
+## Componentização (sem redundância)
+
+Crie e reutilize:
+
+* `Page`: casca de página com `<Container>` padrão (padding, largura, SEO opcional).
+* `Section`: wrapper com título, descrição e espaçamento consistente.
+* `Navbar` minimalista, `Footer` com links discretos.
+* `Hero`, `FeatureItem`, `PricingTier`, `Callout`, `EmptyState`, todos sem sombras.
+
+
+```tsx
+// components/Section.tsx
+import { Box, Heading, Text } from "@chakra-ui/react";
+
+type Props = { title?: string; description?: string; children: React.ReactNode };
+export function Section({ title, description, children }: Props) {
+  return (
+    <Box as="section" py={{ base: 8, md: 12 }}>
+      {title && (
+        <Heading as="h2" size="lg" mb={2}>
+          {title}
+        </Heading>
+      )}
+      {description && (
+        <Text color="subtleText" mb={6}>
+          {description}
+        </Text>
+      )}
+      {children}
+    </Box>
+  );
+}
+```
+
+## Diretrizes de UI (essenciais)
+
+1. **Sem sombras** em qualquer componente (inclusive hover/focus).
+2. Realçar com **bordas 1px**, `bg="surface"`, **tipografia** e **espaço**.
+3. **Estados**: `_hover` usa leve mudança de `bg`/`opacity`; `_active` reduz opacidade; `_focusVisible` com outline 2px na cor `primary`.
+4. **Ícones**: lucide-react opcional, tamanho 18–20px.
+5. **Conteúdo primeiro**: hero direto; CTA claro; sem banners decorativos.
+
+## Páginas obrigatórias (padrão comum)
+
+* **Home**: Hero curto, benefícios em 3–6 itens, prova social discreta, CTA.
+* **Pricing**: 3 planos, destaque apenas por borda e leve `bg`.
+* **Docs/Blog** (opcional): `Prose` simples, boa hierarquia de títulos.
+
+## Boas práticas de código
+
+* TypeScript estrito; componentes pequenos; **reutilize** ao invés de duplicar.
+* Nomeie props semanticamente; evite `any`.
+* Sem CSS externo; tudo via Chakra props/tema.
+* Teste visual: responsividade mobile-first.
+
+## Anti-padrões (proibido)
+
+* `boxShadow` em qualquer lugar.
+* Gradientes pesados, fundos ruidosos, skeuomorphism.
+* Múltiplas variações de botão por página.
+* Repetir layout/espacings hardcoded em cada página — use `Section`, `Page` e tokens.
+* Sombras pesadas, gradientes decorativos.
+* Mistura de tipografias.
+* Espaçamentos aleatórios.
+* Uso de cores sem ligação com tokens semânticos.
