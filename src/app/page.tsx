@@ -286,6 +286,7 @@ export default function HomePage() {
                 fontWeight="900"
                 lineHeight="none"
                 letterSpacing="tight"
+                textAlign={{ base: "left", md: "center" }}
               >
                 Pronto para{" "}
                 <Text
@@ -299,11 +300,12 @@ export default function HomePage() {
               </Heading>
 
               <Text
-                fontSize={{ base: "xl", md: "2xl" }}
+                fontSize={{ base: "lg", md: "2xl" }}
                 color="fg.muted"
                 maxW="3xl"
                 lineHeight="tall"
                 fontWeight="400"
+                textAlign={{ base: "left", md: "center" }}
               >
                 Agende uma consultoria gratuita de 30 minutos. Vamos mapear seus
                 processos, identificar oportunidades de automação e apresentar
@@ -320,7 +322,7 @@ export default function HomePage() {
               >
                 <Button
                   size="xl"
-                  px={12}
+                  px={{ base: 4, sm: 6 }}
                   py={8}
                   rounded="2xl"
                   fontWeight="700"
