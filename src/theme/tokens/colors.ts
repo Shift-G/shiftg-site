@@ -97,28 +97,24 @@ export const colors = defineTokens.colors({
     950: { value: "#00190F" },
   },
   blue: {
-    50: { value: "#eff6ff" },
-    100: { value: "#dbeafe" },
-    200: { value: "#bfdbfe" },
-    300: { value: "#93c5fd" },
-    400: { value: "#60a5fa" },
-    500: { value: "#3b82f6" },
-    600: { value: "#2563eb" },
-    700: { value: "#1d4ed8" },
-    800: { value: "#1e40af" },
-    900: { value: "#1e3a8a" },
-    950: { value: "#0f172a" },
+    50: { value: "#ebedff" },
+    100: { value: "#dadeff" },
+    200: { value: "#b1baff" },
+    300: { value: "#8a99ff" },
+    400: { value: "#5a74ff" },
+    500: { value: "#0051ff" },
+    600: { value: "#003fcd" },
+    700: { value: "#0030a2" },
+    800: { value: "#002074" },
+    900: { value: "#00134e" },
+    950: { value: "#000934" },
   },
-  
+
   // Modern AI-inspired gradients and colors
   gradient: {
-    primary: { value: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" },
-    blue: { value: "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)" },
-    purple: { value: "linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%)" },
-    ocean: { value: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" },
-    tech: { value: "linear-gradient(135deg, #0ea5e9 0%, #3b82f6 50%, #6366f1 100%)" },
+    blue: { value: "linear-gradient(135deg, #0051ff 0%, #00134e 100%)" },
   },
-  
+
   // Glass morphism colors
   glass: {
     white: { value: "rgba(255, 255, 255, 0.1)" },
