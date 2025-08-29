@@ -123,7 +123,7 @@ export default function RootLayout({
           <Toaster />
           {children}
         </Provider>
-        <GoogleAnalytics gaId="G-20NRBTFTPV" />
+        <GoogleAnalytics gaId="G-MC52XBJ3FS" />
       </body>
     </html>
   );
