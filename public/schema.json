@@ -1,0 +1,34 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SHIFT+G AI & Data",
+  "alternateName": "SHIFT+G",
+  "url": "https://shiftg.com.br",
+  "logo": "https://shiftg.com.br/logo.png",
+  "description": "Desenvolvemos soluções de software que transformam dados complexos em decisões estratégicas, entregando autonomia e eficiência para sua empresa.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "",
+    "email": "contato@shiftg.com.br",
+    "contactType": "customer service",
+    "availableLanguage": "Portuguese"
+  },
+  "sameAs": [
+    "https://linkedin.com/company/shiftg",
+    "https://instagram.com/shiftg.ai"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "São Paulo",
+    "addressRegion": "SP",
+    "addressCountry": "BR"
+  },
+  "offers": {
+    "@type": "Offer",
+    "itemOffered": {
+      "@type": "Service",
+      "name": "Soluções de IA e Dados",
+      "description": "Inteligência Artificial, People Analytics, Automação Inteligente, Business Intelligence e Software sob medida"
+    }
+  }
+}
