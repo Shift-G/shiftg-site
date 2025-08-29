@@ -3,6 +3,8 @@
 import { Box, Container, Heading, Text, VStack } from "@chakra-ui/react";
 import type { ReactNode } from "react";
 
+// Using global CSS animations defined in theme/global-css.ts
+
 interface SectionProps {
   children: ReactNode;
   title?: string;
@@ -12,6 +14,7 @@ interface SectionProps {
   bg?: string;
   id?: string;
   _dark?: Record<string, any>;
+  variant?: 'default' | 'gradient' | 'glass' | 'geometric';
 }
 
 export function Section({
@@ -23,34 +26,97 @@ export function Section({
   bg,
   id,
   _dark,
+  variant = 'default',
 }: SectionProps) {
+  const getBackgroundStyles = () => {
+    switch (variant) {
+      case 'gradient':
+        return {
+          background: "linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05), transparent)",
+          _dark: { 
+            background: "linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1), transparent)" 
+          }
+        };
+      case 'glass':
+        return {
+          bg: "rgba(255, 255, 255, 0.02)",
+          backdropFilter: "blur(10px)",
+          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+          borderBottom: "1px solid rgba(255, 255, 255, 0.1)"
+        };
+      case 'geometric':
+        return {
+          position: "relative",
+          bg: bg,
+          _dark: _dark,
+          overflow: "hidden"
+        };
+      default:
+        return { bg, _dark };
+    }
+  };
+
   return (
-    <Box as="section" py={py} bg={bg} id={id} _dark={_dark}>
-      <Container maxW="7xl">
+    <Box as="section" py={py} id={id} {...getBackgroundStyles()}>
+      {/* Geometric elements for geometric variant */}
+      {variant === 'geometric' && (
+        <>
+          <Box
+            position="absolute"
+            top="10%"
+            right="5%"
+            w="100px"
+            h="100px"
+            borderRadius="full"
+            bg="rgba(59, 130, 246, 0.08)"
+            backdropFilter="blur(10px)"
+            animation="float 8s ease-in-out infinite"
+            zIndex={0}
+          />
+          <Box
+            position="absolute"
+            bottom="15%"
+            left="3%"
+            w="60px"
+            h="60px"
+            borderRadius="lg"
+            bg="rgba(139, 92, 246, 0.08)"
+            backdropFilter="blur(10px)"
+            animation="float 6s ease-in-out infinite reverse"
+            zIndex={0}
+          />
+        </>
+      )}
+      
+      <Container maxW="7xl" position="relative" zIndex={1}>
         {(title || subtitle) && (
           <VStack
-            gap={{ base: 3, md: 4 }}
-            mb={{ base: 8, md: 12 }}
+            gap={{ base: 4, md: 6 }}
+            mb={{ base: 10, md: 16 }}
             textAlign={centered ? "center" : "left"}
             alignItems={centered ? "center" : "flex-start"}
-            maxW={centered ? "3xl" : "full"}
+            maxW={centered ? "4xl" : "full"}
             mx={centered ? "auto" : 0}
           >
             {title && (
               <Heading
                 as="h2"
-                size={{ base: "xl", md: "2xl" }}
-                fontWeight="700"
+                size={{ base: "2xl", md: "3xl", lg: "4xl" }}
+                fontWeight="800"
                 color="fg"
+                lineHeight="shorter"
+                letterSpacing="tight"
               >
                 {title}
               </Heading>
             )}
             {subtitle && (
               <Text
-                fontSize={{ base: "lg", md: "xl" }}
+                fontSize={{ base: "xl", md: "2xl" }}
                 color="fg.muted"
                 lineHeight="tall"
+                fontWeight="400"
+                maxW="3xl"
               >
                 {subtitle}
               </Text>

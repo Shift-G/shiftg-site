@@ -109,8 +109,8 @@ export default function RootLayout({
               ],
               "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "São Paulo",
-                "addressRegion": "SP",
+                "addressLocality": "Curitiba",
+                "addressRegion": "PR",
                 "addressCountry": "BR"
               }
             })

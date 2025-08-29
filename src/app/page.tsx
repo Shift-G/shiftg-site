@@ -210,7 +210,7 @@ export default function HomePage() {
         title="A parceria estratégica para sua transformação digital"
         subtitle="A Shift+G não é apenas uma fábrica de software. Somos seus parceiros na jornada de dados e IA. Construímos ferramentas sob medida que se integram perfeitamente aos seus processos, capacitando suas equipes com a inteligência e a autonomia necessárias para escalar."
         centered
-        bg="bg.subtle"
+        variant="gradient"
       >
         <SimpleGrid columns={{ base: 1, lg: 2 }} gap={{ base: 6, md: 8 }}>
           {solutions.map((solution) => (
@@ -243,7 +243,7 @@ export default function HomePage() {
         id="diferenciais"
         title="O que nos torna diferentes?"
         centered
-        bg="bg.subtle"
+        variant="glass"
       >
         <SimpleGrid columns={{ base: 1, md: 2 }} gap={{ base: 6, md: 8 }}>
           {differentials.map((diff, index) => (
@@ -263,6 +263,7 @@ export default function HomePage() {
         id="casos"
         title="Da visão à realidade: IA e Dados aplicados ao seu negócio"
         centered
+        variant="geometric"
       >
         <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} gap={{ base: 6, md: 8 }}>
           {useCases.map((useCase) => (
@@ -272,59 +273,138 @@ export default function HomePage() {
       </Section>
 
       {/* Final CTA Section */}
-      <Section
+      <Box
+        as="section"
         id="contato"
-        py={{ base: 16, md: 20 }}
-        bg="blue.subtle"
+        py={{ base: 20, md: 28 }}
+        position="relative"
+        overflow="hidden"
       >
-        <Container maxW="4xl">
-          <VStack gap={{ base: 6, md: 8 }} textAlign="center">
-            <Heading
-              as="h2"
-              size={{ base: "2xl", md: "3xl" }}
-              fontWeight="800"
-              color="fg"
-            >
-              Pronto para transformar seus dados em seu maior ativo?
-            </Heading>
-            
-            <Text
-              fontSize={{ base: "lg", md: "xl" }}
-              color="fg.muted"
-              maxW="2xl"
-            >
-              Vamos agendar uma conversa sem compromisso. Queremos entender seus 
-              desafios e mostrar como a tecnologia sob medida da Shift+G pode 
-              destravar o potencial da sua operação.
-            </Text>
+        {/* Dynamic Background */}
+        <Box
+          position="absolute"
+          inset={0}
+          bgGradient="radial-gradient(ellipse 100% 60% at 50% 0%, rgba(59, 130, 246, 0.15), transparent)"
+          _dark={{
+            bgGradient: "radial-gradient(ellipse 100% 60% at 50% 0%, rgba(59, 130, 246, 0.2), transparent)"
+          }}
+          zIndex={-1}
+        />
 
-            <VStack gap={4} w="full" maxW="md">
+        {/* Floating Elements */}
+        <Box
+          position="absolute"
+          top="20%"
+          left="10%"
+          w="150px"
+          h="150px"
+          borderRadius="full"
+          bg="rgba(59, 130, 246, 0.1)"
+          backdropFilter="blur(20px)"
+          border="1px solid rgba(255, 255, 255, 0.2)"
+          animation="float 10s ease-in-out infinite"
+          zIndex={-1}
+        />
+        
+        <Box
+          position="absolute"
+          bottom="10%"
+          right="15%"
+          w="100px"
+          h="100px"
+          borderRadius="2xl"
+          bg="rgba(139, 92, 246, 0.1)"
+          backdropFilter="blur(20px)"
+          border="1px solid rgba(255, 255, 255, 0.2)"
+          animation="float 8s ease-in-out infinite reverse"
+          zIndex={-1}
+        />
+
+        <Container maxW="5xl">
+          <VStack gap={{ base: 8, md: 12 }} textAlign="center">
+            <VStack gap={6}>
+              <Heading
+                as="h2"
+                size={{ base: "3xl", md: "4xl", lg: "5xl" }}
+                fontWeight="900"
+                lineHeight="none"
+                letterSpacing="tight"
+              >
+                Pronto para{" "}
+                <Text
+                  as="span"
+                  bgGradient="linear-gradient(135deg, #3b82f6, #1d4ed8, #8b5cf6)"
+                  bgClip="text"
+                >
+                  transformar
+                </Text>{" "}
+                seus dados?
+              </Heading>
+              
+              <Text
+                fontSize={{ base: "xl", md: "2xl" }}
+                color="fg.muted"
+                maxW="3xl"
+                lineHeight="tall"
+                fontWeight="400"
+              >
+                Vamos agendar uma conversa sem compromisso. Queremos entender seus 
+                desafios e mostrar como a tecnologia sob medida da Shift+G pode 
+                destravar o potencial da sua operação.
+              </Text>
+            </VStack>
+
+            <VStack gap={8} w="full" maxW="lg">
               <Link href="mailto:contato@shiftg.com.br" passHref>
                 <Button
-                  size="lg"
-                  colorPalette="blue"
-                  fontWeight="600"
+                  size="xl"
+                  px={12}
+                  py={8}
+                  rounded="2xl"
+                  fontWeight="700"
+                  fontSize="xl"
+                  bg="linear-gradient(135deg, #3b82f6, #1d4ed8)"
+                  color="white"
+                  border="none"
+                  boxShadow="0 15px 50px rgba(59, 130, 246, 0.4)"
+                  _hover={{
+                    transform: "translateY(-3px)",
+                    boxShadow: "0 20px 60px rgba(59, 130, 246, 0.5)",
+                    bg: "linear-gradient(135deg, #2563eb, #1e40af)"
+                  }}
+                  _active={{
+                    transform: "translateY(0px)",
+                  }}
+                  transition="all 0.3s ease"
                   w={{ base: "full", sm: "auto" }}
-                  px={8}
                 >
                   Agende uma demonstração gratuita
-                  <ChevronRight size={18} style={{ marginLeft: '8px' }} />
+                  <ChevronRight size={20} style={{ marginLeft: '12px' }} />
                 </Button>
               </Link>
               
-              <HStack gap={2}>
-                <Mail size={16} />
-                <Text fontSize="sm" color="fg.muted">
-                  Ou, se preferir, envie um e-mail para{" "}
-                  <Text as="span" fontWeight="600" color="blue.fg">
-                    contato@shiftg.com.br
+              <Box
+                px={8}
+                py={4}
+                rounded="xl"
+                bg="rgba(255, 255, 255, 0.08)"
+                backdropFilter="blur(20px)"
+                border="1px solid rgba(255, 255, 255, 0.15)"
+              >
+                <HStack gap={3} justify="center">
+                  <Mail size={20} color="#3b82f6" />
+                  <Text fontSize="lg" color="fg.muted" fontWeight="500">
+                    Ou envie um e-mail para{" "}
+                    <Text as="span" fontWeight="700" color="#3b82f6">
+                      contato@shiftg.com.br
+                    </Text>
                   </Text>
-                </Text>
-              </HStack>
+                </HStack>
+              </Box>
             </VStack>
           </VStack>
         </Container>
-      </Section>
+      </Box>
 
       <Footer />
     </Page>
