@@ -10,9 +10,20 @@ import {
   HStack,
   Stack,
   Icon,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { ArrowRight, Sparkles, Zap, Brain } from "lucide-react";
+import {
+  ArrowRight,
+  Sparkles,
+  Zap,
+  Brain,
+  Target,
+  Bot,
+  TrendingUp,
+  MapIcon,
+  MapPinHouseIcon,
+} from "lucide-react";
 import { GradientBars } from "../ui/gradient-bars";
 
 // Using global CSS animations defined in theme/global-css.ts
@@ -28,29 +39,50 @@ export function Hero() {
       alignItems="center"
     >
       {/* Gradient Bars Background */}
-      <GradientBars bars={24} colors={["{colors.blue.500}", "transparent"]} />
+      <Box display={{ base: "none", md: "block" }}>
+        <GradientBars bars={24} colors={["{colors.blue.500}", "transparent"]} />
+      </Box>
 
-      {/* Dynamic Gradient Background */}
-      <Box
-        position="absolute"
-        inset={0}
-        bgGradient="radial-gradient(ellipse 80% 50% at 50% -20%, {colors.blue.500/50}, transparent)"
-        _dark={{
-          bgGradient:
-            "radial-gradient(ellipse 80% 50% at 50% -20%, {colors.blue.700/40}, transparent)",
-        }}
-        zIndex={-2}
-      />
+      <Box display={{ base: "block", md: "none" }}>
+        <GradientBars bars={6} colors={["{colors.blue.500}", "transparent"]} />
+      </Box>
 
       <Container maxW="7xl" py={{ base: 16, md: 24 }}>
         <VStack
-          gap={{ base: 8, md: 10 }}
+          gap={{ base: 2, md: 4 }}
           maxW="5xl"
           mx="auto"
           textAlign="center"
         >
+          {/* Announcement Badge */}
+          <HStack
+            px={2}
+            py={1}
+            rounded="full"
+            bg="blue.50"
+            _dark={{ bg: "blue.900/20", borderColor: "blue.800" }}
+            border="1px solid"
+            pos="absolute"
+            top={6}
+            left="50%"
+            transform="translateX(-50%)"
+            borderColor="blue.200"
+            minW="300px"
+          >
+            <Icon as={MapPinHouseIcon} boxSize={4} color="blue.500" />
+            <Text
+              fontSize={{ base: "xs", md: "xs" }}
+              fontWeight="600"
+              color="blue.700"
+              _dark={{ color: "blue.300" }}
+              textAlign="center"
+            >
+              Em breve: Sede em União da Vitória - PR
+            </Text>
+          </HStack>
+
           {/* Glass Morphism Badge */}
-          <Box
+          {/* <Box
             px={3}
             py={2}
             rounded="full"
@@ -75,7 +107,7 @@ export function Hero() {
                 <Zap size={16} color="blue.500}" />
               </Box>
             </HStack>
-          </Box>
+          </Box> */}
 
           {/* Enhanced Title */}
           <VStack gap={4}>
@@ -120,15 +152,14 @@ export function Hero() {
 
           {/* Enhanced Subtitle */}
           <Text
-            fontSize={{ base: "xl", md: "2xl" }}
-            color="fg.muted"
+            fontSize={{ base: "md", md: "2xl" }}
             maxW="4xl"
             lineHeight="tall"
             fontWeight="400"
           >
-            Desenvolvemos sistemas inteligentes que automatizam processos,
-            preveem tendências e entregam insights estratégicos para sua empresa
-            tomar decisões mais rápidas e precisas.
+            Desenvolvemos soluções de IA que transformam dados em decisões
+            estratégicas, automatizam processos complexos e geram vantagem
+            competitiva sustentável.
           </Text>
 
           {/* Enhanced CTAs */}
@@ -143,50 +174,11 @@ export function Hero() {
                 size="xl"
                 px={10}
                 py={6}
-                rounded="2xl"
-                fontWeight="700"
-                fontSize="lg"
-                bg="{colors.gradient.blue}"
-                color="white"
-                border="none"
-                boxShadow="0 10px 40px {colors.blue.500/30}"
-                _hover={{
-                  transform: "translateY(-2px)",
-                  boxShadow: "0 15px 50px {colors.blue.500/40}",
-                  bg: "linear-gradient(135deg, {colors.blue.600}, {colors.blue.800})",
-                }}
-                _active={{
-                  transform: "translateY(0px)",
-                }}
-                transition="all 0.3s ease"
+                variant="solid"
+                colorPalette="blue"
               >
-                Agende uma demonstração
+                Fale com um especialista
                 <ArrowRight size={20} style={{ marginLeft: "12px" }} />
-              </Button>
-            </Link>
-            <Link href="#casos" passHref>
-              <Button
-                size="xl"
-                px={10}
-                py={6}
-                rounded="2xl"
-                fontWeight="600"
-                fontSize="lg"
-                bg="{colors.whiteAlpha.200}"
-                backdropFilter="blur(20px)"
-                border="1px solid {colors.whiteAlpha.300}"
-                color="fg"
-                _hover={{
-                  transform: "translateY(-2px)",
-                  bg: "{colors.whiteAlpha.300}",
-                  borderColor: "{colors.blue.500/30}",
-                }}
-                _active={{
-                  transform: "translateY(0px)",
-                }}
-                transition="all 0.3s ease"
-              >
-                Ver casos de sucesso
               </Button>
             </Link>
           </Stack>
@@ -198,51 +190,69 @@ export function Hero() {
 
         {/* Enhanced Stats */}
         <Box mt={{ base: 16, md: 20 }}>
-          <HStack justify="center" gap={{ base: 4, md: 4 }} flexWrap="wrap">
+          <SimpleGrid columns={{ base: 2, md: 4 }} gap={{ base: 2, md: 8 }}>
             {[
-              { value: "100%", label: "Sob Medida", icon: "🎯" },
-              { value: "5x", label: "Mais Rápido", icon: "⚡" },
-              { value: "24/7", label: "Suporte", icon: "🤖" },
-              { value: "ROI", label: "Garantido", icon: "📈" },
+              {
+                value: "300%",
+                label: "Produtividade",
+                Icon: Target,
+              },
+              {
+                value: "6 meses",
+                label: "ROI Garantido",
+                Icon: Zap,
+              },
+              {
+                value: "24/7",
+                label: "Suporte Técnico",
+                Icon: Bot,
+              },
+              {
+                value: "100%",
+                label: "Sob Medida",
+                Icon: TrendingUp,
+              },
             ].map((stat, index) => (
               <Box
                 key={stat.label}
-                p={12}
-                rounded="2xl"
-                bg="{colors.whiteAlpha.200}"
-                backdropFilter="blur(20px)"
-                border="1px solid {colors.whiteAlpha.300}"
-                boxShadow="0 8px 32px {colors.blue.500/10}"
-                transition="all 0.3s ease"
-                _hover={{
-                  transform: "translateY(-5px)",
-                  boxShadow: "0 15px 50px {colors.blue.500/20}",
-                }}
-                animation={`bounce ${10 + index}s ease-in-out infinite`}
+                p={{ base: 6, md: 8 }}
+                rounded="xl"
+                bg="bg.subtle/10"
+                backdropFilter="blur(10px)"
+                animation={`fadeInUp 0.6s ease-out ${index * 0.1}s both`}
+                overflow="hidden"
+                boxShadow="0px 0px 10px {colors.blue.500/20}"
               >
-                <VStack gap={3}>
-                  <Text fontSize="2xl">{stat.icon}</Text>
-                  <Text
-                    fontSize={{ base: "3xl", md: "4xl" }}
-                    fontWeight="900"
-                    bgGradient="{colors.gradient.purple}"
-                    bgClip="text"
-                    lineHeight="none"
-                  >
-                    {stat.value}
-                  </Text>
-                  <Text
-                    fontSize="sm"
-                    color="fg.muted"
-                    fontWeight="600"
-                    textAlign="center"
-                  >
-                    {stat.label}
-                  </Text>
+                <VStack gap={4} position="relative" zIndex={1}>
+                  <Icon as={stat.Icon} boxSize={8} color={"blue.500"} />
+
+                  <VStack gap={1}>
+                    <Text
+                      fontSize={{ base: "2xl", md: "3xl" }}
+                      fontWeight="900"
+                      bgGradient={`linear-gradient(135deg, {colors.blue.500}, {colors.blue.700})`}
+                      bgClip="text"
+                      lineHeight="none"
+                      letterSpacing="tight"
+                    >
+                      {stat.value}
+                    </Text>
+
+                    <Text
+                      fontSize={{ base: "sm", md: "md" }}
+                      color="blue.fg"
+                      fontWeight="600"
+                      textAlign="center"
+                      textTransform="uppercase"
+                      letterSpacing="wide"
+                    >
+                      {stat.label}
+                    </Text>
+                  </VStack>
                 </VStack>
               </Box>
             ))}
-          </HStack>
+          </SimpleGrid>
         </Box>
       </Container>
     </Box>

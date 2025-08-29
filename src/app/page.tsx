@@ -34,35 +34,37 @@ import {
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "SHIFT+G | Inteligência Artificial e Dados sob medida",
+  title: "SHIFT+G | IA e Dados que Multiplicam Resultados",
   description:
-    "Desenvolvemos soluções de software que transformam dados complexos em decisões estratégicas, entregando autonomia e eficiência para sua empresa.",
+    "Transforme dados brutos em vantagem competitiva. Desenvolvemos soluções de IA e analytics que aumentam produtividade em até 300% e geram ROI garantido em 6 meses.",
   keywords: [
-    "inteligência artificial",
-    "IA",
-    "data science",
-    "análise de dados",
-    "people analytics",
-    "automação",
+    "inteligência artificial empresarial",
+    "IA para RH",
+    "people analytics avançado",
+    "automação inteligente",
     "business intelligence",
-    "machine learning",
-    "software sob medida",
+    "machine learning corporativo",
+    "análise preditiva",
+    "data science aplicada",
     "transformação digital",
+    "ROI inteligência artificial",
+    "dashboards executivos",
+    "automação processos",
   ],
   openGraph: {
-    title: "SHIFT+G | Inteligência Artificial e Dados sob medida",
+    title: "SHIFT+G | IA e Dados que Multiplicam Resultados",
     description:
-      "Transforme dados complexos em decisões estratégicas com soluções de IA personalizadas",
+      "Aumente produtividade em 300% e garanta ROI em 6 meses com nossas soluções de IA e analytics personalizadas para sua empresa",
     type: "website",
     locale: "pt_BR",
     url: "https://shiftg.com.br",
-    siteName: "SHIFT+G AI & Data",
+    siteName: "SHIFT+G - IA & Dados Empresariais",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SHIFT+G | Inteligência Artificial e Dados sob medida",
+    title: "SHIFT+G | IA e Dados que Multiplicam Resultados",
     description:
-      "Transforme dados complexos em decisões estratégicas com soluções de IA personalizadas",
+      "Aumente produtividade em 300% e garanta ROI em 6 meses com nossas soluções de IA e analytics personalizadas",
   },
   robots: {
     index: true,
@@ -79,50 +81,50 @@ export const metadata: Metadata = {
 
 const solutions = [
   {
-    title: "Dados & Inteligência Artificial",
-    subtitle: "Inteligência que gera valor",
+    title: "Analytics & Inteligência Artificial",
+    subtitle: "Dados que geram decisões estratégicas",
     description:
-      "Transformamos seus dados brutos em ativos estratégicos. Desde a estruturação e governança até a implementação de modelos preditivos e dashboards interativos, entregamos os insights que sua liderança precisa para antecipar cenários e agir com confiança.",
+      "Transformamos dados brutos em vantagem competitiva. Desenvolvemos modelos de machine learning que preveem turnover, otimizam produtividade e identificam oportunidades de crescimento. Dashboards executivos em tempo real com insights acionáveis que multiplicam seus resultados.",
     features: [
-      "Estruturação e governança de dados",
-      "Modelos preditivos e machine learning",
-      "Dashboards interativos e em tempo real",
-      "Análise preditiva e prescritiva",
+      "People Analytics avançado com ML",
+      "Modelos preditivos de alta precisão",
+      "Dashboards executivos em tempo real",
+      "Análise de dados para tomada de decisão",
     ],
     badge: "CORE",
   },
   {
-    title: "Soluções de Software Sob Medida",
-    subtitle: "Tecnologia que resolve",
+    title: "Automações Inteligentes",
+    subtitle: "Processos que funcionam sozinhos",
     description:
-      "Desenvolvemos sistemas, automações e ferramentas internas que eliminam gargalos operacionais. Seja para RH, Financeiro ou Operações, criamos aplicações escaláveis em nuvem que se conectam aos seus sistemas (ERP, CRM) e otimizam o dia a dia da sua equipe.",
+      "Eliminamos gargalos operacionais e liberamos sua equipe para atividades estratégicas. Desenvolvemos automações que processam dados 10x mais rápido, integram sistemas legados e geram economia de até 70% em custos operacionais. ROI garantido em 6 meses.",
     features: [
-      "Sistemas personalizados e escaláveis",
-      "Integração com ERPs e CRMs",
-      "Automação de processos complexos",
-      "APIs e microsserviços robustos",
+      "Automação de RH e folha de pagamento",
+      "Integração ERP/CRM inteligente",
+      "APIs e microsserviços escaláveis",
+      "Processos 100% automatizados",
     ],
-    badge: "CUSTOM",
+    badge: "AUTOMATION",
   },
 ];
 
 const targetAudience = [
   {
-    title: "C-Levels (CEO, COO, CFO)",
+    title: "Executivos C-Level",
     description:
-      "Buscando eficiência operacional, redução de custos e uma base de dados sólida para decisões estratégicas de alto impacto.",
+      "CEOs, COOs e CFOs que precisam transformar dados em vantagem competitiva. Buscam reduzir custos operacionais em até 70%, aumentar produtividade da equipe e tomar decisões baseadas em insights precisos e preditivos.",
     icon: <Target size={24} />,
   },
   {
-    title: "Diretores e Gestores de RH",
+    title: "Diretores de RH",
     description:
-      "Enfrentando desafios em People Analytics, automação de processos de folha, recrutamento inteligente e melhoria do engajamento.",
+      "Lutando contra altos índices de turnover e baixa produtividade. Precisam de People Analytics avançado para reter talentos, automatizar processos de RH e melhorar o engajamento organizacional com dados acionáveis.",
     icon: <Users size={24} />,
   },
   {
     title: "Líderes de Operações",
     description:
-      "Precisando de ferramentas personalizadas para otimizar fluxos de trabalho, integrar sistemas e ganhar agilidade.",
+      "Sobrecarregados com processos manuais e sistemas desconectados. Buscam automação inteligente que integre ERPs, CRMs e fluxos de trabalho para eliminar gargalos e acelerar a execução operacional.",
     icon: <TrendingUp size={24} />,
   },
 ];
@@ -130,27 +132,27 @@ const targetAudience = [
 const differentials = [
   {
     icon: <Zap size={24} />,
-    title: "Sob Medida, Não Genérico",
+    title: "ROI Garantido em 6 Meses",
     description:
-      "Nossas soluções são desenhadas para a sua realidade. Não acreditamos em 'tamanho único'. Entendemos seus processos, sua cultura e seus desafios para construir algo que realmente funcione.",
+      "Não vendemos tecnologia pelo prazer de vender. Garantimos retorno sobre investimento mensurável em até 6 meses, com métricas claras de produtividade, redução de custos e aumento de receita.",
   },
   {
     icon: <Shield size={24} />,
-    title: "Parceiro Estratégico, Não Apenas Fornecedor",
+    title: "Consultoria Técnica Gratuita",
     description:
-      "Nos envolvemos com seu negócio para entender o 'porquê' por trás da tecnologia. Nosso objetivo é o seu sucesso, entregando soluções que elevam a maturidade digital da sua empresa.",
+      "Antes de qualquer proposta, fazemos uma consultoria gratuita para mapear seus processos, identificar oportunidades de automação e apresentar um plano de ação com projeções de resultados.",
   },
   {
     icon: <Brain size={24} />,
-    title: "Inteligência Real, Não Apenas Relatórios",
+    title: "Machine Learning Aplicado ao Seu Negócio",
     description:
-      "Vamos além dos dashboards. Aplicamos IA para descobrir padrões, prever tendências (como turnover de funcionários) e automatizar tarefas complexas, transformando dados em ações inteligentes.",
+      "Cada solução inclui algoritmos de ML treinados com seus dados específicos. Não usamos modelos genéricos - desenvolvemos inteligência artificial que entende seu negócio particular.",
   },
   {
     icon: <Rocket size={24} />,
-    title: "Agilidade e Escalabilidade",
+    title: "Suporte 24/7 e Evolução Contínua",
     description:
-      "Entregamos valor em ciclos rápidos e construímos sistemas robustos, preparados para crescer junto com a sua empresa, sem amarras tecnológicas.",
+      "Seu sucesso é nossa prioridade. Oferecemos suporte técnico 24/7 e atualizações constantes das soluções, garantindo que elas evoluam junto com seu negócio.",
   },
 ];
 
@@ -270,7 +272,7 @@ export default function HomePage() {
           w="100px"
           h="100px"
           borderRadius="2xl"
-          bg="{colors.purple.500/10}"
+          bg="{colors.blue.500/10}"
           backdropFilter="blur(20px)"
           border="1px solid {colors.whiteAlpha.300}"
           animation="float 8s ease-in-out infinite reverse"
@@ -290,7 +292,7 @@ export default function HomePage() {
                 Pronto para{" "}
                 <Text
                   as="span"
-                  bgGradient="linear-gradient(135deg, {colors.blue.500}, {colors.blue.700}, {colors.purple.500})"
+                  bgGradient="linear-gradient(135deg, {colors.blue.500}, {colors.blue.700}, {colors.blue.500})"
                   bgClip="text"
                 >
                   transformar
@@ -305,9 +307,9 @@ export default function HomePage() {
                 lineHeight="tall"
                 fontWeight="400"
               >
-                Vamos agendar uma conversa sem compromisso. Queremos entender seus 
-                desafios e mostrar como a tecnologia sob medida da Shift+G pode 
-                destravar o potencial da sua operação.
+                Agende uma consultoria gratuita de 30 minutos. Vamos mapear seus processos,
+                identificar oportunidades de automação e apresentar um plano com ROI
+                projetado em até 6 meses. Sem compromisso, apenas resultados claros.
               </Text>
             </VStack>
 
@@ -335,7 +337,7 @@ export default function HomePage() {
                   transition="all 0.3s ease"
                   w={{ base: "full", sm: "auto" }}
                 >
-                  Agende uma demonstração gratuita
+                  Agendar Consultoria Gratuita
                   <ChevronRight size={20} style={{ marginLeft: '12px' }} />
                 </Button>
               </Link>
@@ -351,7 +353,7 @@ export default function HomePage() {
                 <HStack gap={3} justify="center">
                   <Mail size={20} color="blue.500" />
                   <Text fontSize="lg" color="fg.muted" fontWeight="500">
-                    Ou envie um e-mail para{" "}
+                    Preferir por e-mail?{" "}
                     <Text as="span" fontWeight="700" color="blue.solid">
                       contato@shiftg.com.br
                     </Text>

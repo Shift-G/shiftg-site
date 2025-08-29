@@ -32,9 +32,9 @@ export function Section({
     switch (variant) {
       case 'gradient':
         return {
-          background: "linear-gradient(135deg, {colors.blue.500/5}, {colors.purple.500/5}, transparent)",
+          background: "linear-gradient(135deg, {colors.blue.500/5}, {colors.blue.500/5}, transparent)",
           _dark: { 
-            background: "linear-gradient(135deg, {colors.blue.500/10}, {colors.purple.500/10}, transparent)" 
+            background: "linear-gradient(135deg, {colors.blue.500/10}, {colors.blue.500/10}, transparent)" 
           }
         };
       case 'glass':
@@ -80,7 +80,7 @@ export function Section({
             w="60px"
             h="60px"
             borderRadius="lg"
-            bg="{colors.purple.500/8}"
+            bg="{colors.blue.500/8}"
             backdropFilter="blur(10px)"
             animation="float 6s ease-in-out infinite reverse"
             zIndex={0}

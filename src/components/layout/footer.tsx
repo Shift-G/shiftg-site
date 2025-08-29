@@ -18,14 +18,12 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <Box
-      as="footer"
-      bg="bg.subtle"
-      borderTop="1px"
-      borderColor="border"
-    >
+    <Box as="footer" bg="bg.subtle" borderTop="1px" borderColor="border">
       <Container maxW="7xl" py={{ base: 10, md: 12 }}>
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} gap={{ base: 8, md: 10 }}>
+        <SimpleGrid
+          columns={{ base: 1, md: 2, lg: 4 }}
+          gap={{ base: 8, md: 10 }}
+        >
           {/* Sobre */}
           <VStack align="flex-start" gap={4}>
             <Text
@@ -37,8 +35,9 @@ export function Footer() {
               SHIFT+G
             </Text>
             <Text fontSize="sm" color="fg.muted" lineHeight="tall">
-              Inteligência Artificial e Dados sob medida para transformar sua 
-              empresa em uma máquina de eficiência e inovação.
+              Especialistas em IA e Analytics para empresas que querem
+              multiplicar resultados. Do People Analytics ao Machine Learning
+              aplicado ao seu negócio.
             </Text>
           </VStack>
 
@@ -59,9 +58,9 @@ export function Footer() {
                   as={Link}
                   href={link.href}
                   fontSize="sm"
-                                     color="fg.muted"
-                   _hover={{ color: "blue.fg" }}
-                   transition="color 0.2s"
+                  color="fg.muted"
+                  _hover={{ color: "blue.fg" }}
+                  transition="color 0.2s"
                 >
                   {link.label}
                 </ChakraLink>
@@ -76,11 +75,11 @@ export function Footer() {
             </Text>
             <Stack gap={2}>
               {[
-                "People Analytics",
-                "Automação Inteligente",
-                "IA Generativa",
-                "Data Engineering",
-                "Business Intelligence",
+                "People Analytics Preditivo",
+                "Automações Inteligentes",
+                "Machine Learning Empresarial",
+                "Dashboards Executivos",
+                "Consultoria em IA",
               ].map((service) => (
                 <Text key={service} fontSize="sm" color="fg.muted">
                   {service}
@@ -100,9 +99,9 @@ export function Footer() {
                 <ChakraLink
                   href="mailto:contato@shiftg.com.br"
                   fontSize="sm"
-                                     color="fg.muted"
-                   _hover={{ color: "blue.fg" }}
-                   transition="color 0.2s"
+                  color="fg.muted"
+                  _hover={{ color: "blue.fg" }}
+                  transition="color 0.2s"
                 >
                   contato@shiftg.com.br
                 </ChakraLink>
@@ -110,7 +109,7 @@ export function Footer() {
               <HStack gap={2}>
                 <MapPin size={16} />
                 <Text fontSize="sm" color="fg.muted">
-                  São Paulo, Brasil
+                  Curitiba, Paraná, Brasil
                 </Text>
               </HStack>
               <HStack gap={3} mt={2}>
@@ -157,9 +156,9 @@ export function Footer() {
               as={Link}
               href="/politica-de-privacidade"
               fontSize="sm"
-                                 color="fg.muted"
-                   _hover={{ color: "blue.fg" }}
-                   transition="color 0.2s"
+              color="fg.muted"
+              _hover={{ color: "blue.fg" }}
+              transition="color 0.2s"
             >
               Política de Privacidade
             </ChakraLink>
@@ -167,9 +166,9 @@ export function Footer() {
               as={Link}
               href="/termos-de-uso"
               fontSize="sm"
-                                 color="fg.muted"
-                   _hover={{ color: "blue.fg" }}
-                   transition="color 0.2s"
+              color="fg.muted"
+              _hover={{ color: "blue.fg" }}
+              transition="color 0.2s"
             >
               Termos de Uso
             </ChakraLink>

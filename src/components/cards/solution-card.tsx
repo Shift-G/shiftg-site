@@ -56,7 +56,7 @@ export function SolutionCard({
         left={0}
         right={0}
         h="3px"
-        bgGradient="linear-gradient(90deg, transparent, {colors.blue.500}, {colors.purple.500}, transparent)"
+        bgGradient="linear-gradient(90deg, transparent, {colors.blue.500}, {colors.blue.500}, transparent)"
         opacity={0}
         transition="opacity 0.3s ease"
         _groupHover={{ opacity: 1 }}
@@ -109,7 +109,7 @@ export function SolutionCard({
           </Text>
         </VStack>
 
-        <List.Root gap={4} mt={6}>
+        <List.Root gap={4} mt={6} style={{ listStyleType: "none" }}>
           {features.map((feature, index) => (
             <ListItem key={index}>
               <HStack align="flex-start" gap={4}>

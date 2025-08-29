@@ -95,6 +95,26 @@ export const globalCss = defineGlobalStyles({
       opacity: "1",
     },
   },
+
+  "@keyframes fadeInUp": {
+    "0%": {
+      transform: "translateY(30px)",
+      opacity: "0",
+    },
+    "100%": {
+      transform: "translateY(0)",
+      opacity: "1",
+    },
+  },
+
+  "@keyframes rotate": {
+    "0%": {
+      transform: "rotate(0deg)",
+    },
+    "100%": {
+      transform: "rotate(360deg)",
+    },
+  },
   
   // Smooth scrolling
   "html": {

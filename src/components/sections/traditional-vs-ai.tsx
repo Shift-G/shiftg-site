@@ -122,26 +122,26 @@ export function TraditionalVsAI() {
   const traditionalSystems = [
     {
       icon: <Clock size={20} />,
-      title: "Processos Manuais Lentos",
-      description: "Análises que levam dias ou semanas para serem concluídas, dependendo de planilhas e processos manuais sujeitos a erros.",
+      title: "Processos Manuais Ineficientes",
+      description: "Análises que consomem dias ou semanas da equipe, com planilhas complexas propensas a erros humanos e retrabalho constante.",
       metric: "8-12 horas por análise",
     },
     {
       icon: <Users size={20} />,
-      title: "Sobrecarga da Equipe",
-      description: "Profissionais gastam 60-70% do tempo em tarefas repetitivas e operacionais, limitando o foco estratégico.",
+      title: "Equipe Sobrecarregada",
+      description: "Profissionais passam 70% do tempo em tarefas repetitivas e operacionais, com burnout e baixa produtividade estratégica.",
       metric: "70% tempo operacional",
     },
     {
       icon: <AlertTriangle size={20} />,
-      title: "Decisões Baseadas em Intuição",
-      description: "Falta de dados confiáveis e análises preditivas levam a decisões reativas e menos assertivas.",
+      title: "Decisões Reativas e Arriscadas",
+      description: "Sem dados preditivos confiáveis, as decisões são baseadas em intuição e experiência passada, resultando em oportunidades perdidas.",
       metric: "60-70% de precisão",
     },
     {
       icon: <TrendingDown size={20} />,
-      title: "Escalabilidade Limitada",
-      description: "Crescimento da operação exige contratação proporcional, aumentando custos e complexidade.",
+      title: "Custos Escalando Linearmente",
+      description: "Cada ponto de crescimento exige contratação proporcional, aumentando custos fixos e reduzindo margem de lucro.",
       metric: "Crescimento linear",
     },
   ];
@@ -149,27 +149,27 @@ export function TraditionalVsAI() {
   const aiSystems = [
     {
       icon: <Zap size={20} />,
-      title: "Automação Inteligente",
-      description: "Análises complexas executadas em minutos, com processamento automático de grandes volumes de dados.",
+      title: "Automação Inteligente e Rápida",
+      description: "Análises complexas executadas em minutos com processamento automático de grandes volumes de dados. Zero erros humanos e resultados instantâneos.",
       metric: "15-30 minutos",
     },
     {
       icon: <Brain size={20} />,
       title: "Equipe Focada em Estratégia",
-      description: "Profissionais liberados para atividades de alto valor, tomada de decisão e inovação.",
+      description: "Profissionais liberados para atividades de alto valor agregado: inovação, estratégia e crescimento. Eliminação completa de tarefas repetitivas.",
       metric: "80% tempo estratégico",
     },
     {
       icon: <Target size={20} />,
-      title: "Decisões Data-Driven",
-      description: "Insights preditivos e análises precisas que antecipam cenários e otimizam resultados.",
+      title: "Decisões Data-Driven e Precisas",
+      description: "Insights preditivos com Machine Learning antecipam cenários futuros e otimizam resultados com precisão cirúrgica baseada em dados reais.",
       metric: "90-95% de precisão",
     },
     {
       icon: <TrendingUp size={20} />,
       title: "Escalabilidade Exponencial",
-      description: "Capacidade de processar 10x mais dados sem aumentar proporcionalmente a equipe.",
-      metric: "Crescimento exponencial",
+      description: "Processa 10x mais dados sem aumentar equipe. Custos fixos se mantêm enquanto a capacidade de processamento cresce exponencialmente.",
+      metric: "10x mais capacidade",
     },
   ];
 

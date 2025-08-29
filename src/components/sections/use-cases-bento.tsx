@@ -31,7 +31,7 @@ interface UseCaseBentoProps {
   category: string;
   metrics?: string;
   featured?: boolean;
-  accent?: "blue" | "purple" | "green" | "orange";
+  accent?: "blue" | "green" | "orange";
 }
 
 function BentoCard({
@@ -45,24 +45,19 @@ function BentoCard({
 }: UseCaseBentoProps) {
   const accentColors = {
     blue: {
-      bg: "blue.500",
-      border: "blue.400",
-      glow: "blue.500/30",
-    },
-    purple: {
-      bg: "purple.500", 
-      border: "purple.400",
-      glow: "purple.500/30",
+      bg: "blue.400",
+      border: "blue.300",
+      text: "blue.50",
     },
     green: {
-      bg: "green.500",
-      border: "green.400", 
-      glow: "green.500/30",
+      bg: "green.400",
+      border: "green.300",
+      text: "green.50",
     },
     orange: {
-      bg: "orange.500",
-      border: "orange.400",
-      glow: "orange.500/30",
+      bg: "orange.400",
+      border: "orange.300",
+      text: "orange.50",
     },
   };
 
@@ -70,31 +65,21 @@ function BentoCard({
     <Box
       p={{ base: 6, md: featured ? 8 : 6 }}
       h="full"
-      bg="gray.900"
+      bg="bg.surface"
       border="1px solid"
-      borderColor="gray.800"
+      borderColor="border"
       borderRadius="2xl"
       position="relative"
       overflow="hidden"
-      transition="all 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
+      transition="all 0.3s ease"
       cursor="pointer"
       role="group"
       _hover={{
-        transform: "translateY(-4px)",
+        transform: "translateY(-2px)",
         borderColor: accentColors[accent].border,
-        boxShadow: `0 20px 40px -8px ${accentColors[accent].glow}`,
+        bg: "bg.muted",
       }}
     >
-      {/* Gradient overlay */}
-      <Box
-        position="absolute"
-        inset={0}
-        bgGradient={`radial-gradient(circle at top right, ${accentColors[accent].bg}/10, transparent 70%)`}
-        opacity={0}
-        transition="opacity 0.4s ease"
-        _groupHover={{ opacity: 1 }}
-      />
-
       {/* Top accent line */}
       <Box
         position="absolute"
@@ -124,7 +109,7 @@ function BentoCard({
           >
             {category}
           </Badge>
-          
+
           {metrics && (
             <Badge
               variant="outline"
@@ -145,11 +130,10 @@ function BentoCard({
           p={featured ? 4 : 3}
           bg={accentColors[accent].bg}
           borderRadius="xl"
-          color="white"
+          color={accentColors[accent].text}
           transition="all 0.3s ease"
           _groupHover={{
-            transform: "scale(1.1) rotate(-3deg)",
-            boxShadow: `0 8px 25px ${accentColors[accent].glow}`,
+            transform: "scale(1.05)",
           }}
         >
           {icon}
@@ -161,14 +145,14 @@ function BentoCard({
             as="h3"
             size={featured ? "xl" : "lg"}
             fontWeight="700"
-            color="white"
+            color="fg"
             lineHeight="shorter"
           >
             {title}
           </Heading>
-          
+
           <Text
-            color="gray.300"
+            color="fg.muted"
             fontSize={featured ? "lg" : "md"}
             lineHeight="tall"
             fontWeight="400"
@@ -209,7 +193,7 @@ export function UseCasesBento() {
     {
       icon: <BarChart3 size={24} />,
       title: "People Analytics Preditivo",
-      description: "Reduza a rotatividade prevendo quais colaboradores têm maior risco de sair e entenda os fatores de engajamento com dashboards inteligentes.",
+      description: "Reduza turnover em até 35% prevendo quais colaboradores têm maior risco de sair. Dashboards com insights sobre engajamento, produtividade e fatores de retenção baseados em dados reais.",
       category: "Analytics",
       metrics: "-35% turnover",
       accent: "blue" as const,
@@ -218,15 +202,15 @@ export function UseCasesBento() {
     {
       icon: <Bot size={20} />,
       title: "Automação RH & Financeiro",
-      description: "Automatize recrutamento, benefícios e folha de pagamento.",
+      description: "Automatize processos de recrutamento, gestão de benefícios e folha de pagamento. Reduza tempo de processamento em 80% e elimine erros manuais que custam milhares por mês.",
       category: "Automação",
       metrics: "80% mais rápido",
-      accent: "purple" as const,
+      accent: "blue" as const,
     },
     {
       icon: <MessageSquare size={20} />,
       title: "Assistente Virtual Interno",
-      description: "Chatbot inteligente para dúvidas de colaboradores 24/7.",
+      description: "Chatbot inteligente que responde dúvidas de colaboradores 24/7 sobre políticas, benefícios e procedimentos. Reduza chamados ao RH em 60% e melhore experiência do colaborador.",
       category: "IA Conversacional",
       metrics: "24/7 disponível",
       accent: "green" as const,
@@ -234,7 +218,7 @@ export function UseCasesBento() {
     {
       icon: <Settings size={20} />,
       title: "Plataformas Customizadas",
-      description: "Ferramentas de gestão, avaliação e OKRs sob medida.",
+      description: "Sistemas de gestão, avaliação de desempenho e OKRs desenvolvidos especificamente para seus processos. Aumente produtividade da equipe em 45% com ferramentas que realmente se adaptam ao seu negócio.",
       category: "Software",
       metrics: "+45% produtividade",
       accent: "orange" as const,
@@ -242,7 +226,7 @@ export function UseCasesBento() {
     {
       icon: <TrendingUp size={24} />,
       title: "Dashboards Executivos",
-      description: "Visualizações em tempo real dos KPIs mais importantes para tomada de decisão estratégica baseada em dados.",
+      description: "Painéis de controle em tempo real com todos os KPIs críticos do negócio. Transforme dados complexos em decisões estratégicas com visualizações intuitivas que mostram o que realmente importa.",
       category: "Business Intelligence",
       metrics: "Tempo real",
       accent: "blue" as const,
@@ -250,10 +234,10 @@ export function UseCasesBento() {
     },
     {
       icon: <Brain size={20} />,
-      title: "Modelos Preditivos",
-      description: "Machine Learning para prever tendências e otimizar processos.",
+      title: "Modelos Preditivos Avançados",
+      description: "Algoritmos de Machine Learning treinados com seus dados para prever vendas, demanda e comportamento do cliente. Antecipe tendências e otimize operações com precisão de até 95%.",
       category: "Machine Learning",
-      accent: "purple" as const,
+      accent: "blue" as const,
     },
   ];
 
@@ -262,35 +246,9 @@ export function UseCasesBento() {
       as="section"
       id="casos"
       py={{ base: 20, md: 28 }}
-      bg="black"
+      bg="bg"
       position="relative"
-      overflow="hidden"
     >
-      {/* Background effects */}
-      <Box
-        position="absolute"
-        top="10%"
-        left="5%"
-        w="300px"
-        h="300px"
-        borderRadius="full"
-        bg="blue.500/5"
-        filter="blur(60px)"
-        animation="float 15s ease-in-out infinite"
-      />
-      
-      <Box
-        position="absolute"
-        bottom="10%"
-        right="10%"
-        w="250px"
-        h="250px"
-        borderRadius="full"
-        bg="purple.500/5"
-        filter="blur(60px)"
-        animation="float 12s ease-in-out infinite reverse"
-      />
-
       <Container maxW="7xl" position="relative">
         <VStack gap={{ base: 12, md: 16 }} align="center">
           {/* Header */}
@@ -299,25 +257,25 @@ export function UseCasesBento() {
               as="h2"
               size={{ base: "2xl", md: "3xl", lg: "4xl" }}
               fontWeight="900"
-              color="white"
+              color="fg"
               lineHeight="shorter"
               letterSpacing="tight"
             >
               Da visão à{" "}
               <Text
                 as="span"
-                bgGradient="linear-gradient(135deg, blue.400, purple.400, green.400)"
-                bgClip="text"
+                color="blue.400"
               >
                 realidade
               </Text>
             </Heading>
-            
+
             <Text
               fontSize={{ base: "lg", md: "xl" }}
-              color="gray.300"
+              color="fg.muted"
               lineHeight="tall"
               fontWeight="400"
+              maxW="3xl"
             >
               IA e Dados aplicados ao seu negócio com soluções que geram impacto real
             </Text>
@@ -327,43 +285,44 @@ export function UseCasesBento() {
           <Grid
             templateColumns={{
               base: "1fr",
-              md: "repeat(4, 1fr)",
-              lg: "repeat(6, 1fr)"
+              md: "repeat(2, 1fr)",
+              lg: "repeat(4, 1fr)"
             }}
             templateRows={{
               base: "auto",
-              md: "repeat(3, 280px)",
-              lg: "repeat(2, 320px)"
+              md: "repeat(2, minmax(280px, auto))",
+              lg: "repeat(2, minmax(220px, auto))"
             }}
             gap={{ base: 6, md: 6 }}
             w="full"
-            maxW="6xl"
+            maxW="7xl"
           >
             {/* Featured card 1 - Large */}
             <GridItem
-              colSpan={{ base: 1, md: 2, lg: 3 }}
+              colSpan={{ base: 1, md: 2, lg: 2 }}
               rowSpan={{ base: 1, md: 2, lg: 1 }}
             >
               <BentoCard {...useCases[0]} />
             </GridItem>
 
-            {/* Regular cards */}
+            {/* Regular cards - Row 1 */}
             <GridItem
-              colSpan={{ base: 1, md: 2, lg: 1 }}
+              colSpan={{ base: 1, md: 1, lg: 1 }}
               rowSpan={{ base: 1, md: 1, lg: 1 }}
             >
               <BentoCard {...useCases[1]} />
             </GridItem>
 
             <GridItem
-              colSpan={{ base: 1, md: 2, lg: 2 }}
+              colSpan={{ base: 1, md: 1, lg: 1 }}
               rowSpan={{ base: 1, md: 1, lg: 1 }}
             >
               <BentoCard {...useCases[2]} />
             </GridItem>
 
+            {/* Regular cards - Row 2 */}
             <GridItem
-              colSpan={{ base: 1, md: 2, lg: 2 }}
+              colSpan={{ base: 1, md: 1, lg: 1 }}
               rowSpan={{ base: 1, md: 1, lg: 1 }}
             >
               <BentoCard {...useCases[3]} />
@@ -371,14 +330,15 @@ export function UseCasesBento() {
 
             {/* Featured card 2 - Large */}
             <GridItem
-              colSpan={{ base: 1, md: 2, lg: 3 }}
+              colSpan={{ base: 1, md: 2, lg: 2 }}
               rowSpan={{ base: 1, md: 1, lg: 1 }}
             >
               <BentoCard {...useCases[4]} />
             </GridItem>
 
+            {/* Last card */}
             <GridItem
-              colSpan={{ base: 1, md: 2, lg: 1 }}
+              colSpan={{ base: 1, md: 1, lg: 1 }}
               rowSpan={{ base: 1, md: 1, lg: 1 }}
             >
               <BentoCard {...useCases[5]} />

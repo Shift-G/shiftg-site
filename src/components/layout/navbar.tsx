@@ -11,6 +11,8 @@ import {
   Drawer,
   useDisclosure,
   Link as ChakraLink,
+  Image,
+  Span,
 } from "@chakra-ui/react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -47,13 +49,12 @@ export function Navbar() {
               _hover={{ textDecoration: "none", opacity: 0.8 }}
               transition="opacity 0.2s"
             >
+              <Image src="/logo.png" alt="Shift+G" w={10}  />
               <Text
                 fontSize="2xl"
-                fontWeight="800"
-                bgGradient="linear-gradient(0deg, {colors.blue.500}, {colors.blue.600})"
-                bgClip="text"
-              >
-                SHIFT+G
+                fontWeight="600"
+                >
+                SHIFT<Span color="fg.subtle" fontWeight="thin" fontSize="sm">+</Span>G
               </Text>
               <Text
                 fontSize="sm"
@@ -84,25 +85,26 @@ export function Navbar() {
                 fontSize="sm"
                 fontWeight="500"
                 color="fg.muted"
-                                 _hover={{
-                   color: "fg",
-                   bg: "bg.muted",
-                 }}
+                _hover={{
+                  color: "fg",
+                  bg: "bg.muted",
+                }}
                 transition="all 0.2s"
               >
                 {item.label}
               </ChakraLink>
             ))}
-                         <Link href="#contato" passHref>
-               <Button
-                 size="sm"
-                 colorPalette="blue"
-                 ml={2}
-                 fontWeight="600"
-               >
-                 Fale com um especialista
-               </Button>
-             </Link>
+            <Link href="#contato" passHref>
+              <Button
+                size="sm"
+                colorPalette="blue"
+                ml={2}
+                fontWeight="600"
+                variant="subtle"
+              >
+                Entre em contato
+              </Button>
+            </Link>
           </Stack>
 
           {/* Mobile Menu Button */}
@@ -124,44 +126,44 @@ export function Navbar() {
           <Drawer.Backdrop />
           <Drawer.Content>
             <Drawer.CloseTrigger />
-          <Drawer.Header borderBottomWidth="1px">Menu</Drawer.Header>
-          <Drawer.Body>
-            <Stack gap={2} mt={4}>
-              {menuItems.map((item) => (
-                <ChakraLink
-                  key={item.label}
-                  as={Link}
-                  href={item.href}
-                  px={4}
-                  py={3}
-                  rounded="md"
-                  fontSize="md"
-                  fontWeight="500"
-                  color="fg.muted"
-                  onClick={onClose}
-                                   _hover={{
-                   color: "fg",
-                   bg: "bg.muted",
-                 }}
-                  transition="all 0.2s"
-                >
-                  {item.label}
-                </ChakraLink>
-              ))}
-                             <Link href="#contato" passHref>
-                 <Button
-                   colorPalette="blue"
-                   size="md"
-                   mt={4}
-                   width="full"
-                   onClick={onClose}
-                   fontWeight="600"
-                 >
-                   Fale com um especialista
-                 </Button>
-               </Link>
-            </Stack>
-          </Drawer.Body>
+            <Drawer.Header borderBottomWidth="1px">Menu</Drawer.Header>
+            <Drawer.Body>
+              <Stack gap={2} mt={4}>
+                {menuItems.map((item) => (
+                  <ChakraLink
+                    key={item.label}
+                    as={Link}
+                    href={item.href}
+                    px={4}
+                    py={3}
+                    rounded="md"
+                    fontSize="md"
+                    fontWeight="500"
+                    color="fg.muted"
+                    onClick={onClose}
+                    _hover={{
+                      color: "fg",
+                      bg: "bg.muted",
+                    }}
+                    transition="all 0.2s"
+                  >
+                    {item.label}
+                  </ChakraLink>
+                ))}
+                <Link href="#contato" passHref>
+                  <Button
+                    colorPalette="blue"
+                    size="md"
+                    mt={4}
+                    width="full"
+                    onClick={onClose}
+                    fontWeight="600"
+                  >
+                    Entre em contato
+                  </Button>
+                </Link>
+              </Stack>
+            </Drawer.Body>
           </Drawer.Content>
         </Drawer.Positioner>
       </Drawer.Root>
