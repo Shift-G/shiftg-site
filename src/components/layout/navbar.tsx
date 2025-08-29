@@ -21,6 +21,7 @@ const menuItems = [
   { label: "Soluções", href: "#solucoes" },
   { label: "Para Quem", href: "#publico" },
   { label: "Fábrica de Software", href: "/fabrica-de-software" },
+  { label: "Transformação Digital", href: "/transformacao-digital" },
   { label: "Carreiras", href: "/carreiras" },
   { label: "Diferenciais", href: "#diferenciais" },
   { label: "Casos de Uso", href: "#casos" },
