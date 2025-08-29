@@ -284,9 +284,9 @@ export default function HomePage() {
         <Box
           position="absolute"
           inset={0}
-          bgGradient="radial-gradient(ellipse 100% 60% at 50% 0%, rgba(59, 130, 246, 0.15), transparent)"
+          bgGradient="radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/15}, transparent)"
           _dark={{
-            bgGradient: "radial-gradient(ellipse 100% 60% at 50% 0%, rgba(59, 130, 246, 0.2), transparent)"
+            bgGradient: "radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/20}, transparent)"
           }}
           zIndex={-1}
         />
@@ -299,9 +299,9 @@ export default function HomePage() {
           w="150px"
           h="150px"
           borderRadius="full"
-          bg="rgba(59, 130, 246, 0.1)"
+          bg="{colors.blue.500/10}"
           backdropFilter="blur(20px)"
-          border="1px solid rgba(255, 255, 255, 0.2)"
+          border="1px solid {colors.whiteAlpha.300}"
           animation="float 10s ease-in-out infinite"
           zIndex={-1}
         />
@@ -313,9 +313,9 @@ export default function HomePage() {
           w="100px"
           h="100px"
           borderRadius="2xl"
-          bg="rgba(139, 92, 246, 0.1)"
+          bg="{colors.purple.500/10}"
           backdropFilter="blur(20px)"
-          border="1px solid rgba(255, 255, 255, 0.2)"
+          border="1px solid {colors.whiteAlpha.300}"
           animation="float 8s ease-in-out infinite reverse"
           zIndex={-1}
         />
@@ -333,7 +333,7 @@ export default function HomePage() {
                 Pronto para{" "}
                 <Text
                   as="span"
-                  bgGradient="linear-gradient(135deg, #3b82f6, #1d4ed8, #8b5cf6)"
+                  bgGradient="linear-gradient(135deg, {colors.blue.500}, {colors.blue.700}, {colors.purple.500})"
                   bgClip="text"
                 >
                   transformar
@@ -363,14 +363,14 @@ export default function HomePage() {
                   rounded="2xl"
                   fontWeight="700"
                   fontSize="xl"
-                  bg="linear-gradient(135deg, #3b82f6, #1d4ed8)"
+                  bg="{colors.gradient.blue}"
                   color="white"
                   border="none"
-                  boxShadow="0 15px 50px rgba(59, 130, 246, 0.4)"
+                  boxShadow="0 15px 50px {colors.blue.500/40}"
                   _hover={{
                     transform: "translateY(-3px)",
-                    boxShadow: "0 20px 60px rgba(59, 130, 246, 0.5)",
-                    bg: "linear-gradient(135deg, #2563eb, #1e40af)"
+                    boxShadow: "0 20px 60px {colors.blue.500/50}",
+                    bg: "linear-gradient(135deg, {colors.blue.600}, {colors.blue.800})"
                   }}
                   _active={{
                     transform: "translateY(0px)",
@@ -387,15 +387,15 @@ export default function HomePage() {
                 px={8}
                 py={4}
                 rounded="xl"
-                bg="rgba(255, 255, 255, 0.08)"
+                bg="{colors.whiteAlpha.200}"
                 backdropFilter="blur(20px)"
-                border="1px solid rgba(255, 255, 255, 0.15)"
+                border="1px solid {colors.whiteAlpha.300}"
               >
                 <HStack gap={3} justify="center">
-                  <Mail size={20} color="#3b82f6" />
+                  <Mail size={20} color="blue.500" />
                   <Text fontSize="lg" color="fg.muted" fontWeight="500">
                     Ou envie um e-mail para{" "}
-                    <Text as="span" fontWeight="700" color="#3b82f6">
+                    <Text as="span" fontWeight="700" color="blue.solid">
                       contato@shiftg.com.br
                     </Text>
                   </Text>

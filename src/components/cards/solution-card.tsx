@@ -31,16 +31,16 @@ export function SolutionCard({
     <Box
       p={{ base: 8, md: 10 }}
       rounded="3xl"
-      bg="rgba(255, 255, 255, 0.08)"
+      bg="{colors.whiteAlpha.200}"
       backdropFilter="blur(25px)"
-      border="1px solid rgba(255, 255, 255, 0.15)"
-      boxShadow="0 8px 32px rgba(0, 0, 0, 0.12)"
+      border="1px solid {colors.whiteAlpha.300}"
+      boxShadow="0 8px 32px {colors.blackAlpha.300}"
       transition="all 0.5s cubic-bezier(0.4, 0, 0.2, 1)"
       _hover={{
         transform: "translateY(-12px)",
-        boxShadow: "0 25px 70px rgba(59, 130, 246, 0.25)",
-        borderColor: "rgba(59, 130, 246, 0.4)",
-        bg: "rgba(255, 255, 255, 0.12)"
+        boxShadow: "0 25px 70px {colors.blue.500/25}",
+        borderColor: "{colors.blue.500/40}",
+        bg: "{colors.whiteAlpha.300}"
       }}
       h="full"
       display="flex"
@@ -56,7 +56,7 @@ export function SolutionCard({
         left={0}
         right={0}
         h="3px"
-        bgGradient="linear-gradient(90deg, transparent, #3b82f6, #8b5cf6, transparent)"
+        bgGradient="linear-gradient(90deg, transparent, {colors.blue.500}, {colors.purple.500}, transparent)"
         opacity={0}
         transition="opacity 0.3s ease"
         _groupHover={{ opacity: 1 }}
@@ -68,13 +68,13 @@ export function SolutionCard({
             px={4}
             py={2}
             rounded="full"
-            bg="linear-gradient(135deg, #3b82f6, #1d4ed8)"
+            bg="{colors.gradient.blue}"
             color="white"
             fontSize="xs"
             fontWeight="700"
             textTransform="uppercase"
             letterSpacing="wider"
-            boxShadow="0 4px 15px rgba(59, 130, 246, 0.3)"
+            boxShadow="0 4px 15px {colors.blue.500/30}"
           >
             {badge}
           </Box>
@@ -92,7 +92,7 @@ export function SolutionCard({
           </Heading>
           <Text 
             fontWeight="600" 
-            color="#3b82f6" 
+            color="blue.solid" 
             fontSize="lg"
             textTransform="uppercase"
             letterSpacing="wide"
@@ -117,12 +117,12 @@ export function SolutionCard({
                   mt={0.5}
                   p={1}
                   rounded="md"
-                  bg="rgba(59, 130, 246, 0.1)"
-                  color="#3b82f6"
+                  bg="{colors.blue.500/10}"
+                  color="blue.solid"
                   flexShrink={0}
                   transition="all 0.3s ease"
                   _groupHover={{
-                    bg: "rgba(59, 130, 246, 0.2)",
+                    bg: "{colors.blue.500/20}",
                     transform: "scale(1.1)"
                   }}
                 >

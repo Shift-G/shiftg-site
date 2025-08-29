@@ -9,90 +9,70 @@ import {
   VStack,
   HStack,
   Stack,
+  Icon,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { ArrowRight, Sparkles, Zap, Brain } from "lucide-react";
+import { GradientBars } from "../ui/gradient-bars";
 
 // Using global CSS animations defined in theme/global-css.ts
 
 export function Hero() {
   return (
-    <Box as="section" position="relative" overflow="hidden" minH="100vh" display="flex" alignItems="center">
+    <Box
+      as="section"
+      position="relative"
+      overflow="hidden"
+      minH="100vh"
+      display="flex"
+      alignItems="center"
+    >
+      {/* Gradient Bars Background */}
+      <GradientBars bars={24} colors={["{colors.blue.500}", "transparent"]} />
+
       {/* Dynamic Gradient Background */}
       <Box
         position="absolute"
         inset={0}
-        bgGradient="radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.5), transparent)"
-        _dark={{ 
-          bgGradient: "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(29, 78, 216, 0.4), transparent)" 
+        bgGradient="radial-gradient(ellipse 80% 50% at 50% -20%, {colors.blue.500/50}, transparent)"
+        _dark={{
+          bgGradient:
+            "radial-gradient(ellipse 80% 50% at 50% -20%, {colors.blue.700/40}, transparent)",
         }}
         zIndex={-2}
       />
 
-      {/* Floating Elements */}
-      <Box
-        position="absolute"
-        top="10%"
-        right="10%"
-        w="120px"
-        h="120px"
-        borderRadius="full"
-        bg="rgba(59, 130, 246, 0.1)"
-        backdropFilter="blur(10px)"
-        border="1px solid rgba(255, 255, 255, 0.2)"
-        animation="float 6s ease-in-out infinite"
-        zIndex={-1}
-      />
-      
-      <Box
-        position="absolute"
-        top="60%"
-        left="5%"
-        w="80px"
-        h="80px"
-        borderRadius="2xl"
-        bg="rgba(139, 92, 246, 0.1)"
-        backdropFilter="blur(10px)"
-        border="1px solid rgba(255, 255, 255, 0.2)"
-        animation="float 8s ease-in-out infinite reverse"
-        zIndex={-1}
-      />
-
-      <Box
-        position="absolute"
-        bottom="20%"
-        right="20%"
-        w="60px"
-        h="60px"
-        borderRadius="lg"
-        bg="rgba(14, 165, 233, 0.1)"
-        backdropFilter="blur(10px)"
-        border="1px solid rgba(255, 255, 255, 0.2)"
-        animation="float 4s ease-in-out infinite"
-        zIndex={-1}
-      />
-      
       <Container maxW="7xl" py={{ base: 16, md: 24 }}>
-        <VStack gap={{ base: 8, md: 10 }} maxW="5xl" mx="auto" textAlign="center">
+        <VStack
+          gap={{ base: 8, md: 10 }}
+          maxW="5xl"
+          mx="auto"
+          textAlign="center"
+        >
           {/* Glass Morphism Badge */}
           <Box
-            px={6}
-            py={3}
+            px={3}
+            py={2}
             rounded="full"
-            bg="rgba(255, 255, 255, 0.1)"
-            backdropFilter="blur(20px)"
-            border="1px solid rgba(255, 255, 255, 0.2)"
-            boxShadow="0 8px 32px rgba(59, 130, 246, 0.1)"
+            bg="{colors.whiteAlpha.200}"
+            backdropFilter="blur(10px)"
+            border="1px solid {colors.whiteAlpha.300}"
+            boxShadow="0 8px 32px {colors.blue.500/10}"
           >
             <HStack gap={2}>
               <Box animation="pulse 2s ease-in-out infinite">
-                <Brain size={16} color="#3b82f6" />
+                <Icon as={Brain} boxSize={5} color="blue.500" />
               </Box>
-              <Text fontSize="sm" fontWeight="600" color="blue.600" _dark={{ color: "blue.300" }}>
+              <Text
+                fontSize={{ base: "xs", md: "sm" }}
+                fontWeight="600"
+                color="blue.600"
+                _dark={{ color: "blue.300" }}
+              >
                 Inteligência Artificial • Dados • Automação
               </Text>
               <Box animation="pulse 2s ease-in-out infinite 0.5s">
-                <Zap size={16} color="#3b82f6" />
+                <Zap size={16} color="blue.500}" />
               </Box>
             </HStack>
           </Box>
@@ -110,7 +90,7 @@ export function Hero() {
               Transforme seus{" "}
               <Text
                 as="span"
-                bgGradient="linear-gradient(135deg, #3b82f6, #1d4ed8, #8b5cf6)"
+                bgGradient="linear-gradient(35deg, {colors.blue.500}, {colors.blue.700})"
                 bgClip="text"
                 animation="pulse 3s ease-in-out infinite"
               >
@@ -119,13 +99,13 @@ export function Hero() {
               em{" "}
               <Text
                 as="span"
-                bgGradient="linear-gradient(135deg, #667eea, #764ba2)"
+                bgGradient="linear-gradient(35deg, {colors.blue.500}, {colors.blue.700})"
                 bgClip="text"
               >
                 inteligência
               </Text>
             </Heading>
-            
+
             <Text
               fontSize="xl"
               color="blue.600"
@@ -146,8 +126,8 @@ export function Hero() {
             lineHeight="tall"
             fontWeight="400"
           >
-            Desenvolvemos sistemas inteligentes que automatizam processos, 
-            preveem tendências e entregam insights estratégicos para sua empresa 
+            Desenvolvemos sistemas inteligentes que automatizam processos,
+            preveem tendências e entregam insights estratégicos para sua empresa
             tomar decisões mais rápidas e precisas.
           </Text>
 
@@ -166,14 +146,14 @@ export function Hero() {
                 rounded="2xl"
                 fontWeight="700"
                 fontSize="lg"
-                bg="linear-gradient(135deg, #3b82f6, #1d4ed8)"
+                bg="{colors.gradient.blue}"
                 color="white"
                 border="none"
-                boxShadow="0 10px 40px rgba(59, 130, 246, 0.3)"
+                boxShadow="0 10px 40px {colors.blue.500/30}"
                 _hover={{
                   transform: "translateY(-2px)",
-                  boxShadow: "0 15px 50px rgba(59, 130, 246, 0.4)",
-                  bg: "linear-gradient(135deg, #2563eb, #1e40af)"
+                  boxShadow: "0 15px 50px {colors.blue.500/40}",
+                  bg: "linear-gradient(135deg, {colors.blue.600}, {colors.blue.800})",
                 }}
                 _active={{
                   transform: "translateY(0px)",
@@ -181,7 +161,7 @@ export function Hero() {
                 transition="all 0.3s ease"
               >
                 Agende uma demonstração
-                <ArrowRight size={20} style={{ marginLeft: '12px' }} />
+                <ArrowRight size={20} style={{ marginLeft: "12px" }} />
               </Button>
             </Link>
             <Link href="#casos" passHref>
@@ -192,14 +172,14 @@ export function Hero() {
                 rounded="2xl"
                 fontWeight="600"
                 fontSize="lg"
-                bg="rgba(255, 255, 255, 0.1)"
+                bg="{colors.whiteAlpha.200}"
                 backdropFilter="blur(20px)"
-                border="1px solid rgba(255, 255, 255, 0.2)"
+                border="1px solid {colors.whiteAlpha.300}"
                 color="fg"
                 _hover={{
                   transform: "translateY(-2px)",
-                  bg: "rgba(255, 255, 255, 0.2)",
-                  borderColor: "rgba(59, 130, 246, 0.3)"
+                  bg: "{colors.whiteAlpha.300}",
+                  borderColor: "{colors.blue.500/30}",
                 }}
                 _active={{
                   transform: "translateY(0px)",
@@ -211,29 +191,14 @@ export function Hero() {
             </Link>
           </Stack>
 
-          {/* Enhanced Supporting Text */}
-          <Box
-            mt={6}
-            px={6}
-            py={3}
-            rounded="xl"
-            bg="rgba(255, 255, 255, 0.05)"
-            backdropFilter="blur(10px)"
-            border="1px solid rgba(255, 255, 255, 0.1)"
-          >
-            <Text fontSize="lg" color="fg.muted" fontWeight="500">
-              ✨ Consultoria gratuita • Resultados garantidos • Suporte 24/7
-            </Text>
-          </Box>
+          <Text fontSize="lg" color="fg.muted" fontWeight="500">
+            Consultoria gratuita • Suporte 24/7
+          </Text>
         </VStack>
 
         {/* Enhanced Stats */}
         <Box mt={{ base: 16, md: 20 }}>
-          <HStack
-            justify="center"
-            gap={{ base: 8, md: 16 }}
-            flexWrap="wrap"
-          >
+          <HStack justify="center" gap={{ base: 4, md: 4 }} flexWrap="wrap">
             {[
               { value: "100%", label: "Sob Medida", icon: "🎯" },
               { value: "5x", label: "Mais Rápido", icon: "⚡" },
@@ -242,31 +207,36 @@ export function Hero() {
             ].map((stat, index) => (
               <Box
                 key={stat.label}
-                p={6}
+                p={12}
                 rounded="2xl"
-                bg="rgba(255, 255, 255, 0.1)"
+                bg="{colors.whiteAlpha.200}"
                 backdropFilter="blur(20px)"
-                border="1px solid rgba(255, 255, 255, 0.2)"
-                boxShadow="0 8px 32px rgba(59, 130, 246, 0.1)"
+                border="1px solid {colors.whiteAlpha.300}"
+                boxShadow="0 8px 32px {colors.blue.500/10}"
                 transition="all 0.3s ease"
                 _hover={{
                   transform: "translateY(-5px)",
-                  boxShadow: "0 15px 50px rgba(59, 130, 246, 0.2)"
+                  boxShadow: "0 15px 50px {colors.blue.500/20}",
                 }}
-                animation={`float ${4 + index}s ease-in-out infinite`}
+                animation={`bounce ${10 + index}s ease-in-out infinite`}
               >
                 <VStack gap={3}>
                   <Text fontSize="2xl">{stat.icon}</Text>
                   <Text
                     fontSize={{ base: "3xl", md: "4xl" }}
                     fontWeight="900"
-                    bgGradient="linear-gradient(135deg, #3b82f6, #8b5cf6)"
+                    bgGradient="{colors.gradient.purple}"
                     bgClip="text"
                     lineHeight="none"
                   >
                     {stat.value}
                   </Text>
-                  <Text fontSize="sm" color="fg.muted" fontWeight="600" textAlign="center">
+                  <Text
+                    fontSize="sm"
+                    color="fg.muted"
+                    fontWeight="600"
+                    textAlign="center"
+                  >
                     {stat.label}
                   </Text>
                 </VStack>

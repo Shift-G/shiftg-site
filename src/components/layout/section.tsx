@@ -32,17 +32,17 @@ export function Section({
     switch (variant) {
       case 'gradient':
         return {
-          background: "linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05), transparent)",
+          background: "linear-gradient(135deg, {colors.blue.500/5}, {colors.purple.500/5}, transparent)",
           _dark: { 
-            background: "linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1), transparent)" 
+            background: "linear-gradient(135deg, {colors.blue.500/10}, {colors.purple.500/10}, transparent)" 
           }
         };
       case 'glass':
         return {
-          bg: "rgba(255, 255, 255, 0.02)",
+          bg: "{colors.whiteAlpha.50}",
           backdropFilter: "blur(10px)",
-          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-          borderBottom: "1px solid rgba(255, 255, 255, 0.1)"
+          borderTop: "1px solid {colors.whiteAlpha.200}",
+          borderBottom: "1px solid {colors.whiteAlpha.200}"
         };
       case 'geometric':
         return {
@@ -68,7 +68,7 @@ export function Section({
             w="100px"
             h="100px"
             borderRadius="full"
-            bg="rgba(59, 130, 246, 0.08)"
+            bg="{colors.blue.500/8}"
             backdropFilter="blur(10px)"
             animation="float 8s ease-in-out infinite"
             zIndex={0}
@@ -80,7 +80,7 @@ export function Section({
             w="60px"
             h="60px"
             borderRadius="lg"
-            bg="rgba(139, 92, 246, 0.08)"
+            bg="{colors.purple.500/8}"
             backdropFilter="blur(10px)"
             animation="float 6s ease-in-out infinite reverse"
             zIndex={0}

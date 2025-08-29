@@ -6,8 +6,8 @@ export const globalCss = defineGlobalStyles({
     fontFeatureSettings: '"cv11"',
     "--ring-inset": empty,
     "--ring-offset-width": "0px",
-    "--ring-offset-color": "#fff",
-    "--ring-color": "rgba(66, 153, 225, 0.6)",
+    "--ring-offset-color": "{colors.white}",
+    "--ring-color": "{colors.blue.500/60}",
     "--ring-offset-shadow": "0 0 #0000",
     "--ring-shadow": "0 0 #0000",
     ...Object.fromEntries(
@@ -107,15 +107,15 @@ export const globalCss = defineGlobalStyles({
   },
   
   "::-webkit-scrollbar-track": {
-    background: "rgba(0, 0, 0, 0.1)",
+    background: "{colors.blackAlpha.200}",
   },
   
   "::-webkit-scrollbar-thumb": {
-    background: "rgba(59, 130, 246, 0.3)",
+    background: "{colors.blue.500/30}",
     borderRadius: "4px",
   },
   
   "::-webkit-scrollbar-thumb:hover": {
-    background: "rgba(59, 130, 246, 0.5)",
+    background: "{colors.blue.500/50}",
   },
 });
