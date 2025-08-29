@@ -18,20 +18,16 @@ import { Hero } from "@/components/sections/hero";
 import { ProblemsSection } from "@/components/sections/problems";
 import { FeatureCard } from "@/components/cards/feature-card";
 import { SolutionCard } from "@/components/cards/solution-card";
-import { UseCaseCard } from "@/components/cards/use-case-card";
+import { UseCasesBento } from "@/components/sections/use-cases-bento";
+import { TraditionalVsAI } from "@/components/sections/traditional-vs-ai";
 import {
   Zap,
   Users,
   TrendingUp,
   Target,
   Brain,
-  BarChart3,
   Shield,
   Rocket,
-  Bot,
-  UserCheck,
-  MessageSquare,
-  Settings,
   ChevronRight,
   Mail,
 } from "lucide-react";
@@ -158,40 +154,7 @@ const differentials = [
   },
 ];
 
-const useCases = [
-  {
-    icon: <BarChart3 size={20} />,
-    title: "People Analytics Preditivo",
-    description:
-      "Reduza a rotatividade prevendo quais colaboradores têm maior risco de sair e entenda os fatores de engajamento da sua equipe com dashboards inteligentes.",
-    category: "RH",
-    metrics: "-35% turnover",
-  },
-  {
-    icon: <Bot size={20} />,
-    title: "Automação para RH e Financeiro",
-    description:
-      "Automatize o processo de recrutamento, a gestão de benefícios ou a conciliação da folha de pagamento, liberando seu time para atividades estratégicas.",
-    category: "Automação",
-    metrics: "80% mais rápido",
-  },
-  {
-    icon: <MessageSquare size={20} />,
-    title: "Chatbots Internos Inteligentes",
-    description:
-      "Crie um assistente virtual para responder dúvidas frequentes de colaboradores, agilizar o onboarding e melhorar a comunicação interna 24/7.",
-    category: "IA",
-    metrics: "24/7 disponível",
-  },
-  {
-    icon: <Settings size={20} />,
-    title: "Plataformas de Gestão Customizadas",
-    description:
-      "Desenvolva uma ferramenta de avaliação de desempenho, gestão de metas (OKRs) ou controle de projetos totalmente alinhada à cultura da sua empresa.",
-    category: "Software",
-    metrics: "+45% produtividade",
-  },
-];
+
 
 export default function HomePage() {
   return (
@@ -200,6 +163,9 @@ export default function HomePage() {
       
       {/* Hero Section */}
       <Hero />
+
+       {/* Traditional vs AI Comparison */}
+       <TraditionalVsAI />
 
       {/* Problems Section */}
       <ProblemsSection />
@@ -258,19 +224,10 @@ export default function HomePage() {
         </SimpleGrid>
       </Section>
 
+     
+
       {/* Use Cases Section */}
-      <Section
-        id="casos"
-        title="Da visão à realidade: IA e Dados aplicados ao seu negócio"
-        centered
-        variant="geometric"
-      >
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} gap={{ base: 6, md: 8 }}>
-          {useCases.map((useCase) => (
-            <UseCaseCard key={useCase.title} {...useCase} />
-          ))}
-        </SimpleGrid>
-      </Section>
+      <UseCasesBento />
 
       {/* Final CTA Section */}
       <Box
@@ -284,7 +241,7 @@ export default function HomePage() {
         <Box
           position="absolute"
           inset={0}
-          bgGradient="radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/15}, transparent)"
+          bgGradient="radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/50}, transparent)"
           _dark={{
             bgGradient: "radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/20}, transparent)"
           }}

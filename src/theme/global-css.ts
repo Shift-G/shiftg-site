@@ -6,8 +6,8 @@ export const globalCss = defineGlobalStyles({
     fontFeatureSettings: '"cv11"',
     "--ring-inset": empty,
     "--ring-offset-width": "0px",
-    "--ring-offset-color": "{colors.white}",
-    "--ring-color": "{colors.blue.500/60}",
+    "--ring-offset-color": "white",
+    "--ring-color": "blue.500/60",
     "--ring-offset-shadow": "0 0 #0000",
     "--ring-shadow": "0 0 #0000",
     ...Object.fromEntries(
@@ -49,7 +49,7 @@ export const globalCss = defineGlobalStyles({
     color: "fg.muted/80",
   },
   "*::selection": {
-    bg: "colorPalette.muted/80",
+    bg: "blue/10",
   },
   ".clickable": {
     cursor: "pointer",
