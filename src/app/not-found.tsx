@@ -161,6 +161,7 @@ export default function NotFoundPage() {
 
                 <Button
                   as={Link}
+                  // @ts-ignore
                   href="/"
                   size="lg"
                   px={8}
