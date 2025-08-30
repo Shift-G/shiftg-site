@@ -44,6 +44,24 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
+    title: "RH Estratégico: Como Deixar as Planilhas para Trás e Liderar a Gestão de Talentos com Dados",
+    description:
+      "Descubra como transformar o RH operacional em estratégico através de automação inteligente, people analytics e foco na experiência do colaborador. Entenda os 3 pilares da transformação digital no RH.",
+    slug: "rh-estrategico-como-deixar-planilhas-para-tras-e-liderar-gestao-de-talentos-com-dados",
+    tags: ["Recursos Humanos", "People Analytics", "Employee Experience"],
+    readTime: "8 min",
+    publishedAt: "Janeiro 2025",
+  },
+  {
+    title: "RPA: Liberte sua Equipe das Tarefas Repetitivas e Foque no que Realmente Importa",
+    description:
+      "Descubra como o RPA (Robotic Process Automation) pode transformar sua operação, eliminando tarefas repetitivas e liberando sua equipe para atividades estratégicas. Entenda os benefícios, casos de uso e como combinar RPA com IA.",
+    slug: "rpa-liberte-sua-equipe-das-tarefas-repetitivas-e-foque-no-que-realmente-importa",
+    tags: ["RPA", "Automação", "Eficiência Operacional"],
+    readTime: "6 min",
+    publishedAt: "Janeiro 2025",
+  },
+  {
     title: "O ROI da Inteligência Artificial: Como Calcular o Impacto da IA no Balanço da sua Empresa",
     description:
       "Descubra como calcular o retorno sobre investimento da Inteligência Artificial em sua empresa. Entenda os 4 vetores de retorno e a fórmula prática para medir o impacto financeiro da IA no seu negócio.",
