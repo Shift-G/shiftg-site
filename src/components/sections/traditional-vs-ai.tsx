@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Box,
   Container,
@@ -11,8 +9,6 @@ import {
   GridItem,
   Badge,
   Flex,
-  Icon,
-  Stack,
 } from "@chakra-ui/react";
 import {
   Clock,
@@ -22,8 +18,6 @@ import {
   Zap,
   Brain,
   TrendingUp,
-  CheckCircle,
-  ArrowRight,
   BarChart3,
   Target,
   Cpu,
@@ -37,7 +31,13 @@ interface ComparisonItemProps {
   isAI?: boolean;
 }
 
-function ComparisonCard({ icon, title, description, metric, isAI = false }: ComparisonItemProps) {
+function ComparisonCard({
+  icon,
+  title,
+  description,
+  metric,
+  isAI = false,
+}: ComparisonItemProps) {
   return (
     <Box
       p={{ base: 6, md: 8 }}
@@ -123,25 +123,29 @@ export function TraditionalVsAI() {
     {
       icon: <Clock size={20} />,
       title: "Processos Manuais Ineficientes",
-      description: "Análises que consomem dias ou semanas da equipe, com planilhas complexas propensas a erros humanos e retrabalho constante.",
+      description:
+        "Análises que consomem dias ou semanas da equipe, com planilhas complexas propensas a erros humanos e retrabalho constante.",
       metric: "8-12 horas por análise",
     },
     {
       icon: <Users size={20} />,
       title: "Equipe Sobrecarregada",
-      description: "Profissionais passam 70% do tempo em tarefas repetitivas e operacionais, com burnout e baixa produtividade estratégica.",
+      description:
+        "Profissionais passam 70% do tempo em tarefas repetitivas e operacionais, com burnout e baixa produtividade estratégica.",
       metric: "70% tempo operacional",
     },
     {
       icon: <AlertTriangle size={20} />,
       title: "Decisões Reativas e Arriscadas",
-      description: "Sem dados preditivos confiáveis, as decisões são baseadas em intuição e experiência passada, resultando em oportunidades perdidas.",
+      description:
+        "Sem dados preditivos confiáveis, as decisões são baseadas em intuição e experiência passada, resultando em oportunidades perdidas.",
       metric: "60-70% de precisão",
     },
     {
       icon: <TrendingDown size={20} />,
       title: "Custos Escalando Linearmente",
-      description: "Cada ponto de crescimento exige contratação proporcional, aumentando custos fixos e reduzindo margem de lucro.",
+      description:
+        "Cada ponto de crescimento exige contratação proporcional, aumentando custos fixos e reduzindo margem de lucro.",
       metric: "Crescimento linear",
     },
   ];
@@ -150,25 +154,29 @@ export function TraditionalVsAI() {
     {
       icon: <Zap size={20} />,
       title: "Automação Inteligente e Rápida",
-      description: "Análises complexas executadas em minutos com processamento automático de grandes volumes de dados. Zero erros humanos e resultados instantâneos.",
+      description:
+        "Análises complexas executadas em minutos com processamento automático de grandes volumes de dados. Zero erros humanos e resultados instantâneos.",
       metric: "15-30 minutos",
     },
     {
       icon: <Brain size={20} />,
       title: "Equipe Focada em Estratégia",
-      description: "Profissionais liberados para atividades de alto valor agregado: inovação, estratégia e crescimento. Eliminação completa de tarefas repetitivas.",
+      description:
+        "Profissionais liberados para atividades de alto valor agregado: inovação, estratégia e crescimento. Eliminação completa de tarefas repetitivas.",
       metric: "80% tempo estratégico",
     },
     {
       icon: <Target size={20} />,
       title: "Decisões Data-Driven e Precisas",
-      description: "Insights preditivos com Machine Learning antecipam cenários futuros e otimizam resultados com precisão cirúrgica baseada em dados reais.",
+      description:
+        "Insights preditivos com Machine Learning antecipam cenários futuros e otimizam resultados com precisão cirúrgica baseada em dados reais.",
       metric: "90-95% de precisão",
     },
     {
       icon: <TrendingUp size={20} />,
       title: "Escalabilidade Exponencial",
-      description: "Processa 10x mais dados sem aumentar equipe. Custos fixos se mantêm enquanto a capacidade de processamento cresce exponencialmente.",
+      description:
+        "Processa 10x mais dados sem aumentar equipe. Custos fixos se mantêm enquanto a capacidade de processamento cresce exponencialmente.",
       metric: "10x mais capacidade",
     },
   ];
@@ -207,7 +215,8 @@ export function TraditionalVsAI() {
         inset={0}
         bgGradient="radial-gradient(ellipse 80% 50% at 50% 0%, blue.500/5, transparent)"
         _dark={{
-          bgGradient: "radial-gradient(ellipse 80% 50% at 50% 0%, blue.500/10, transparent)"
+          bgGradient:
+            "radial-gradient(ellipse 80% 50% at 50% 0%, blue.500/10, transparent)",
         }}
       />
 
@@ -215,10 +224,16 @@ export function TraditionalVsAI() {
         <VStack gap={{ base: 16, md: 20 }}>
           {/* Header */}
           <VStack gap={6} textAlign="center" maxW="4xl">
-            <Badge variant="outline" colorPalette="blue" fontSize="sm" px={4} py={2}>
+            <Badge
+              variant="outline"
+              colorPalette="blue"
+              fontSize="sm"
+              px={4}
+              py={2}
+            >
               Transformação Digital
             </Badge>
-            
+
             <Heading
               as="h2"
               size={{ base: "2xl", md: "3xl", lg: "4xl" }}
@@ -236,15 +251,16 @@ export function TraditionalVsAI() {
               </Text>{" "}
               para líderes visionários?
             </Heading>
-            
+
             <Text
               fontSize={{ base: "lg", md: "xl" }}
               color="fg.muted"
               lineHeight="tall"
               fontWeight="400"
             >
-              A diferença entre competir e liderar está na capacidade de transformar dados em vantagem competitiva. 
-              Veja como a IA revoluciona operações e multiplica resultados.
+              A diferença entre competir e liderar está na capacidade de
+              transformar dados em vantagem competitiva. Veja como a IA
+              revoluciona operações e multiplica resultados.
             </Text>
           </VStack>
 
@@ -269,7 +285,7 @@ export function TraditionalVsAI() {
                     Processos manuais, decisões reativas
                   </Text>
                 </VStack>
-                
+
                 <VStack gap={4} w="full">
                   {traditionalSystems.map((item, index) => (
                     <ComparisonCard key={index} {...item} />
@@ -279,7 +295,11 @@ export function TraditionalVsAI() {
             </GridItem>
 
             {/* VS Divider */}
-            <GridItem display={{ base: "none", lg: "flex" }} justifyContent="center" pos="relative">
+            <GridItem
+              display={{ base: "none", lg: "flex" }}
+              justifyContent="center"
+              pos="relative"
+            >
               <Flex
                 direction="column"
                 align="center"
@@ -288,11 +308,7 @@ export function TraditionalVsAI() {
                 position="sticky"
                 top="0%"
               >
-                <Box
-                  w="1px"
-                  h="100px"
-                  bg="border"
-                />
+                <Box w="1px" h="100px" bg="border" />
                 <Box
                   px={4}
                   py={2}
@@ -306,11 +322,7 @@ export function TraditionalVsAI() {
                 >
                   VS
                 </Box>
-                <Box
-                  w="1px"
-                  h="100px"
-                  bg="border"
-                />
+                <Box w="1px" h="100px" bg="border" />
               </Flex>
             </GridItem>
 
@@ -328,7 +340,7 @@ export function TraditionalVsAI() {
                     Automação inteligente, decisões preditivas
                   </Text>
                 </VStack>
-                
+
                 <VStack gap={4} w="full">
                   {aiSystems.map((item, index) => (
                     <ComparisonCard key={index} {...item} isAI />
@@ -337,48 +349,6 @@ export function TraditionalVsAI() {
               </VStack>
             </GridItem>
           </Grid>
-
-          {/* Key Benefits */}
-          <VStack gap={8} w="full">
-            <Heading as="h3" size="xl" textAlign="center" color="fg">
-              O impacto real nos seus resultados
-            </Heading>
-            
-            <Grid
-              templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }}
-              gap={8}
-              w="full"
-              maxW="4xl"
-            >
-              {benefits.map((benefit, index) => (
-                <GridItem key={index}>
-                  <VStack gap={4} textAlign="center">
-                    <Box
-                      p={4}
-                      bg="blue.500/10"
-                      borderRadius="xl"
-                      color="blue.500"
-                    >
-                      {benefit.icon}
-                    </Box>
-                    <VStack gap={1}>
-                      <Text fontSize="3xl" fontWeight="900" color="blue.500">
-                        {benefit.value}
-                      </Text>
-                      <Heading as="h4" size="md" color="fg">
-                        {benefit.title}
-                      </Heading>
-                      <Text fontSize="sm" color="fg.muted" textAlign="center">
-                        {benefit.description}
-                      </Text>
-                    </VStack>
-                  </VStack>
-                </GridItem>
-              ))}
-            </Grid>
-          </VStack>
-
-         
         </VStack>
       </Container>
     </Box>
