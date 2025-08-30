@@ -19,6 +19,7 @@ import { Section } from "@/components/layout/section";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import Link from "next/link";
 import { SITE_NAME, SITE_URL } from "@/constants";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Insights",
@@ -48,6 +49,7 @@ const blogPosts = [
     description:
       "Descubra como transformar o RH operacional em estratégico através de automação inteligente, people analytics e foco na experiência do colaborador. Entenda os 3 pilares da transformação digital no RH.",
     slug: "rh-estrategico-como-deixar-planilhas-para-tras-e-liderar-gestao-de-talentos-com-dados",
+    image:"/insights/rh-estrategico-como-deixar-planilhas-para-tras-e-liderar-gestao-de-talentos-com-dados.webp",
     tags: ["Recursos Humanos", "People Analytics", "Employee Experience"],
     readTime: "8 min",
     publishedAt: "Julho 2025",
@@ -57,6 +59,7 @@ const blogPosts = [
     description:
       "Descubra como o RPA (Robotic Process Automation) pode transformar sua operação, eliminando tarefas repetitivas e liberando sua equipe para atividades estratégicas. Entenda os benefícios, casos de uso e como combinar RPA com IA.",
     slug: "rpa-liberte-sua-equipe-das-tarefas-repetitivas-e-foque-no-que-realmente-importa",
+    image:"/insights/rpa-liberte-sua-equipe-das-tarefas-repetitivas-e-foque-no-que-realmente-importa.webp",
     tags: ["RPA", "Automação", "Eficiência Operacional"],
     readTime: "6 min",
     publishedAt: "Abril 2025",
@@ -66,6 +69,7 @@ const blogPosts = [
     description:
       "Descubra como calcular o retorno sobre investimento da Inteligência Artificial em sua empresa. Entenda os 4 vetores de retorno e a fórmula prática para medir o impacto financeiro da IA no seu negócio.",
     slug: "o-roi-da-inteligencia-artificial-como-calcular-o-impacto-da-ia-no-balanco-da-sua-empresa",
+    image:"/insights/o-roi-da-inteligencia-artificial-como-calcular-o-impacto-da-ia-no-balanco-da-sua-empresa.webp",
     tags: ["Inteligência Artificial", "ROI", "Estratégia de Negócios"],
     readTime: "7 min",
     publishedAt: "Fevereiro 2025",
@@ -75,6 +79,7 @@ const blogPosts = [
     description:
       "Descubra como a transformação digital vai além da tecnologia e se torna uma estratégia essencial de sobrevivência para empresas modernas. Entenda os 4 pilares fundamentais e o roteiro prático em 3 passos.",
     slug: "transformacao-digital-mais-do-que-tecnologia-uma-estrategia-de-sobrevivencia",
+    image:"/insights/transformacao-digital-mais-do-que-tecnologia-uma-estrategia-de-sobrevivencia.webp",
     tags: ["Transformação Digital", "Estratégia", "Inovação"],
     readTime: "8 min",
     publishedAt: "Janeiro 2025",
@@ -100,8 +105,13 @@ export default function InsightsPage() {
       <Section py={{ base: 2, md: 4 }}>
         <SimpleGrid columns={{ base: 1, lg: 2 }} gap={8}>
           {blogPosts.map((post) => (
-            <Card.Root key={post.slug} variant="outline" _hover={{ borderColor: "blue.200" }}>
-              <Card.Body p={8}>
+            <Card.Root key={post.slug} variant="outline" _hover={{ borderColor: "blue.200" }} overflow="hidden">
+              <Image src={post.image} alt={post.title} layout="responsive" width={500} height={300} />
+              <Card.Body p={6}>
+
+
+
+
                 <VStack gap={6} alignItems="flex-start">
                   <HStack flexWrap="wrap" gap={2}>
                     {post.tags.map((tag) => (

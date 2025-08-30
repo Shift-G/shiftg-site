@@ -40,7 +40,29 @@ import {
 import Link from "next/link";
 import { useState } from "react";
 
-const menuSections = {
+interface MenuItem {
+  icon?: React.ReactElement;
+  title: string;
+  description: string;
+  href: string;
+  badge?: string | null;
+  badgeColor?: string | null;
+}
+
+interface SecondaryMenuItem {
+  title: string;
+  description: string;
+  href: string;
+}
+
+interface MenuSection {
+  title: string;
+  subtitle: string;
+  items: MenuItem[];
+  secondaryItems?: SecondaryMenuItem[];
+}
+
+const menuSections: Record<string, MenuSection> = {
   solucoes: {
     title: "Soluções",
     subtitle: "Transforme seu negócio com tecnologia",
@@ -68,6 +90,18 @@ const menuSections = {
         href: "/transformacao-digital",
         badge: null,
         badgeColor: null
+      }
+    ],
+    secondaryItems: [
+      {
+        title: "Construa seu SaaS",
+        description: "Desenvolvimento de plataformas SaaS escaláveis",
+        href: "/fabrica-de-software/construa-seu-saas"
+      },
+      {
+        title: "Seu negócio na Web",
+        description: "Sites e e-commerce de alta performance",
+        href: "/fabrica-de-software/seu-negocio-na-web"
       }
     ]
   },
@@ -142,7 +176,7 @@ const mobileMenuItems = [
 ];
 
 // Component for megamenu dropdown
-function MegaMenu({ section, isOpen, onClose }: { section: any, isOpen: boolean, onClose: () => void }) {
+function MegaMenu({ section, isOpen, onClose }: { section: MenuSection, isOpen: boolean, onClose: () => void }) {
   if (!isOpen) return null;
 
   return (
@@ -178,7 +212,7 @@ function MegaMenu({ section, isOpen, onClose }: { section: any, isOpen: boolean,
               gap={6} 
               w="full"
             >
-              {section.items.map((item: any) => (
+              {section.items.map((item: MenuItem) => (
                 <Link key={item.title} href={item.href} passHref legacyBehavior>
                   <ChakraLink
                     p={4}
@@ -211,7 +245,7 @@ function MegaMenu({ section, isOpen, onClose }: { section: any, isOpen: boolean,
                           <Text fontWeight="600" color="fg" fontSize="md">
                             {item.title}
                           </Text>
-                          {item.badge && (
+                          {item.badge && item.badgeColor && (
                             <Badge 
                               colorPalette={item.badgeColor} 
                               variant="subtle" 
@@ -238,6 +272,60 @@ function MegaMenu({ section, isOpen, onClose }: { section: any, isOpen: boolean,
                 </Link>
               ))}
             </SimpleGrid>
+
+            {/* Secondary Items - Links com menor destaque */}
+            {section.secondaryItems && (
+              <VStack gap={3} align="stretch" pt={2}>
+                <Text 
+                  fontSize="sm" 
+                  fontWeight="600" 
+                  color="fg.muted" 
+                  textTransform="uppercase" 
+                  letterSpacing="wide"
+                >
+                  Outras Soluções
+                </Text>
+                <SimpleGrid columns={{ base: 1, md: 2 }} gap={3}>
+                  {section.secondaryItems.map((item: SecondaryMenuItem) => (
+                    <Link key={item.title} href={item.href} passHref legacyBehavior>
+                      <ChakraLink
+                        p={3}
+                        rounded="lg"
+                        bg="transparent"
+                        border="1px"
+                        borderColor="border/50"
+                        _hover={{
+                          bg: "bg.subtle",
+                          borderColor: "border",
+                        }}
+                        transition="all 0.2s"
+                        display="block"
+                        textDecoration="none"
+                        onClick={onClose}
+                      >
+                        <HStack gap={3} align="center">
+                          <VStack gap={1} align="flex-start" flex={1}>
+                            <Text fontWeight="500" color="fg" fontSize="sm">
+                              {item.title}
+                            </Text>
+                            <Text 
+                              color="fg.muted" 
+                              fontSize="xs" 
+                              lineHeight="short"
+                            >
+                              {item.description}
+                            </Text>
+                          </VStack>
+                          <Box color="fg.muted" flexShrink={0}>
+                            <ChevronRight size={14} />
+                          </Box>
+                        </HStack>
+                      </ChakraLink>
+                    </Link>
+                  ))}
+                </SimpleGrid>
+              </VStack>
+            )}
 
             {/* CTA */}
             <Box
@@ -413,7 +501,7 @@ export function Navbar() {
                       {section.title}
                     </Text>
                     <VStack gap={2} align="stretch">
-                      {section.items.map((item) => (
+                      {section.items.map((item: MenuItem) => (
                         <Link key={item.title} href={item.href} passHref legacyBehavior>
                           <ChakraLink
                             p={3}
@@ -440,7 +528,7 @@ export function Navbar() {
                                 <Text fontSize="md">
                                   {item.title}
                                 </Text>
-                                {item.badge && (
+                                {item.badge && item.badgeColor && (
                                   <Badge 
                                     colorPalette={item.badgeColor} 
                                     variant="subtle" 
@@ -462,6 +550,52 @@ export function Navbar() {
                           </ChakraLink>
                         </Link>
                       ))}
+                      
+                      {/* Secondary Items no Mobile */}
+                      {section.secondaryItems && (
+                        <VStack gap={2} align="stretch" mt={2} pl={4}>
+                          {section.secondaryItems.map((item: SecondaryMenuItem) => (
+                            <Link key={item.title} href={item.href} passHref legacyBehavior>
+                              <ChakraLink
+                                p={2}
+                                pl={3}
+                                rounded="md"
+                                fontSize="sm"
+                                fontWeight="400"
+                                color="fg.muted"
+                                onClick={onClose}
+                                _hover={{
+                                  color: "fg",
+                                  bg: "bg.subtle",
+                                }}
+                                transition="all 0.2s"
+                                display="flex"
+                                alignItems="center"
+                                gap={2}
+                                textDecoration="none"
+                                borderLeft="2px"
+                                borderColor="border"
+                              >
+                                <VStack gap={0} align="flex-start" flex={1}>
+                                  <Text fontSize="sm" fontWeight="500">
+                                    {item.title}
+                                  </Text>
+                                  <Text 
+                                    fontSize="xs" 
+                                    color="fg.muted" 
+                                    lineHeight="shorter"
+                                  >
+                                    {item.description}
+                                  </Text>
+                                </VStack>
+                                <Box color="fg.muted">
+                                  <ChevronRight size={14} />
+                                </Box>
+                              </ChakraLink>
+                            </Link>
+                          ))}
+                        </VStack>
+                      )}
                     </VStack>
                   </VStack>
                 ))}
