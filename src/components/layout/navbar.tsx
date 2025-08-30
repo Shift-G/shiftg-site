@@ -119,13 +119,13 @@ const menuSections = {
         description: "Faça parte do futuro da tecnologia",
         href: "/carreiras",
         badge: "Vagas abertas",
-        badgeColor: "purple"
+        badgeColor: "blue"
       },
       {
         icon: <Globe size={20} />,
         title: "Sobre Nós",
         description: "Nossa missão e valores",
-        href: "/#sobre",
+        href: "/sobre",
         badge: null,
         badgeColor: null
       }
@@ -149,10 +149,10 @@ function MegaMenu({ section, isOpen, onClose }: { section: any, isOpen: boolean,
     <Portal>
       <Box
         position="fixed"
-        top="100px"
+        top="84px"
         left={0}
         right={0}
-        bg="bg/95"
+        bg="bg.subtle"
         backdropFilter="blur(20px)"
         borderBottom="1px"
         borderColor="border"
@@ -160,8 +160,8 @@ function MegaMenu({ section, isOpen, onClose }: { section: any, isOpen: boolean,
         py={8}
         onMouseLeave={onClose}
       >
-        <Container maxW="7xl">
-          <VStack gap={8} align="flex-start">
+        <Container>
+          <VStack gap={8} align="stretch">
             {/* Header */}
             <VStack gap={2} align="flex-start">
               <Heading size="lg" fontWeight="700" color="fg">
@@ -177,12 +177,11 @@ function MegaMenu({ section, isOpen, onClose }: { section: any, isOpen: boolean,
               columns={{ base: 1, md: section.items.length >= 4 ? 2 : section.items.length }} 
               gap={6} 
               w="full"
-              maxW="4xl"
             >
               {section.items.map((item: any) => (
                 <Link key={item.title} href={item.href} passHref legacyBehavior>
                   <ChakraLink
-                    p={6}
+                    p={4}
                     rounded="xl"
                     bg="bg.subtle"
                     border="1px"
@@ -248,7 +247,6 @@ function MegaMenu({ section, isOpen, onClose }: { section: any, isOpen: boolean,
               border="1px"
               borderColor="blue.200"
               w="full"
-              maxW="4xl"
             >
               <HStack justify="space-between" align="center">
                 <VStack gap={1} align="flex-start">

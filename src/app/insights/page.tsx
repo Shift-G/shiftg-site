@@ -50,7 +50,7 @@ const blogPosts = [
     slug: "rh-estrategico-como-deixar-planilhas-para-tras-e-liderar-gestao-de-talentos-com-dados",
     tags: ["Recursos Humanos", "People Analytics", "Employee Experience"],
     readTime: "8 min",
-    publishedAt: "Janeiro 2025",
+    publishedAt: "Julho 2025",
   },
   {
     title: "RPA: Liberte sua Equipe das Tarefas Repetitivas e Foque no que Realmente Importa",
@@ -59,7 +59,7 @@ const blogPosts = [
     slug: "rpa-liberte-sua-equipe-das-tarefas-repetitivas-e-foque-no-que-realmente-importa",
     tags: ["RPA", "Automação", "Eficiência Operacional"],
     readTime: "6 min",
-    publishedAt: "Janeiro 2025",
+    publishedAt: "Abril 2025",
   },
   {
     title: "O ROI da Inteligência Artificial: Como Calcular o Impacto da IA no Balanço da sua Empresa",
@@ -68,7 +68,7 @@ const blogPosts = [
     slug: "o-roi-da-inteligencia-artificial-como-calcular-o-impacto-da-ia-no-balanco-da-sua-empresa",
     tags: ["Inteligência Artificial", "ROI", "Estratégia de Negócios"],
     readTime: "7 min",
-    publishedAt: "Janeiro 2025",
+    publishedAt: "Fevereiro 2025",
   },
   {
     title: "Transformação Digital: Mais do que Tecnologia, uma Estratégia de Sobrevivência",
@@ -91,13 +91,13 @@ export default function InsightsPage() {
         title="Insights"
         subtitle="Artigos e reflexões sobre transformação digital, inteligência artificial e estratégias que fazem a diferença no seu negócio."
         centered
-        py={{ base: 16, md: 20 }}
+        py={{ base: 8, md: 12 }}
       >
         <></>
       </Section>
 
       {/* Blog Posts Section */}
-      <Section>
+      <Section py={{ base: 2, md: 4 }}>
         <SimpleGrid columns={{ base: 1, lg: 2 }} gap={8}>
           {blogPosts.map((post) => (
             <Card.Root key={post.slug} variant="outline" _hover={{ borderColor: "blue.200" }}>
