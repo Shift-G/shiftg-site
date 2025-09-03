@@ -59,7 +59,7 @@ export function Hero() {
             <Icon as={MapPinHouseIcon} boxSize={4} color="blue.500" />
             <Text
               fontSize={{ base: "xs", md: "xs" }}
-              fontWeight="600"
+              fontWeight="300"
               color="blue.700"
               _dark={{ color: "blue.300" }}
               textAlign="center"
@@ -101,7 +101,7 @@ export function Hero() {
               fontSize="xl"
               color="blue.600"
               _dark={{ color: "blue.300" }}
-              fontWeight="600"
+              fontWeight="300"
               textTransform="uppercase"
               letterSpacing="wider"
             >

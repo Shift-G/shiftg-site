@@ -79,7 +79,7 @@ function ComparisonCard({
             variant={isAI ? "solid" : "outline"}
             colorPalette={isAI ? "green" : "red"}
             fontSize="xs"
-            fontWeight="600"
+            fontWeight="300"
             textTransform="uppercase"
           >
             {isAI ? "Com IA" : "Tradicional"}
@@ -87,7 +87,7 @@ function ComparisonCard({
         </HStack>
 
         <VStack align="flex-start" gap={2}>
-          <Heading as="h4" size="md" fontWeight="700" color="fg">
+          <Heading as="h4" size="md" fontWeight="300" color="fg">
             {title}
           </Heading>
           <Text color="fg.muted" fontSize="sm" lineHeight="tall">
@@ -106,7 +106,7 @@ function ComparisonCard({
           >
             <Text
               fontSize="sm"
-              fontWeight="700"
+              fontWeight="300"
               color={isAI ? "green.600" : "red.600"}
             >
               {metric}
@@ -237,7 +237,7 @@ export function TraditionalVsAI() {
             <Heading
               as="h2"
               size={{ base: "2xl", md: "3xl", lg: "4xl" }}
-              fontWeight="900"
+              fontWeight="300"
               lineHeight="shorter"
               letterSpacing="tight"
             >
@@ -315,7 +315,7 @@ export function TraditionalVsAI() {
                   bg="blue.500"
                   color="white"
                   borderRadius="full"
-                  fontWeight="700"
+                  fontWeight="300"
                   fontSize="sm"
                   textTransform="uppercase"
                   letterSpacing="wider"

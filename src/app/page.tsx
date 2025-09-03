@@ -255,7 +255,7 @@ export default function HomePage() {
               <Heading
                 as="h2"
                 size={{ base: "3xl", md: "4xl", lg: "5xl" }}
-                fontWeight="900"
+                fontWeight="300"
                 lineHeight="none"
                 letterSpacing="tight"
                 textAlign={{ base: "left", md: "center" }}
@@ -297,7 +297,7 @@ export default function HomePage() {
                   px={{ base: 4, sm: 6 }}
                   py={8}
                   rounded="2xl"
-                  fontWeight="700"
+                  fontWeight="300"
                   fontSize="xl"
                   bg="{colors.gradient.blue}"
                   color="white"
@@ -335,7 +335,7 @@ export default function HomePage() {
                       <Link href={`mailto:${SITE_EMAIL}`}>
                         <Text
                           as="span"
-                          fontWeight="700"
+                          fontWeight="300"
                           color="blue.solid"
                           _hover={{ textDecoration: "underline" }}
                         >

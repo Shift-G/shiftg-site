@@ -82,7 +82,7 @@ export function FeatureCard({ icon, title, description, highlighted = false }: F
           <Heading 
             as="h3" 
             size="lg" 
-            fontWeight="700" 
+            fontWeight="300" 
             color="fg"
             bgGradient={highlighted 
               ? "{colors.gradient.blue}" 

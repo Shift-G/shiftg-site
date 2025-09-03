@@ -166,7 +166,7 @@ export default function SobrePage() {
                 py={2}
                 rounded="full"
                 fontSize="sm"
-                fontWeight="600"
+                fontWeight="300"
               >
                 <Lightbulb size={16} style={{ marginRight: "8px" }} />
                 Sobre a Shift+G
@@ -175,7 +175,7 @@ export default function SobrePage() {
               <Heading
                 as="h1"
                 size={{ base: "3xl", md: "4xl", lg: "5xl" }}
-                fontWeight="900"
+                fontWeight="300"
                 lineHeight="shorter"
                 letterSpacing="tight"
                 bgGradient="linear-gradient(135deg, {colors.blue.500}, {colors.blue.700})"
@@ -218,7 +218,7 @@ export default function SobrePage() {
                 <VStack key={metric.label} gap={2}>
                   <HStack gap={2} color="blue.solid">
                     {metric.icon}
-                    <Text fontSize="2xl" fontWeight="800">
+                    <Text fontSize="2xl" fontWeight="400">
                       {metric.number}
                     </Text>
                   </HStack>
@@ -245,14 +245,14 @@ export default function SobrePage() {
               <Text as="strong" color="fg">
                 Nosso nome é nossa filosofia:
               </Text>{" "}
-              <Text as="span" color="blue.solid" fontWeight="700">
+              <Text as="span" color="blue.solid" fontWeight="300">
                 Shift
               </Text>{" "}
               representa a mudança - assim como a tecla Shift no teclado transforma o comportamento de outras teclas, nós transformamos negócios. O{" "}
-              <Text as="span" color="blue.solid" fontWeight="700">
+              <Text as="span" color="blue.solid" fontWeight="300">
                 G
               </Text>{" "}
-              vem de <Text as="em" fontWeight="600">Gnosis</Text> - conhecimento profundo que gera sabedoria acionável.
+              vem de <Text as="em" fontWeight="300">Gnosis</Text> - conhecimento profundo que gera sabedoria acionável.
             </Text>
             
             <Text fontSize="lg" color="fg.muted" lineHeight="tall">
@@ -281,7 +281,7 @@ export default function SobrePage() {
                           <Badge variant="subtle" colorPalette="blue" size="sm">
                             {event.year}
                           </Badge>
-                          <Timeline.Title fontWeight="700" fontSize="lg">
+                          <Timeline.Title fontWeight="300" fontSize="lg">
                             {event.title}
                           </Timeline.Title>
                           <Timeline.Description 
@@ -303,7 +303,7 @@ export default function SobrePage() {
                             {event.year}
                           </Badge>
                           <Timeline.Title 
-                            fontWeight="700" 
+                            fontWeight="300" 
                             fontSize="lg"
                             textAlign="right"
                           >
@@ -366,7 +366,7 @@ export default function SobrePage() {
                   {value.icon}
                 </Circle>
                 <VStack gap={2} align="flex-start">
-                  <Heading as="h3" size="lg" fontWeight="700" color="fg">
+                  <Heading as="h3" size="lg" fontWeight="300" color="fg">
                     {value.title}
                   </Heading>
                   <Text color="fg.muted" fontSize="md" lineHeight="tall">

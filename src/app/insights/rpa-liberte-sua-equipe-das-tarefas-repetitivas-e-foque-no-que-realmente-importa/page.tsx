@@ -161,7 +161,7 @@ export default function RPABlogPost() {
             <Heading
               as="h1"
               size={{ base: "2xl", md: "3xl", lg: "4xl" }}
-              fontWeight="800"
+              fontWeight="400"
               color="fg"
               lineHeight="shorter"
               letterSpacing="tight"
@@ -212,7 +212,7 @@ export default function RPABlogPost() {
             >
               <Text
                 fontSize={{ base: "lg", md: "xl" }}
-                fontWeight="600"
+                fontWeight="300"
                 color="blue.700"
                 _dark={{ color: "blue.300" }}
                 textAlign="center"
@@ -248,7 +248,7 @@ export default function RPABlogPost() {
                   <Icon color="blue.500" size="lg" mb={3}>
                     <Bot />
                   </Icon>
-                  <Text fontWeight="600" color="fg" fontSize="sm">
+                  <Text fontWeight="300" color="fg" fontSize="sm">
                     {capability}
                   </Text>
                 </Card.Body>
@@ -260,7 +260,7 @@ export default function RPABlogPost() {
             fontSize={{ base: "lg", md: "xl" }}
             color="fg"
             lineHeight="tall"
-            fontWeight="600"
+            fontWeight="300"
             textAlign="center"
           >
             A grande vantagem é que ele faz tudo isso de forma mais rápida, sem erros e sem precisar de pausas.
@@ -381,7 +381,7 @@ export default function RPABlogPost() {
                     alignItems="center"
                     justifyContent="center"
                     fontSize="lg"
-                    fontWeight="700"
+                    fontWeight="300"
                   >
                     1
                   </Box>
@@ -405,7 +405,7 @@ export default function RPABlogPost() {
                     alignItems="center"
                     justifyContent="center"
                     fontSize="lg"
-                    fontWeight="700"
+                    fontWeight="300"
                   >
                     2
                   </Box>
@@ -429,7 +429,7 @@ export default function RPABlogPost() {
                     alignItems="center"
                     justifyContent="center"
                     fontSize="lg"
-                    fontWeight="700"
+                    fontWeight="300"
                   >
                     3
                   </Box>
@@ -470,7 +470,7 @@ export default function RPABlogPost() {
               as="h2"
               size={{ base: "xl", md: "2xl" }}
               color="fg"
-              fontWeight="700"
+              fontWeight="300"
             >
               Sua Jornada de Automação Começa Hoje
             </Heading>
@@ -499,7 +499,7 @@ export default function RPABlogPost() {
                 as="h3"
                 size="lg"
                 color="fg"
-                fontWeight="600"
+                fontWeight="300"
               >
                 Quer identificar os processos com maior potencial de automação e alto ROI na sua empresa?
               </Heading>

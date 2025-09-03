@@ -100,7 +100,7 @@ function BentoCard({
             variant="subtle"
             colorPalette={accent}
             fontSize="xs"
-            fontWeight="700"
+            fontWeight="300"
             textTransform="uppercase"
             letterSpacing="wider"
             px={3}
@@ -115,7 +115,7 @@ function BentoCard({
               variant="outline"
               colorPalette="green"
               fontSize="xs"
-              fontWeight="600"
+              fontWeight="300"
               px={3}
               py={1}
               borderRadius="full"
@@ -144,7 +144,7 @@ function BentoCard({
           <Heading
             as="h3"
             size={featured ? "xl" : "lg"}
-            fontWeight="700"
+            fontWeight="300"
             color="fg"
             lineHeight="shorter"
           >
@@ -166,7 +166,7 @@ function BentoCard({
           gap={2}
           color={accentColors[accent].bg}
           fontSize="sm"
-          fontWeight="600"
+          fontWeight="300"
           opacity={0}
           transform="translateY(10px)"
           transition="all 0.3s ease"
@@ -256,7 +256,7 @@ export function UseCasesBento() {
             <Heading
               as="h2"
               size={{ base: "2xl", md: "3xl", lg: "4xl" }}
-              fontWeight="900"
+              fontWeight="300"
               color="fg"
               lineHeight="shorter"
               letterSpacing="tight"

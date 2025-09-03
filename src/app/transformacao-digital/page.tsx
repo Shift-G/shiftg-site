@@ -233,7 +233,7 @@ export default function DigitalTransformationPage() {
             >
               <Text
                 fontSize="sm"
-                fontWeight="600"
+                fontWeight="300"
                 color="blue.solid"
                 textTransform="uppercase"
                 letterSpacing="wider"
@@ -247,7 +247,7 @@ export default function DigitalTransformationPage() {
               <Heading
                 as="h1"
                 size={{ base: "4xl", md: "5xl", lg: "6xl" }}
-                fontWeight="900"
+                fontWeight="300"
                 lineHeight="none"
                 letterSpacing="tight"
                 color="fg"
@@ -287,7 +287,7 @@ export default function DigitalTransformationPage() {
                 <Box key={stat.label} textAlign="center">
                   <Text
                     fontSize={{ base: "2xl", md: "3xl" }}
-                    fontWeight="900"
+                    fontWeight="300"
                     color="blue.solid"
                     lineHeight="none"
                   >
@@ -296,7 +296,7 @@ export default function DigitalTransformationPage() {
                   <Text
                     fontSize="sm"
                     color="fg.muted"
-                    fontWeight="600"
+                    fontWeight="300"
                     textTransform="uppercase"
                     letterSpacing="wide"
                   >
@@ -374,11 +374,11 @@ export default function DigitalTransformationPage() {
         >
           <Text
             fontSize={{ base: "lg", md: "xl" }}
-            fontWeight="600"
+            fontWeight="300"
             color="blue.solid"
           >
             A questão não é mais <Text as="span" fontStyle="italic">se</Text> transformar,
-            mas <Text as="span" fontWeight="700">como</Text> fazer isso de forma inteligente
+            mas <Text as="span" fontWeight="300">como</Text> fazer isso de forma inteligente
             e com o parceiro certo.
           </Text>
         </Box>
@@ -401,7 +401,7 @@ export default function DigitalTransformationPage() {
           >
             Na Shift+G, não vendemos soluções de prateleira; co-criamos o caminho
             para o futuro do seu negócio. Mais do que um fornecedor, somos o seu{" "}
-            <Text as="span" fontWeight="700" color="blue.solid">
+            <Text as="span" fontWeight="300" color="blue.solid">
               arquiteto e executor da jornada digital
             </Text>.
           </Text>
@@ -417,7 +417,7 @@ export default function DigitalTransformationPage() {
           >
             <Text
               fontSize={{ base: "lg", md: "xl" }}
-              fontWeight="600"
+              fontWeight="300"
               color="fg"
             >
               Nossa abordagem é completa: do diagnóstico que revela os maiores
@@ -455,7 +455,7 @@ export default function DigitalTransformationPage() {
                       bg="{colors.blue.500}"
                       color="white"
                       fontSize="lg"
-                      fontWeight="700"
+                      fontWeight="300"
                     >
                       {pillar.number}
                     </Box>
@@ -472,7 +472,7 @@ export default function DigitalTransformationPage() {
                     <Heading
                       as="h3"
                       size={{ base: "lg", md: "xl" }}
-                      fontWeight="700"
+                      fontWeight="300"
                       color="fg"
                     >
                       {pillar.title}
@@ -488,7 +488,7 @@ export default function DigitalTransformationPage() {
                 </VStack>
 
                 <VStack align="flex-start" gap={4}>
-                  <Text fontWeight="700" color="fg" fontSize="lg">
+                  <Text fontWeight="300" color="fg" fontSize="lg">
                     Principais Entregas:
                   </Text>
                   <VStack align="flex-start" gap={3}>
@@ -528,7 +528,7 @@ export default function DigitalTransformationPage() {
                 <Table.ColumnHeader
                   p={6}
                   fontSize="lg"
-                  fontWeight="700"
+                  fontWeight="300"
                   color="blue.solid"
                   bg="{colors.blue.500/10}"
                 >
@@ -537,7 +537,7 @@ export default function DigitalTransformationPage() {
                 <Table.ColumnHeader
                   p={6}
                   fontSize="lg"
-                  fontWeight="700"
+                  fontWeight="300"
                   color="blue.solid"
                   bg="{colors.blue.500/10}"
                 >
@@ -554,7 +554,7 @@ export default function DigitalTransformationPage() {
                 >
                   <Table.Cell p={6} verticalAlign="top">
                     <VStack align="flex-start" gap={2}>
-                      <Text fontWeight="700" color="fg" fontSize="lg">
+                      <Text fontWeight="300" color="fg" fontSize="lg">
                         {diff.title}
                       </Text>
                       <Text color="fg.muted" fontSize="md" lineHeight="tall">
@@ -565,7 +565,7 @@ export default function DigitalTransformationPage() {
                   <Table.Cell p={6} verticalAlign="top">
                     <HStack gap={3}>
                       <Target size={20} color="{colors.blue.500}" />
-                      <Text color="fg" fontSize="md" fontWeight="600">
+                      <Text color="fg" fontSize="md" fontWeight="300">
                         {diff.benefit}
                       </Text>
                     </HStack>
@@ -603,7 +603,7 @@ export default function DigitalTransformationPage() {
               <Heading
                 as="h2"
                 size={{ base: "3xl", md: "4xl", lg: "5xl" }}
-                fontWeight="900"
+                fontWeight="300"
                 lineHeight="none"
                 letterSpacing="tight"
               >
@@ -642,7 +642,7 @@ export default function DigitalTransformationPage() {
                   px={{ base: 4, sm: 6 }}
                   py={8}
                   rounded="2xl"
-                  fontWeight="700"
+                  fontWeight="300"
                   fontSize="xl"
                   variant="solid"
                   colorPalette="blue"
@@ -685,7 +685,7 @@ export default function DigitalTransformationPage() {
                       <Link href={`mailto:${SITE_EMAIL}`}>
                         <Text
                           as="span"
-                          fontWeight="700"
+                          fontWeight="300"
                           color="blue.solid"
                           _hover={{ textDecoration: "underline" }}
                         >

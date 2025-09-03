@@ -73,7 +73,7 @@ export function UseCaseCard({
           >
             <Text 
               fontSize="xs" 
-              fontWeight="700" 
+              fontWeight="300" 
               color="blue.solid"
               textTransform="uppercase"
               letterSpacing="wider"
@@ -92,7 +92,7 @@ export function UseCaseCard({
             >
               <Text 
                 fontSize="xs" 
-                fontWeight="700" 
+                fontWeight="300" 
                 color="green.solid"
               >
                 {metrics}
@@ -120,7 +120,7 @@ export function UseCaseCard({
           <Heading 
             as="h4" 
             size="lg" 
-            fontWeight="700" 
+            fontWeight="300" 
             color="fg"
             lineHeight="shorter"
           >
@@ -145,7 +145,7 @@ export function UseCaseCard({
             color: "blue.emphasized"
           }}
         >
-          <Text fontSize="sm" fontWeight="600">
+          <Text fontSize="sm" fontWeight="300">
             Saiba mais
           </Text>
           <Box

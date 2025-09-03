@@ -191,7 +191,7 @@ export default function RHEstrategicoBlogPost() {
             <Heading
               as="h1"
               size={{ base: "2xl", md: "3xl", lg: "4xl" }}
-              fontWeight="800"
+              fontWeight="400"
               color="fg"
               lineHeight="shorter"
               letterSpacing="tight"
@@ -242,7 +242,7 @@ export default function RHEstrategicoBlogPost() {
             >
               <Text
                 fontSize={{ base: "lg", md: "xl" }}
-                fontWeight="600"
+                fontWeight="300"
                 color="blue.700"
                 _dark={{ color: "blue.300" }}
                 textAlign="center"
@@ -306,7 +306,7 @@ export default function RHEstrategicoBlogPost() {
                       <VStack gap={4} alignItems="center" minW="80px">
                         <Text
                           fontSize="3xl"
-                          fontWeight="800"
+                          fontWeight="400"
                           color="blue.500"
                           lineHeight="1"
                         >
@@ -333,7 +333,7 @@ export default function RHEstrategicoBlogPost() {
                       <VStack gap={4} alignItems="flex-start">
                         {pillar.examples.map((example) => (
                           <Box key={example.title}>
-                            <Text fontWeight="600" color="fg" mb={1}>
+                            <Text fontWeight="300" color="fg" mb={1}>
                               • {example.title}:
                             </Text>
                             <Text color="fg.muted" lineHeight="tall" fontSize="sm" pl={4}>
@@ -395,7 +395,7 @@ export default function RHEstrategicoBlogPost() {
               as="h2"
               size={{ base: "xl", md: "2xl" }}
               color="fg"
-              fontWeight="700"
+              fontWeight="300"
             >
               O Futuro do RH é Hoje
             </Heading>
@@ -434,7 +434,7 @@ export default function RHEstrategicoBlogPost() {
                 as="h3"
                 size="lg"
                 color="fg"
-                fontWeight="600"
+                fontWeight="300"
               >
                 Quer mapear as oportunidades para transformar o RH da sua empresa em um centro de inteligência e estratégia?
               </Heading>

@@ -20,22 +20,22 @@ import {
   Badge,
   Portal,
 } from "@chakra-ui/react";
-import { 
-  Menu, 
-  X, 
-  ChevronDown, 
-  Rocket, 
-  Globe, 
-  Lightbulb, 
-  Users, 
-  TrendingUp, 
+import {
+  Menu,
+  X,
+  ChevronDown,
+  Rocket,
+  Globe,
+  Lightbulb,
+  Users,
+  TrendingUp,
   Brain,
   ArrowRight,
   Star,
   Zap,
   Target,
   FileText,
-  ChevronRight
+  ChevronRight,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -73,15 +73,15 @@ const menuSections: Record<string, MenuSection> = {
         description: "IA que resolve problemas reais do seu negócio",
         href: "/#solucoes",
         badge: "Popular",
-        badgeColor: "blue"
+        badgeColor: "blue",
       },
       {
         icon: <Rocket size={20} />,
-        title: "Fábrica de Software", 
+        title: "Fábrica de Software",
         description: "Software sob medida para sua operação",
         href: "/fabrica-de-software",
         badge: "Novo",
-        badgeColor: "green"
+        badgeColor: "green",
       },
       {
         icon: <TrendingUp size={20} />,
@@ -89,21 +89,21 @@ const menuSections: Record<string, MenuSection> = {
         description: "Estratégia completa de digitalização",
         href: "/transformacao-digital",
         badge: null,
-        badgeColor: null
-      }
+        badgeColor: null,
+      },
     ],
     secondaryItems: [
       {
         title: "Construa seu SaaS",
         description: "Desenvolvimento de plataformas SaaS escaláveis",
-        href: "/fabrica-de-software/construa-seu-saas"
+        href: "/fabrica-de-software/construa-seu-saas",
       },
       {
         title: "Seu negócio na Web",
         description: "Sites e e-commerce de alta performance",
-        href: "/fabrica-de-software/seu-negocio-na-web"
-      }
-    ]
+        href: "/fabrica-de-software/seu-negocio-na-web",
+      },
+    ],
   },
   insights: {
     title: "Insights",
@@ -115,7 +115,7 @@ const menuSections: Record<string, MenuSection> = {
         description: "Como calcular o impacto da IA no seu negócio",
         href: "/insights/o-roi-da-inteligencia-artificial-como-calcular-o-impacto-da-ia-no-balanco-da-sua-empresa",
         badge: "Trending",
-        badgeColor: "orange"
+        badgeColor: "orange",
       },
       {
         icon: <Zap size={20} />,
@@ -123,7 +123,7 @@ const menuSections: Record<string, MenuSection> = {
         description: "Liberte sua equipe das tarefas repetitivas",
         href: "/insights/rpa-liberte-sua-equipe-das-tarefas-repetitivas-e-foque-no-que-realmente-importa",
         badge: null,
-        badgeColor: null
+        badgeColor: null,
       },
       {
         icon: <Target size={20} />,
@@ -131,7 +131,7 @@ const menuSections: Record<string, MenuSection> = {
         description: "Estratégia de sobrevivência empresarial",
         href: "/insights/transformacao-digital-mais-do-que-tecnologia-uma-estrategia-de-sobrevivencia",
         badge: null,
-        badgeColor: null
+        badgeColor: null,
       },
       {
         icon: <FileText size={20} />,
@@ -139,9 +139,9 @@ const menuSections: Record<string, MenuSection> = {
         description: "Explore todo nosso conteúdo estratégico",
         href: "/insights",
         badge: null,
-        badgeColor: null
-      }
-    ]
+        badgeColor: null,
+      },
+    ],
   },
   empresa: {
     title: "Empresa",
@@ -153,7 +153,7 @@ const menuSections: Record<string, MenuSection> = {
         description: "Faça parte do futuro da tecnologia",
         href: "/carreiras",
         badge: "Vagas abertas",
-        badgeColor: "blue"
+        badgeColor: "blue",
       },
       {
         icon: <Globe size={20} />,
@@ -161,10 +161,10 @@ const menuSections: Record<string, MenuSection> = {
         description: "Nossa missão e valores",
         href: "/sobre",
         badge: null,
-        badgeColor: null
-      }
-    ]
-  }
+        badgeColor: null,
+      },
+    ],
+  },
 };
 
 const mobileMenuItems = [
@@ -176,7 +176,15 @@ const mobileMenuItems = [
 ];
 
 // Component for megamenu dropdown
-function MegaMenu({ section, isOpen, onClose }: { section: MenuSection, isOpen: boolean, onClose: () => void }) {
+function MegaMenu({
+  section,
+  isOpen,
+  onClose,
+}: {
+  section: MenuSection;
+  isOpen: boolean;
+  onClose: () => void;
+}) {
   if (!isOpen) return null;
 
   return (
@@ -198,7 +206,7 @@ function MegaMenu({ section, isOpen, onClose }: { section: MenuSection, isOpen: 
           <VStack gap={8} align="stretch">
             {/* Header */}
             <VStack gap={2} align="flex-start">
-              <Heading size="lg" fontWeight="700" color="fg">
+              <Heading size="lg" fontWeight="300" color="fg">
                 {section.title}
               </Heading>
               <Text color="fg.muted" fontSize="md">
@@ -207,9 +215,12 @@ function MegaMenu({ section, isOpen, onClose }: { section: MenuSection, isOpen: 
             </VStack>
 
             {/* Items Grid */}
-            <SimpleGrid 
-              columns={{ base: 1, md: section.items.length >= 4 ? 2 : section.items.length }} 
-              gap={6} 
+            <SimpleGrid
+              columns={{
+                base: 1,
+                md: section.items.length >= 4 ? 2 : section.items.length,
+              }}
+              gap={6}
               w="full"
             >
               {section.items.map((item: MenuItem) => (
@@ -242,13 +253,13 @@ function MegaMenu({ section, isOpen, onClose }: { section: MenuSection, isOpen: 
                       </Box>
                       <VStack gap={2} align="flex-start" flex={1}>
                         <HStack gap={2} align="center">
-                          <Text fontWeight="600" color="fg" fontSize="md">
+                          <Text fontWeight="300" color="fg" fontSize="md">
                             {item.title}
                           </Text>
                           {item.badge && item.badgeColor && (
-                            <Badge 
-                              colorPalette={item.badgeColor} 
-                              variant="subtle" 
+                            <Badge
+                              colorPalette={item.badgeColor}
+                              variant="subtle"
                               size="sm"
                               fontSize="xs"
                             >
@@ -256,11 +267,7 @@ function MegaMenu({ section, isOpen, onClose }: { section: MenuSection, isOpen: 
                             </Badge>
                           )}
                         </HStack>
-                        <Text 
-                          color="fg.muted" 
-                          fontSize="sm" 
-                          lineHeight="short"
-                        >
+                        <Text color="fg.muted" fontSize="sm" lineHeight="short">
                           {item.description}
                         </Text>
                       </VStack>
@@ -276,18 +283,23 @@ function MegaMenu({ section, isOpen, onClose }: { section: MenuSection, isOpen: 
             {/* Secondary Items - Links com menor destaque */}
             {section.secondaryItems && (
               <VStack gap={3} align="stretch" pt={2}>
-                <Text 
-                  fontSize="sm" 
-                  fontWeight="600" 
-                  color="fg.muted" 
-                  textTransform="uppercase" 
+                <Text
+                  fontSize="sm"
+                  fontWeight="300"
+                  color="fg.muted"
+                  textTransform="uppercase"
                   letterSpacing="wide"
                 >
                   Outras Soluções
                 </Text>
                 <SimpleGrid columns={{ base: 1, md: 2 }} gap={3}>
                   {section.secondaryItems.map((item: SecondaryMenuItem) => (
-                    <Link key={item.title} href={item.href} passHref legacyBehavior>
+                    <Link
+                      key={item.title}
+                      href={item.href}
+                      passHref
+                      legacyBehavior
+                    >
                       <ChakraLink
                         p={3}
                         rounded="lg"
@@ -308,9 +320,9 @@ function MegaMenu({ section, isOpen, onClose }: { section: MenuSection, isOpen: 
                             <Text fontWeight="500" color="fg" fontSize="sm">
                               {item.title}
                             </Text>
-                            <Text 
-                              color="fg.muted" 
-                              fontSize="xs" 
+                            <Text
+                              color="fg.muted"
+                              fontSize="xs"
                               lineHeight="short"
                             >
                               {item.description}
@@ -338,7 +350,7 @@ function MegaMenu({ section, isOpen, onClose }: { section: MenuSection, isOpen: 
             >
               <HStack justify="space-between" align="center">
                 <VStack gap={1} align="flex-start">
-                  <Text fontWeight="600" color="blue.solid" fontSize="md">
+                  <Text fontWeight="300" color="blue.solid" fontSize="md">
                     Pronto para transformar seu negócio?
                   </Text>
                   <Text color="fg.muted" fontSize="sm">
@@ -346,9 +358,9 @@ function MegaMenu({ section, isOpen, onClose }: { section: MenuSection, isOpen: 
                   </Text>
                 </VStack>
                 <Link href="#contato" passHref>
-                  <Button 
-                    size="sm" 
-                    colorPalette="blue" 
+                  <Button
+                    size="sm"
+                    colorPalette="blue"
                     variant="solid"
                     onClick={onClose}
                   >
@@ -393,21 +405,7 @@ export function Navbar() {
                 transition="opacity 0.2s"
                 onClick={() => setActiveMenu(null)}
               >
-                <Image src="/logo.png" alt="Shift+G" w={10}  />
-                <Text
-                  fontSize="2xl"
-                  fontWeight="600"
-                  >
-                  SHIFT<Span color="fg.subtle" fontWeight="thin" fontSize="sm">+</Span>G
-                </Text>
-                <Text
-                  fontSize="sm"
-                  fontWeight="600"
-                  color="fg.muted"
-                  display={{ base: "none", sm: "block" }}
-                >
-                  AI & Data
-                </Text>
+                <Image src="/logo.png" alt="Shift G Logo" h={12} />
               </ChakraLink>
             </Link>
 
@@ -441,20 +439,20 @@ export function Navbar() {
                     {section.title}
                     <ChevronDown size={14} style={{ marginLeft: "8px" }} />
                   </Button>
-                  <MegaMenu 
-                    section={section} 
+                  <MegaMenu
+                    section={section}
                     isOpen={activeMenu === key}
                     onClose={() => setActiveMenu(null)}
                   />
                 </Box>
               ))}
-              
+
               <Link href="#contato" passHref>
                 <Button
                   size="sm"
                   colorPalette="blue"
                   ml={2}
-                  fontWeight="600"
+                  fontWeight="300"
                   variant="subtle"
                   onClick={() => setActiveMenu(null)}
                 >
@@ -484,17 +482,19 @@ export function Navbar() {
           <Drawer.Content>
             <Drawer.CloseTrigger />
             <Drawer.Header borderBottomWidth="1px">
-              <Heading size="md" fontWeight="700">Menu</Heading>
+              <Heading size="md" fontWeight="300">
+                Menu
+              </Heading>
             </Drawer.Header>
             <Drawer.Body py={6}>
               <VStack gap={6} align="stretch">
                 {/* Mobile Menu Sections */}
                 {Object.entries(menuSections).map(([key, section]) => (
                   <VStack key={key} gap={3} align="stretch">
-                    <Text 
-                      fontSize="sm" 
-                      fontWeight="700" 
-                      color="blue.solid" 
+                    <Text
+                      fontSize="sm"
+                      fontWeight="300"
+                      color="blue.solid"
                       textTransform="uppercase"
                       letterSpacing="wider"
                     >
@@ -502,7 +502,12 @@ export function Navbar() {
                     </Text>
                     <VStack gap={2} align="stretch">
                       {section.items.map((item: MenuItem) => (
-                        <Link key={item.title} href={item.href} passHref legacyBehavior>
+                        <Link
+                          key={item.title}
+                          href={item.href}
+                          passHref
+                          legacyBehavior
+                        >
                           <ChakraLink
                             p={3}
                             rounded="lg"
@@ -520,18 +525,14 @@ export function Navbar() {
                             gap={3}
                             textDecoration="none"
                           >
-                            <Box color="blue.solid">
-                              {item.icon}
-                            </Box>
+                            <Box color="blue.solid">{item.icon}</Box>
                             <VStack gap={1} align="flex-start" flex={1}>
                               <HStack gap={2} align="center">
-                                <Text fontSize="md">
-                                  {item.title}
-                                </Text>
+                                <Text fontSize="md">{item.title}</Text>
                                 {item.badge && item.badgeColor && (
-                                  <Badge 
-                                    colorPalette={item.badgeColor} 
-                                    variant="subtle" 
+                                  <Badge
+                                    colorPalette={item.badgeColor}
+                                    variant="subtle"
                                     size="sm"
                                     fontSize="xs"
                                   >
@@ -539,9 +540,9 @@ export function Navbar() {
                                   </Badge>
                                 )}
                               </HStack>
-                              <Text 
-                                fontSize="xs" 
-                                color="fg.muted" 
+                              <Text
+                                fontSize="xs"
+                                color="fg.muted"
                                 lineHeight="shorter"
                               >
                                 {item.description}
@@ -550,50 +551,57 @@ export function Navbar() {
                           </ChakraLink>
                         </Link>
                       ))}
-                      
+
                       {/* Secondary Items no Mobile */}
                       {section.secondaryItems && (
                         <VStack gap={2} align="stretch" mt={2} pl={4}>
-                          {section.secondaryItems.map((item: SecondaryMenuItem) => (
-                            <Link key={item.title} href={item.href} passHref legacyBehavior>
-                              <ChakraLink
-                                p={2}
-                                pl={3}
-                                rounded="md"
-                                fontSize="sm"
-                                fontWeight="400"
-                                color="fg.muted"
-                                onClick={onClose}
-                                _hover={{
-                                  color: "fg",
-                                  bg: "bg.subtle",
-                                }}
-                                transition="all 0.2s"
-                                display="flex"
-                                alignItems="center"
-                                gap={2}
-                                textDecoration="none"
-                                borderLeft="2px"
-                                borderColor="border"
+                          {section.secondaryItems.map(
+                            (item: SecondaryMenuItem) => (
+                              <Link
+                                key={item.title}
+                                href={item.href}
+                                passHref
+                                legacyBehavior
                               >
-                                <VStack gap={0} align="flex-start" flex={1}>
-                                  <Text fontSize="sm" fontWeight="500">
-                                    {item.title}
-                                  </Text>
-                                  <Text 
-                                    fontSize="xs" 
-                                    color="fg.muted" 
-                                    lineHeight="shorter"
-                                  >
-                                    {item.description}
-                                  </Text>
-                                </VStack>
-                                <Box color="fg.muted">
-                                  <ChevronRight size={14} />
-                                </Box>
-                              </ChakraLink>
-                            </Link>
-                          ))}
+                                <ChakraLink
+                                  p={2}
+                                  pl={3}
+                                  rounded="md"
+                                  fontSize="sm"
+                                  fontWeight="400"
+                                  color="fg.muted"
+                                  onClick={onClose}
+                                  _hover={{
+                                    color: "fg",
+                                    bg: "bg.subtle",
+                                  }}
+                                  transition="all 0.2s"
+                                  display="flex"
+                                  alignItems="center"
+                                  gap={2}
+                                  textDecoration="none"
+                                  borderLeft="2px"
+                                  borderColor="border"
+                                >
+                                  <VStack gap={0} align="flex-start" flex={1}>
+                                    <Text fontSize="sm" fontWeight="500">
+                                      {item.title}
+                                    </Text>
+                                    <Text
+                                      fontSize="xs"
+                                      color="fg.muted"
+                                      lineHeight="shorter"
+                                    >
+                                      {item.description}
+                                    </Text>
+                                  </VStack>
+                                  <Box color="fg.muted">
+                                    <ChevronRight size={14} />
+                                  </Box>
+                                </ChakraLink>
+                              </Link>
+                            )
+                          )}
                         </VStack>
                       )}
                     </VStack>
@@ -608,7 +616,7 @@ export function Navbar() {
                       size="lg"
                       width="full"
                       onClick={onClose}
-                      fontWeight="600"
+                      fontWeight="300"
                     >
                       Entre em contato
                       <ChevronRight size={18} />

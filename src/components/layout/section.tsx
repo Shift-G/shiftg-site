@@ -102,7 +102,7 @@ export function Section({
               <Heading
                 as="h2"
                 size={{ base: "2xl", md: "3xl", lg: "4xl" }}
-                fontWeight="800"
+                fontWeight="400"
                 color="fg"
                 lineHeight="shorter"
                 letterSpacing="tight"

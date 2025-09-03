@@ -74,7 +74,7 @@ export default function NotFoundPage() {
             <Box>
               <Text
                 fontSize={{ base: "8xl", md: "9xl", lg: "10xl" }}
-                fontWeight="900"
+                fontWeight="300"
                 lineHeight="none"
                 letterSpacing="tight"
                 bgGradient="linear-gradient(135deg, blue.500, blue.700, blue.500)"
@@ -92,7 +92,7 @@ export default function NotFoundPage() {
               <Heading
                 as="h1"
                 size={{ base: "3xl", md: "4xl", lg: "5xl" }}
-                fontWeight="800"
+                fontWeight="400"
                 lineHeight="shorter"
                 letterSpacing="tight"
                 color="fg"
@@ -139,7 +139,7 @@ export default function NotFoundPage() {
                     px={8}
                     py={6}
                     rounded="xl"
-                    fontWeight="600"
+                    fontWeight="300"
                     fontSize="lg"
                     bg="blue.500"
                     color="white"
@@ -167,7 +167,7 @@ export default function NotFoundPage() {
                   px={8}
                   py={6}
                   rounded="xl"
-                  fontWeight="600"
+                  fontWeight="300"
                   fontSize="lg"
                   variant="outline"
                   borderColor="border"
@@ -286,7 +286,7 @@ export default function NotFoundPage() {
                     px={6}
                     py={4}
                     rounded="xl"
-                    fontWeight="600"
+                    fontWeight="300"
                     fontSize="md"
                     variant="outline"
                     borderColor="blue.500"

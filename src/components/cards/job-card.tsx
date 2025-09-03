@@ -68,7 +68,7 @@ export function JobCard({
           bg="{colors.blue.500}"
           color="white"
           fontSize="xs"
-          fontWeight="700"
+          fontWeight="300"
           textTransform="uppercase"
         >
           Destaque
@@ -88,7 +88,7 @@ export function JobCard({
               {icon}
             </Box>
             <VStack align="flex-start" gap={1}>
-              <Heading as="h3" size="xl" fontWeight="700" color="fg">
+              <Heading as="h3" size="xl" fontWeight="300" color="fg">
                 {title}
               </Heading>
               <HStack gap={4} wrap="wrap">
@@ -106,7 +106,7 @@ export function JobCard({
           </HStack>
           <Text
             fontSize="lg"
-            fontWeight="700"
+            fontWeight="300"
             color="blue.solid"
             textAlign="right"
           >
@@ -120,7 +120,7 @@ export function JobCard({
 
         <SimpleGrid columns={{ base: 1, lg: 2 }} gap={6} w="full">
           <VStack align="flex-start" gap={4}>
-            <Text fontWeight="700" color="fg">
+            <Text fontWeight="300" color="fg">
               Requisitos:
             </Text>
             <List.Root gap={2}>
@@ -133,7 +133,7 @@ export function JobCard({
           </VStack>
 
           <VStack align="flex-start" gap={4}>
-            <Text fontWeight="700" color="fg">
+            <Text fontWeight="300" color="fg">
               Responsabilidades:
             </Text>
             <List.Root gap={2}>

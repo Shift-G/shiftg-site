@@ -170,7 +170,7 @@ export default function TransformacaoDigitalBlogPost() {
             <Heading
               as="h1"
               size={{ base: "2xl", md: "3xl", lg: "4xl" }}
-              fontWeight="800"
+              fontWeight="400"
               color="fg"
               lineHeight="shorter"
               letterSpacing="tight"
@@ -230,7 +230,7 @@ export default function TransformacaoDigitalBlogPost() {
             >
               <Text
                 fontSize={{ base: "lg", md: "xl" }}
-                fontWeight="600"
+                fontWeight="300"
                 color="blue.700"
                 _dark={{ color: "blue.300" }}
                 textAlign="center"
@@ -287,7 +287,7 @@ export default function TransformacaoDigitalBlogPost() {
                     <VStack gap={4} alignItems="center" minW="80px">
                       <Text
                         fontSize="3xl"
-                        fontWeight="800"
+                        fontWeight="400"
                         color="blue.500"
                         lineHeight="1"
                       >
@@ -342,7 +342,7 @@ export default function TransformacaoDigitalBlogPost() {
                       alignItems="center"
                       justifyContent="center"
                       fontSize="xl"
-                      fontWeight="700"
+                      fontWeight="300"
                     >
                       {step.number}
                     </Box>
@@ -377,7 +377,7 @@ export default function TransformacaoDigitalBlogPost() {
               as="h2"
               size={{ base: "xl", md: "2xl" }}
               color="fg"
-              fontWeight="700"
+              fontWeight="300"
             >
               A Jornada é Contínua, o Parceiro é Fundamental
             </Heading>
@@ -406,7 +406,7 @@ export default function TransformacaoDigitalBlogPost() {
                 as="h3"
                 size="lg"
                 color="fg"
-                fontWeight="600"
+                fontWeight="300"
               >
                 Pronto para dar o primeiro passo e entender em que estágio de maturidade digital sua empresa se encontra?
               </Heading>

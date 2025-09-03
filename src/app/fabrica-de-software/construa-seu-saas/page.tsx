@@ -308,7 +308,7 @@ export default function SaasPage() {
             >
               <Text
                 fontSize="sm"
-                fontWeight="600"
+                fontWeight="300"
                 color="blue.solid"
                 textTransform="uppercase"
                 letterSpacing="wider"
@@ -322,7 +322,7 @@ export default function SaasPage() {
               <Heading
                 as="h1"
                 size={{ base: "4xl", md: "5xl", lg: "6xl" }}
-                fontWeight="900"
+                fontWeight="300"
                 lineHeight="none"
                 letterSpacing="tight"
                 color="fg"
@@ -362,7 +362,7 @@ export default function SaasPage() {
                 <Box key={stat.label} textAlign="center">
                   <Text
                     fontSize={{ base: "xl", md: "2xl" }}
-                    fontWeight="900"
+                    fontWeight="300"
                     color="blue.solid"
                     lineHeight="none"
                   >
@@ -371,7 +371,7 @@ export default function SaasPage() {
                   <Text
                     fontSize="sm"
                     color="fg.muted"
-                    fontWeight="600"
+                    fontWeight="300"
                     textTransform="uppercase"
                     letterSpacing="wide"
                   >
@@ -438,7 +438,7 @@ export default function SaasPage() {
         >
           <Text
             fontSize={{ base: "lg", md: "xl" }}
-            fontWeight="600"
+            fontWeight="300"
             color="blue.solid"
           >
             É por isso que construir um SaaS requer expertise especializada.
@@ -493,14 +493,14 @@ export default function SaasPage() {
                       bg="{colors.blue.500}"
                       color="white"
                       fontSize="lg"
-                      fontWeight="700"
+                      fontWeight="300"
                     >
                       {step.step}
                     </Box>
                     <Heading
                       as="h3"
                       size={{ base: "lg", md: "xl" }}
-                      fontWeight="700"
+                      fontWeight="300"
                       color="fg"
                     >
                       {step.title}
@@ -516,7 +516,7 @@ export default function SaasPage() {
                 </VStack>
 
                 <VStack align="flex-start" gap={4}>
-                  <Text fontWeight="700" color="fg" fontSize="lg">
+                  <Text fontWeight="300" color="fg" fontSize="lg">
                     Principais Entregas:
                   </Text>
                   <VStack align="flex-start" gap={3}>
@@ -565,7 +565,7 @@ export default function SaasPage() {
                   <Heading
                     as="h4"
                     size="lg"
-                    fontWeight="700"
+                    fontWeight="300"
                     color="fg"
                   >
                     {stack.category}
@@ -616,7 +616,7 @@ export default function SaasPage() {
                   bg="{colors.blue.500}"
                   color="white"
                   fontSize="sm"
-                  fontWeight="700"
+                  fontWeight="300"
                 >
                   Mais Popular
                 </Box>
@@ -627,7 +627,7 @@ export default function SaasPage() {
                   <Heading
                     as="h3"
                     size="xl"
-                    fontWeight="700"
+                    fontWeight="300"
                     color="fg"
                   >
                     {plan.name}
@@ -640,7 +640,7 @@ export default function SaasPage() {
                 <VStack align="flex-start" gap={1}>
                   <Text
                     fontSize="3xl"
-                    fontWeight="900"
+                    fontWeight="300"
                     color="blue.solid"
                   >
                     {plan.price}
@@ -702,7 +702,7 @@ export default function SaasPage() {
               <Heading
                 as="h2"
                 size={{ base: "3xl", md: "4xl", lg: "5xl" }}
-                fontWeight="900"
+                fontWeight="300"
                 lineHeight="none"
                 letterSpacing="tight"
               >
@@ -741,7 +741,7 @@ export default function SaasPage() {
                   px={{ base: 4, sm: 6 }}
                   py={8}
                   rounded="2xl"
-                  fontWeight="700"
+                  fontWeight="300"
                   fontSize="xl"
                   variant="solid"
                   colorPalette="blue"
@@ -784,7 +784,7 @@ export default function SaasPage() {
                       <Link href={`mailto:${SITE_EMAIL}`}>
                         <Text
                           as="span"
-                          fontWeight="700"
+                          fontWeight="300"
                           color="blue.solid"
                           _hover={{ textDecoration: "underline" }}
                         >

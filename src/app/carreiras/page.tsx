@@ -323,7 +323,7 @@ export default function CareersPage() {
               <Star size={16} color="{colors.blue.500}" />
               <Text
                 fontSize="sm"
-                fontWeight="600"
+                fontWeight="300"
                 color="blue.solid"
                 textTransform="uppercase"
                 letterSpacing="wider"
@@ -337,7 +337,7 @@ export default function CareersPage() {
               <Heading
                 as="h1"
                 size={{ base: "4xl", md: "5xl", lg: "6xl" }}
-                fontWeight="900"
+                fontWeight="300"
                 lineHeight="none"
                 letterSpacing="tight"
                 color="fg"
@@ -377,7 +377,7 @@ export default function CareersPage() {
                 <Box key={stat.label} textAlign="center">
                   <Text
                     fontSize={{ base: "2xl", md: "3xl" }}
-                    fontWeight="900"
+                    fontWeight="300"
                     color="blue.solid"
                     lineHeight="none"
                   >
@@ -386,7 +386,7 @@ export default function CareersPage() {
                   <Text
                     fontSize="sm"
                     color="fg.muted"
-                    fontWeight="600"
+                    fontWeight="300"
                     textTransform="uppercase"
                     letterSpacing="wide"
                   >
@@ -496,7 +496,7 @@ export default function CareersPage() {
             <VStack align="flex-start" gap={4}>
               <HStack>
                 <Globe size={24} color="{colors.blue.500}" />
-                <Text fontWeight="700" fontSize="xl" color="blue.solid">
+                <Text fontWeight="300" fontSize="xl" color="blue.solid">
                   De Qualquer Lugar do Brasil
                 </Text>
               </HStack>
@@ -510,7 +510,7 @@ export default function CareersPage() {
             <VStack align="flex-start" gap={4}>
               <HStack>
                 <Clock size={24} color="{colors.blue.500}" />
-                <Text fontWeight="700" fontSize="xl" color="blue.solid">
+                <Text fontWeight="300" fontSize="xl" color="blue.solid">
                   Flexibilidade Real
                 </Text>
               </HStack>
@@ -532,7 +532,7 @@ export default function CareersPage() {
               <Heading
                 as="h4"
                 size="lg"
-                fontWeight="700"
+                fontWeight="300"
                 color="blue.solid"
                 textAlign="center"
               >
@@ -596,7 +596,7 @@ export default function CareersPage() {
               <Heading
                 as="h2"
                 size={{ base: "3xl", md: "4xl", lg: "5xl" }}
-                fontWeight="900"
+                fontWeight="300"
                 lineHeight="none"
                 letterSpacing="tight"
               >
@@ -634,7 +634,7 @@ export default function CareersPage() {
                   px={{ base: 4, sm: 6 }}
                   py={8}
                   rounded="2xl"
-                  fontWeight="700"
+                  fontWeight="300"
                   fontSize="xl"
                   variant="solid"
                   colorPalette="blue"

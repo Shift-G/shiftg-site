@@ -71,7 +71,7 @@ export function SolutionCard({
             bg="{colors.gradient.blue}"
             color="white"
             fontSize="xs"
-            fontWeight="700"
+            fontWeight="300"
             textTransform="uppercase"
             letterSpacing="wider"
             boxShadow="0 4px 15px {colors.blue.500/30}"
@@ -84,14 +84,14 @@ export function SolutionCard({
           <Heading 
             as="h3" 
             size="xl" 
-            fontWeight="800" 
+            fontWeight="400" 
             color="fg"
             lineHeight="shorter"
           >
             {title}
           </Heading>
           <Text 
-            fontWeight="600" 
+            fontWeight="300" 
             color="blue.solid" 
             fontSize="lg"
             textTransform="uppercase"

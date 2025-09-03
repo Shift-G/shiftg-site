@@ -42,7 +42,7 @@ export function Footer() {
           <VStack align="flex-start" gap={4}>
             <Text
               fontSize="xl"
-              fontWeight="800"
+              fontWeight="400"
               bgGradient="linear-gradient(0deg, {colors.blue.500}, {colors.blue.600})"
               bgClip="text"
             >
@@ -57,7 +57,7 @@ export function Footer() {
 
           {/* Links Rápidos */}
           <VStack align="flex-start" gap={3}>
-            <Text fontWeight="600" fontSize="sm" color="fg">
+            <Text fontWeight="300" fontSize="sm" color="fg">
               Links Rápidos
             </Text>
             <Stack gap={2}>
@@ -84,7 +84,7 @@ export function Footer() {
 
           {/* Serviços */}
           <VStack align="flex-start" gap={3}>
-            <Text fontWeight="600" fontSize="sm" color="fg">
+            <Text fontWeight="300" fontSize="sm" color="fg">
               Nossos Serviços
             </Text>
             <Stack gap={2}>
@@ -104,7 +104,7 @@ export function Footer() {
 
           {/* Contato */}
           <VStack align="flex-start" gap={3}>
-            <Text fontWeight="600" fontSize="sm" color="fg">
+            <Text fontWeight="300" fontSize="sm" color="fg">
               Contato
             </Text>
             <Stack gap={3}>

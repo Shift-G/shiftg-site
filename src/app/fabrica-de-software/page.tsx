@@ -249,7 +249,7 @@ export default function SoftwareFactoryPage() {
             >
               <Text
                 fontSize="sm"
-                fontWeight="600"
+                fontWeight="300"
                 color="blue.solid"
                 textTransform="uppercase"
                 letterSpacing="wider"
@@ -263,7 +263,7 @@ export default function SoftwareFactoryPage() {
               <Heading
                 as="h1"
                 size={{ base: "4xl", md: "5xl", lg: "6xl" }}
-                fontWeight="900"
+                fontWeight="300"
                 lineHeight="none"
                 letterSpacing="tight"
                 color="fg"
@@ -377,7 +377,7 @@ export default function SoftwareFactoryPage() {
           lineHeight="tall"
         >
           Nossa{" "}
-          <Text as="span" fontWeight="700" color="blue.solid">
+          <Text as="span" fontWeight="300" color="blue.solid">
             Fábrica de Software
           </Text>{" "}
           é o braço de desenvolvimento da Shift+G dedicado a construir soluções
@@ -396,7 +396,7 @@ export default function SoftwareFactoryPage() {
         >
           <Text
             fontSize={{ base: "lg", md: "xl" }}
-            fontWeight="600"
+            fontWeight="300"
             color="blue.solid"
           >
             Nós criamos a ponte entre a sua estratégia e a execução, garantindo
@@ -439,12 +439,12 @@ export default function SoftwareFactoryPage() {
                   <Heading
                     as="h3"
                     size="xl"
-                    fontWeight="700"
+                    fontWeight="300"
                     color="fg"
                   >
                     Construa seu SaaS
                   </Heading>
-                  <Text color="blue.solid" fontSize="sm" fontWeight="600">
+                  <Text color="blue.solid" fontSize="sm" fontWeight="300">
                     Plataformas Escaláveis
                   </Text>
                 </VStack>
@@ -518,12 +518,12 @@ export default function SoftwareFactoryPage() {
                   <Heading
                     as="h3"
                     size="xl"
-                    fontWeight="700"
+                    fontWeight="300"
                     color="fg"
                   >
                     Seu Negócio na Web
                   </Heading>
-                  <Text color="blue.solid" fontSize="sm" fontWeight="600">
+                  <Text color="blue.solid" fontSize="sm" fontWeight="300">
                     Sites & E-commerce
                   </Text>
                 </VStack>
@@ -585,7 +585,7 @@ export default function SoftwareFactoryPage() {
             <Heading
               as="h3"
               size={{ base: "xl", md: "2xl" }}
-              fontWeight="700"
+              fontWeight="300"
               color="fg"
               textAlign="center"
             >
@@ -608,7 +608,7 @@ export default function SoftwareFactoryPage() {
             <Heading
               as="h3"
               size={{ base: "xl", md: "2xl" }}
-              fontWeight="700"
+              fontWeight="300"
               color="fg"
               textAlign="center"
             >
@@ -653,14 +653,14 @@ export default function SoftwareFactoryPage() {
                   bg="{colors.blue.500}"
                   color="white"
                   fontSize="sm"
-                  fontWeight="700"
+                  fontWeight="300"
                 >
                   {step.step}
                 </Box>
                 <Heading
                   as="h4"
                   size="lg"
-                  fontWeight="700"
+                  fontWeight="300"
                   color="fg"
                 >
                   {step.title}
@@ -723,7 +723,7 @@ export default function SoftwareFactoryPage() {
               <Heading
                 as="h2"
                 size={{ base: "3xl", md: "4xl", lg: "5xl" }}
-                fontWeight="900"
+                fontWeight="300"
                 lineHeight="none"
                 letterSpacing="tight"
               >
@@ -762,7 +762,7 @@ export default function SoftwareFactoryPage() {
                   px={{ base: 4, sm: 6 }}
                   py={8}
                   rounded="2xl"
-                  fontWeight="700"
+                  fontWeight="300"
                   fontSize="xl"
                   variant="solid"
                   colorPalette="blue"
@@ -789,7 +789,7 @@ export default function SoftwareFactoryPage() {
                       <Link href={`mailto:${SITE_EMAIL}`}>
                         <Text
                           as="span"
-                          fontWeight="700"
+                          fontWeight="300"
                           color="blue.solid"
                           _hover={{ textDecoration: "underline" }}
                         >

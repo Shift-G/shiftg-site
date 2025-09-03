@@ -182,7 +182,7 @@ export default function ROIInteligenciaArtificialBlogPost() {
             <Heading
               as="h1"
               size={{ base: "2xl", md: "3xl", lg: "4xl" }}
-              fontWeight="800"
+              fontWeight="400"
               color="fg"
               lineHeight="shorter"
               letterSpacing="tight"
@@ -240,7 +240,7 @@ export default function ROIInteligenciaArtificialBlogPost() {
             >
               <Text
                 fontSize={{ base: "lg", md: "xl" }}
-                fontWeight="600"
+                fontWeight="300"
                 color="blue.700"
                 _dark={{ color: "blue.300" }}
                 textAlign="center"
@@ -296,7 +296,7 @@ export default function ROIInteligenciaArtificialBlogPost() {
                     <VStack gap={4} alignItems="flex-start">
                       {vector.examples.map((example) => (
                         <Box key={example.title}>
-                          <Text fontWeight="600" color="fg" mb={1}>
+                          <Text fontWeight="300" color="fg" mb={1}>
                             • {example.title}:
                           </Text>
                           <Text
@@ -335,7 +335,7 @@ export default function ROIInteligenciaArtificialBlogPost() {
             borderColor="border"
             textAlign="center"
           >
-            <Text fontSize="xl" fontWeight="700" color="fg" fontFamily="mono">
+            <Text fontSize="xl" fontWeight="300" color="fg" fontFamily="mono">
               ROI (%) = (Benefícios Financeiros - Custo Total da Solução) /
               Custo Total da Solução × 100
             </Text>
@@ -414,7 +414,7 @@ export default function ROIInteligenciaArtificialBlogPost() {
               as="h2"
               size={{ base: "xl", md: "2xl" }}
               color="fg"
-              fontWeight="700"
+              fontWeight="300"
             >
               Inteligência Artificial não é Magia, é Matemática de Negócios
             </Heading>
@@ -444,7 +444,7 @@ export default function ROIInteligenciaArtificialBlogPost() {
             <Separator />
 
             <VStack gap={4}>
-              <Heading as="h3" size="lg" color="fg" fontWeight="600">
+              <Heading as="h3" size="lg" color="fg" fontWeight="300">
                 Quer descobrir onde a Inteligência Artificial pode gerar o maior
                 retorno para a sua empresa?
               </Heading>

@@ -163,7 +163,7 @@ export default function InsightsPage() {
                     size={{ base: "xl", md: "2xl" }}
                     color="fg"
                     lineHeight="shorter"
-                    fontWeight="700"
+                    fontWeight="300"
                   >
                     {featuredPost.title}
                   </Heading>
@@ -256,7 +256,7 @@ export default function InsightsPage() {
                           size="md"
                           color="fg"
                           lineHeight="shorter"
-                          fontWeight="600"
+                          fontWeight="300"
                           css={{
                             display: '-webkit-box',
                             WebkitLineClamp: 3,

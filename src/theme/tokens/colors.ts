@@ -102,7 +102,7 @@ export const colors = defineTokens.colors({
     200: { value: "#b1baff" },
     300: { value: "#8a99ff" },
     400: { value: "#5a74ff" },
-    500: { value: "#0051ff" },
+    500: { value: "#0057FF" },
     600: { value: "#003fcd" },
     700: { value: "#0030a2" },
     800: { value: "#002074" },
@@ -112,7 +112,7 @@ export const colors = defineTokens.colors({
 
   // Modern AI-inspired gradients and colors
   gradient: {
-    blue: { value: "linear-gradient(135deg, #0051ff 0%, #00134e 100%)" },
+    blue: { value: "linear-gradient(135deg, #0057FF 0%, #00134e 100%)" },
   },
 
   // Glass morphism colors
