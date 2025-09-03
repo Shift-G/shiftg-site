@@ -297,7 +297,7 @@ export default function HomePage() {
                   px={{ base: 4, sm: 6 }}
                   py={8}
                   rounded="2xl"
-                  fontWeight="300"
+                  fontWeight="600"
                   fontSize="xl"
                   bg="{colors.gradient.blue}"
                   color="white"
@@ -325,8 +325,8 @@ export default function HomePage() {
                   px={6}
                   py={3}
                   rounded="xl"
-                  bg="{colors.whiteAlpha.200}"
-                  backdropFilter="blur(20px)"
+                  bg="whiteAlpha.200"
+                  backdropFilter="blur(5px)"
                   border="1px solid {colors.whiteAlpha.300}"
                 >
                   <HStack gap={3} justify="center">

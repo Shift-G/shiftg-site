@@ -549,7 +549,7 @@ export default function SaasPage() {
               key={stack.category}
               p={{ base: 6, md: 8 }}
               rounded="2xl"
-              bg="{colors.whiteAlpha.50}"
+              bg="whiteAlpha.50"
               border="1px solid {colors.whiteAlpha.200}"
             >
               <VStack align="flex-start" gap={4}>
@@ -758,8 +758,8 @@ export default function SaasPage() {
                   px={6}
                   py={3}
                   rounded="xl"
-                  bg="{colors.whiteAlpha.200}"
-                  backdropFilter="blur(20px)"
+                  bg="whiteAlpha.200"
+                  backdropFilter="blur(10px)"
                   border="1px solid {colors.whiteAlpha.300}"
                 >
                   <HStack gap={3} justify="center">
@@ -774,8 +774,8 @@ export default function SaasPage() {
                   px={6}
                   py={3}
                   rounded="xl"
-                  bg="{colors.whiteAlpha.200}"
-                  backdropFilter="blur(20px)"
+                  bg="whiteAlpha.200"
+                  backdropFilter="blur(10px)"
                   border="1px solid {colors.whiteAlpha.300}"
                 >
                   <HStack gap={3} justify="center">

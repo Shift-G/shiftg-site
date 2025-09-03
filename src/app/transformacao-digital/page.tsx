@@ -409,7 +409,7 @@ export default function DigitalTransformationPage() {
           <Box
             p={{ base: 6, md: 8 }}
             rounded="2xl"
-            bg="{colors.whiteAlpha.50}"
+            bg="whiteAlpha.50"
             border="1px solid {colors.whiteAlpha.200}"
             textAlign="center"
             maxW="4xl"
@@ -452,7 +452,7 @@ export default function DigitalTransformationPage() {
                       px={4}
                       py={2}
                       rounded="full"
-                      bg="{colors.blue.500}"
+                      bg="blue.500"
                       color="white"
                       fontSize="lg"
                       fontWeight="300"
@@ -462,7 +462,7 @@ export default function DigitalTransformationPage() {
                     <Box
                       p={3}
                       rounded="xl"
-                      bg={index % 2 === 0 ? "{colors.blue.500}" : "{colors.blue.500/10}"}
+                      bg={index % 2 === 0 ? "blue.500" : "blue.500/10"}
                       color={index % 2 === 0 ? "white" : "blue.solid"}
                     >
                       {pillar.icon}
@@ -520,7 +520,7 @@ export default function DigitalTransformationPage() {
           overflowX="auto"
           rounded="2xl"
           border="1px solid {colors.whiteAlpha.200}"
-          bg="{colors.whiteAlpha.50}"
+          bg="whiteAlpha.50"
         >
           <Table.Root size="lg">
             <Table.Header>
@@ -530,7 +530,7 @@ export default function DigitalTransformationPage() {
                   fontSize="lg"
                   fontWeight="300"
                   color="blue.solid"
-                  bg="{colors.blue.500/10}"
+                  bg="blue.500/10"
                 >
                   Diferencial
                 </Table.ColumnHeader>
@@ -538,8 +538,8 @@ export default function DigitalTransformationPage() {
                   p={6}
                   fontSize="lg"
                   fontWeight="300"
-                  color="blue.solid"
-                  bg="{colors.blue.500/10}"
+                  color="blue.fg"
+                  bg="blue.500/10"
                 >
                   O que isso significa para você
                 </Table.ColumnHeader>

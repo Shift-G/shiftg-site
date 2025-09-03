@@ -70,7 +70,6 @@ export default function PoliticaPrivacidadePage() {
                 <Heading
                   as="h1"
                   size={{ base: "lg", md: "xl" }}
-                  color="gray.900"
                   fontWeight="bold"
                 >
                   Política de Privacidade
@@ -106,19 +105,18 @@ export default function PoliticaPrivacidadePage() {
                 <Heading
                   as="h2"
                   size={{ base: "md", md: "lg" }}
-                  color="gray.900"
                   fontWeight="semibold"
                 >
                   1. Introdução
                 </Heading>
-                <Text color="gray.700" lineHeight="1.7">
+                <Text color="fg.muted" lineHeight="1.7">
                   A Harrison L. Lucetti Consultoria Financeira valoriza e
                   respeita sua privacidade. Esta Política de Privacidade
                   descreve como coletamos, usamos, armazenamos e protegemos suas
                   informações pessoais quando você utiliza nossos serviços de
                   consultoria em investimentos, crédito e estratégia bancária.
                 </Text>
-                <Text color="gray.700" lineHeight="1.7">
+                <Text color="fg.muted" lineHeight="1.7">
                   Esta política está em conformidade com a Lei Geral de Proteção
                   de Dados (LGPD - Lei 13.709/2018) e demais regulamentações
                   aplicáveis.
@@ -132,35 +130,34 @@ export default function PoliticaPrivacidadePage() {
                 <Heading
                   as="h2"
                   size={{ base: "md", md: "lg" }}
-                  color="gray.900"
                   fontWeight="semibold"
                 >
                   2. Informações que Coletamos
                 </Heading>
-                <Text color="gray.700" lineHeight="1.7">
+                <Text color="fg.muted" lineHeight="1.7">
                   Coletamos apenas as informações necessárias para prestar
                   nossos serviços de consultoria financeira:
                 </Text>
                 <VStack gap={3} align="start" pl={4} w="full">
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     <Text as="span" fontWeight="medium">
                       • Dados de Identificação:
                     </Text>{" "}
                     Nome completo, CPF/CNPJ, RG, data de nascimento
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     <Text as="span" fontWeight="medium">
                       • Dados de Contato:
                     </Text>{" "}
                     E-mail, telefone, endereço postal
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     <Text as="span" fontWeight="medium">
                       • Dados Profissionais:
                     </Text>{" "}
                     Empresa, cargo, setor de atuação, receita aproximada
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     <Text as="span" fontWeight="medium">
                       • Dados Financeiros:
                     </Text>{" "}
@@ -168,7 +165,7 @@ export default function PoliticaPrivacidadePage() {
                     de crédito (quando relevante para a consultoria)
                   </Text>
                 </VStack>
-                <Text color="gray.700" lineHeight="1.7" fontWeight="medium">
+                <Text color="fg.muted" lineHeight="1.7" fontWeight="medium">
                   ⚠️ Importante: Este site não utiliza cookies, pixels de
                   rastreamento ou ferramentas de analytics que coletam dados
                   automaticamente.
@@ -182,33 +179,32 @@ export default function PoliticaPrivacidadePage() {
                 <Heading
                   as="h2"
                   size={{ base: "md", md: "lg" }}
-                  color="gray.900"
                   fontWeight="semibold"
                 >
                   3. Como Usamos suas Informações
                 </Heading>
-                <Text color="gray.700" lineHeight="1.7">
+                <Text color="fg.muted" lineHeight="1.7">
                   Utilizamos suas informações pessoais exclusivamente para:
                 </Text>
                 <VStack gap={2} align="start" pl={4} w="full">
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Prestar serviços de consultoria em investimentos e
                     estratégia bancária
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Realizar diagnósticos financeiros personalizados
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Comunicar sobre workshops, eventos e conteúdos educativos
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Agendar e realizar sessões de consultoria
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Cumprir obrigações legais e regulamentares do setor
                     financeiro
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Responder a suas solicitações e dúvidas
                   </Text>
                 </VStack>
@@ -221,35 +217,34 @@ export default function PoliticaPrivacidadePage() {
                 <Heading
                   as="h2"
                   size={{ base: "md", md: "lg" }}
-                  color="gray.900"
                   fontWeight="semibold"
                 >
                   4. Base Legal para o Tratamento
                 </Heading>
-                <Text color="gray.700" lineHeight="1.7">
+                <Text color="fg.muted" lineHeight="1.7">
                   O tratamento de seus dados pessoais tem como base legal:
                 </Text>
                 <VStack gap={3} align="start" pl={4} w="full">
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     <Text as="span" fontWeight="medium">
                       • Consentimento:
                     </Text>{" "}
                     Para comunicações de marketing e conteúdo educativo
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     <Text as="span" fontWeight="medium">
                       • Execução de Contrato:
                     </Text>{" "}
                     Para prestação dos serviços de consultoria contratados
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     <Text as="span" fontWeight="medium">
                       • Legítimo Interesse:
                     </Text>{" "}
                     Para melhorar nossos serviços e desenvolver relacionamento
                     comercial
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     <Text as="span" fontWeight="medium">
                       • Cumprimento de Obrigação Legal:
                     </Text>
@@ -265,34 +260,33 @@ export default function PoliticaPrivacidadePage() {
                 <Heading
                   as="h2"
                   size={{ base: "md", md: "lg" }}
-                  color="gray.900"
                   fontWeight="semibold"
                 >
                   5. Compartilhamento de Informações
                 </Heading>
-                <Text color="gray.700" lineHeight="1.7">
+                <Text color="fg.muted" lineHeight="1.7">
                   Seus dados pessoais podem ser compartilhados apenas nas
                   seguintes situações:
                 </Text>
                 <VStack gap={2} align="start" pl={4} w="full">
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Com instituições financeiras parceiras, quando necessário
                     para viabilizar operações de crédito ou investimento
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Com prestadores de serviços que nos auxiliam (ex:
                     contabilidade, advocacia), sob rigoroso acordo de
                     confidencialidade
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Quando exigido por autoridades competentes ou por força de
                     lei
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Com seu consentimento expresso para situações específicas
                   </Text>
                 </VStack>
-                <Text color="gray.700" lineHeight="1.7" fontWeight="medium">
+                <Text color="fg.muted" lineHeight="1.7" fontWeight="medium">
                   Nunca vendemos ou alugamos suas informações pessoais para
                   terceiros.
                 </Text>
@@ -305,30 +299,29 @@ export default function PoliticaPrivacidadePage() {
                 <Heading
                   as="h2"
                   size={{ base: "md", md: "lg" }}
-                  color="gray.900"
                   fontWeight="semibold"
                 >
                   6. Segurança e Proteção
                 </Heading>
-                <Text color="gray.700" lineHeight="1.7">
+                <Text color="fg.muted" lineHeight="1.7">
                   Implementamos medidas técnicas e organizacionais para proteger
                   suas informações:
                 </Text>
                 <VStack gap={2} align="start" pl={4} w="full">
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Criptografia de dados sensíveis
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Acesso restrito às informações por colaboradores
                     autorizados
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Backup regular e seguro dos dados
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Monitoramento constante de segurança
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Treinamento regular da equipe sobre proteção de dados
                   </Text>
                 </VStack>
@@ -341,48 +334,47 @@ export default function PoliticaPrivacidadePage() {
                 <Heading
                   as="h2"
                   size={{ base: "md", md: "lg" }}
-                  color="gray.900"
                   fontWeight="semibold"
                 >
                   7. Seus Direitos (LGPD)
                 </Heading>
-                <Text color="gray.700" lineHeight="1.7">
+                <Text color="fg.muted" lineHeight="1.7">
                   Você tem os seguintes direitos em relação aos seus dados
                   pessoais:
                 </Text>
                 <VStack gap={3} align="start" pl={4} w="full">
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     <Text as="span" fontWeight="medium">
                       • Acesso:
                     </Text>{" "}
                     Confirmar a existência de tratamento e acessar seus dados
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     <Text as="span" fontWeight="medium">
                       • Correção:
                     </Text>{" "}
                     Corrigir dados incompletos, inexatos ou desatualizados
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     <Text as="span" fontWeight="medium">
                       • Eliminação:
                     </Text>{" "}
                     Solicitar a exclusão de dados desnecessários ou tratados em
                     desconformidade
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     <Text as="span" fontWeight="medium">
                       • Portabilidade:
                     </Text>{" "}
                     Receber uma cópia dos dados em formato estruturado
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     <Text as="span" fontWeight="medium">
                       • Oposição:
                     </Text>{" "}
                     Opor-se ao tratamento em determinadas situações
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     <Text as="span" fontWeight="medium">
                       • Revogação do Consentimento:
                     </Text>{" "}
@@ -398,27 +390,26 @@ export default function PoliticaPrivacidadePage() {
                 <Heading
                   as="h2"
                   size={{ base: "md", md: "lg" }}
-                  color="gray.900"
                   fontWeight="semibold"
                 >
                   8. Retenção de Dados
                 </Heading>
-                <Text color="gray.700" lineHeight="1.7">
+                <Text color="fg.muted" lineHeight="1.7">
                   Mantemos suas informações pessoais apenas pelo tempo
                   necessário para:
                 </Text>
                 <VStack gap={2} align="start" pl={4} w="full">
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Cumprir as finalidades para as quais foram coletadas
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Atender obrigações legais (mínimo de 5 anos para dados
                     financeiros)
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Exercer direitos em processos judiciais
                   </Text>
-                  <Text color="gray.700">
+                  <Text color="fg.muted">
                     • Manter histórico de relacionamento quando aplicável
                   </Text>
                 </VStack>
@@ -426,37 +417,32 @@ export default function PoliticaPrivacidadePage() {
 
               <Separator />
 
-
-
               {/* 10. Alterações */}
               <VStack gap={4} align="start" w="full">
                 <Heading
                   as="h2"
                   size={{ base: "md", md: "lg" }}
-                  color="gray.900"
                   fontWeight="semibold"
                 >
                   10. Alterações nesta Política
                 </Heading>
-                <Text color="gray.700" lineHeight="1.7">
+                <Text color="fg.muted" lineHeight="1.7">
                   Esta Política de Privacidade pode ser atualizada
                   periodicamente para refletir mudanças em nossas práticas ou na
                   legislação. Alterações significativas serão comunicadas por
                   e-mail ou através de nosso site.
                 </Text>
-                <Text color="gray.700" lineHeight="1.7">
+                <Text color="fg.muted" lineHeight="1.7">
                   Recomendamos que você revise esta política regularmente para
                   se manter informado sobre como protegemos suas informações.
                 </Text>
               </VStack>
 
               {/* Chamada para Ação */}
-              <Box bg="blue.50" p={6} borderRadius="md" w="full" mt={8}>
+              <Box bg="blue.subtle" p={6} borderRadius="md" w="full" mt={8}>
                 <VStack gap={4} align="center" textAlign="center">
-                  <Heading size="md" color="blue.900">
-                    Dúvidas sobre Privacidade?
-                  </Heading>
-                  <Text color="blue.800" lineHeight="1.6">
+                  <Heading size="md">Dúvidas sobre Privacidade?</Heading>
+                  <Text color="blue.fg" lineHeight="1.6">
                     Nossa equipe está disponível para esclarecer qualquer
                     questão sobre o tratamento dos seus dados pessoais.
                   </Text>
@@ -465,7 +451,7 @@ export default function PoliticaPrivacidadePage() {
                     color="blue.600"
                     fontWeight="semibold"
                     fontSize="lg"
-                    _hover={{ color: "blue.800" }}
+                    _hover={{ color: "blue.fg" }}
                   >
                     Entre em Contato
                   </Link>

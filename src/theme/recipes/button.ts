@@ -23,6 +23,7 @@ export const buttonRecipe = defineRecipe({
     transitionProperty: "common",
     transitionDuration: "moderate",
     focusVisibleRing: "outside",
+    fontFamily: "heading",
     _disabled: {
       layerStyle: "disabled",
     },

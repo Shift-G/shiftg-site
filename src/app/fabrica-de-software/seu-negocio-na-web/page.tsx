@@ -649,7 +649,7 @@ export default function WebBusinessPage() {
               key={tech.category}
               p={{ base: 6, md: 8 }}
               rounded="2xl"
-              bg="{colors.whiteAlpha.50}"
+              bg="whiteAlpha.50"
               border="1px solid {colors.whiteAlpha.200}"
             >
               <VStack align="flex-start" gap={4}>
@@ -657,7 +657,7 @@ export default function WebBusinessPage() {
                   <Box
                     p={3}
                     rounded="xl"
-                    bg="{colors.blue.500/10}"
+                    bg="blue.500/10"
                     color="blue.solid"
                   >
                     {tech.icon}
@@ -754,7 +754,7 @@ export default function WebBusinessPage() {
                 <VStack align="flex-start" gap={3} w="full">
                   {plan.features.map((feature) => (
                     <HStack key={feature} gap={3}>
-                      <CheckCircle size={20} color="{colors.blue.500}" />
+                      <CheckCircle size={20}  />
                       <Text color="fg.muted" fontSize="sm">
                         {feature}
                       </Text>
@@ -859,7 +859,7 @@ export default function WebBusinessPage() {
                   px={6}
                   py={3}
                   rounded="xl"
-                  bg="{colors.whiteAlpha.200}"
+                  bg="whiteAlpha.200"
                   backdropFilter="blur(20px)"
                   border="1px solid {colors.whiteAlpha.300}"
                 >
@@ -875,7 +875,7 @@ export default function WebBusinessPage() {
                   px={6}
                   py={3}
                   rounded="xl"
-                  bg="{colors.whiteAlpha.200}"
+                  bg="whiteAlpha.200"
                   backdropFilter="blur(20px)"
                   border="1px solid {colors.whiteAlpha.300}"
                 >
@@ -900,7 +900,6 @@ export default function WebBusinessPage() {
           </VStack>
         </Container>
       </Box>
-
       <Footer />
     </Page>
   );

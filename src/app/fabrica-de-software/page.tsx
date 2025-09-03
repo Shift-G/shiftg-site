@@ -495,13 +495,13 @@ export default function SoftwareFactoryPage() {
           <Box
             p={{ base: 6, md: 8 }}
             rounded="2xl"
-            bg="{colors.whiteAlpha.50}"
+            bg="whiteAlpha.50"
             border="1px solid {colors.whiteAlpha.200}"
             transition="all 0.3s ease"
             _hover={{
               transform: "translateY(-4px)",
-              borderColor: "{colors.blue.500/40}",
-              bg: "{colors.whiteAlpha.100}",
+              borderColor: "blue.500/40",
+              bg: "whiteAlpha.100",
             }}
           >
             <VStack align="flex-start" gap={6}>
@@ -509,7 +509,7 @@ export default function SoftwareFactoryPage() {
                 <Box
                   p={4}
                   rounded="xl"
-                  bg="{colors.blue.500/10}"
+                  bg="blue.500/10"
                   color="blue.solid"
                 >
                   <Globe size={24} />
@@ -641,8 +641,8 @@ export default function SoftwareFactoryPage() {
               key={step.step}
               p={{ base: 6, md: 8 }}
               rounded="2xl"
-              bg="{colors.whiteAlpha.50}"
-              border="1px solid {colors.whiteAlpha.200}"
+              bg="whiteAlpha.50"
+              border="1px solid whiteAlpha.200"
               position="relative"
             >
               <VStack align="flex-start" gap={4}>
@@ -779,8 +779,8 @@ export default function SoftwareFactoryPage() {
                   px={6}
                   py={3}
                   rounded="xl"
-                  bg="{colors.whiteAlpha.200}"
-                  backdropFilter="blur(20px)"
+                  bg="whiteAlpha.200"
+                  backdropFilter="blur(10px)"
                   border="1px solid {colors.whiteAlpha.300}"
                 >
                   <HStack gap={3} justify="center">
@@ -804,7 +804,6 @@ export default function SoftwareFactoryPage() {
           </VStack>
         </Container>
       </Box>
-
       <Footer />
     </Page>
   );

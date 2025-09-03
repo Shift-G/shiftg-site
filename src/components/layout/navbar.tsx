@@ -206,7 +206,7 @@ function MegaMenu({
           <VStack gap={8} align="stretch">
             {/* Header */}
             <VStack gap={2} align="flex-start">
-              <Heading size="lg" fontWeight="300" color="fg">
+              <Heading size="lg" fontWeight="600" color="fg">
                 {section.title}
               </Heading>
               <Text color="fg.muted" fontSize="md">
@@ -285,8 +285,8 @@ function MegaMenu({
               <VStack gap={3} align="stretch" pt={2}>
                 <Text
                   fontSize="sm"
-                  fontWeight="300"
-                  color="fg.muted"
+                  fontWeight="600"
+                  color="fg.subtle"
                   textTransform="uppercase"
                   letterSpacing="wide"
                 >
@@ -424,9 +424,10 @@ export function Navbar() {
                     size="sm"
                     px={4}
                     py={2}
-                    rounded="md"
-                    fontSize="sm"
-                    fontWeight="500"
+                    rounded="sm"
+                    fontSize="md"
+                    fontWeight="400"
+                    fontFamily="heading"
                     color={activeMenu === key ? "fg" : "fg.muted"}
                     bg={activeMenu === key ? "bg.muted" : "transparent"}
                     _hover={{
@@ -449,10 +450,9 @@ export function Navbar() {
 
               <Link href="#contato" passHref>
                 <Button
-                  size="sm"
                   colorPalette="blue"
-                  ml={2}
-                  fontWeight="300"
+                  fontWeight="500"
+                  size="sm"
                   variant="subtle"
                   onClick={() => setActiveMenu(null)}
                 >
