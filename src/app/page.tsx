@@ -248,34 +248,6 @@ export default function HomePage() {
           zIndex={-1}
         />
 
-        {/* Floating Elements */}
-        <Box
-          position="absolute"
-          top="20%"
-          left="10%"
-          w="150px"
-          h="150px"
-          borderRadius="full"
-          bg="{colors.blue.500/10}"
-          backdropFilter="blur(20px)"
-          border="1px solid {colors.whiteAlpha.300}"
-          animation="float 10s ease-in-out infinite"
-          zIndex={-1}
-        />
-
-        <Box
-          position="absolute"
-          bottom="10%"
-          right="15%"
-          w="100px"
-          h="100px"
-          borderRadius="2xl"
-          bg="{colors.blue.500/10}"
-          backdropFilter="blur(20px)"
-          border="1px solid {colors.whiteAlpha.300}"
-          animation="float 8s ease-in-out infinite reverse"
-          zIndex={-1}
-        />
 
         <Container maxW="5xl">
           <VStack gap={{ base: 8, md: 12 }} textAlign="center">

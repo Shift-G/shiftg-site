@@ -73,7 +73,7 @@ export function Hero() {
             <Heading
               as="h1"
               size={{ base: "4xl", md: "5xl", lg: "6xl" }}
-              fontWeight="900"
+              fontWeight="400"
               lineHeight="none"
               letterSpacing="tight"
               color="fg"

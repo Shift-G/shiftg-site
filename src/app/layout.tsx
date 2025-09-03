@@ -1,14 +1,14 @@
 import { Provider } from "@/components/ui/provider";
-import { Poppins } from "next/font/google";
 import type { Metadata } from "next";
-import { SITE_NAME, SITE_URL, SITE_EMAIL, INSTAGRAM_URL, SITE_CITY, SITE_COUNTRY, SITE_STATE } from "@/constants";
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-  preload: true,
-});
+import {
+  SITE_NAME,
+  SITE_URL,
+  SITE_EMAIL,
+  INSTAGRAM_URL,
+  SITE_CITY,
+  SITE_COUNTRY,
+  SITE_STATE,
+} from "@/constants";
 import { Toaster } from "@/components/ui/toaster";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
@@ -87,38 +87,45 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
+        <link rel="preconnect" href="//fonts.googleapis.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Rubik:wght&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght&display=swap"
+          rel="stylesheet"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": `${SITE_NAME} AI & Data`,
-              "alternateName": SITE_NAME,
-              "url": SITE_URL,
-              "logo": `${SITE_URL}/apple-icon.png`,
-              "description": "Desenvolvemos soluções de software que transformam dados complexos em decisões estratégicas, entregando autonomia e eficiência para sua empresa.",
-              "contactPoint": {
+              name: `${SITE_NAME} AI & Data`,
+              alternateName: SITE_NAME,
+              url: SITE_URL,
+              logo: `${SITE_URL}/apple-icon.png`,
+              description:
+                "Desenvolvemos soluções de software que transformam dados complexos em decisões estratégicas, entregando autonomia e eficiência para sua empresa.",
+              contactPoint: {
                 "@type": "ContactPoint",
-                "email": SITE_EMAIL,
-                "contactType": "customer service",
-                "availableLanguage": "Portuguese"
+                email: SITE_EMAIL,
+                contactType: "customer service",
+                availableLanguage: "Portuguese",
               },
-              "sameAs": [
-                "https://linkedin.com/company/shiftg",
-                INSTAGRAM_URL
-              ],
-              "address": {
+              sameAs: ["https://linkedin.com/company/shiftg", INSTAGRAM_URL],
+              address: {
                 "@type": "PostalAddress",
-                "addressLocality": SITE_CITY,
-                "addressRegion": SITE_STATE,
-                "addressCountry": SITE_COUNTRY
-              }
-            })
+                addressLocality: SITE_CITY,
+                addressRegion: SITE_STATE,
+                addressCountry: SITE_COUNTRY,
+              },
+            }),
           }}
         />
       </head>
-      <body className={poppins.className} suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <Provider>
           <Toaster />
           {children}
