@@ -17,15 +17,15 @@ import { SITE_NAME, SITE_EMAIL } from "@/constants";
 
 export const metadata: Metadata = {
   title:
-    "Política de Privacidade | Harrison L. Lucetti - Consultoria Financeira",
+    "Política de Privacidade | Shift+G",
   description:
-    "Conheça nossa política de privacidade e como protegemos seus dados pessoais em nossa consultoria financeira especializada em investimentos e crédito empresarial.",
+    "Conheça nossa política de privacidade e como protegemos seus dados pessoais em nossos serviços de desenvolvimento de software, automações inteligentes e inteligência artificial.",
   keywords:
-    "política de privacidade, LGPD, proteção de dados, consultoria financeira, Harrison Lucetti",
+    "política de privacidade, LGPD, proteção de dados, desenvolvimento de software, automação, inteligência artificial, Shift+G",
   openGraph: {
-    title: "Política de Privacidade | Harrison L. Lucetti",
+    title: "Política de Privacidade | Shift+G",
     description:
-      "Transparência e segurança no tratamento dos seus dados pessoais.",
+      "Transparência e segurança no tratamento dos seus dados pessoais em nossos serviços de tecnologia e automação.",
     type: "website",
     locale: "pt_BR",
   },
@@ -110,11 +110,12 @@ export default function PoliticaPrivacidadePage() {
                   1. Introdução
                 </Heading>
                 <Text color="fg.muted" lineHeight="1.7">
-                  A Harrison L. Lucetti Consultoria Financeira valoriza e
+                  A Shift+G valoriza e
                   respeita sua privacidade. Esta Política de Privacidade
                   descreve como coletamos, usamos, armazenamos e protegemos suas
                   informações pessoais quando você utiliza nossos serviços de
-                  consultoria em investimentos, crédito e estratégia bancária.
+                  desenvolvimento de software, automações inteligentes, analytics
+                  e inteligência artificial.
                 </Text>
                 <Text color="fg.muted" lineHeight="1.7">
                   Esta política está em conformidade com a Lei Geral de Proteção
@@ -136,7 +137,7 @@ export default function PoliticaPrivacidadePage() {
                 </Heading>
                 <Text color="fg.muted" lineHeight="1.7">
                   Coletamos apenas as informações necessárias para prestar
-                  nossos serviços de consultoria financeira:
+                  nossos serviços de desenvolvimento de software e tecnologia:
                 </Text>
                 <VStack gap={3} align="start" pl={4} w="full">
                   <Text color="fg.muted">
@@ -155,14 +156,14 @@ export default function PoliticaPrivacidadePage() {
                     <Text as="span" fontWeight="medium">
                       • Dados Profissionais:
                     </Text>{" "}
-                    Empresa, cargo, setor de atuação, receita aproximada
+                    Empresa, cargo, setor de atuação, necessidades tecnológicas
                   </Text>
                   <Text color="fg.muted">
                     <Text as="span" fontWeight="medium">
-                      • Dados Financeiros:
+                      • Dados de Projeto:
                     </Text>{" "}
-                    Informações sobre patrimônio, investimentos e necessidades
-                    de crédito (quando relevante para a consultoria)
+                    Requisitos técnicos, escopo do projeto, informações sobre
+                    sistemas existentes (quando relevante para o desenvolvimento)
                   </Text>
                 </VStack>
                 <Text color="fg.muted" lineHeight="1.7" fontWeight="medium">
@@ -188,24 +189,25 @@ export default function PoliticaPrivacidadePage() {
                 </Text>
                 <VStack gap={2} align="start" pl={4} w="full">
                   <Text color="fg.muted">
-                    • Prestar serviços de consultoria em investimentos e
-                    estratégia bancária
+                    • Desenvolver software personalizado e automações inteligentes
                   </Text>
                   <Text color="fg.muted">
-                    • Realizar diagnósticos financeiros personalizados
+                    • Criar soluções de analytics e inteligência artificial
                   </Text>
                   <Text color="fg.muted">
-                    • Comunicar sobre workshops, eventos e conteúdos educativos
+                    • Comunicar sobre projetos, atualizações e conteúdos técnicos
                   </Text>
                   <Text color="fg.muted">
-                    • Agendar e realizar sessões de consultoria
+                    • Agendar e realizar reuniões de projeto e consultoria técnica
                   </Text>
                   <Text color="fg.muted">
-                    • Cumprir obrigações legais e regulamentares do setor
-                    financeiro
+                    • Cumprir obrigações legais e contratuais de desenvolvimento
                   </Text>
                   <Text color="fg.muted">
-                    • Responder a suas solicitações e dúvidas
+                    • Responder a suas solicitações e dúvidas técnicas
+                  </Text>
+                  <Text color="fg.muted">
+                    • Fornecer suporte técnico e manutenção de sistemas
                   </Text>
                 </VStack>
               </VStack>
@@ -229,13 +231,13 @@ export default function PoliticaPrivacidadePage() {
                     <Text as="span" fontWeight="medium">
                       • Consentimento:
                     </Text>{" "}
-                    Para comunicações de marketing e conteúdo educativo
+                    Para comunicações de marketing e conteúdo técnico
                   </Text>
                   <Text color="fg.muted">
                     <Text as="span" fontWeight="medium">
                       • Execução de Contrato:
                     </Text>{" "}
-                    Para prestação dos serviços de consultoria contratados
+                    Para desenvolvimento e entrega dos projetos de software contratados
                   </Text>
                   <Text color="fg.muted">
                     <Text as="span" fontWeight="medium">
@@ -270,13 +272,17 @@ export default function PoliticaPrivacidadePage() {
                 </Text>
                 <VStack gap={2} align="start" pl={4} w="full">
                   <Text color="fg.muted">
-                    • Com instituições financeiras parceiras, quando necessário
-                    para viabilizar operações de crédito ou investimento
+                    • Com fornecedores de tecnologia e infraestrutura (ex: AWS, Google Cloud)
+                    necessários para hospedar e operar os sistemas desenvolvidos
                   </Text>
                   <Text color="fg.muted">
                     • Com prestadores de serviços que nos auxiliam (ex:
                     contabilidade, advocacia), sob rigoroso acordo de
                     confidencialidade
+                  </Text>
+                  <Text color="fg.muted">
+                    • Com parceiros técnicos especializados quando necessário para
+                    o desenvolvimento de funcionalidades específicas
                   </Text>
                   <Text color="fg.muted">
                     • Quando exigido por autoridades competentes ou por força de
@@ -309,20 +315,23 @@ export default function PoliticaPrivacidadePage() {
                 </Text>
                 <VStack gap={2} align="start" pl={4} w="full">
                   <Text color="fg.muted">
-                    • Criptografia de dados sensíveis
+                    • Criptografia de dados sensíveis em trânsito e em repouso
                   </Text>
                   <Text color="fg.muted">
                     • Acesso restrito às informações por colaboradores
-                    autorizados
+                    autorizados com autenticação multifator
                   </Text>
                   <Text color="fg.muted">
-                    • Backup regular e seguro dos dados
+                    • Backup regular e seguro dos dados em ambiente protegido
                   </Text>
                   <Text color="fg.muted">
-                    • Monitoramento constante de segurança
+                    • Monitoramento constante de segurança e logs de auditoria
                   </Text>
                   <Text color="fg.muted">
-                    • Treinamento regular da equipe sobre proteção de dados
+                    • Infraestrutura em nuvem com certificações de segurança
+                  </Text>
+                  <Text color="fg.muted">
+                    • Treinamento regular da equipe sobre proteção de dados e segurança
                   </Text>
                 </VStack>
               </VStack>
@@ -403,14 +412,17 @@ export default function PoliticaPrivacidadePage() {
                     • Cumprir as finalidades para as quais foram coletadas
                   </Text>
                   <Text color="fg.muted">
-                    • Atender obrigações legais (mínimo de 5 anos para dados
-                    financeiros)
+                    • Atender obrigações legais e contratuais (mínimo de 5 anos para
+                    documentos contratuais)
                   </Text>
                   <Text color="fg.muted">
                     • Exercer direitos em processos judiciais
                   </Text>
                   <Text color="fg.muted">
-                    • Manter histórico de relacionamento quando aplicável
+                    • Manter histórico de projetos para suporte técnico
+                  </Text>
+                  <Text color="fg.muted">
+                    • Garantir continuidade do suporte e manutenção dos sistemas
                   </Text>
                 </VStack>
               </VStack>

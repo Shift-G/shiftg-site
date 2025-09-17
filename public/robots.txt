@@ -16,4 +16,4 @@ Allow: /
 # Crawl delay
 Crawl-delay: 1
 
-Sitemap: https://harrisonassessoria.com.br/sitemap.xml
+Sitemap: https://shiftg.com.br/sitemap.xml
