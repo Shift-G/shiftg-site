@@ -91,8 +91,8 @@ export function Section({
       <Container maxW="7xl" position="relative" zIndex={1}>
         {(title || subtitle) && (
           <VStack
-            gap={{ base: 4, md: 6 }}
-            mb={{ base: 10, md: 16 }}
+            gap={{ base: 4, md: 0 }}
+            mb={{ base: 4, md: 12 }}
             textAlign={centered ? "center" : "left"}
             alignItems={centered ? "center" : "flex-start"}
             maxW={centered ? "4xl" : "full"}

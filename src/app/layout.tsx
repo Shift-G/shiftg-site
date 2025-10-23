@@ -11,6 +11,9 @@ import {
 } from "@/constants";
 import { Toaster } from "@/components/ui/toaster";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

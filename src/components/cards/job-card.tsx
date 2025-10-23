@@ -126,7 +126,7 @@ export function JobCard({
             <List.Root gap={2}>
               {requirements.map((req, idx) => (
                 <ListItem key={idx} color="fg.muted" fontSize="sm">
-                  • {req}
+                  {req}
                 </ListItem>
               ))}
             </List.Root>
@@ -139,7 +139,7 @@ export function JobCard({
             <List.Root gap={2}>
               {responsibilities.map((resp, idx) => (
                 <ListItem key={idx} color="fg.muted" fontSize="sm">
-                  • {resp}
+                  {resp}
                 </ListItem>
               ))}
             </List.Root>

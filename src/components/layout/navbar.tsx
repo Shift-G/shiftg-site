@@ -36,6 +36,7 @@ import {
   Target,
   FileText,
   ChevronRight,
+  Shield,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -76,12 +77,20 @@ const menuSections: Record<string, MenuSection> = {
         badgeColor: "blue",
       },
       {
+        icon: <Shield size={20} />,
+        title: "Sentinela",
+        description: "Vigilância operacional inteligente para DP",
+        href: "/sentinela",
+        badge: "Novo",
+        badgeColor: "green",
+      },
+      {
         icon: <Rocket size={20} />,
         title: "Fábrica de Software",
         description: "Software sob medida para sua operação",
         href: "/fabrica-de-software",
-        badge: "Novo",
-        badgeColor: "green",
+        badge: null,
+        badgeColor: null,
       },
       {
         icon: <TrendingUp size={20} />,
@@ -191,7 +200,7 @@ function MegaMenu({
     <Portal>
       <Box
         position="fixed"
-        top="84px"
+        top="80px"
         left={0}
         right={0}
         bg="bg.subtle"
@@ -202,7 +211,7 @@ function MegaMenu({
         py={8}
         onMouseLeave={onClose}
       >
-        <Container>
+        <Container maxW="7xl">
           <VStack gap={8} align="stretch">
             {/* Header */}
             <VStack gap={2} align="flex-start">

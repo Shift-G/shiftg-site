@@ -1,7 +1,7 @@
 export const SITE_NAME = "SHIFT+G";
 export const SITE_URL = "https://shiftg.com.br";
 export const SITE_EMAIL = "contato@shiftg.com.br";
-export const SITE_PHONE = "+55 (42) 98889 4010";
+export const SITE_PHONE = "+55 (42) 98872 2552";
 export const SITE_ADDRESS = "Curitiba, Paraná, Brasil";
 export const SITE_CITY = "Curitiba";
 export const SITE_STATE = "PR";
