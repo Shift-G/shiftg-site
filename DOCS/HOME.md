@@ -1,123 +1,140 @@
-A linguagem é estratégica, focada em benefícios de negócio (autonomia, eficiência, inteligência) e posiciona a Shift+G como uma parceira estratégica, não apenas uma fornecedora de tecnologia.
+# **HOME**
+
+## **HERO (hero final aplicado)**
+
+**Inteligência, eficiência e visão — aplicadas ao que realmente importa.**
+
+**Estratégia, IA e arquitetura para elevar eficiência, escala e competitividade.**
+
+**CTA principal:**
+**Agendar uma consulta executiva**
 
 ---
 
-### **Estrutura do Site e Copy**
+# **SEÇÃO: O QUE FAZEMOS**
 
-#### **1. Seção Principal (Hero Section)**
+**Transformamos operações, processos e decisões com inteligência aplicada.**
 
-* **Título Principal (H1):**
-    # **Inteligência Artificial e Dados, sob medida para sua liderança.**
-
-* **Subtítulo:**
-    > Desenvolvemos soluções de software que transformam dados complexos em decisões estratégicas, entregando autonomia e eficiência para sua empresa.
-
-* **Call-to-Action (Botão Principal):**
-    > `Fale com um especialista`
-
-* **Frase de Apoio (abaixo do botão):**
-    > Vamos desenhar a solução ideal para o seu desafio de negócio.
+A Shift+G ajuda líderes a operar com mais clareza, eficiência e escala.
+Aplicamos arquitetura, automação e IA para reduzir esforço, eliminar gargalos e criar vantagem competitiva sustentável.
 
 ---
 
-#### **2. Seção de Problemas (A Dor do Cliente)**
+# **SEÇÃO: SERVIÇOS**
 
-* **Título (H2):**
-    ## **Sua operação está presa em processos manuais e dados que não conversam entre si?**
+## **Consultoria Estratégica de Tecnologia**
 
-* **Introdução:**
-    > C-levels e gestores de áreas como RH e Operações perdem um tempo precioso tentando extrair valor de planilhas complexas, sistemas legados e fornecedores engessados. A falta de autonomia e a lentidão nos processos não são apenas frustrantes — elas custam caro.
+Diagnóstico, arquitetura e direcionamento estratégico para empresas que precisam evoluir com método e impacto.
+Clareza para decidir. Estrutura para crescer.
 
-* **Tópicos (usar ícones para cada um):**
-    * **Silos de Informação:** Dados de pessoas, finanças e operações estão espalhados, impedindo uma visão 360º do negócio.
-    * **Baixa Autonomia:** As equipes dependem de processos manuais ou de TI para tarefas que poderiam ser automatizadas.
-    * **Decisões Lentas:** A dificuldade em consolidar e analisar dados atrasa decisões críticas.
-    * **Ferramentas Genéricas:** Soluções de prateleira não atendem às particularidades da sua empresa, gerando mais adaptações do que soluções.
+## **IA Aplicada ao Negócio**
 
----
+Automação de processos críticos, fluxos inteligentes, modelos preditivos e ferramentas que elevam a maturidade tecnológica.
+IA prática, eficiente e orientada a resultado.
 
-#### **3. Seção da Solução (Apresentando a Shift+G)**
+## **Soluções Sob Medida**
 
-* **Título (H2):**
-    ## **A parceria estratégica para sua transformação digital.**
+Arquitetura e implementação de soluções corporativas para desafios específicos.
+Tecnologia desenhada para resolver problemas reais — com baixo atrito cultural e alta adaptação.
 
-* **Texto Principal:**
-    > A Shift+G não é apenas uma fábrica de software. Somos seus parceiros na jornada de dados e IA. Construímos ferramentas sob medida que se integram perfeitamente aos seus processos, capacitando suas equipes com a inteligência e a autonomia necessárias para escalar.
+## **Treinamentos In Company de IA**
 
-* **Nossos Pilares (dividir em duas colunas):**
+Programas executivos e operacionais para capacitar líderes e equipes a extrair o máximo da inteligência artificial.
+Formação sob medida, com conteúdos aplicáveis no dia a dia.
 
-    * **Coluna 1: Dados & Inteligência Artificial**
-        * **Título:** Inteligência que gera valor.
-        * **Descrição:** Transformamos seus dados brutos em ativos estratégicos. Desde a estruturação e governança até a implementação de modelos preditivos e dashboards interativos, entregamos os insights que sua liderança precisa para antecipar cenários e agir com confiança.
+## **Produtos de Alta Performance**
 
-    * **Coluna 2: Soluções de Software Sob Medida**
-        * **Título:** Tecnologia que resolve.
-        * **Descrição:** Desenvolvemos sistemas, automações e ferramentas internas que eliminam gargalos operacionais. Seja para RH, Financeiro ou Operações, criamos aplicações escaláveis em nuvem que se conectam aos seus sistemas (ERP, CRM) e otimizam o dia a dia da sua equipe.
-
-* **Call-to-Action (Botão Secundário):**
-    > `Conheça nossas soluções`
+Ferramentas inteligentes criadas para acelerar processos, reduzir custos e fortalecer decisões.
 
 ---
 
-#### **4. Seção "Para Quem" (Foco no Público-Alvo)**
+# **SEÇÃO: PRODUTOS (slider)**
 
-* **Título (H2):**
-    ## **Para líderes que buscam mais que tecnologia: buscam resultados.**
+**Soluções que entregam eficiência imediata.**
 
-* **Texto:**
-    > Falamos a língua do negócio. Entendemos a pressão por eficiência, a necessidade de melhorar a experiência do colaborador e o desafio de transformar dados em um diferencial competitivo.
+### **ACP — People Analytics Inteligente**
 
-* **Público-Alvo em Destaque:**
-    * **C-Levels (CEO, COO, CFO):** Buscando eficiência operacional, redução de custos e uma base de dados sólida para decisões estratégicas de alto impacto.
-    * **Diretores e Gestores de RH:** Enfrentando desafios em People Analytics, automação de processos de folha, recrutamento inteligente e melhoria do engajamento.
-    * **Líderes de Operações:** Precisando de ferramentas personalizadas para otimizar fluxos de trabalho, integrar sistemas e ganhar agilidade.
+Transforma dados de pessoas em decisões claras, preditivas e estratégicas.
 
----
+### **SaaS para Sindicatos com IA Integrada**
 
-#### **5. Seção de Diferenciais (Por que a Shift+G?)**
+Atendimento inteligente, automação e eficiência operacional — tudo em um único ambiente.
 
-* **Título (H2):**
-    ## **O que nos torna diferentes?**
+### **Sentinela — RHaaS de Alta Eficiência**
 
-* **Tópicos (em formato de cards ou colunas):**
-
-    * **1. Sob Medida, Não Genérico**
-        > Nossas soluções são desenhadas para a sua realidade. Não acreditamos em "tamanho único". Entendemos seus processos, sua cultura e seus desafios para construir algo que realmente funcione.
-
-    * **2. Parceiro Estratégico, Não Apenas Fornecedor**
-        > Nos envolvemos com seu negócio para entender o "porquê" por trás da tecnologia. Nosso objetivo é o seu sucesso, entregando soluções que elevam a maturidade digital da sua empresa.
-
-    * **3. Inteligência Real, Não Apenas Relatórios**
-        > Vamos além dos dashboards. Aplicamos IA para descobrir padrões, prever tendências (como turnover de funcionários) e automatizar tarefas complexas, transformando dados em ações inteligentes.
-
-    * **4. Agilidade e Escalabilidade**
-        > Entregamos valor em ciclos rápidos e construímos sistemas robustos, preparados para crescer junto com a sua empresa, sem amarras tecnológicas.
+Terceirização inteligente que substitui até 90% do RH/DP.
+Escala, controle e previsibilidade.
 
 ---
 
-#### **6. Seção de Casos de Uso (Exemplos Práticos)**
+# **SEÇÃO NOVA: COMO A SHIFT+G PENSA TECNOLOGIA**
 
-* **Título (H2):**
-    ## **Da visão à realidade: IA e Dados aplicados ao seu negócio.**
+**Tecnologia não é ferramenta. É arquitetura de futuro.**
 
-* **Exemplos (em formato de carrossel ou cards):**
-    * **People Analytics Preditivo:** "Reduza a rotatividade prevendo quais colaboradores têm maior risco de sair e entenda os fatores de engajamento da sua equipe com dashboards inteligentes."
-    * **Automação para RH e Financeiro:** "Automatize o processo de recrutamento, a gestão de benefícios ou a conciliação da folha de pagamento, liberando seu time para atividades estratégicas."
-    * **Chatbots Internos Inteligentes:** "Crie um assistente virtual para responder dúvidas frequentes de colaboradores, agilizar o onboarding e melhorar a comunicação interna 24/7."
-    * **Plataformas de Gestão Customizadas:** "Desenvolva uma ferramenta de avaliação de desempenho, gestão de metas (OKRs) ou controle de projetos totalmente alinhada à cultura da sua empresa."
+Na Shift+G, tecnologia não começa pelo código — começa pela estratégia.
+Enxergamos processos, cultura, riscos e metas antes de qualquer solução.
+Cada entrega existe para ampliar eficiência, maturidade e competitividade.
+
+* Compreender o negócio antes da tecnologia
+* Transformar dados dispersos em clareza executiva
+* Automatizar o que trava o crescimento
+* Criar soluções que conversam entre si
+* Reduzir riscos e aumentar previsibilidade
+
+**Entregamos tecnologia que faz sentido, funciona e gera impacto real.**
 
 ---
 
-#### **7. Seção Final de Chamada para Ação (CTA Final)**
+# **SEÇÃO: COMO TRABALHAMOS**
 
-* **Título (H1 ou H2 bem grande):**
-    ## **Pronto para transformar seus dados em seu maior ativo?**
+**Método preciso. Impacto mensurável.**
 
-* **Texto de Apoio:**
-    > Vamos agendar uma conversa sem compromisso. Queremos entender seus desafios e mostrar como a tecnologia sob medida da Shift+G pode destravar o potencial da sua operação.
+* Imersão estratégica na operação
+* Análise profunda de processos
+* Arquitetura sob medida
+* IA aplicada com propósito
+* Automação de fluxos críticos
+* Entrega contínua e acompanhamento executivo
 
-* **Botão Principal:**
-    > `Agende uma demonstração gratuita`
+Trabalhamos como uma extensão da sua liderança — com responsabilidade total pelo resultado.
 
-* **Contato Alternativo:**
-    > Ou, se preferir, envie um e-mail para **contato@shiftg.com.br**
+---
+
+# **SEÇÃO: SOBRE A SHIFT+G**
+
+**Consultoria para empresas que precisam ir além.**
+
+A Shift+G nasceu para elevar a maturidade tecnológica de empresas e instituições que operam com complexidade.
+Unimos estratégia, arquitetura e IA para criar eficiência profunda e decisões mais inteligentes.
+
+---
+
+# **SEÇÃO: LIDERANÇA**
+
+**A inteligência ao centro da tecnologia.**
+
+### **William Novak — Fundador e Diretor de Arquitetura e Inteligência**
+
+Especialista em IA, arquitetura e engenharia.
+Experiência internacional e atuação em operações críticas.
+
+### **Fabio Roiek — Co-founder e Diretor Executivo**
+
+Governança, estratégia e relacionamento de alto nível.
+Conexões que abrem portas e aceleram decisões.
+
+---
+
+# **CHAMADO FINAL**
+
+**Quando sua empresa estiver pronta para operar em outro nível, estamos prontos para conduzir.**
+
+**Agendar uma consulta executiva**
+
+---
+
+# **FOOTER**
+
+Shift+G • Consultoria Estratégica de Tecnologia
+IA Aplicada • Arquitetura • Soluções Sob Medida • Treinamentos • Produtos
+© Shift+G

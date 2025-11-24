@@ -8,7 +8,7 @@ export const fonts = defineTokens.fonts({
   },
 
   body: {
-    value: `"Inter", ${fallback}`,
+    value: `"DM Sans", ${fallback}`,
   },
 
   mono: {

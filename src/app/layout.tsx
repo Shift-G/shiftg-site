@@ -15,6 +15,24 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
+import "@fontsource/rubik/300.css";
+import "@fontsource/rubik/400.css";
+import "@fontsource/rubik/500.css";
+import "@fontsource/rubik/600.css";
+import "@fontsource/rubik/700.css";
+import "@fontsource/rubik/800.css";
+import "@fontsource/rubik/900.css";
+
+import "@fontsource/dm-sans/100.css";
+import "@fontsource/dm-sans/200.css";
+import "@fontsource/dm-sans/300.css";
+import "@fontsource/dm-sans/400.css";
+import "@fontsource/dm-sans/500.css";
+import "@fontsource/dm-sans/600.css";
+import "@fontsource/dm-sans/700.css";
+import "@fontsource/dm-sans/800.css";
+import "@fontsource/dm-sans/900.css";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -90,15 +108,6 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
-        <link rel="preconnect" href="//fonts.googleapis.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Rubik:wght&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght&display=swap"
-          rel="stylesheet"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
