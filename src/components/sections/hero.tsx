@@ -8,12 +8,14 @@ export function Hero() {
   return (
     <Box
       as="section"
-      minH="100vh"
+      w={{ base: "full", md: "98dvw" }}
+      mx={{ base: 0, md: "1dvw" }}
+      rounded="3xl"
+      minH={{ base: "auto", md: "80vh" }}
       position="relative"
       display="flex"
       alignItems="center"
-      bg="white"
-      _dark={{ bg: "gray.900" }}
+      bg={{ base: "white", md: "gray.100" }}
       overflow="hidden"
     >
       {/* Background Pattern */}
@@ -22,21 +24,23 @@ export function Hero() {
         inset={0}
         zIndex={0}
         opacity={0.5}
-        backgroundImage="radial-gradient(circle at 60% 40%, {colors.blue.500/30} 0%, transparent 50%)"
+        backgroundImage="radial-gradient(circle at 60% 0%, {colors.blue.500} 0%, transparent 50%)"
         backgroundSize="100% 100%"
+        hideBelow="sm"
       />
       <Box
         position="absolute"
         inset={0}
         zIndex={0}
-        opacity={0.2}
-        backgroundImage="radial-gradient(circle at 50% 50%, {colors.blue.300} 1px, transparent 1px)"
-        backgroundSize="32px 32px"
+        opacity={.1}
+        backgroundImage="radial-gradient(circle at 25% 25%, {colors.gray.900} 1px, transparent 1px)"
+        backgroundSize="24px 24px"
         maskImage="linear-gradient(to bottom, black 40%, transparent 100%)"
+        hideBelow="sm"
       />
 
       <Container maxW="7xl" position="relative" zIndex={1} py={{ base: 20, md: 0 }}>
-        <VStack gap={{ base: 8, md: 10 }} maxW="5xl" mx="auto" align={{ base: "center", md: "center" }} textAlign={{ base: "center", md: "center" }}>
+        <VStack gap={{ base: 8, md: 10 }} maxW="full" mx="auto" align={{ base: "center", md: "flex-start" }} textAlign="left">
           {/* Badge */}
           <Badge
             colorPalette="blue"
@@ -47,11 +51,10 @@ export function Hero() {
             fontWeight="medium"
             letterSpacing="wide"
             textTransform="none"
-            bg="blue.50"
-            color="blue.700"
+            bg="blue.50/20"
+            color="blue.600"
             border="1px solid"
-            borderColor="blue.100"
-            _dark={{ bg: "blue.900/20", color: "blue.200", borderColor: "blue.800" }}
+            borderColor="blue.600/20"
             backdropFilter="blur(8px)"
           >
             Consultoria Especializada em Inteligência Artificial
@@ -63,11 +66,10 @@ export function Hero() {
             size={{ base: "5xl", md: "6xl", lg: "7xl" }}
             fontWeight="600"
             letterSpacing="-0.04em"
-            lineHeight="0.9"
-            color="fg"
+            lineHeight=".8"
           >
-            Inteligência, eficiência e visão{" "}
-            <Text as="span" color="blue.600" _dark={{ color: "blue.400" }}>
+            Inteligência, eficiência e visão<br />
+            <Text as="span" fontWeight="400" fontSize={{ base: "3xl", md: "3xl", lg: "6xl" }} color="blue.500">
               — aplicadas ao que realmente importa.
             </Text>
           </Heading>
@@ -75,7 +77,6 @@ export function Hero() {
           {/* Subtitle */}
           <Text
             fontSize={{ base: "xl", md: "2xl" }}
-            color="fg.muted"
             maxW="3xl"
             lineHeight="1.6"
             fontWeight="medium"

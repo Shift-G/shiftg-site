@@ -72,6 +72,7 @@ function ProductCard({ product }: { product: Product }) {
           {product.image ? (
             <Box
               as="img"
+              // @ts-ignore
               src={product.image}
               alt={product.title}
               w="full"
