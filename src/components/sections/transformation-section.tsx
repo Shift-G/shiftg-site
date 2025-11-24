@@ -75,23 +75,23 @@ export function TransformationSection() {
             />
 
             <Container maxW="7xl" position="relative" zIndex={1} py={{ base: 20, md: 0 }}>
-                <Flex direction={{ base: "column", lg: "row" }} align="center" justify="space-between" gap={16}>
+                <Flex direction={{ base: "column", lg: "row" }} align="center" justify="space-between" gap={{ base: 12, lg: 20 }}>
                     {/* Text Content */}
                     <VStack align={{ base: "center", lg: "start" }} textAlign={{ base: "center", lg: "left" }} maxW="lg" gap={6}>
                         <Heading
                             as="h2"
-                            size={{ base: "4xl", md: "5xl" }}
+                            size={{ base: "4xl", md: "5xl", lg: "7xl" }}
                             fontWeight="bold"
                             color="white"
-                            letterSpacing="-0.02em"
-                            lineHeight="1.1"
+                            letterSpacing="-0.03em"
+                            lineHeight="1.05"
                         >
                             Do caos operacional à <br />
                             <Text as="span" color="blue.200">
                                 clareza estratégica.
                             </Text>
                         </Heading>
-                        <Text fontSize="xl" color="blue.100" lineHeight="tall">
+                        <Text fontSize="xl" color="blue.100" lineHeight="1.6" fontWeight="medium">
                             Transformamos dados dispersos, processos manuais e complexidade em um sistema inteligente que impulsiona
                             decisões.
                         </Text>
@@ -101,14 +101,14 @@ export function TransformationSection() {
                     <Box
                         ref={containerRef}
                         w={{ base: "100%", md: "700px" }}
-                        h="400px"
+                        h="450px"
                         position="relative"
                         display="flex"
                         alignItems="center"
                         justifyContent="center"
                     >
                         {/* Left Side: Chaos Inputs */}
-                        <Flex direction="column" position="absolute" left="0" gap={4} justify="center" h="100%">
+                        <Flex direction="column" position="absolute" left={{ base: 0, md: 4 }} gap={6} justify="center" h="100%">
                             <Circle ref={icon1Ref}>
                                 <Database size={20} />
                             </Circle>
@@ -133,26 +133,55 @@ export function TransformationSection() {
                             zIndex={10}
                             gap={2}
                             textAlign="center"
-                            px={8}
-                            py={6}
+                            px={0}
+                            py={4}
                             bg="whiteAlpha.100"
                             rounded="2xl"
-                            border="2px solid"
+                            border="1px solid"
                             borderColor="whiteAlpha.300"
-                            backdropFilter="blur(10px)"
+                            backdropFilter="blur(12px)"
+                            shadow="xl"
                         >
                             <Heading as="h3" size="xl" color="white" fontWeight="bold" letterSpacing="tight">
                                 Nossa Solução
                             </Heading>
-                            <Text color="blue.100" fontSize="sm" maxW="200px">
+                            <Text color="blue.100" fontSize="md" maxW="220px" lineHeight="short">
                                 Inteligência aplicada a processos críticos
                             </Text>
                         </VStack>
 
                         {/* Right Side: Order Outputs */}
-                        <Flex direction="column" position="absolute" right="0" gap={8} justify="center" h="100%">
-                            <Box ref={output1Ref} w={3} h={3} rounded="full" bg="white" opacity={0.8} />
-                            <Box ref={output2Ref} w={3} h={3} rounded="full" bg="white" opacity={0.8} />
+                        <Flex direction="column" position="absolute" right={{ base: 0, md: 4 }} gap={12} justify="center" h="100%">
+                            <Box
+                                ref={output1Ref}
+                                px={5}
+                                py={3}
+                                bg="white"
+                                color="blue.600"
+                                rounded="xl"
+                                fontWeight="bold"
+                                shadow="lg"
+                                display="flex"
+                                alignItems="center"
+                                gap={2}
+                            >
+                                <Text>Eficiência</Text>
+                            </Box>
+                            <Box
+                                ref={output2Ref}
+                                px={5}
+                                py={3}
+                                bg="white"
+                                color="blue.600"
+                                rounded="xl"
+                                fontWeight="bold"
+                                shadow="lg"
+                                display="flex"
+                                alignItems="center"
+                                gap={2}
+                            >
+                                <Text>Escala</Text>
+                            </Box>
                         </Flex>
 
                         {/* Animated Beams - Chaos to Center */}
@@ -160,9 +189,9 @@ export function TransformationSection() {
                             containerRef={containerRef}
                             fromRef={icon1Ref}
                             toRef={centerRef}
-                            pathColor="rgba(255,255,255,0.2)"
+                            pathColor="rgba(255,255,255,0.1)"
                             gradientStartColor="#ffffff"
-                            gradientStopColor="#60a5fa"
+                            gradientStopColor="#93c5fd"
                             delay={0}
                             duration={3}
                         />
@@ -170,9 +199,9 @@ export function TransformationSection() {
                             containerRef={containerRef}
                             fromRef={icon2Ref}
                             toRef={centerRef}
-                            pathColor="rgba(255,255,255,0.2)"
+                            pathColor="rgba(255,255,255,0.1)"
                             gradientStartColor="#ffffff"
-                            gradientStopColor="#60a5fa"
+                            gradientStopColor="#93c5fd"
                             delay={0.4}
                             duration={3}
                         />
@@ -180,9 +209,9 @@ export function TransformationSection() {
                             containerRef={containerRef}
                             fromRef={icon3Ref}
                             toRef={centerRef}
-                            pathColor="rgba(255,255,255,0.2)"
+                            pathColor="rgba(255,255,255,0.1)"
                             gradientStartColor="#ffffff"
-                            gradientStopColor="#60a5fa"
+                            gradientStopColor="#93c5fd"
                             delay={0.8}
                             duration={3}
                         />
@@ -190,9 +219,9 @@ export function TransformationSection() {
                             containerRef={containerRef}
                             fromRef={icon4Ref}
                             toRef={centerRef}
-                            pathColor="rgba(255,255,255,0.2)"
+                            pathColor="rgba(255,255,255,0.1)"
                             gradientStartColor="#ffffff"
-                            gradientStopColor="#60a5fa"
+                            gradientStopColor="#93c5fd"
                             delay={1.2}
                             duration={3}
                         />
@@ -200,9 +229,9 @@ export function TransformationSection() {
                             containerRef={containerRef}
                             fromRef={icon5Ref}
                             toRef={centerRef}
-                            pathColor="rgba(255,255,255,0.2)"
+                            pathColor="rgba(255,255,255,0.1)"
                             gradientStartColor="#ffffff"
-                            gradientStopColor="#60a5fa"
+                            gradientStopColor="#93c5fd"
                             delay={1.6}
                             duration={3}
                         />
@@ -212,8 +241,8 @@ export function TransformationSection() {
                             containerRef={containerRef}
                             fromRef={centerRef}
                             toRef={output1Ref}
-                            pathColor="rgba(255,255,255,0.3)"
-                            gradientStartColor="#60a5fa"
+                            pathColor="rgba(255,255,255,0.2)"
+                            gradientStartColor="#93c5fd"
                             gradientStopColor="#ffffff"
                             delay={0}
                             duration={2.5}
@@ -222,8 +251,8 @@ export function TransformationSection() {
                             containerRef={containerRef}
                             fromRef={centerRef}
                             toRef={output2Ref}
-                            pathColor="rgba(255,255,255,0.3)"
-                            gradientStartColor="#60a5fa"
+                            pathColor="rgba(255,255,255,0.2)"
+                            gradientStartColor="#93c5fd"
                             gradientStopColor="#ffffff"
                             delay={0.5}
                             duration={2.5}

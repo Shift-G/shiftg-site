@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Box,
   Container,
@@ -9,43 +7,11 @@ import {
   Text,
   AspectRatio,
 } from "@chakra-ui/react";
-import Image from "next/image";
 
 interface Leader {
   name: string;
   role: string;
   description: string;
-}
-
-const leaders: Leader[] = [
-  {
-    name: "William Novak",
-    role: "Fundador e Diretor de Arquitetura e Inteligência",
-    description:
-      "Especialista em IA, arquitetura e engenharia. Experiência internacional e atuação em operações críticas.",
-  },
-  {
-    name: "Fabio Roiek",
-    role: "Co-founder e Diretor Executivo",
-    description:
-      "Governança, estratégia e relacionamento de alto nível. Conexões que abrem portas e aceleram decisões.",
-  },
-];
-
-function LeaderItem({ leader }: { leader: Leader }) {
-  return (
-    <VStack align="start" gap={1}>
-      <Heading as="h4" size="sm" color="fg">
-        {leader.name}
-      </Heading>
-      <Text fontSize="xs" fontWeight="medium" color="blue.solid">
-        {leader.role}
-      </Text>
-      <Text color="fg.muted" fontSize="sm" lineHeight="tall" mt={1}>
-        {leader.description}
-      </Text>
-    </VStack>
-  );
 }
 
 export function AboutSection() {
@@ -84,24 +50,6 @@ export function AboutSection() {
                 instituições que operam com complexidade. Unimos estratégia, arquitetura
                 e IA para criar eficiência profunda e decisões mais inteligentes.
               </Text>
-            </VStack>
-
-            {/* Leadership section */}
-            <VStack align="start" gap={4} w="full">
-              <Text
-                fontSize="sm"
-                fontWeight="semibold"
-                color="fg.muted"
-                textTransform="uppercase"
-                letterSpacing="wider"
-              >
-                Liderança
-              </Text>
-              <SimpleGrid columns={{ base: 1, sm: 2 }} gap={6} w="full">
-                {leaders.map((leader, index) => (
-                  <LeaderItem key={index} leader={leader} />
-                ))}
-              </SimpleGrid>
             </VStack>
           </VStack>
 

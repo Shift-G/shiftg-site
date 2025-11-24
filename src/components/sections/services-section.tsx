@@ -55,7 +55,7 @@ const services = [
         title: "Business Intelligence",
         description:
             "Dashboards e relatórios que transformam dados brutos em insights acionáveis para a liderança.",
-        colSpan: { base: 1, md: 2, lg: 2 },
+        colSpan: { base: 1, md: 2, lg: 4 },
         rowSpan: { base: 1, md: 1, lg: 1 },
         variant: "secondary",
     },

@@ -18,15 +18,14 @@ import { PhilosophySection } from "@/components/sections/philosophy-section";
 import { ProcessSection } from "@/components/sections/process-section";
 import { AboutSection } from "@/components/sections/about-section";
 import { CTASection } from "@/components/sections/cta-section";
-import { MetricsSection } from "@/components/sections/metrics-section";
 import { FAQSection } from "@/components/sections/faq-section";
 
 import { SITE_NAME, SITE_URL } from "@/constants";
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} | Consultoria Estratégica de Tecnologia`,
+  title: `${SITE_NAME} | Consultoria Estratégica de Tecnologia e IA`,
   description:
-    "Inteligência, eficiência e visão aplicadas ao que realmente importa. Estratégia, IA e arquitetura para elevar eficiência, escala e competitividade.",
+    "Transforme sua empresa com Inteligência Artificial e Estratégia de Dados. A Shift+G oferece consultoria especializada para elevar eficiência, escala e competitividade.",
   keywords: [
     "consultoria estratégica tecnologia",
     "inteligência artificial empresarial",
@@ -37,21 +36,36 @@ export const metadata: Metadata = {
     "people analytics",
     "treinamentos IA",
     "soluções corporativas",
+    "consultoria de dados",
+    "machine learning para empresas"
   ],
+  alternates: {
+    canonical: SITE_URL,
+  },
+  category: "technology",
   openGraph: {
-    title: `${SITE_NAME} | Consultoria Estratégica de Tecnologia`,
+    title: `${SITE_NAME} | Consultoria Estratégica de Tecnologia e IA`,
     description:
       "Estratégia, IA e arquitetura para elevar eficiência, escala e competitividade da sua empresa.",
     type: "website",
     locale: "pt_BR",
     url: SITE_URL,
     siteName: SITE_NAME,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} - Consultoria de Tecnologia`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} | Consultoria Estratégica de Tecnologia`,
     description:
       "Estratégia, IA e arquitetura para elevar eficiência, escala e competitividade.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -73,35 +87,34 @@ export default function HomePage() {
     <Page>
       <Navbar />
 
-      {/* Hero */}
-      <Hero />
+      <VStack gap={0} w="full" as="main" align="stretch">
+        {/* Hero */}
+        <Hero />
 
-      {/* Transformation Section (O Que Fazemos) */}
-      <TransformationSection />
+        {/* Transformation Section (O Que Fazemos) */}
+        <TransformationSection />
 
-      {/* Serviços - Bento Grid */}
-      <ServicesSection />
+        {/* Serviços - Bento Grid */}
+        <ServicesSection />
 
-      {/* Produtos - Seção completa com slider */}
-      <ProductSlider />
+        {/* Produtos - Seção completa com slider */}
+        <ProductSlider />
 
-      {/* Como a Shift+G Pensa Tecnologia - Full viewport */}
-      <PhilosophySection />
+        {/* Como a Shift+G Pensa Tecnologia - Full viewport */}
+        <PhilosophySection />
 
-      {/* Metrics Section */}
-      <MetricsSection />
+        {/* Como Trabalhamos - Seção visual com números */}
+        <ProcessSection />
 
-      {/* Como Trabalhamos - Seção visual com números */}
-      <ProcessSection />
+        {/* Sobre + Liderança unificados */}
+        <AboutSection />
 
-      {/* Sobre + Liderança unificados */}
-      <AboutSection />
+        {/* FAQ Section */}
+        <FAQSection />
 
-      {/* FAQ Section */}
-      <FAQSection />
-
-      {/* CTA Final */}
-      <CTASection />
+        {/* CTA Final */}
+        <CTASection />
+      </VStack>
 
       <Footer />
     </Page>

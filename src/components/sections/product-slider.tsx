@@ -143,7 +143,7 @@ export function ProductSlider() {
             css={{
               "& .swiper": {
                 paddingBottom: "3rem",
-                overflow: "visible",
+                overflow: "hidden",
               },
               "& .swiper-slide": {
                 height: "auto",
@@ -172,11 +172,11 @@ export function ProductSlider() {
               breakpoints={{
                 768: {
                   slidesPerView: 1.5,
-                  spaceBetween: 24,
+                  spaceBetween: 16,
                 },
                 1024: {
-                  slidesPerView: 2.5,
-                  spaceBetween: 32,
+                  slidesPerView: 3,
+                  spaceBetween: 16,
                 },
               }}
             >

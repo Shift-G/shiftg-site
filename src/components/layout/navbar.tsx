@@ -262,7 +262,7 @@ function MegaMenu({
                       </Box>
                       <VStack gap={2} align="flex-start" flex={1}>
                         <HStack gap={2} align="center">
-                          <Text fontWeight="300" color="fg" fontSize="md">
+                          <Text fontWeight="medium" color="fg" fontSize="md">
                             {item.title}
                           </Text>
                           {item.badge && item.badgeColor && (
@@ -625,7 +625,7 @@ export function Navbar() {
                       size="lg"
                       width="full"
                       onClick={onClose}
-                      fontWeight="300"
+                      fontWeight="medium"
                     >
                       Entre em contato
                       <ChevronRight size={18} />
