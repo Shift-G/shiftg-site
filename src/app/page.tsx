@@ -83,9 +83,78 @@ export const metadata: Metadata = {
 
 
 export default function HomePage() {
+  // Structured Data for SEO
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: SITE_URL,
+      },
+    ],
+  };
+
+  const servicesListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Serviços SHIFT+G",
+    description: "Soluções de tecnologia e inteligência artificial",
+    numberOfItems: 5,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Fábrica de Software",
+        url: `${SITE_URL}/fabrica-de-software`,
+        description: "Desenvolvimento de software sob medida",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Diagnóstico Inteligente",
+        url: `${SITE_URL}/diagnostico-inteligente`,
+        description: "Análise e diagnóstico de processos com IA",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Sentinela",
+        url: `${SITE_URL}/sentinela`,
+        description: "Plataforma de People Analytics",
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: "Treinamento IA",
+        url: `${SITE_URL}/treinamento-ia-para-sua-empresa`,
+        description: "Capacitação em inteligência artificial",
+      },
+      {
+        "@type": "ListItem",
+        position: 5,
+        name: "Transformação Digital",
+        url: `${SITE_URL}/transformacao-digital`,
+        description: "Consultoria em transformação digital",
+      },
+    ],
+  };
+
   return (
     <Page>
       <Navbar />
+
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesListSchema) }}
+      />
 
       <VStack gap={0} w="full" as="main" align="stretch">
         {/* Hero */}

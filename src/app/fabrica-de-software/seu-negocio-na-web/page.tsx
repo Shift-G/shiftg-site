@@ -428,7 +428,7 @@ export default function WebBusinessPage() {
               w={{ base: "full", sm: "auto" }}
               mt={8}
             >
-              <Link href="#contato" passHref>
+              <Link href="/contato" passHref>
                 <Button
                   size="xl"
                   px={10}
@@ -447,10 +447,10 @@ export default function WebBusinessPage() {
             </Text>
           </VStack>
         </Container>
-      </Box>
+      </Box >
 
       {/* Problems Section */}
-      <Section
+      < Section
         title="Problemas que Impedem seu Sucesso Online"
         subtitle="Se você tem um site que não gera resultados, ou ainda não tem presença digital, está perdendo clientes todos os dias."
         centered
@@ -485,10 +485,10 @@ export default function WebBusinessPage() {
             presença digital que trabalha a seu favor.
           </Text>
         </Box>
-      </Section>
+      </Section >
 
       {/* Solutions Section */}
-      <Section
+      < Section
         title="Soluções Web que Geram Resultados"
         subtitle="Do site institucional ao e-commerce completo, desenvolvemos presenças digitais que convertem."
         centered
@@ -512,7 +512,7 @@ export default function WebBusinessPage() {
                 >
                   {solution.icon}
                 </Box>
-                
+
                 <VStack align="flex-start" gap={4}>
                   <Heading
                     as="h3"
@@ -545,10 +545,10 @@ export default function WebBusinessPage() {
             </Box>
           ))}
         </SimpleGrid>
-      </Section>
+      </Section >
 
       {/* Features Section */}
-      <Section
+      < Section
         title="Características dos Nossos Sites"
         subtitle="Cada projeto é desenvolvido com as melhores práticas para garantir performance, conversão e resultados."
         centered
@@ -564,10 +564,10 @@ export default function WebBusinessPage() {
             />
           ))}
         </SimpleGrid>
-      </Section>
+      </Section >
 
       {/* Process Section */}
-      <Section
+      < Section
         title="Nossa Metodologia de Desenvolvimento Web"
         subtitle="Um processo estruturado que garante que seu site seja exatamente o que seu negócio precisa."
         centered
@@ -635,10 +635,10 @@ export default function WebBusinessPage() {
             </Box>
           ))}
         </VStack>
-      </Section>
+      </Section >
 
       {/* Technologies Section */}
-      <Section
+      < Section
         title="Tecnologias Modernas"
         subtitle="Utilizamos as melhores ferramentas para criar sites rápidos, seguros e escaláveis."
         centered
@@ -685,10 +685,10 @@ export default function WebBusinessPage() {
             </Box>
           ))}
         </SimpleGrid>
-      </Section>
+      </Section >
 
       {/* Pricing Section */}
-      <Section
+      < Section
         title="Investimento em Sua Presença Digital"
         subtitle="Planos transparentes para cada tipo de negócio e necessidade."
         centered
@@ -754,7 +754,7 @@ export default function WebBusinessPage() {
                 <VStack align="flex-start" gap={3} w="full">
                   {plan.features.map((feature) => (
                     <HStack key={feature} gap={3}>
-                      <CheckCircle size={20}  />
+                      <CheckCircle size={20} />
                       <Text color="fg.muted" fontSize="sm">
                         {feature}
                       </Text>
@@ -775,18 +775,19 @@ export default function WebBusinessPage() {
             </Box>
           ))}
         </SimpleGrid>
-      </Section>
+      </Section >
 
       {/* Final CTA Section */}
-      <Box
+      < Box
         as="section"
         id="contato"
-        py={{ base: 20, md: 28 }}
+        py={{ base: 20, md: 28 }
+        }
         position="relative"
         overflow="hidden"
       >
         {/* Dynamic Background */}
-        <Box
+        < Box
           position="absolute"
           inset={0}
           bgGradient="radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/50}, transparent)"
@@ -794,10 +795,10 @@ export default function WebBusinessPage() {
             bgGradient:
               "radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/20}, transparent)",
           }}
-          zIndex={-1}
+          zIndex={- 1}
         />
 
-        <Container maxW="5xl">
+        < Container maxW="5xl" >
           <VStack gap={{ base: 8, md: 12 }} textAlign="center">
             <VStack gap={6}>
               <Heading
@@ -898,9 +899,9 @@ export default function WebBusinessPage() {
               </HStack>
             </VStack>
           </VStack>
-        </Container>
-      </Box>
+        </Container >
+      </Box >
       <Footer />
-    </Page>
+    </Page >
   );
 }

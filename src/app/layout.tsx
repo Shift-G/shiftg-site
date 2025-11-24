@@ -108,6 +108,10 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        {/* Organization Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -120,11 +124,12 @@ export default function RootLayout({
               logo: `${SITE_URL}/apple-icon.png`,
               description:
                 "Desenvolvemos soluções de software que transformam dados complexos em decisões estratégicas, entregando autonomia e eficiência para sua empresa.",
+              foundingDate: "2020",
               contactPoint: {
                 "@type": "ContactPoint",
                 email: SITE_EMAIL,
                 contactType: "customer service",
-                availableLanguage: "Portuguese",
+                availableLanguage: ["Portuguese", "English"],
               },
               sameAs: ["https://linkedin.com/company/shiftg", INSTAGRAM_URL],
               address: {
@@ -132,6 +137,37 @@ export default function RootLayout({
                 addressLocality: SITE_CITY,
                 addressRegion: SITE_STATE,
                 addressCountry: SITE_COUNTRY,
+              },
+              areaServed: {
+                "@type": "Country",
+                name: "Brasil",
+              },
+            }),
+          }}
+        />
+
+        {/* WebSite Schema with SearchAction */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: `${SITE_NAME} AI & Data`,
+              url: SITE_URL,
+              description:
+                "Consultoria estratégica de tecnologia e inteligência artificial para empresas que buscam transformação digital.",
+              publisher: {
+                "@type": "Organization",
+                name: SITE_NAME,
+              },
+              potentialAction: {
+                "@type": "SearchAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate: `${SITE_URL}/insights?q={search_term_string}`,
+                },
+                "query-input": "required name=search_term_string",
               },
             }),
           }}

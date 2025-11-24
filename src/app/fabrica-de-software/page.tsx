@@ -298,7 +298,7 @@ export default function SoftwareFactoryPage() {
               w={{ base: "full", sm: "auto" }}
               mt={8}
             >
-              <Link href="#contato" passHref>
+              <Link href="/contato" passHref>
                 <Button
                   size="xl"
                   px={10}
@@ -317,10 +317,10 @@ export default function SoftwareFactoryPage() {
             </Text>
           </VStack>
         </Container>
-      </Box>
+      </Box >
 
       {/* Problems Section */}
-      <Section
+      < Section
         title="Ferramentas Genéricas Não Resolvem Desafios Únicos"
         subtitle="Sua equipe ainda depende de planilhas complexas que só uma pessoa entende? Seus processos estão amarrados a sistemas legados ou a softwares de prateleira que não conversam entre si?"
         centered
@@ -360,10 +360,10 @@ export default function SoftwareFactoryPage() {
           Essa falta de flexibilidade não apenas reduz a produtividade, mas
           também impede a inovação e o crescimento.
         </Text>
-      </Section>
+      </Section >
 
       {/* Solution Section */}
-      <Section
+      < Section
         title="A Solução: Software Sob Medida, Desenvolvido para Você"
         subtitle="Nem todo desafio precisa de Inteligência Artificial, mas todo desafio precisa da ferramenta certa."
         centered
@@ -403,10 +403,10 @@ export default function SoftwareFactoryPage() {
             que a tecnologia trabalhe a seu favor.
           </Text>
         </Box>
-      </Section>
+      </Section >
 
       {/* Specialized Services Section */}
-      <Section
+      < Section
         title="Nossos Serviços Especializados"
         subtitle="Duas verticais especializadas para atender diferentes necessidades do seu negócio digital."
         centered
@@ -570,10 +570,10 @@ export default function SoftwareFactoryPage() {
             </VStack>
           </Box>
         </SimpleGrid>
-      </Section>
+      </Section >
 
       {/* Solutions by Category */}
-      <Section
+      < Section
         title="Soluções que Geram Impacto Real"
         subtitle="Construímos sistemas que resolvem problemas concretos e capacitam seus times."
         centered
@@ -626,10 +626,10 @@ export default function SoftwareFactoryPage() {
             </SimpleGrid>
           </VStack>
         </VStack>
-      </Section>
+      </Section >
 
       {/* Approach Section */}
-      <Section
+      < Section
         title="Nossa Abordagem: Da Estratégia ao Código"
         subtitle="Não somos apenas desenvolvedores. Somos parceiros estratégicos que entendem de negócio."
         centered
@@ -676,10 +676,10 @@ export default function SoftwareFactoryPage() {
             </Box>
           ))}
         </SimpleGrid>
-      </Section>
+      </Section >
 
       {/* Differentials Section */}
-      <Section
+      < Section
         title="Por que a Fábrica de Software da Shift+G?"
         centered
         variant="gradient"
@@ -695,18 +695,19 @@ export default function SoftwareFactoryPage() {
             />
           ))}
         </SimpleGrid>
-      </Section>
+      </Section >
 
       {/* Final CTA Section */}
-      <Box
+      < Box
         as="section"
         id="contato"
-        py={{ base: 20, md: 28 }}
+        py={{ base: 20, md: 28 }
+        }
         position="relative"
         overflow="hidden"
       >
         {/* Dynamic Background */}
-        <Box
+        < Box
           position="absolute"
           inset={0}
           bgGradient="radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/50}, transparent)"
@@ -714,10 +715,10 @@ export default function SoftwareFactoryPage() {
             bgGradient:
               "radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/20}, transparent)",
           }}
-          zIndex={-1}
+          zIndex={- 1}
         />
 
-        <Container maxW="5xl">
+        < Container maxW="5xl" >
           <VStack gap={{ base: 8, md: 12 }} textAlign="center">
             <VStack gap={6}>
               <Heading
@@ -802,9 +803,9 @@ export default function SoftwareFactoryPage() {
               </HStack>
             </VStack>
           </VStack>
-        </Container>
-      </Box>
+        </Container >
+      </Box >
       <Footer />
-    </Page>
+    </Page >
   );
 }

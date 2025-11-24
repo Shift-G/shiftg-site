@@ -135,7 +135,7 @@ function Hero() {
             transition="all 0.3s"
             shadow="lg"
           >
-            <Link href="#contato">
+            <Link href="/contato">
               Agendar Treinamento
               <ArrowRight />
             </Link>

@@ -388,7 +388,7 @@ export default function SaasPage() {
               w={{ base: "full", sm: "auto" }}
               mt={8}
             >
-              <Link href="#contato" passHref>
+              <Link href="/contato" passHref>
                 <Button
                   size="xl"
                   px={10}
@@ -407,10 +407,10 @@ export default function SaasPage() {
             </Text>
           </VStack>
         </Container>
-      </Box>
+      </Box >
 
       {/* Challenges Section */}
-      <Section
+      < Section
         title="Os Desafios Únicos de um SaaS"
         subtitle="Desenvolver um SaaS vai muito além de criar um site. É uma arquitetura complexa que precisa ser pensada desde o primeiro dia."
         centered
@@ -445,10 +445,10 @@ export default function SaasPage() {
             Nós temos a experiência para fazer certo desde o início.
           </Text>
         </Box>
-      </Section>
+      </Section >
 
       {/* Features Section */}
-      <Section
+      < Section
         title="Funcionalidades Essenciais que Desenvolvemos"
         subtitle="Todo SaaS de sucesso precisa dessas funcionalidades. Nós construímos todas elas com qualidade enterprise."
         centered
@@ -463,10 +463,10 @@ export default function SaasPage() {
             />
           ))}
         </SimpleGrid>
-      </Section>
+      </Section >
 
       {/* Process Section */}
-      <Section
+      < Section
         title="Nossa Metodologia de Desenvolvimento"
         subtitle="Um processo testado e refinado para transformar ideias em SaaS de sucesso."
         centered
@@ -534,10 +534,10 @@ export default function SaasPage() {
             </Box>
           ))}
         </VStack>
-      </Section>
+      </Section >
 
       {/* Tech Stack Section */}
-      <Section
+      < Section
         title="Stack Tecnológico Moderno"
         subtitle="Utilizamos as melhores tecnologias do mercado para garantir performance, segurança e escalabilidade."
         centered
@@ -585,10 +585,10 @@ export default function SaasPage() {
             </Box>
           ))}
         </SimpleGrid>
-      </Section>
+      </Section >
 
       {/* Pricing Section */}
-      <Section
+      < Section
         title="Planos de Desenvolvimento"
         subtitle="Escolha o modelo que melhor se adapta ao seu momento e orçamento."
         centered
@@ -674,18 +674,19 @@ export default function SaasPage() {
             </Box>
           ))}
         </SimpleGrid>
-      </Section>
+      </Section >
 
       {/* Final CTA Section */}
-      <Box
+      < Box
         as="section"
         id="contato"
-        py={{ base: 20, md: 28 }}
+        py={{ base: 20, md: 28 }
+        }
         position="relative"
         overflow="hidden"
       >
         {/* Dynamic Background */}
-        <Box
+        < Box
           position="absolute"
           inset={0}
           bgGradient="radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/50}, transparent)"
@@ -693,10 +694,10 @@ export default function SaasPage() {
             bgGradient:
               "radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/20}, transparent)",
           }}
-          zIndex={-1}
+          zIndex={- 1}
         />
 
-        <Container maxW="5xl">
+        < Container maxW="5xl" >
           <VStack gap={{ base: 8, md: 12 }} textAlign="center">
             <VStack gap={6}>
               <Heading
@@ -797,10 +798,10 @@ export default function SaasPage() {
               </HStack>
             </VStack>
           </VStack>
-        </Container>
-      </Box>
+        </Container >
+      </Box >
 
       <Footer />
-    </Page>
+    </Page >
   );
 }

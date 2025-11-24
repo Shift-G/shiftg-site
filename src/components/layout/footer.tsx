@@ -55,17 +55,18 @@ export function Footer() {
             </Text>
           </VStack>
 
-          {/* Links Rápidos */}
+          {/* Soluções */}
           <VStack align="flex-start" gap={3}>
             <Text fontWeight="300" fontSize="sm" color="fg">
-              Links Rápidos
+              Soluções
             </Text>
             <Stack gap={2}>
               {[
-                { label: "Soluções", href: "#solucoes" },
-                { label: "Para Quem", href: "#publico" },
-                { label: "Diferenciais", href: "#diferenciais" },
-                { label: "Casos de Uso", href: "#casos" },
+                { label: "Fábrica de Software", href: "/fabrica-de-software" },
+                { label: "Diagnóstico Inteligente", href: "/diagnostico-inteligente" },
+                { label: "Sentinela - People Analytics", href: "/sentinela" },
+                { label: "Treinamento em IA", href: "/treinamento-ia-para-sua-empresa" },
+                { label: "Transformação Digital", href: "/transformacao-digital" },
               ].map((link) => (
                 <ChakraLink
                   key={link.label}
@@ -82,22 +83,28 @@ export function Footer() {
             </Stack>
           </VStack>
 
-          {/* Serviços */}
+          {/* Empresa */}
           <VStack align="flex-start" gap={3}>
             <Text fontWeight="300" fontSize="sm" color="fg">
-              Nossos Serviços
+              Empresa
             </Text>
             <Stack gap={2}>
               {[
-                "People Analytics Preditivo",
-                "Automações Inteligentes",
-                "Machine Learning Empresarial",
-                "Dashboards Executivos",
-                "Consultoria em IA",
-              ].map((service) => (
-                <Text key={service} fontSize="sm" color="fg.muted">
-                  {service}
-                </Text>
+                { label: "Sobre Nós", href: "/sobre" },
+                { label: "Carreiras", href: "/carreiras" },
+                { label: "Insights", href: "/insights" },
+              ].map((link) => (
+                <ChakraLink
+                  key={link.label}
+                  as={Link}
+                  href={link.href}
+                  fontSize="sm"
+                  color="fg.muted"
+                  _hover={{ color: "blue.fg" }}
+                  transition="color 0.2s"
+                >
+                  {link.label}
+                </ChakraLink>
               ))}
             </Stack>
           </VStack>

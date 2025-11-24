@@ -226,7 +226,7 @@ export default function SobrePage() {
                   <ArrowRight size={18} />
                 </Button>
               </Link>
-              <Link href="#contato">
+              <Link href="/contato">
                 <Button size="lg" variant="outline" colorPalette="gray">
                   Fale Conosco
                 </Button>
@@ -439,7 +439,7 @@ export default function SobrePage() {
           </VStack>
 
           <HStack gap={4} flexWrap="wrap" justify="center">
-            <Link href="#contato">
+            <Link href="/contato">
               <Button size="lg" colorPalette="blue" variant="solid">
                 Fale com nossos especialistas
                 <ChevronRight size={18} />

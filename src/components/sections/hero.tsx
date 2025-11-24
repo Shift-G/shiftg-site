@@ -95,7 +95,7 @@ export function Hero() {
               _hover={{ transform: "translateY(-2px)", shadow: "lg" }}
               transition="all 0.2s"
             >
-              <Link href="#contato">
+              <Link href="/contato">
                 Falar com especialista
                 <ArrowRight />
               </Link>

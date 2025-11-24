@@ -70,19 +70,27 @@ const menuSections: Record<string, MenuSection> = {
     items: [
       {
         icon: <Brain size={20} />,
-        title: "Inteligência Artificial",
-        description: "IA que resolve problemas reais do seu negócio",
-        href: "/#solucoes",
+        title: "Treinamento IA",
+        description: "Capacite sua equipe para usar IA com segurança",
+        href: "/treinamento-ia-para-sua-empresa",
         badge: "Popular",
         badgeColor: "blue",
+      },
+      {
+        icon: <Target size={20} />,
+        title: "Diagnóstico Inteligente",
+        description: "Descubra onde aplicar IA no seu negócio",
+        href: "/diagnostico-inteligente",
+        badge: "Novo",
+        badgeColor: "purple",
       },
       {
         icon: <Shield size={20} />,
         title: "Sentinela",
         description: "Vigilância operacional inteligente para DP",
         href: "/sentinela",
-        badge: "Novo",
-        badgeColor: "green",
+        badge: null,
+        badgeColor: null,
       },
       {
         icon: <Rocket size={20} />,
@@ -92,16 +100,13 @@ const menuSections: Record<string, MenuSection> = {
         badge: null,
         badgeColor: null,
       },
+    ],
+    secondaryItems: [
       {
-        icon: <TrendingUp size={20} />,
         title: "Transformação Digital",
         description: "Estratégia completa de digitalização",
         href: "/transformacao-digital",
-        badge: null,
-        badgeColor: null,
       },
-    ],
-    secondaryItems: [
       {
         title: "Construa seu SaaS",
         description: "Desenvolvimento de plataformas SaaS escaláveis",
@@ -366,7 +371,7 @@ function MegaMenu({
                     Fale com nossos especialistas e descubra como podemos ajudar
                   </Text>
                 </VStack>
-                <Link href="#contato" passHref>
+                <Link href="/contato" passHref>
                   <Button
                     size="sm"
                     colorPalette="blue"
@@ -457,7 +462,7 @@ export function Navbar() {
                 </Box>
               ))}
 
-              <Link href="#contato" passHref>
+              <Link href="/contato" passHref>
                 <Button
                   colorPalette="blue"
                   fontWeight="500"
@@ -619,7 +624,7 @@ export function Navbar() {
 
                 {/* Mobile CTA */}
                 <Box mt={4}>
-                  <Link href="#contato" passHref>
+                  <Link href="/contato" passHref>
                     <Button
                       colorPalette="blue"
                       size="lg"
