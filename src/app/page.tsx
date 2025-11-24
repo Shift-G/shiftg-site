@@ -117,10 +117,11 @@ export default function HomePage() {
             size={{ base: "2xl", md: "3xl" }}
             fontWeight="bold"
             color="fg"
+            letterSpacing="tight"
           >
             Transformamos operações, processos e decisões com inteligência aplicada.
           </Heading>
-          <Text color="fg.muted" fontSize={{ base: "md", md: "lg" }} lineHeight="tall">
+          <Text color="fg.muted" fontSize={{ base: "md", md: "lg" }} lineHeight="tall" maxW="2xl">
             A Shift+G ajuda líderes a operar com mais clareza, eficiência e escala.
             Aplicamos arquitetura, automação e IA para reduzir esforço, eliminar gargalos
             e criar vantagem competitiva sustentável.
@@ -134,7 +135,7 @@ export default function HomePage() {
         title="Serviços"
         centered
       >
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={{ base: 4, md: 6 }}>
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={{ base: 6, md: 8 }}>
           {services.map((service, index) => (
             <ServiceCard
               key={index}

@@ -14,13 +14,7 @@ export function Hero() {
       position="relative"
       overflow="hidden"
     >
-      {/* Subtle background gradient */}
-      <Box
-        position="absolute"
-        inset={0}
-        bg="linear-gradient(180deg, {colors.blue.500/5} 0%, transparent 50%)"
-        pointerEvents="none"
-      />
+      {/* Background removed for minimalist look */}
 
       <Container maxW="7xl" position="relative" zIndex={1}>
         <VStack

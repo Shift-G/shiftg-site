@@ -11,13 +11,7 @@ export function CTASection() {
       py={{ base: 16, md: 20 }}
       position="relative"
     >
-      {/* Subtle background */}
-      <Box
-        position="absolute"
-        inset={0}
-        bg="linear-gradient(180deg, transparent 0%, {colors.blue.500/5} 50%, transparent 100%)"
-        pointerEvents="none"
-      />
+      {/* Background removed for minimalist look */}
 
       <Container maxW="7xl" position="relative" zIndex={1}>
         <VStack

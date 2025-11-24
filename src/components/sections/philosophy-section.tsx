@@ -58,6 +58,7 @@ export function PhilosophySection() {
             >
               Na Shift+G, tecnologia não começa pelo código — começa pela estratégia.
               Enxergamos processos, cultura, riscos e metas antes de qualquer solução.
+              Cada entrega existe para ampliar eficiência, maturidade e competitividade.
             </Text>
           </VStack>
 

@@ -18,7 +18,6 @@ export function ServiceCard({ icon, title, description }: ServiceCardProps) {
       rounded="xl"
       transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
       _hover={{
-        transform: "translateY(-6px)",
         borderColor: "{colors.blue.500/30}",
         bg: { base: "{colors.whiteAlpha.100}", _dark: "{colors.whiteAlpha.100}" },
       }}
