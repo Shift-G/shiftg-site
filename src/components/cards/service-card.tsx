@@ -5,43 +5,59 @@ interface ServiceCardProps {
   icon: ReactNode;
   title: string;
   description: string;
+  variant?: "default" | "primary" | "secondary";
 }
 
-export function ServiceCard({ icon, title, description }: ServiceCardProps) {
+export function ServiceCard({ icon, title, description, variant = "default" }: ServiceCardProps) {
+  const isPrimary = variant === "primary";
+  const isSecondary = variant === "secondary";
+
   return (
     <Box
       p={{ base: 6, md: 8 }}
-      bg={{ base: "{colors.whiteAlpha.50}", _dark: "{colors.whiteAlpha.50}" }}
-      backdropFilter="blur(10px)"
+      bg={isPrimary ? "blue.600" : "white"}
       border="1px solid"
-      borderColor={{ base: "{colors.whiteAlpha.200}", _dark: "{colors.whiteAlpha.200}" }}
-      rounded="xl"
-      transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
-      _hover={{
-        borderColor: "{colors.blue.500/30}",
-        bg: { base: "{colors.whiteAlpha.100}", _dark: "{colors.whiteAlpha.100}" },
-      }}
+      borderColor={isPrimary ? "blue.600" : "gray.200"}
+      rounded="2xl"
       h="full"
+      display="flex"
+      flexDirection="column"
+      justifyContent="space-between"
+      transition="all 0.2s ease"
+      _hover={{
+        borderColor: "blue.400",
+        transform: "translateY(-2px)",
+      }}
     >
-      <VStack align="start" gap={4}>
+      <VStack align="start" gap={6}>
         <Flex
           align="center"
           justify="center"
           w={12}
           h={12}
-          bg="{colors.blue.500/10}"
-          rounded="lg"
-          color="blue.solid"
+          bg={isPrimary ? "whiteAlpha.200" : "blue.50"}
+          rounded="xl"
+          color={isPrimary ? "white" : "blue.600"}
           flexShrink={0}
         >
           {icon}
         </Flex>
 
-        <VStack align="start" gap={2}>
-          <Heading as="h3" size="md" color="fg">
+        <VStack align="start" gap={3}>
+          <Heading
+            as="h3"
+            size={isPrimary ? "xl" : "md"}
+            color={isPrimary ? "white" : "gray.900"}
+            fontWeight="bold"
+            letterSpacing="-0.01em"
+          >
             {title}
           </Heading>
-          <Text color="fg.muted" fontSize="sm" lineHeight="tall">
+          <Text
+            color={isPrimary ? "blue.100" : "gray.600"}
+            fontSize={isPrimary ? "lg" : "sm"}
+            lineHeight="tall"
+          >
             {description}
           </Text>
         </VStack>
