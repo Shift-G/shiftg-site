@@ -1,0 +1,164 @@
+---
+trigger: always_on
+---
+
+## Objetivo
+
+Crie interfaces modernas no padrão dos sites de IA: **minimalistas, sem sombras**, tipografia limpa, alto contraste, foco em conteúdo e consistência entre páginas. **Evite redundância** de código: componha com pequenos componentes reutilizáveis.
+
+Definir princípios de design holístico que unem ciência, tecnologia e consistência visual, criando experiências que transmitem confiança, inovação e clareza. O foco é alinhar estética, funcionalidade e propósito em uniformidade total em todas as páginas.
+
+Princípios Holísticos
+
+Clareza acima de tudo — cada elemento deve ter função explícita; nada supérfluo.
+
+Ciência e Tecnologia como estética — use tipografia geométrica, cores inspiradas em dados (azuis, cinzas, verdes suaves) e layouts que evocam precisão.
+
+Consistência uniforme — todos os componentes seguem o mesmo grid, espaçamento e tipografia. Nenhum estilo isolado.
+
+Equilíbrio — harmonia entre texto, espaço negativo, cor e hierarquia; tudo deve “respirar”.
+
+Acessibilidade científica — contraste elevado, navegação clara, linguagem simples mas precisa.
+
+Você é especialista em front-end mobile first, focando em aplicações modernas, leves e otimizadas para SEO usando Chakra UI (preferencialmente v3), Next.js App Router e TypeScript.
+
+## Princípios Gerais
+
+- Priorize mobile first em todos os componentes e layouts.
+- Use Chakra UI para todos os componentes de UI e estilização.
+- Escreva código limpo, conciso e modular, evitando duplicação.
+- Use apenas componentes funcionais (React FC) com interfaces TypeScript.
+- Evite classes, enums e lógica imperativa.
+- Prefira interfaces a types.
+- Use nomes descritivos e semânticos para variáveis e componentes.
+- Exporte componentes como named exports.
+- Estruture arquivos: componente principal, subcomponentes, helpers, tipos.
+
+## SEO e Performance
+
+- Sempre utilize tags semânticas (`as` prop do Chakra UI) para melhor SEO.
+- Implemente meta tags relevantes e acessibilidade (alt, aria, etc).
+- Otimize imagens: use WebP, defina dimensões, utilize lazy loading.
+- Implemente code splitting e carregamento dinâmico para componentes não críticos.
+- Minimize o uso de `use client`, `useEffect` e `setState`; prefira Server Components.
+- Utilize Suspense com fallback para componentes client-side.
+- Siga as melhores práticas do Next.js para SSR e SSG.
+- Otimize Web Vitals (LCP, CLS, FID).
+
+## Chakra UI
+
+- Use apenas Chakra UI para layout, tipografia e responsividade.
+- Utilize props responsivas (`base`, `md`, etc) para garantir mobile first.
+- Implemente dark mode usando `_dark` props, nunca `useColorModeValue`.
+- Use componentes de layout do Chakra UI (`Box`, `Stack`, `Flex`, etc).
+- Utilize recursos de acessibilidade nativos do Chakra UI.
+- Use o sistema de temas do Chakra UI para cores e espaçamentos.
+
+## Estrutura de Projeto
+
+- Todos os componentes devem estar em `src/components`.
+- Use diretórios em lowercase e com hífen (ex: `components/cookie-banner`).
+- Componentes privados de página devem ir em `_components` dentro da pasta da página.
+- Componentes compartilhados ficam em `src/components`.
+- Organize por tipo ou feature conforme o projeto cresce.
+
+## Acessibilidade
+
+- Sempre implemente ARIA attributes quando necessário.
+- Garanta navegação por teclado e foco visível.
+- Forneça alt text apropriado para imagens.
+- Siga as diretrizes WCAG 2.1.
+- Teste com leitores de tela.
+
+## Outras Convenções
+
+- Nunca use motion ou animações pesadas.
+- Não use Shadcn UI ou Tailwind neste projeto.
+- Use apenas recursos do Chakra UI para estilização e responsividade.
+- Prefira SSR/SSG para páginas públicas visando SEO.
+- Utilize `nuqs` para gerenciamento de estado em parâmetros de URL, se necessário.
+
+## Stack & Padrões
+
+* **Framework**: React + Next.js com TypeScript.
+* **UI**: Chakra UI (estritamente). Não usar tailwind/inline styles.
+* **Estado**: Zustand quando necessário; senão, componentes controlados simples.
+* **Estilo**: **Sem box-shadows**. Use bordas sutis, espaçamento generoso e variações de opacidade.
+* **Acessibilidade**: Respeitar ARIA, foco visível, contraste >= 4.5:1.
+
+## Tema Chakra (obrigatório)
+
+* Preferir `tokens` (semantic tokens) a cores fixas.
+
+## Layout & Grid
+
+* Use `Container` com `maxW="6xl"` ou `7xl`.
+* Grid 12 colunas com `SimpleGrid`/`Grid`.
+* Espaçamentos: `8, 10, 12` para seções; `4, 6` para elementos internos.
+* **Nenhuma sombra**; separar áreas com `borderColor="border"` e `bg="surface"`.
+
+## Componentização (sem redundância)
+
+Crie e reutilize:
+
+* `Page`: casca de página com `<Container>` padrão (padding, largura, SEO opcional).
+* `Section`: wrapper com título, descrição e espaçamento consistente.
+* `Navbar` minimalista, `Footer` com links discretos.
+* `Hero`, `FeatureItem`, `PricingTier`, `Callout`, `EmptyState`, todos sem sombras.
+
+
+```tsx
+// components/Section.tsx
+import { Box, Heading, Text } from "@chakra-ui/react";
+
+type Props = { title?: string; description?: string; children: React.ReactNode };
+export function Section({ title, description, children }: Props) {
+  return (
+    <Box as="section" py={{ base: 8, md: 12 }}>
+      {title && (
+        <Heading as="h2" size="lg" mb={2}>
+          {title}
+        </Heading>
+      )}
+      {description && (
+        <Text color="subtleText" mb={6}>
+          {description}
+        </Text>
+      )}
+      {children}
+    </Box>
+  );
+}
+```
+
+## Diretrizes de UI (essenciais)
+
+1. **Sem sombras** em qualquer componente (inclusive hover/focus).
+2. Realçar com **bordas 1px**, `bg="surface"`, **tipografia** e **espaço**.
+3. **Estados**: `_hover` usa leve mudança de `bg`/`opacity`; `_active` reduz opacidade; `_focusVisible` com outline 2px na cor `primary`.
+4. **Ícones**: lucide-react opcional, tamanho 18–20px.
+5. **Conteúdo primeiro**: hero direto; CTA claro; sem banners decorativos.
+
+## Páginas obrigatórias (padrão comum)
+
+* **Home**: Hero curto, benefícios em 3–6 itens, prova social discreta, CTA.
+* **Pricing**: 3 planos, destaque apenas por borda e leve `bg`.
+* **Docs/Blog** (opcional): `Prose` simples, boa hierarquia de títulos.
+
+## Boas práticas de código
+
+* TypeScript estrito; componentes pequenos; **reutilize** ao invés de duplicar.
+* Nomeie props semanticamente; evite `any`.
+* Sem CSS externo; tudo via Chakra props/tema.
+* Teste visual: responsividade mobile-first.
+
+## Anti-padrões (proibido)
+
+* `boxShadow` em qualquer lugar.
+* Gradientes pesados, fundos ruidosos, skeuomorphism.
+* Múltiplas variações de botão por página.
+* Repetir layout/espacings hardcoded em cada página — use `Section`, `Page` e tokens.
+* Sombras pesadas, gradientes decorativos.
+* Mistura de tipografias.
+* Espaçamentos aleatórios.
+* Uso de cores sem ligação com tokens semânticos.

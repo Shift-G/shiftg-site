@@ -45,16 +45,16 @@ export function JobCard({
     <Box
       w="full"
       p={{ base: 6, md: 8 }}
-      rounded="2xl"
-      bg={featured ? "{colors.blue.500/10}" : "{colors.whiteAlpha.50}"}
+      rounded="xl"
+      bg={featured ? "blue.500/5" : "transparent"}
       border="1px solid"
-      borderColor={featured ? "{colors.blue.500/30}" : "{colors.whiteAlpha.200}"}
+      borderColor={featured ? "blue.500" : "border"}
       position="relative"
       transition="all 0.3s ease"
       _hover={{
-        transform: "translateY(-4px)",
-        borderColor: "{colors.blue.500/40}",
-        bg: featured ? "{colors.blue.500/15}" : "{colors.whiteAlpha.100}",
+        transform: "translateY(-2px)",
+        borderColor: "blue.500",
+        bg: "blue.500/5",
       }}
     >
       {featured && (
@@ -65,10 +65,10 @@ export function JobCard({
           px={3}
           py={1}
           rounded="full"
-          bg="{colors.blue.500}"
-          color="white"
+          variant="solid"
+          colorPalette="blue"
           fontSize="xs"
-          fontWeight="300"
+          fontWeight="500"
           textTransform="uppercase"
         >
           Destaque
@@ -80,25 +80,27 @@ export function JobCard({
           <HStack gap={4}>
             <Box
               p={3}
-              rounded="xl"
-              bg={featured ? "{colors.blue.500}" : "{colors.blue.500/10}"}
-              color={featured ? "white" : "blue.solid"}
+              rounded="lg"
+              bg={featured ? "blue.500" : "bg.subtle"}
+              color={featured ? "white" : "blue.500"}
+              border="1px solid"
+              borderColor={featured ? "transparent" : "border"}
               transition="all 0.3s ease"
             >
               {icon}
             </Box>
             <VStack align="flex-start" gap={1}>
-              <Heading as="h3" size="xl" fontWeight="300" color="fg">
+              <Heading as="h3" size="xl" fontWeight="400" color="fg">
                 {title}
               </Heading>
               <HStack gap={4} wrap="wrap">
-                <Badge variant="outline" colorPalette="blue">
+                <Badge variant="outline" colorPalette="blue" borderColor="blue.500" color="blue.500">
                   {department}
                 </Badge>
-                <Badge variant="outline" colorPalette="gray">
+                <Badge variant="outline" colorPalette="gray" borderColor="border" color="fg.muted">
                   {level}
                 </Badge>
-                <Badge variant="outline" colorPalette="green">
+                <Badge variant="outline" colorPalette="green" borderColor="green.500" color="green.500">
                   {type}
                 </Badge>
               </HStack>
@@ -106,21 +108,21 @@ export function JobCard({
           </HStack>
           <Text
             fontSize="lg"
-            fontWeight="300"
-            color="blue.solid"
+            fontWeight="500"
+            color="blue.500"
             textAlign="right"
           >
             {salary}
           </Text>
         </HStack>
 
-        <Text fontSize="lg" color="fg.muted" lineHeight="tall">
+        <Text fontSize="lg" color="fg.muted" lineHeight="tall" fontWeight="300">
           {description}
         </Text>
 
         <SimpleGrid columns={{ base: 1, lg: 2 }} gap={6} w="full">
           <VStack align="flex-start" gap={4}>
-            <Text fontWeight="300" color="fg">
+            <Text fontWeight="500" color="fg">
               Requisitos:
             </Text>
             <List.Root gap={2}>
@@ -133,7 +135,7 @@ export function JobCard({
           </VStack>
 
           <VStack align="flex-start" gap={4}>
-            <Text fontWeight="300" color="fg">
+            <Text fontWeight="500" color="fg">
               Responsabilidades:
             </Text>
             <List.Root gap={2}>
@@ -155,10 +157,6 @@ export function JobCard({
             variant={featured ? "solid" : "outline"}
             colorPalette="blue"
             mt={4}
-            _hover={{
-              transform: "translateY(-2px)",
-            }}
-            transition="all 0.3s ease"
           >
             Candidatar-se para esta vaga
             <ChevronRight size={18} style={{ marginLeft: "8px" }} />

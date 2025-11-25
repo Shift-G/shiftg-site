@@ -10,7 +10,6 @@ import {
   HStack,
   Stack,
   List,
-
 } from "@chakra-ui/react";
 import { Page } from "@/components/layout/page";
 import { Navbar } from "@/components/layout/navbar";
@@ -19,10 +18,6 @@ import { Section } from "@/components/layout/section";
 import { FeatureCard } from "@/components/cards/feature-card";
 import { JobCard } from "@/components/cards/job-card";
 import {
-  Users,
-  MapPin,
-  Heart,
-  Zap,
   TrendingUp,
   Shield,
   Coffee,
@@ -38,10 +33,11 @@ import {
   ChevronRight,
   Mail,
   Star,
-  Rocket,
   Target,
   Brain,
   Lightbulb,
+  Heart,
+  Rocket
 } from "lucide-react";
 import Link from "next/link";
 import { SITE_NAME, SITE_URL, CAREERS_EMAIL } from "@/constants";
@@ -275,56 +271,23 @@ export default function CareersPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <Box
-        as="section"
-        position="relative"
-        overflow="hidden"
-        minH="90vh"
-        display="flex"
-        alignItems="center"
-        bg="bg"
-      >
-        {/* Background Elements */}
-        <Box
-          position="absolute"
-          top="20%"
-          right="10%"
-          w="150px"
-          h="150px"
-          borderRadius="full"
-          bg="{colors.blue.500/5}"
-          backdropFilter="blur(10px)"
-          animation="float 10s ease-in-out infinite"
-          zIndex={0}
-        />
-        <Box
-          position="absolute"
-          bottom="25%"
-          left="5%"
-          w="100px"
-          h="100px"
-          borderRadius="lg"
-          bg="{colors.blue.500/5}"
-          backdropFilter="blur(10px)"
-          animation="float 8s ease-in-out infinite reverse"
-          zIndex={0}
-        />
-
-        <Container maxW="7xl" py={{ base: 16, md: 24 }} position="relative" zIndex={1}>
+      <Section py={{ base: 20, md: 32 }}>
+        <Container maxW="7xl">
           <VStack gap={{ base: 8, md: 12 }} maxW="5xl" mx="auto" textAlign="center">
             {/* Badge */}
             <HStack
               px={4}
               py={2}
               rounded="full"
-              bg="{colors.blue.500/10}"
-              border="1px solid {colors.blue.500/20}"
+              bg="transparent"
+              border="1px solid"
+              borderColor="blue.500"
             >
-              <Star size={16} color="{colors.blue.500}" />
+              <Star size={14} color="var(--chakra-colors-blue-500)" />
               <Text
                 fontSize="sm"
-                fontWeight="300"
-                color="blue.solid"
+                fontWeight="400"
+                color="blue.500"
                 textTransform="uppercase"
                 letterSpacing="wider"
               >
@@ -333,20 +296,20 @@ export default function CareersPage() {
             </HStack>
 
             {/* Title */}
-            <VStack gap={4}>
+            <VStack gap={6}>
               <Heading
                 as="h1"
                 size={{ base: "4xl", md: "5xl", lg: "6xl" }}
                 fontWeight="300"
-                lineHeight="none"
+                lineHeight="shorter"
                 letterSpacing="tight"
                 color="fg"
               >
                 Construa o{" "}
                 <Text
                   as="span"
-                  bgGradient="linear-gradient(135deg, {colors.blue.500}, {colors.blue.700})"
-                  bgClip="text"
+                  color="blue.500"
+                  fontWeight="400"
                 >
                   Futuro
                 </Text>{" "}
@@ -354,11 +317,11 @@ export default function CareersPage() {
               </Heading>
 
               <Text
-                fontSize={{ base: "lg", md: "2xl" }}
+                fontSize={{ base: "xl", md: "2xl" }}
                 color="fg.muted"
-                maxW="4xl"
+                maxW="3xl"
                 lineHeight="tall"
-                fontWeight="400"
+                fontWeight="300"
               >
                 Junte-se ao time que está revolucionando como empresas usam
                 dados e inteligência artificial. Trabalho remoto, impacto real,
@@ -367,7 +330,7 @@ export default function CareersPage() {
             </VStack>
 
             {/* Stats */}
-            <SimpleGrid columns={{ base: 2, md: 4 }} gap={{ base: 4, md: 8 }} w="full" maxW="2xl">
+            <SimpleGrid columns={{ base: 2, md: 4 }} gap={{ base: 4, md: 8 }} w="full" maxW="3xl" pt={8}>
               {[
                 { value: "100%", label: "Remoto" },
                 { value: "5", label: "Vagas Abertas" },
@@ -376,9 +339,9 @@ export default function CareersPage() {
               ].map((stat) => (
                 <Box key={stat.label} textAlign="center">
                   <Text
-                    fontSize={{ base: "2xl", md: "3xl" }}
+                    fontSize={{ base: "3xl", md: "4xl" }}
                     fontWeight="300"
-                    color="blue.solid"
+                    color="blue.500"
                     lineHeight="none"
                   >
                     {stat.value}
@@ -386,9 +349,10 @@ export default function CareersPage() {
                   <Text
                     fontSize="sm"
                     color="fg.muted"
-                    fontWeight="300"
+                    fontWeight="400"
                     textTransform="uppercase"
                     letterSpacing="wide"
+                    mt={2}
                   >
                     {stat.label}
                   </Text>
@@ -401,13 +365,11 @@ export default function CareersPage() {
               direction={{ base: "column", sm: "row" }}
               gap={4}
               w={{ base: "full", sm: "auto" }}
-              mt={6}
+              mt={8}
             >
               <Link href="#vagas" passHref>
                 <Button
                   size="xl"
-                  px={8}
-                  py={6}
                   variant="solid"
                   colorPalette="blue"
                 >
@@ -418,14 +380,15 @@ export default function CareersPage() {
             </Stack>
           </VStack>
         </Container>
-      </Box>
+      </Section>
 
       {/* Culture Section */}
       <Section
         title="Nossa Cultura: Onde Tecnologia Encontra Propósito"
         subtitle="Não somos apenas uma empresa de tecnologia. Somos uma comunidade de inovadores que acredita no poder transformador dos dados e da IA."
         centered
-        variant="gradient"
+        bg="bg.subtle"
+        py={{ base: 16, md: 24 }}
       >
         <SimpleGrid columns={{ base: 1, md: 2 }} gap={{ base: 6, md: 8 }}>
           {culture.map((item, index) => (
@@ -445,7 +408,7 @@ export default function CareersPage() {
         title="Modelo de Contratação PJ"
         subtitle="Todas as nossas contratações são feitas no modelo Pessoa Jurídica (PJ), oferecendo flexibilidade e benefícios competitivos."
         centered
-        variant="glass"
+        py={{ base: 16, md: 24 }}
       >
         <SimpleGrid columns={{ base: 1, md: 3 }} gap={{ base: 6, md: 8 }}>
           <FeatureCard
@@ -471,6 +434,8 @@ export default function CareersPage() {
         title="Benefícios que Fazem a Diferença"
         subtitle="Cuidamos de quem cuida dos nossos projetos. Estes são os benefícios que oferecemos para nosso time."
         centered
+        bg="bg.subtle"
+        py={{ base: 16, md: 24 }}
       >
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={{ base: 6, md: 8 }}>
           {benefits.map((benefit) => (
@@ -489,18 +454,18 @@ export default function CareersPage() {
         title="Trabalho Remoto de Verdade"
         subtitle="Não é apenas home office. É liberdade para trabalhar de onde você for mais produtivo."
         centered
-        variant="glass"
+        py={{ base: 16, md: 24 }}
       >
-        <SimpleGrid columns={{ base: 1, lg: 2 }} gap={{ base: 8, md: 12 }} alignItems="center">
-          <VStack align="flex-start" gap={6}>
+        <SimpleGrid columns={{ base: 1, lg: 2 }} gap={{ base: 8, md: 12 }} alignItems="center" maxW="6xl" mx="auto">
+          <VStack align="flex-start" gap={8}>
             <VStack align="flex-start" gap={4}>
               <HStack>
-                <Globe size={24} color="{colors.blue.500}" />
-                <Text fontWeight="300" fontSize="xl" color="blue.solid">
+                <Globe size={24} color="var(--chakra-colors-blue-500)" />
+                <Text fontWeight="400" fontSize="xl" color="blue.500">
                   De Qualquer Lugar do Brasil
                 </Text>
               </HStack>
-              <Text color="fg.muted" fontSize="lg" lineHeight="tall">
+              <Text color="fg.muted" fontSize="lg" lineHeight="tall" fontWeight="300">
                 Nosso time está espalhado por todo o país. Temos pessoas
                 trabalhando desde São Paulo até cidades menores do interior.
                 O que importa é o seu talento, não seu CEP.
@@ -509,12 +474,12 @@ export default function CareersPage() {
 
             <VStack align="flex-start" gap={4}>
               <HStack>
-                <Clock size={24} color="{colors.blue.500}" />
-                <Text fontWeight="300" fontSize="xl" color="blue.solid">
+                <Clock size={24} color="var(--chakra-colors-blue-500)" />
+                <Text fontWeight="400" fontSize="xl" color="blue.500">
                   Flexibilidade Real
                 </Text>
               </HStack>
-              <Text color="fg.muted" fontSize="lg" lineHeight="tall">
+              <Text color="fg.muted" fontSize="lg" lineHeight="tall" fontWeight="300">
                 Seja um early bird ou uma coruja noturna, organizamos os
                 horários para que todos possam contribuir no seu melhor momento.
                 Temos apenas algumas horas de overlap para alinhamentos.
@@ -524,16 +489,17 @@ export default function CareersPage() {
 
           <Box
             p={{ base: 6, md: 8 }}
-            rounded="2xl"
-            bg="{colors.blue.500/10}"
-            border="1px solid {colors.blue.500/20}"
+            rounded="xl"
+            bg="blue.500/5"
+            border="1px solid"
+            borderColor="blue.500"
           >
             <VStack gap={6}>
               <Heading
                 as="h4"
                 size="lg"
-                fontWeight="300"
-                color="blue.solid"
+                fontWeight="400"
+                color="blue.500"
                 textAlign="center"
               >
                 Setup Completo para Home Office
@@ -562,9 +528,10 @@ export default function CareersPage() {
         title="Vagas Disponíveis"
         subtitle="5 oportunidades para profissionais que querem fazer a diferença. Todas as vagas são 100% remotas."
         centered
-        variant="geometric"
+        bg="bg.subtle"
+        py={{ base: 16, md: 24 }}
       >
-        <VStack gap={{ base: 8, md: 12 }}>
+        <VStack gap={{ base: 6, md: 8 }} maxW="7xl" mx="auto">
           {jobs.map((job) => (
             <JobCard key={job.title} {...job} />
           ))}
@@ -572,24 +539,7 @@ export default function CareersPage() {
       </Section>
 
       {/* Final CTA Section */}
-      <Box
-        as="section"
-        py={{ base: 20, md: 28 }}
-        position="relative"
-        overflow="hidden"
-      >
-        {/* Dynamic Background */}
-        <Box
-          position="absolute"
-          inset={0}
-          bgGradient="radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/50}, transparent)"
-          _dark={{
-            bgGradient:
-              "radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/20}, transparent)",
-          }}
-          zIndex={-1}
-        />
-
+      <Section py={{ base: 20, md: 32 }}>
         <Container maxW="5xl">
           <VStack gap={{ base: 8, md: 12 }} textAlign="center">
             <VStack gap={6}>
@@ -597,14 +547,15 @@ export default function CareersPage() {
                 as="h2"
                 size={{ base: "3xl", md: "4xl", lg: "5xl" }}
                 fontWeight="300"
-                lineHeight="none"
+                lineHeight="shorter"
                 letterSpacing="tight"
+                color="fg"
               >
                 Não viu a vaga{" "}
                 <Text
                   as="span"
-                  bgGradient="linear-gradient(135deg, {colors.blue.500}, {colors.blue.700})"
-                  bgClip="text"
+                  color="blue.500"
+                  fontWeight="400"
                 >
                   perfeita
                 </Text>{" "}
@@ -614,9 +565,9 @@ export default function CareersPage() {
               <Text
                 fontSize={{ base: "lg", md: "2xl" }}
                 color="fg.muted"
-                maxW="4xl"
+                maxW="3xl"
                 lineHeight="tall"
-                fontWeight="400"
+                fontWeight="300"
               >
                 Estamos sempre em busca de talentos excepcionais. Envie seu
                 currículo e conte como você pode contribuir com nossa missão
@@ -630,12 +581,7 @@ export default function CareersPage() {
                 passHref
               >
                 <Button
-                  size="xl"
-                  px={{ base: 4, sm: 6 }}
-                  py={8}
-                  rounded="2xl"
-                  fontWeight="300"
-                  fontSize="xl"
+                  size="2xl"
                   variant="solid"
                   colorPalette="blue"
                   w={{ base: "full", sm: "auto" }}
@@ -646,13 +592,13 @@ export default function CareersPage() {
                 </Button>
               </Link>
 
-              <Text fontSize="md" color="fg.muted" fontWeight="500">
+              <Text fontSize="md" color="fg.muted" fontWeight="400">
                 Resposta garantida em até 24 horas
               </Text>
             </VStack>
           </VStack>
         </Container>
-      </Box>
+      </Section>
 
       <Footer />
     </Page>

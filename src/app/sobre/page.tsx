@@ -8,21 +8,17 @@ import {
   Heading,
   Text,
   Button,
-  Stack,
+
   Badge,
   Flex,
-  Circle,
-  Icon,
   Timeline,
 } from "@chakra-ui/react";
 import { Page } from "@/components/layout/page";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Section } from "@/components/layout/section";
-import { FeatureCard } from "@/components/cards/feature-card";
 import {
-  Zap,
-  Users,
+
   Brain,
   Target,
   Shield,
@@ -33,11 +29,8 @@ import {
   Globe,
   Code,
   Database,
-  ChevronRight,
   Star,
   Award,
-  Clock,
-  CheckCircle,
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
@@ -168,7 +161,7 @@ export default function SobrePage() {
       <Navbar />
 
       {/* Hero Section */}
-      <Section py={{ base: 16, md: 24 }} variant="geometric">
+      <Section py={{ base: 20, md: 32 }}>
         <Container maxW="7xl">
           <VStack
             gap={{ base: 8, md: 12 }}
@@ -178,30 +171,32 @@ export default function SobrePage() {
           >
             <VStack gap={6}>
               <Badge
-                variant="subtle"
+                variant="outline"
                 colorPalette="blue"
                 size="lg"
                 px={4}
                 py={2}
                 rounded="full"
                 fontSize="sm"
-                fontWeight="300"
+                fontWeight="400"
+                borderColor="blue.500"
+                color="blue.500"
+                bg="transparent"
               >
-                <Lightbulb size={16} style={{ marginRight: "8px" }} />
+                <Lightbulb size={14} style={{ marginRight: "8px" }} />
                 Sobre a Shift+G
               </Badge>
 
               <Heading
                 as="h1"
-                size={{ base: "3xl", md: "4xl", lg: "5xl" }}
+                size={{ base: "4xl", md: "5xl", lg: "6xl" }}
                 fontWeight="300"
                 lineHeight="shorter"
                 letterSpacing="tight"
-                bgGradient="linear-gradient(135deg, {colors.blue.500}, {colors.blue.700})"
-                bgClip="text"
+                color="fg"
               >
                 Inteligência que Gera{" "}
-                <Text as="span" color="blue.solid">
+                <Text as="span" color="blue.500" fontWeight="400">
                   Autonomia
                 </Text>
               </Heading>
@@ -209,9 +204,9 @@ export default function SobrePage() {
               <Text
                 fontSize={{ base: "xl", md: "2xl" }}
                 color="fg.muted"
-                maxW="4xl"
+                maxW="3xl"
                 lineHeight="tall"
-                fontWeight="400"
+                fontWeight="300"
               >
                 Não apenas entregamos software. Construímos a ponte entre seus
                 dados e as decisões estratégicas que definem o futuro do seu
@@ -221,14 +216,18 @@ export default function SobrePage() {
 
             <HStack gap={4} flexWrap="wrap" justify="center">
               <Link href="#nossa-historia">
-                <Button size="lg" colorPalette="blue" variant="solid">
+                <Button
+                  size="xl"
+                  colorPalette="blue"
+                  variant="outline"
+                  borderColor="blue.500"
+                  color="blue.500"
+                  _hover={{ bg: "blue.500", color: "white" }}
+                  rounded="full"
+                  px={8}
+                >
                   Nossa História
                   <ArrowRight size={18} />
-                </Button>
-              </Link>
-              <Link href="/contato">
-                <Button size="lg" variant="outline" colorPalette="gray">
-                  Fale Conosco
                 </Button>
               </Link>
             </HStack>
@@ -240,44 +239,34 @@ export default function SobrePage() {
       <Section
         id="nossa-historia"
         title="A transformação que sua empresa precisa"
-        subtitle="Em um mundo corporativo que exige velocidade e precisão, líderes ainda se veem presos a processos manuais e sistemas desconectados. É aqui que entramos."
+        subtitle="Em um mundo corporativo que exige velocidade e precisão, líderes ainda se veem presos a processos manuais e sistemas desconectados."
         centered
+        py={{ base: 16, md: 24 }}
+        bg="bg.subtle"
       >
-        <VStack gap={{ base: 8, md: 12 }} maxW="4xl" mx="auto">
-          <VStack gap={6} textAlign="center">
-            <Text fontSize="lg" color="fg.muted" lineHeight="tall">
-              <Text as="strong" color="fg">
+        <VStack gap={{ base: 12, md: 20 }} maxW="5xl" mx="auto">
+          <VStack gap={8} textAlign="center" maxW="3xl" mx="auto">
+            <Text fontSize="xl" color="fg.muted" lineHeight="tall" fontWeight="300">
+              <Text as="strong" color="fg" fontWeight="500">
                 Nosso nome é nossa filosofia:
               </Text>{" "}
-              <Text as="span" color="blue.solid" fontWeight="300">
+              <Text as="span" color="blue.500">
                 Shift
               </Text>{" "}
-              representa a mudança - assim como a tecla Shift no teclado
-              transforma o comportamento de outras teclas, nós transformamos
-              negócios. O{" "}
-              <Text as="span" color="blue.solid" fontWeight="300">
+              representa a mudança. O{" "}
+              <Text as="span" color="blue.500">
                 G
               </Text>{" "}
               vem de{" "}
-              <Text as="em" fontWeight="300">
+              <Text as="em" fontStyle="normal" color="fg">
                 Gnosis
               </Text>{" "}
               - conhecimento profundo que gera sabedoria acionável.
             </Text>
-
-            <Text fontSize="lg" color="fg.muted" lineHeight="tall">
-              Nascemos para ser a fábrica de software que resolve desafios
-              complexos com soluções sob medida, devolvendo o controle da
-              operação para quem mais precisa dele:{" "}
-              <Text as="strong" color="fg">
-                você
-              </Text>
-              .
-            </Text>
           </VStack>
 
           {/* Timeline */}
-          <Box w="full" maxW="4xl" mx="auto">
+          <Box w="full">
             <Timeline.Root size="xl" variant="outline" colorPalette="blue">
               {timelineEvents.map((event, index) => (
                 <Timeline.Item key={event.year}>
@@ -287,15 +276,26 @@ export default function SobrePage() {
                     <>
                       <Timeline.Content flex="1" />
                       <Timeline.Connector>
-                        <Timeline.Separator />
-                        <Timeline.Indicator>{event.icon}</Timeline.Indicator>
+                        <Timeline.Separator borderColor="border" />
+                        <Timeline.Indicator
+                          bg="bg"
+                          borderColor="blue.500"
+                          color="blue.500"
+                        >
+                          {event.icon}
+                        </Timeline.Indicator>
                       </Timeline.Connector>
-                      <Timeline.Content flex="1">
-                        <VStack gap={3} align="flex-start">
-                          <Badge variant="subtle" colorPalette="blue" size="sm">
+                      <Timeline.Content flex="1" py={4}>
+                        <VStack gap={2} align="flex-start">
+                          <Badge
+                            variant="outline"
+                            colorPalette="blue"
+                            size="md"
+                            borderColor="blue.500"
+                          >
                             {event.year}
                           </Badge>
-                          <Timeline.Title fontWeight="300" fontSize="lg">
+                          <Timeline.Title fontWeight="500" fontSize="xl" color="fg">
                             {event.title}
                           </Timeline.Title>
                           <Timeline.Description
@@ -311,15 +311,21 @@ export default function SobrePage() {
                   ) : (
                     // Right side content
                     <>
-                      <Timeline.Content flex="1" alignItems="flex-end">
-                        <VStack gap={3} align="flex-end">
-                          <Badge variant="subtle" colorPalette="blue" size="sm">
+                      <Timeline.Content flex="1" alignItems="flex-end" py={4}>
+                        <VStack gap={2} align="flex-end">
+                          <Badge
+                            variant="outline"
+                            colorPalette="blue"
+                            size="md"
+                            borderColor="blue.500"
+                          >
                             {event.year}
                           </Badge>
                           <Timeline.Title
-                            fontWeight="300"
-                            fontSize="lg"
+                            fontWeight="500"
+                            fontSize="xl"
                             textAlign="right"
+                            color="fg"
                           >
                             {event.title}
                           </Timeline.Title>
@@ -334,8 +340,14 @@ export default function SobrePage() {
                         </VStack>
                       </Timeline.Content>
                       <Timeline.Connector>
-                        <Timeline.Separator />
-                        <Timeline.Indicator>{event.icon}</Timeline.Indicator>
+                        <Timeline.Separator borderColor="border" />
+                        <Timeline.Indicator
+                          bg="bg"
+                          borderColor="blue.500"
+                          color="blue.500"
+                        >
+                          {event.icon}
+                        </Timeline.Indicator>
                       </Timeline.Connector>
                       <Timeline.Content flex="1" />
                     </>
@@ -350,9 +362,9 @@ export default function SobrePage() {
       {/* Core Values Section */}
       <Section
         title="Nossos Valores Fundamentais"
-        subtitle="Os princípios que guiam cada decisão, cada linha de código e cada relacionamento que construímos."
+        subtitle="Princípios que guiam cada decisão."
         centered
-        variant="gradient"
+        py={{ base: 16, md: 24 }}
       >
         <SimpleGrid
           columns={{ base: 1, md: 2 }}
@@ -363,27 +375,33 @@ export default function SobrePage() {
           {coreValues.map((value) => (
             <Box
               key={value.title}
-              p={{ base: 6, md: 8 }}
-              rounded="2xl"
-              bg="bg.subtle"
-              border="1px"
+              p={{ base: 8, md: 10 }}
+              rounded="xl"
+              bg="transparent"
+              border="1px solid"
               borderColor="border"
-              _hover={{
-                borderColor: "blue.200",
-                transform: "translateY(-4px)",
-              }}
               transition="all 0.3s ease"
+              _hover={{
+                borderColor: "blue.500",
+                bg: "blue.500/5"
+              }}
             >
-              <VStack gap={4} align="flex-start">
-                <Circle
-                  size="64px"
-                  bg={`${value.color}.500/10`}
-                  color={`${value.color}.solid`}
+              <VStack gap={6} align="flex-start">
+                <Flex
+                  align="center"
+                  justify="center"
+                  w="12"
+                  h="12"
+                  rounded="lg"
+                  bg="bg.subtle"
+                  color="fg"
+                  border="1px solid"
+                  borderColor="border"
                 >
                   {value.icon}
-                </Circle>
-                <VStack gap={2} align="flex-start">
-                  <Heading as="h3" size="lg" fontWeight="300" color="fg">
+                </Flex>
+                <VStack gap={3} align="flex-start">
+                  <Heading as="h3" size="lg" fontWeight="400" color="fg">
                     {value.title}
                   </Heading>
                   <Text color="fg.muted" fontSize="md" lineHeight="tall">
@@ -399,59 +417,81 @@ export default function SobrePage() {
       {/* Expertise Section */}
       <Section
         title="Nossa Expertise Técnica"
-        subtitle="Uma equipe multidisciplinar com profundo conhecimento em tecnologias de ponta para entregar soluções que realmente funcionam."
+        subtitle="Tecnologia de ponta para soluções reais."
         centered
+        bg="bg.subtle"
+        py={{ base: 16, md: 24 }}
       >
         <SimpleGrid
           columns={{ base: 1, md: 2, lg: 4 }}
           gap={{ base: 6, md: 8 }}
+          maxW="7xl"
+          mx="auto"
         >
           {expertiseAreas.map((area) => (
-            <FeatureCard
+            <Box
               key={area.title}
-              icon={area.icon}
-              title={area.title}
-              description={area.description}
-            />
+              p={8}
+              rounded="xl"
+              bg="bg"
+              border="1px solid"
+              borderColor="border"
+              height="full"
+              transition="all 0.2s"
+              _hover={{ borderColor: "blue.500" }}
+            >
+              <VStack gap={4} align="flex-start" height="full">
+                <Box color="blue.500">
+                  {area.icon}
+                </Box>
+                <Heading as="h3" size="md" fontWeight="500">
+                  {area.title}
+                </Heading>
+                <Text color="fg.muted" fontSize="sm" lineHeight="relaxed">
+                  {area.description}
+                </Text>
+              </VStack>
+            </Box>
           ))}
         </SimpleGrid>
       </Section>
 
-      {/* Final CTA Section */}
-      <Section
-        title="Pronto para fazer o Shift?"
-        subtitle="Se você busca transformar seus desafios operacionais em vantagem competitiva, reduzir custos e tomar decisões baseadas em dados, somos o parceiro ideal."
-        centered
-        variant="geometric"
-      >
-        <VStack gap={8} maxW="3xl" mx="auto">
-          <VStack gap={4}>
-            <Text
-              fontSize="lg"
-              color="fg.muted"
-              textAlign="center"
-              lineHeight="tall"
-            >
-              Nossa abordagem vai além da tecnologia: entendemos seu negócio,
-              seus desafios e suas ambições. Cada solução é desenhada para gerar
-              impacto real e mensurável.
-            </Text>
-          </VStack>
+      {/* Careers Bridge Section */}
+      <Section py={{ base: 20, md: 32 }}>
+        <Container maxW="7xl">
+          <Box
+            rounded="2xl"
+            border="1px solid"
+            borderColor="border"
+            p={{ base: 8, md: 16 }}
+            textAlign="center"
+            bgGradient="linear(to-b, bg.subtle, transparent)"
+          >
+            <VStack gap={8}>
+              <VStack gap={4}>
+                <Heading as="h2" size="3xl" fontWeight="300">
+                  Construa o Futuro Conosco
+                </Heading>
+                <Text fontSize="xl" color="fg.muted" maxW="2xl" mx="auto">
+                  Estamos sempre em busca de mentes brilhantes que compartilham nossa paixão por inovação e excelência.
+                </Text>
+              </VStack>
 
-          <HStack gap={4} flexWrap="wrap" justify="center">
-            <Link href="/contato">
-              <Button size="lg" colorPalette="blue" variant="solid">
-                Fale com nossos especialistas
-                <ChevronRight size={18} />
-              </Button>
-            </Link>
-            <Link href="/insights">
-              <Button size="lg" variant="outline" colorPalette="gray">
-                Explore nossos insights
-              </Button>
-            </Link>
-          </HStack>
-        </VStack>
+              <Link href="/carreiras">
+                <Button
+                  size="xl"
+                  colorPalette="blue"
+                  variant="solid"
+                  rounded="full"
+                  px={10}
+                >
+                  Ver Oportunidades
+                  <ArrowRight size={20} />
+                </Button>
+              </Link>
+            </VStack>
+          </Box>
+        </Container>
       </Section>
 
       <Footer />
