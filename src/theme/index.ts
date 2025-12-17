@@ -17,7 +17,7 @@ import { tokens } from "./tokens";
 
 export const defaultThemeConfig = defineConfig({
   preflight: true,
-  cssVarsPrefix: "acp",
+  cssVarsPrefix: "chakra",
   cssVarsRoot: ":where(html, .chakra-theme)",
   globalCss: globalCss,
   theme: {

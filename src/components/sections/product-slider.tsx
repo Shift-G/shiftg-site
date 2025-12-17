@@ -24,14 +24,7 @@ interface Product {
 }
 
 const products: Product[] = [
-  {
-    title: "ACP — People Analytics Inteligente",
-    description:
-      "Transforma dados de pessoas em decisões claras, preditivas e estratégicas.",
-    badge: "SAAS",
-    image: "/images/products/acp-cover.png",
-    url: "https://acpersonalidade.com.br/"
-  },
+
   {
     title: "SaaS para Sindicatos com IA Integrada",
     description:
@@ -39,6 +32,14 @@ const products: Product[] = [
     badge: "SAAS",
     image: "/images/products/somos-aliados-cover.png",
     url: "https://somosaliados.com.br/"
+  },
+  {
+    title: "ACP — People Analytics Inteligente",
+    description:
+      "Transforma dados de pessoas em decisões claras, preditivas e estratégicas.",
+    badge: "SAAS",
+    image: "/images/products/acp-cover.png",
+    url: "https://acpersonalidade.com.br/"
   },
   {
     title: "Sentinela — RHaaS de Alta Eficiência",
@@ -164,7 +165,7 @@ export function ProductSlider() {
                 bottom: "0",
               },
               "& .swiper-pagination-bullet": {
-                background: "var(--chakra-colors-white-alpha-400)",
+                background: "var(--chakra-colors-gray-200)",
                 opacity: 1,
               },
               "& .swiper-pagination-bullet-active": {
@@ -175,16 +176,20 @@ export function ProductSlider() {
             <Swiper
               modules={[Pagination, Autoplay]}
               spaceBetween={24}
-              slidesPerView={1}
               pagination={{ clickable: true }}
               autoplay={{
                 delay: 5000,
                 disableOnInteraction: false,
               }}
+              slidesPerView={1}
               breakpoints={{
+                640: {
+                  slidesPerView: 1.2,
+                  spaceBetween: 4,
+                },
                 768: {
-                  slidesPerView: 1.5,
-                  spaceBetween: 16,
+                  slidesPerView: 1.2,
+                  spaceBetween: 8,
                 },
                 1024: {
                   slidesPerView: 3,
