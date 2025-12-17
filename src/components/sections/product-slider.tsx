@@ -8,6 +8,7 @@ import {
   VStack,
   Badge,
   AspectRatio,
+  Link,
 } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -19,6 +20,7 @@ interface Product {
   description: string;
   badge?: string;
   image?: string;
+  url?: string;
 }
 
 const products: Product[] = [
@@ -26,28 +28,36 @@ const products: Product[] = [
     title: "ACP — People Analytics Inteligente",
     description:
       "Transforma dados de pessoas em decisões claras, preditivas e estratégicas.",
-    badge: "ANALYTICS",
-    image: "/images/products/acp.jpg",
+    badge: "SAAS",
+    image: "/images/products/acp-cover.png",
+    url: "https://acpersonalidade.com.br/"
   },
   {
     title: "SaaS para Sindicatos com IA Integrada",
     description:
       "Atendimento inteligente, automação e eficiência operacional — tudo em um único ambiente.",
     badge: "SAAS",
-    image: "/images/products/sindicatos.jpg",
+    image: "/images/products/somos-aliados-cover.png",
+    url: "https://somosaliados.com.br/"
   },
   {
     title: "Sentinela — RHaaS de Alta Eficiência",
     description:
       "Terceirização inteligente que substitui até 90% do RH/DP. Escala, controle e previsibilidade.",
-    badge: "RHAAS",
-    image: "/images/products/sentinela.jpg",
+    badge: "BPAAS",
+    image: "/images/products/sentinela-bpaas-cover.png",
+    url: "https://shiftg.com.br/sentinela"
   },
 ];
 
 function ProductCard({ product }: { product: Product }) {
   return (
-    <Box
+    <VStack
+      as={Link}
+      // @ts-ignore
+      href={product.url}
+      rel="noopener noreferrer"
+      target="_blank"
       bg={{ base: "{colors.whiteAlpha.50}", _dark: "{colors.whiteAlpha.50}" }}
       backdropFilter="blur(10px)"
       border="1px solid"
@@ -62,12 +72,13 @@ function ProductCard({ product }: { product: Product }) {
       }}
     >
       {/* Image area */}
-      <AspectRatio ratio={16 / 9} w="full">
+      <AspectRatio ratio={4 / 5} w="full">
         <Box
           bg="{colors.blue.500/10}"
           display="flex"
           alignItems="center"
           justifyContent="center"
+          rounded="lg"
         >
           {product.image ? (
             <Box
@@ -114,7 +125,7 @@ function ProductCard({ product }: { product: Product }) {
           </Text>
         </VStack>
       </VStack>
-    </Box>
+    </VStack>
   );
 }
 

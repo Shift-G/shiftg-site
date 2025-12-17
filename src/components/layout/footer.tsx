@@ -15,8 +15,6 @@ import Link from "next/link";
 import {
   Mail,
   MapPin,
-  Phone,
-  Linkedin,
   Instagram,
   MessageCircle,
 } from "lucide-react";
@@ -148,7 +146,7 @@ export function Footer() {
                 </Text>
               </HStack>
               <HStack gap={3} mt={2}>
-                <ChakraLink
+                {/* <ChakraLink
                   href="https://linkedin.com/company/shiftg"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -157,7 +155,7 @@ export function Footer() {
                   transition="color 0.2s"
                 >
                   <Linkedin size={20} />
-                </ChakraLink>
+                </ChakraLink> */}
                 <ChakraLink
                   href={INSTAGRAM_URL}
                   target="_blank"

@@ -1,7 +1,7 @@
 export const SITE_NAME = "SHIFT+G";
 export const SITE_URL = "https://shiftg.com.br";
 export const SITE_EMAIL = "contato@shiftg.com.br";
-export const SITE_PHONE = "+55 (42) 98872 2552";
+export const SITE_PHONE = "+55 (42) 99981-8852";
 export const SITE_ADDRESS = "Av. Bento Munhoz da Rocha Neto, 553, União da Vitória, Paraná";
 export const SITE_CITY = "União da Vitória";
 export const SITE_STATE = "PR";
