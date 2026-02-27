@@ -3,7 +3,7 @@ import { SITE_URL } from '@/constants';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date();
-  
+
   // Lista de artigos de insights
   const insightsSlugs = [
     'rh-estrategico-como-deixar-planilhas-para-tras-e-liderar-gestao-de-talentos-com-dados',
@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 1.0,
     },
-    
+
     // Páginas principais de serviços - Alta prioridade
     {
       url: `${SITE_URL}/fabrica-de-software`,
@@ -52,7 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
-    
+
     // Sub-páginas de Fábrica de Software
     {
       url: `${SITE_URL}/fabrica-de-software/construa-seu-saas`,
@@ -60,13 +60,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
-    {
-      url: `${SITE_URL}/fabrica-de-software/seu-negocio-na-web`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    
+
     // Páginas institucionais
     {
       url: `${SITE_URL}/sobre`,
@@ -80,7 +74,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.7,
     },
-    
+
     // Blog - Página principal de insights
     {
       url: `${SITE_URL}/insights`,
@@ -88,7 +82,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
-    
+
     // Artigos individuais de insights
     ...insightsSlugs.map((slug) => ({
       url: `${SITE_URL}/insights/${slug}`,
@@ -96,7 +90,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     })),
-    
+
     // Páginas legais - Baixa prioridade
     {
       url: `${SITE_URL}/politica-de-privacidade`,

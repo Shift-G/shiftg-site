@@ -1,43 +1,28 @@
 import { Metadata } from "next";
 import {
   Box,
-  Container,
-  SimpleGrid,
-  VStack,
-  Heading,
-  Text,
-  Button,
+  Flex,
+  Grid,
   HStack,
-  Stack,
-  List,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
 import { Page } from "@/components/layout/page";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Section } from "@/components/layout/section";
-import { FeatureCard } from "@/components/cards/feature-card";
-import { JobCard } from "@/components/cards/job-card";
+import { Plumb } from "@/components/ui/plumb";
+import { CTAFinalSection } from "@/components/sections/cta-final-section";
 import {
-  TrendingUp,
-  Shield,
-  Coffee,
-  Award,
-  BookOpen,
-  Clock,
-  Home,
-  Globe,
+  ArrowRight,
   Database,
   Phone,
   HeadphonesIcon,
   Briefcase,
-  ChevronRight,
-  Mail,
-  Star,
-  Target,
-  Brain,
-  Lightbulb,
-  Heart,
-  Rocket
+  Terminal,
+  Activity,
+  Cpu,
+  Monitor,
+  Zap
 } from "lucide-react";
 import Link from "next/link";
 import { SITE_NAME, SITE_URL, CAREERS_EMAIL } from "@/constants";
@@ -45,224 +30,93 @@ import { SITE_NAME, SITE_URL, CAREERS_EMAIL } from "@/constants";
 export const metadata: Metadata = {
   title: `Carreiras | ${SITE_NAME}`,
   description:
-    "Junte-se ao time da Shift+G! Estamos contratando talentos remotamente para revolucionar o futuro da inteligência artificial e dados. 5 vagas abertas para profissionais que querem fazer a diferença.",
-  keywords: [
-    "carreiras shift+g",
-    "vagas remotas",
-    "engenheiro de dados",
-    "SDR vendas",
-    "analista de suporte",
-    "gerente de projetos",
-    "trabalho remoto",
-    "inteligência artificial",
-    "data science",
-    "startup tech",
-  ],
+    "Torne-se um arquiteto na SHIFT+G. Vagas remotas em Inteligência Artificial, Dados e Vendas de Elite para nível C-Level.",
+  alternates: {
+    canonical: `${SITE_URL}/carreiras`,
+  },
   openGraph: {
     title: `Carreiras | ${SITE_NAME}`,
     description:
-      "Estamos contratando! 5 vagas remotas para profissionais que querem revolucionar o futuro da IA e dados.",
+      "Vagas remotas para profissionais que querem construir o futuro da IA e Dados em grandes arquiteturas.",
     type: "website",
     locale: "pt_BR",
     url: `${SITE_URL}/carreiras`,
-    siteName: `${SITE_NAME} - Carreiras`,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `Carreiras | ${SITE_NAME}`,
-    description:
-      "Estamos contratando! 5 vagas remotas para profissionais que querem revolucionar o futuro da IA e dados.",
+    siteName: SITE_NAME,
   },
 };
 
-const benefits = [
-  {
-    title: "100% Remoto",
-    description:
-      "Trabalhe de qualquer lugar do Brasil. Liberdade total para organizar seu ambiente e rotina de trabalho.",
-    icon: <Home size={24} />,
-  },
-  {
-    title: "Horário Flexível",
-    description:
-      "Organize seu horário como preferir. O importante são os resultados, não o horário que você bate o ponto.",
-    icon: <Clock size={24} />,
-  },
-  {
-    title: "Crescimento Acelerado",
-    description:
-      "Participe de projetos desafiadores com tecnologias de ponta. Aprenda com profissionais experientes.",
-    icon: <TrendingUp size={24} />,
-  },
-  {
-    title: "Equipamentos",
-    description:
-      "Fornecemos notebook, monitor, e uma verba para montar seu home office ideal.",
-    icon: <Coffee size={24} />,
-  },
-  {
-    title: "Plano de Saúde",
-    description:
-      "Plano de saúde completo para você e sua família. Seu bem-estar é nossa prioridade.",
-    icon: <Heart size={24} />,
-  },
-  {
-    title: "Educação Contínua",
-    description:
-      "Verba para cursos, certificações e livros. Investimos no seu desenvolvimento profissional.",
-    icon: <BookOpen size={24} />,
-  },
-];
-
-const culture = [
-  {
-    title: "Inovação Constante",
-    description:
-      "Trabalhamos com as tecnologias mais modernas do mercado. IA, Machine Learning, Cloud Native - sempre na vanguarda.",
-    icon: <Lightbulb size={24} />,
-  },
-  {
-    title: "Impacto Real",
-    description:
-      "Nossos projetos transformam empresas de verdade. Você verá o resultado direto do seu trabalho nos clientes.",
-    icon: <Target size={24} />,
-  },
-  {
-    title: "Time de Experts",
-    description:
-      "Trabalhe com profissionais que respiram tecnologia. Aprenda, ensine e cresça junto com o time.",
-    icon: <Brain size={24} />,
-  },
-  {
-    title: "Autonomia Total",
-    description:
-      "Confiamos na sua capacidade. Você tem liberdade para propor soluções e implementar suas ideias.",
-    icon: <Rocket size={24} />,
-  },
-];
+/* ── Section Tag ── */
+function SectionTag({ children, color = "blue.solid" }: { children: string; color?: string }) {
+  return (
+    <HStack
+      fontFamily="mono"
+      fontSize="2xs"
+      fontWeight={600}
+      letterSpacing="0.16em"
+      textTransform="uppercase"
+      color={color}
+      gap="10px"
+      mb={4}
+    >
+      <Box w="18px" h="1.5px" bg={color} />
+      <Text>{children}</Text>
+    </HStack>
+  );
+}
 
 const jobs = [
   {
     title: "Engenheiro de Dados Sênior",
-    department: "Dados & IA",
-    type: "Remoto • PJ",
-    level: "Sênior",
-    salary: "R$ 12.000 - R$ 18.000",
-    description:
-      "Lidere a arquitetura de dados da Shift+G. Construa pipelines robustos e escaláveis que alimentam nossas soluções de IA.",
-    requirements: [
-      "5+ anos com engenharia de dados",
-      "Python, SQL, Apache Spark/Airflow",
-      "AWS/GCP/Azure (certificação é um plus)",
-      "Experiência com Data Lakes e Data Warehouses",
-      "Conhecimento em MLOps",
-    ],
-    responsibilities: [
-      "Arquitetar e implementar pipelines de dados",
-      "Otimizar performance de queries e ETLs",
-      "Mentoria técnica para o time",
-      "Definir padrões e melhores práticas",
-    ],
+    department: "Cloud & Engine",
+    type: "REMOTO",
+    salary: "R$ 12k — R$ 18k",
+    description: "Lidere pipelines críticos. Esperamos vivência absoluta em Python, infraestruturas escaláveis e Data Lakes.",
     icon: <Database size={24} />,
     featured: true,
   },
   {
-    title: "Engenheiro de Dados Especialista",
-    department: "Dados & IA",
-    type: "Remoto • PJ",
-    level: "Especialista",
-    salary: "R$ 18.000 - R$ 25.000",
-    description:
-      "Seja o tech lead de dados da Shift+G. Defina a estratégia técnica e lidere projetos complexos de grande escala.",
-    requirements: [
-      "8+ anos com engenharia de dados",
-      "Experiência em arquiteturas distribuídas",
-      "Liderança técnica comprovada",
-      "Conhecimento profundo em ML Engineering",
-      "Experiência com Real-time Processing",
-    ],
-    responsibilities: [
-      "Definir arquitetura de dados da empresa",
-      "Liderar projetos estratégicos",
-      "Desenvolver soluções inovadoras",
-      "Representar tecnicamente a empresa",
-    ],
-    icon: <Database size={24} />,
+    title: "Engenheiro de Dados (Especialista)",
+    department: "Cloud & Engine",
+    type: "REMOTO",
+    salary: "R$ 18k — R$ 25k",
+    description: "Tech lead de infraestrutura. Definição da arquitetura de base para machine learning e real-time processing.",
+    icon: <Cpu size={24} />,
     featured: true,
   },
   {
-    title: "SDR - Representante Comercial",
-    department: "Vendas",
-    type: "Remoto • PJ",
-    level: "Pleno",
-    salary: "R$ 4.000 - R$ 8.000 + comissões",
-    description:
-      "Seja nossa primeira impressão com potenciais clientes. Prospecte leads qualificados e agende reuniões para o time comercial. Preferência para candidatos de União da Vitória - PR e região.",
-    requirements: [
-      "2+ anos em vendas B2B ou SDR",
-      "Experiência com CRM (HubSpot, Salesforce)",
-      "Inglês intermediário",
-      "Conhecimento básico em tecnologia",
-      "Perfil consultivo e orientado a resultados",
-      "Preferência: União da Vitória - PR e região",
-    ],
-    responsibilities: [
-      "Prospecção ativa de leads qualificados",
-      "Qualificação de oportunidades comerciais",
-      "Agendamento de reuniões para AEs",
-      "Nutrição de leads via email e LinkedIn",
-    ],
+    title: "SDR - Vendas B2B Elite",
+    department: "Revenue",
+    type: "HÍBRIDO PR",
+    salary: "R$ 4k — R$ 8k + ACEL",
+    description: "Abra trincheiras e qualifique tickets C-Level. Conhecimento B2B de alto volume é mandatório.",
     icon: <Phone size={24} />,
     featured: false,
   },
   {
-    title: "Analista de Suporte",
-    department: "Customer Success",
-    type: "Remoto • PJ",
-    level: "Pleno",
-    salary: "R$ 4.500 - R$ 6.500",
-    description:
-      "Garanta o sucesso dos nossos clientes. Ofereça suporte técnico excepcional e ajude na adoção das nossas soluções.",
-    requirements: [
-      "2+ anos em suporte técnico",
-      "Conhecimento em SQL e APIs",
-      "Experiência com ferramentas de BI",
-      "Inglês intermediário",
-      "Excelente comunicação",
-    ],
-    responsibilities: [
-      "Suporte técnico aos clientes",
-      "Análise e resolução de problemas",
-      "Criação de documentação técnica",
-      "Treinamento de usuários",
-    ],
-    icon: <HeadphonesIcon size={24} />,
-    featured: false,
-  },
-  {
-    title: "Gerente de Projetos",
-    department: "Operações",
-    type: "Remoto • PJ",
-    level: "Sênior",
-    salary: "R$ 8.000 - R$ 12.000",
-    description:
-      "Lidere a execução dos nossos projetos de IA. Garanta entregas no prazo e qualidade, coordenando times multidisciplinares.",
-    requirements: [
-      "5+ anos em gestão de projetos tech",
-      "PMP ou certificação similar",
-      "Experiência com metodologias ágeis",
-      "Conhecimento em projetos de dados/IA",
-      "Inglês avançado",
-    ],
-    responsibilities: [
-      "Gestão completa do ciclo de projetos",
-      "Coordenação de times multidisciplinares",
-      "Interface com stakeholders",
-      "Garantia de qualidade e prazos",
-    ],
+    title: "Project Manager",
+    department: "Ops",
+    type: "REMOTO",
+    salary: "R$ 8k — R$ 12k",
+    description: "Entrega não se negocia. Orquestre nossos engenheiros dentro dos prazos SLA dos clientes enterprise.",
     icon: <Briefcase size={24} />,
     featured: false,
   },
+  {
+    title: "Customer Support C-Level",
+    department: "Support",
+    type: "REMOTO",
+    salary: "R$ 4.5k — R$ 6.5k",
+    description: "A linha de frente não cai. Monitoramento ativo, queries rápidas e capacidade de alinhar com diretoria cliente.",
+    icon: <HeadphonesIcon size={24} />,
+    featured: false,
+  },
+];
+
+const workspaceBenefits = [
+  { icon: <Monitor size={20} />, label: "Setup Mac/PC de alta performance fornecido" },
+  { icon: <Activity size={20} />, label: "Health / Plano nível executivo" },
+  { icon: <Zap size={20} />, label: "Orçamento M mensal para Labs e Certificações" },
+  { icon: <Terminal size={20} />, label: "Assinaturas liberadas (Copilot, Cursor, OpenAI)" },
 ];
 
 export default function CareersPage() {
@@ -270,335 +124,329 @@ export default function CareersPage() {
     <Page>
       <Navbar />
 
-      {/* Hero Section */}
-      <Section py={{ base: 20, md: 32 }}>
-        <Container maxW="7xl">
-          <VStack gap={{ base: 8, md: 12 }} maxW="5xl" mx="auto" textAlign="center">
-            {/* Badge */}
-            <HStack
-              px={4}
-              py={2}
-              rounded="full"
-              bg="transparent"
-              border="1px solid"
-              borderColor="blue.500"
-            >
-              <Star size={14} color="var(--chakra-colors-blue-500)" />
+      <VStack gap={0} w="full" as="main" align="stretch">
+
+        {/* ── Hero ── */}
+        <Box
+          as="section"
+          minH={{ base: "65vh", md: "85vh" }}
+          bg="stone"
+          display="flex"
+          flexDirection="column"
+          justifyContent="flex-end"
+          position="relative"
+          overflow="hidden"
+          px={{ base: 6, md: "60px", lg: "112px" }}
+        >
+          {/* Subtle math/grid pattern */}
+          <Box
+            position="absolute"
+            inset={0}
+            backgroundImage="linear-gradient(#00000004 1px, transparent 1px), linear-gradient(90deg, #00000004 1px, transparent 1px)"
+            backgroundSize="40px 40px"
+            pointerEvents="none"
+          />
+
+          <VStack
+            position="relative"
+            zIndex={2}
+            align="flex-start"
+            pt={{ base: "140px", md: "140px" }}
+          >
+            <HStack gap={3} mb={{ base: 6, md: "24px" }}>
+              <Box w="6px" h="6px" bg="blue.solid" />
               <Text
-                fontSize="sm"
-                fontWeight="400"
-                color="blue.500"
+                fontFamily="mono"
+                fontSize="2xs"
+                fontWeight={600}
+                letterSpacing="0.14em"
                 textTransform="uppercase"
-                letterSpacing="wider"
+                color="blue.solid"
               >
-                5 Vagas Abertas • 100% Remoto
+                05 Vagas em Aberto
               </Text>
             </HStack>
 
-            {/* Title */}
-            <VStack gap={6}>
-              <Heading
-                as="h1"
-                size={{ base: "4xl", md: "5xl", lg: "6xl" }}
-                fontWeight="300"
-                lineHeight="shorter"
-                letterSpacing="tight"
-                color="fg"
-              >
-                Construa o{" "}
-                <Text
-                  as="span"
-                  color="blue.500"
-                  fontWeight="400"
-                >
-                  Futuro
-                </Text>{" "}
-                da IA conosco
-              </Heading>
-
-              <Text
-                fontSize={{ base: "xl", md: "2xl" }}
-                color="fg.muted"
-                maxW="3xl"
-                lineHeight="tall"
-                fontWeight="300"
-              >
-                Junte-se ao time que está revolucionando como empresas usam
-                dados e inteligência artificial. Trabalho remoto, impacto real,
-                crescimento acelerado.
-              </Text>
-            </VStack>
-
-            {/* Stats */}
-            <SimpleGrid columns={{ base: 2, md: 4 }} gap={{ base: 4, md: 8 }} w="full" maxW="3xl" pt={8}>
-              {[
-                { value: "100%", label: "Remoto" },
-                { value: "5", label: "Vagas Abertas" },
-                { value: "24h", label: "Resposta" },
-                { value: "Flexível", label: "Horário" },
-              ].map((stat) => (
-                <Box key={stat.label} textAlign="center">
-                  <Text
-                    fontSize={{ base: "3xl", md: "4xl" }}
-                    fontWeight="300"
-                    color="blue.500"
-                    lineHeight="none"
-                  >
-                    {stat.value}
-                  </Text>
-                  <Text
-                    fontSize="sm"
-                    color="fg.muted"
-                    fontWeight="400"
-                    textTransform="uppercase"
-                    letterSpacing="wide"
-                    mt={2}
-                  >
-                    {stat.label}
-                  </Text>
-                </Box>
-              ))}
-            </SimpleGrid>
-
-            {/* CTA */}
-            <Stack
-              direction={{ base: "column", sm: "row" }}
-              gap={4}
-              w={{ base: "full", sm: "auto" }}
-              mt={8}
+            <Text
+              as="h1"
+              fontSize={{ base: "48px", md: "clamp(60px, 8vw, 130px)" }}
+              lineHeight={0.92}
+              letterSpacing="-2.5px"
+              color="fg"
+              maxW="1400px"
+              mb={0}
             >
-              <Link href="#vagas" passHref>
-                <Button
-                  size="xl"
-                  variant="solid"
-                  colorPalette="blue"
-                >
-                  Ver Vagas Disponíveis
-                  <ChevronRight size={20} style={{ marginLeft: "12px" }} />
-                </Button>
-              </Link>
-            </Stack>
-          </VStack>
-        </Container>
-      </Section>
-
-      {/* Culture Section */}
-      <Section
-        title="Nossa Cultura: Onde Tecnologia Encontra Propósito"
-        subtitle="Não somos apenas uma empresa de tecnologia. Somos uma comunidade de inovadores que acredita no poder transformador dos dados e da IA."
-        centered
-        bg="bg.subtle"
-        py={{ base: 16, md: 24 }}
-      >
-        <SimpleGrid columns={{ base: 1, md: 2 }} gap={{ base: 6, md: 8 }}>
-          {culture.map((item, index) => (
-            <FeatureCard
-              key={item.title}
-              icon={item.icon}
-              title={item.title}
-              description={item.description}
-              highlighted={index === 0}
-            />
-          ))}
-        </SimpleGrid>
-      </Section>
-
-      {/* Employment Model Section */}
-      <Section
-        title="Modelo de Contratação PJ"
-        subtitle="Todas as nossas contratações são feitas no modelo Pessoa Jurídica (PJ), oferecendo flexibilidade e benefícios competitivos."
-        centered
-        py={{ base: 16, md: 24 }}
-      >
-        <SimpleGrid columns={{ base: 1, md: 3 }} gap={{ base: 6, md: 8 }}>
-          <FeatureCard
-            icon={<Award size={24} />}
-            title="Flexibilidade Fiscal"
-            description="Modelo PJ permite maior flexibilidade na gestão fiscal e possibilita dedução de despesas relacionadas ao trabalho."
-          />
-          <FeatureCard
-            icon={<TrendingUp size={24} />}
-            title="Valores Competitivos"
-            description="Oferecemos remuneração acima do mercado, considerando os benefícios do modelo PJ para profissionais qualificados."
-          />
-          <FeatureCard
-            icon={<Shield size={24} />}
-            title="Segurança Jurídica"
-            description="Contratos claros e transparentes, respeitando todas as regulamentações trabalhistas e fiscais brasileiras."
-          />
-        </SimpleGrid>
-      </Section>
-
-      {/* Benefits Section */}
-      <Section
-        title="Benefícios que Fazem a Diferença"
-        subtitle="Cuidamos de quem cuida dos nossos projetos. Estes são os benefícios que oferecemos para nosso time."
-        centered
-        bg="bg.subtle"
-        py={{ base: 16, md: 24 }}
-      >
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={{ base: 6, md: 8 }}>
-          {benefits.map((benefit) => (
-            <FeatureCard
-              key={benefit.title}
-              icon={benefit.icon}
-              title={benefit.title}
-              description={benefit.description}
-            />
-          ))}
-        </SimpleGrid>
-      </Section>
-
-      {/* Remote Work Section */}
-      <Section
-        title="Trabalho Remoto de Verdade"
-        subtitle="Não é apenas home office. É liberdade para trabalhar de onde você for mais produtivo."
-        centered
-        py={{ base: 16, md: 24 }}
-      >
-        <SimpleGrid columns={{ base: 1, lg: 2 }} gap={{ base: 8, md: 12 }} alignItems="center" maxW="6xl" mx="auto">
-          <VStack align="flex-start" gap={8}>
-            <VStack align="flex-start" gap={4}>
-              <HStack>
-                <Globe size={24} color="var(--chakra-colors-blue-500)" />
-                <Text fontWeight="400" fontSize="xl" color="blue.500">
-                  De Qualquer Lugar do Brasil
-                </Text>
-              </HStack>
-              <Text color="fg.muted" fontSize="lg" lineHeight="tall" fontWeight="300">
-                Nosso time está espalhado por todo o país. Temos pessoas
-                trabalhando desde São Paulo até cidades menores do interior.
-                O que importa é o seu talento, não seu CEP.
+              <Text as="span" fontWeight={800}>
+                Aliste-se aos
               </Text>
-            </VStack>
-
-            <VStack align="flex-start" gap={4}>
-              <HStack>
-                <Clock size={24} color="var(--chakra-colors-blue-500)" />
-                <Text fontWeight="400" fontSize="xl" color="blue.500">
-                  Flexibilidade Real
-                </Text>
-              </HStack>
-              <Text color="fg.muted" fontSize="lg" lineHeight="tall" fontWeight="300">
-                Seja um early bird ou uma coruja noturna, organizamos os
-                horários para que todos possam contribuir no seu melhor momento.
-                Temos apenas algumas horas de overlap para alinhamentos.
-              </Text>
-            </VStack>
-          </VStack>
-
-          <Box
-            p={{ base: 6, md: 8 }}
-            rounded="xl"
-            bg="blue.500/5"
-            border="1px solid"
-            borderColor="blue.500"
-          >
-            <VStack gap={6}>
-              <Heading
-                as="h4"
-                size="lg"
-                fontWeight="400"
-                color="blue.500"
-                textAlign="center"
-              >
-                Setup Completo para Home Office
-              </Heading>
-              <List.Root gap={4}>
-                {[
-                  "💻 MacBook Pro ou notebook de alta performance",
-                  "🖥️ Monitor 4K de 27 polegadas",
-                  "☕ R$ 500/mês para coffee/coworking",
-                  "🪑 Ajuda de custo para mobiliário",
-                  "📚 Verba para livros e cursos",
-                ].map((item) => (
-                  <List.Item key={item} color="fg.muted" fontSize="md">
-                    {item}
-                  </List.Item>
-                ))}
-              </List.Root>
-            </VStack>
-          </Box>
-        </SimpleGrid>
-      </Section>
-
-      {/* Jobs Section */}
-      <Section
-        id="vagas"
-        title="Vagas Disponíveis"
-        subtitle="5 oportunidades para profissionais que querem fazer a diferença. Todas as vagas são 100% remotas."
-        centered
-        bg="bg.subtle"
-        py={{ base: 16, md: 24 }}
-      >
-        <VStack gap={{ base: 6, md: 8 }} maxW="7xl" mx="auto">
-          {jobs.map((job) => (
-            <JobCard key={job.title} {...job} />
-          ))}
-        </VStack>
-      </Section>
-
-      {/* Final CTA Section */}
-      <Section py={{ base: 20, md: 32 }}>
-        <Container maxW="5xl">
-          <VStack gap={{ base: 8, md: 12 }} textAlign="center">
-            <VStack gap={6}>
-              <Heading
-                as="h2"
-                size={{ base: "3xl", md: "4xl", lg: "5xl" }}
-                fontWeight="300"
-                lineHeight="shorter"
-                letterSpacing="tight"
-                color="fg"
-              >
-                Não viu a vaga{" "}
-                <Text
-                  as="span"
-                  color="blue.500"
-                  fontWeight="400"
-                >
-                  perfeita
-                </Text>{" "}
-                para você?
-              </Heading>
-
+              <br />
               <Text
-                fontSize={{ base: "lg", md: "2xl" }}
-                color="fg.muted"
-                maxW="3xl"
-                lineHeight="tall"
-                fontWeight="300"
+                as="span"
+                fontFamily="serif"
+                fontWeight={400}
+                fontStyle="italic"
+                color="blue.solid"
               >
-                Estamos sempre em busca de talentos excepcionais. Envie seu
-                currículo e conte como você pode contribuir com nossa missão
-                de transformar dados em inteligência.
+                construtores.
               </Text>
-            </VStack>
+            </Text>
 
-            <VStack gap={6} w="full" maxW="lg">
-              <Link
-                href={`mailto:${CAREERS_EMAIL}?subject=Candidatura Espontânea&body=Olá! Gostaria de fazer parte do time da Shift+G. Segue meu currículo em anexo.`}
-                passHref
+            {/* Bottom Info Bar */}
+            <Box
+              borderTop="1px solid"
+              borderColor="blackAlpha.100"
+              mt={{ base: 10, md: "60px" }}
+              pt={{ base: 6, md: "32px" }}
+              pb={{ base: 8, md: "48px" }}
+              w="full"
+            >
+              <Flex
+                direction={{ base: "column", lg: "row" }}
+                gap={{ base: 8, lg: "80px" }}
+                align={{ base: "flex-start", lg: "center" }}
               >
-                <Button
-                  size="2xl"
-                  variant="solid"
-                  colorPalette="blue"
-                  w={{ base: "full", sm: "auto" }}
+                <Text
+                  fontSize="md"
+                  color="fg.muted"
+                  lineHeight={1.8}
+                  flex={1.2}
+                  maxW="750px"
                 >
-                  <Mail size={20} style={{ marginRight: "12px" }} />
-                  Enviar Candidatura Espontânea
-                  <ChevronRight size={20} style={{ marginLeft: "12px" }} />
-                </Button>
-              </Link>
+                  Somos exigentes, austeros com futilidades tecnológicas e obcecados por resultados em produção.
+                  Se você foge da complexidade e quer bater ponto, essa empresa não é pra você. Aqui, entregamos as
+                  bases que revolucionam indústrias — e operamos de qualquer lugar do Brasil.
+                </Text>
 
-              <Text fontSize="md" color="fg.muted" fontWeight="400">
-                Resposta garantida em até 24 horas
-              </Text>
-            </VStack>
+                <HStack gap={{ base: 6, md: 10 }} flex={1} justify={{ base: "flex-start", lg: "flex-end" }} w="full">
+                  <VStack align="flex-start" gap={1}>
+                    <Text fontFamily="mono" fontSize="2xs" color="fg.subtle">MODELO</Text>
+                    <Text fontSize="sm" fontWeight={600} color="fg">Remoto</Text>
+                  </VStack>
+                  <VStack align="flex-start" gap={1}>
+                    <Text fontFamily="mono" fontSize="2xs" color="fg.subtle">REGIME</Text>
+                    <Text fontSize="sm" fontWeight={600} color="fg">B2B / PJ</Text>
+                  </VStack>
+
+                  <Box
+                    as="a"
+                    href="#open-roles"
+                    display={{ base: "none", md: "inline-flex" }}
+                    alignItems="center"
+                    gap="10px"
+                    bg="blue.solid"
+                    color="white"
+                    px="28px"
+                    py="14px"
+                    fontWeight={600}
+                    fontSize="sm"
+                    transition="all 0.2s"
+                    _hover={{ bg: "blue.fg" }}
+                  >
+                    Ver Operações
+                    <ArrowRight size={14} />
+                  </Box>
+                </HStack>
+              </Flex>
+            </Box>
           </VStack>
-        </Container>
-      </Section>
+        </Box>
+
+        <Plumb />
+
+        {/* ── Culture / Setup ── */}
+        <Box
+          as="section"
+          py={{ base: 16, md: "110px" }}
+          px={{ base: 6, md: "60px", lg: "112px" }}
+          bg="blue.solid"
+          color="white"
+          position="relative"
+          overflow="hidden"
+        >
+          {/* Subtle geo bg */}
+          <Box position="absolute" right={-20} top={-20} opacity={0.05} pointerEvents="none">
+            <svg width="600" height="600" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="1" />
+              <path d="M 5,50 L 95,50" stroke="white" strokeWidth="0.5" />
+              <path d="M 50,5 L 50,95" stroke="white" strokeWidth="0.5" />
+            </svg>
+          </Box>
+
+          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 12, lg: "80px" }} position="relative" zIndex={2}>
+            <Box>
+              <SectionTag color="gold.500">WORKSPACE DA BASE</SectionTag>
+              <Text
+                as="h2"
+                fontSize={{ base: "32px", md: "48px" }}
+                fontWeight={800}
+                lineHeight={1.1}
+                letterSpacing="-1px"
+                mb={6}
+              >
+                Arsenal para {" "}
+                <Text as="span" fontFamily="serif" fontStyle="italic" fontWeight={400} color="gold.500">
+                  engenheiros.
+                </Text>
+              </Text>
+              <Text fontSize="lg" color="whiteAlpha.800" lineHeight={1.8}>
+                Não economizamos na infantaria. O trabalho remoto da SHIFT+G significa que a matriz
+                envia o hardware pesado, paga as assinaturas das melhores IAs que existem para que seu teclado
+                escreva código e soluções de forma hiper-produtiva. Propósito importa, mas a infraestrutura te carrega.
+              </Text>
+            </Box>
+
+            <VStack align="stretch" gap="1px" bg="whiteAlpha.200" p="1px">
+              {workspaceBenefits.map((item, i) => (
+                <HStack key={i} bg="blue.900" p={6} gap={4}>
+                  <Box color="gold.500">{item.icon}</Box>
+                  <Text fontSize="md" fontWeight={600}>{item.label}</Text>
+                </HStack>
+              ))}
+            </VStack>
+          </Grid>
+        </Box>
+
+        {/* ── Vagas Grid Table ── */}
+        <Box
+          id="open-roles"
+          as="section"
+          py={{ base: 16, md: "110px" }}
+          px={{ base: 6, md: "60px", lg: "112px" }}
+          bg="white"
+        >
+          <VStack align="center" textAlign="center" mb={{ base: 12, md: 16 }} maxW="700px" mx="auto">
+            <SectionTag>BOARD DE ALOCAÇÃO</SectionTag>
+            <Text
+              as="h2"
+              fontSize={{ base: "32px", md: "44px" }}
+              fontWeight={800}
+              lineHeight={1.1}
+              letterSpacing="-1px"
+            >
+              Vagas de {" "}
+              <Text as="span" fontFamily="serif" fontStyle="italic" fontWeight={400} color="blue.solid">
+                Operação.
+              </Text>
+            </Text>
+          </VStack>
+
+          <VStack w="full" bg="blackAlpha.100" p="1px" gap="1px">
+            {jobs.map((job, i) => (
+              <Grid
+                key={i}
+                templateColumns={{ base: "1fr", lg: "300px 1fr 200px" }}
+                gap={{ base: 6, lg: 10 }}
+                bg="off"
+                p={{ base: 8, md: 10 }}
+                w="full"
+                alignItems="center"
+                _hover={{ bg: "white" }}
+                transition="all 0.2s"
+              >
+                {/* Left Col - Identity */}
+                <VStack align="flex-start" gap={3}>
+                  {job.featured && (
+                    <Box bg="blue.solid" color="white" px={3} py={1}>
+                      <Text fontFamily="mono" fontSize="2xs" fontWeight={800}>PRIORIDADE ALTA</Text>
+                    </Box>
+                  )}
+                  {!job.featured && (
+                    <Box bg="stone" color="fg.subtle" border="1px solid" borderColor="blackAlpha.200" px={3} py={1}>
+                      <Text fontFamily="mono" fontSize="2xs" fontWeight={800}>{job.department.toUpperCase()}</Text>
+                    </Box>
+                  )}
+                  <Text fontSize="2xl" fontWeight={800} letterSpacing="-0.5px" color="fg" mt={2}>
+                    {job.title}
+                  </Text>
+                </VStack>
+
+                {/* Middle Col - Spec & Briefing */}
+                <VStack align="flex-start" gap={2}>
+                  <HStack gap={4} mb={2}>
+                    <HStack color="fg.subtle" gap={2}>
+                      <Terminal size={14} />
+                      <Text fontFamily="mono" fontSize="10px" fontWeight={700}>{job.department.toUpperCase()}</Text>
+                    </HStack>
+                    <HStack color="blue.solid" gap={2}>
+                      <Activity size={14} />
+                      <Text fontFamily="mono" fontSize="10px" fontWeight={700}>{job.type}</Text>
+                    </HStack>
+                  </HStack>
+                  <Text fontSize="sm" color="fg.muted" lineHeight={1.6}>
+                    {job.description}
+                  </Text>
+                </VStack>
+
+                {/* Right Col - Action */}
+                <VStack align={{ base: "flex-start", lg: "flex-end" }} gap={4} w="full">
+                  <VStack align={{ base: "flex-start", lg: "flex-end" }} gap={0}>
+                    <Text fontFamily="mono" fontSize="2xs" color="fg.subtle">COMPENSAÇÃO B2B</Text>
+                    <Text fontSize="lg" fontWeight={800} color="fg">{job.salary}</Text>
+                  </VStack>
+                  <Box
+                    as="a"
+                    href={`mailto:${CAREERS_EMAIL}?subject=Candidatura: ${job.title}&body=Olá! Segue em anexo meu histórico para a posição de ${job.title}.`}
+                    display="inline-flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    gap="10px"
+                    bg="transparent"
+                    color="blue.solid"
+                    border="1px solid"
+                    borderColor="blue.solid"
+                    px="24px"
+                    py="10px"
+                    fontWeight={700}
+                    fontSize="xs"
+                    textTransform="uppercase"
+                    transition="all 0.2s"
+                    _hover={{ bg: "blue.solid", color: "white" }}
+                    w={{ base: "full", lg: "auto" }}
+                  >
+                    Apresentar Arquivo
+                  </Box>
+                </VStack>
+              </Grid>
+            ))}
+          </VStack>
+        </Box>
+
+        {/* ── Naked CTA ── */}
+        <Box
+          as="section"
+          py={{ base: 16, md: "80px" }}
+          px={{ base: 6, md: "60px", lg: "112px" }}
+          bg="stone"
+          borderTop="1px solid"
+          borderColor="blackAlpha.100"
+          textAlign="center"
+        >
+          <Text fontSize="2xl" fontWeight={800} color="fg" mb={4}>Nenhuma vaga ativa bateu com você?</Text>
+          <Text fontSize="md" color="fg.muted" maxW="600px" mx="auto" mb={8}>
+            Gênios sempre encontram porta aberta. Submeta uma aplicação bruta e justifique por que
+            precisamos de você dentro da Matrix.
+          </Text>
+          <Box
+            as="a"
+            href={`mailto:${CAREERS_EMAIL}?subject=Candidatura Espontânea&body=Nenhuma vaga se aplica, mas vocês precisam olhar esse currículo anexado.`}
+            display="inline-flex"
+            alignItems="center"
+            justifyContent="center"
+            gap="10px"
+            bg="fg"
+            color="white"
+            px="32px"
+            py="16px"
+            fontWeight={600}
+            fontSize="sm"
+            transition="all 0.2s"
+            _hover={{ bg: "black" }}
+          >
+            Envio Espontâneo
+            <ArrowRight size={14} />
+          </Box>
+        </Box>
+      </VStack>
 
       <Footer />
     </Page>
