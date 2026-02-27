@@ -7,7 +7,6 @@ import {
   Text,
   Button,
   IconButton,
-  Drawer,
   useDisclosure,
   Link as ChakraLink,
   Image,
@@ -17,12 +16,7 @@ import {
   Heading,
   Badge,
   Portal,
-  DrawerRoot,
-  DrawerBackdrop,
-  DrawerContent,
-  DrawerCloseTrigger,
-  DrawerHeader,
-  DrawerBody,
+  Drawer
 } from "@chakra-ui/react";
 import {
   Menu,
@@ -71,15 +65,15 @@ const menuSections: Record<string, MenuSection> = {
     items: [
       {
         icon: <Cpu size={20} />,
-        title: "Doutrinação em I.A",
-        description: "Protocolos de capacitação para frotas corporativas",
+        title: "Treinamento de IA para sua Empresa",
+        description: "Capacitação estratégica em Inteligência Artificial para equipes corporativas.",
         href: "/treinamento-ia-para-sua-empresa",
         badge: "PRIORIDADE",
         badgeColor: "blue",
       },
       {
         icon: <Activity size={20} />,
-        title: "Auditoria de Back-Office",
+        title: "Diagnóstico Inteligente",
         description: "Mapeamento tático de gargalos e oportunidades",
         href: "/diagnostico-inteligente",
         badge: "NOVO MÓDULO",
@@ -93,7 +87,7 @@ const menuSections: Record<string, MenuSection> = {
       },
       {
         icon: <HardDrive size={20} />,
-        title: "Fábrica de Engenharia",
+        title: "Fábrica de Software",
         description: "Desenvolvimento puro de software B2B escalável",
         href: "/fabrica-de-software",
       },
@@ -360,7 +354,7 @@ export function Navbar() {
                   transition="opacity 0.2s"
                   onClick={() => setActiveMenu(null)}
                 >
-                  <Image src="/logo.png" alt="Shift G Logo" h={12} />
+                  <Image src="/logo-shift-gnosis.png" alt="Shift G Logo" h={12} />
                 </ChakraLink>
               </Link>
             </Flex>
@@ -416,7 +410,7 @@ export function Navbar() {
                     _hover={{ bg: "blue.solid" }}
                     onClick={() => setActiveMenu(null)}
                   >
-                    Requisitar Engenharia
+                    Fale Conosco
                   </Button>
                 </Link>
               </Flex>
@@ -439,16 +433,16 @@ export function Navbar() {
       </Box>
 
       {/* Mobile Drawer */}
-      <DrawerRoot open={open} onOpenChange={onClose} placement="end">
-        <DrawerBackdrop />
-        <DrawerContent bg="white" rounded="none">
-          <DrawerCloseTrigger color="fg" />
-          <DrawerHeader borderBottom="1px solid" borderColor="blackAlpha.200" py={4}>
+      <Drawer.Root open={open} onOpenChange={onClose} placement="end" size="full">
+        <Drawer.Backdrop />
+        <Drawer.Content bg="white" rounded="none">
+          <Drawer.CloseTrigger color="fg" />
+          <Drawer.Header borderBottom="1px solid" borderColor="blackAlpha.200" py={4}>
             <Heading size="md" fontWeight="800" fontFamily="mono" textTransform="uppercase">
               MENU OVERRIDE
             </Heading>
-          </DrawerHeader>
-          <DrawerBody px={0} py={0} overflowY="auto">
+          </Drawer.Header>
+          <Drawer.Body px={0} py={0} overflowY="auto">
             <VStack gap={0} align="stretch" bg="blackAlpha.200">
               {Object.entries(menuSections).map(([key, section]) => (
                 <Box key={key} bg="white" borderBottom="1px solid" borderColor="blackAlpha.200" pb={4}>
@@ -532,14 +526,14 @@ export function Navbar() {
                     textTransform="uppercase"
                     _hover={{ bg: "blue.solid" }}
                   >
-                    Requisitar Engenharia
+                    Fale Conosco
                   </Button>
                 </Link>
               </Box>
             </VStack>
-          </DrawerBody>
-        </DrawerContent>
-      </DrawerRoot>
+          </Drawer.Body>
+        </Drawer.Content>
+      </Drawer.Root>
     </>
   );
 }

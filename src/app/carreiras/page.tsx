@@ -115,7 +115,7 @@ const jobs = [
 const workspaceBenefits = [
   { icon: <Monitor size={20} />, label: "Setup Mac/PC de alta performance fornecido" },
   { icon: <Activity size={20} />, label: "Health / Plano nível executivo" },
-  { icon: <Zap size={20} />, label: "Orçamento M mensal para Labs e Certificações" },
+  { icon: <Zap size={20} />, label: "Orçamento Mensal para Labs e Certificações" },
   { icon: <Terminal size={20} />, label: "Assinaturas liberadas (Copilot, Cursor, OpenAI)" },
 ];
 

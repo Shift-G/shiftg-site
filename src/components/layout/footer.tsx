@@ -67,7 +67,7 @@ export function Footer() {
               { label: "Software & SaaS", href: "/fabrica-de-software" },
               { label: "Auditoria de Back-Office", href: "/diagnostico-inteligente" },
               { label: "Sentinela (Monitoramento)", href: "/sentinela" },
-              { label: "Doutrinação em I.A", href: "/treinamento-ia-para-sua-empresa" },
+              { label: "Treinamento de IA para sua Empresa", href: "/treinamento-ia-para-sua-empresa" },
               { label: "Digital Core", href: "/transformacao-digital" },
             ].map((link) => (
               <ChakraLink

@@ -105,7 +105,7 @@ export default function TermosDeUso() {
               <Box position="absolute" top={0} left={0} w="4px" h="full" bg="fg" />
               <HStack gap={4} mb={4}>
                 <BookOpen size={20} color="var(--chakra-colors-fg)" />
-                <Text fontFamily="mono" fontSize="xs" fontWeight={700} color="fg">ATUALIZAÇÃO DE DOUTRINA</Text>
+                <Text fontFamily="mono" fontSize="xs" fontWeight={700} color="fg">ATUALIZAÇÃO DE TERMOS DE USO</Text>
               </HStack>
               <Text fontSize="sm" fontWeight={500} color="fg.muted" lineHeight={1.6}>
                 V.2.0.1 Executada no servidor central. O engajamento com este endereço web denota compreensão assimétrica e acatamento às cláusulas subjacentes.
