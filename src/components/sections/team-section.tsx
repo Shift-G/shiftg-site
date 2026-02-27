@@ -16,7 +16,7 @@ interface PersonData {
 const persons: PersonData[] = [
   {
     initials: "W",
-    pillarName: "Jachin",
+    pillarName: "Profundidade Técnica",
     name: "William Novak",
     role: "Founder · Arquitetura & IA",
     description:
@@ -24,7 +24,7 @@ const persons: PersonData[] = [
   },
   {
     initials: "F",
-    pillarName: "Boaz",
+    pillarName: "Força Executiva",
     name: "Fabio José Roiek",
     role: "Co-Founder · Estratégia & Executivo",
     description:
@@ -178,7 +178,7 @@ export function TeamSection() {
             textTransform="uppercase"
             mb={5}
           >
-            Jachin & Boaz
+            Sobre Nós
           </Text>
           <Text
             as="h2"

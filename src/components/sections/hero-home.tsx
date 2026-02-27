@@ -315,10 +315,6 @@ export function HeroHome() {
               flex={1}
             >
               Elevamos a maturidade tecnológica da sua organização —
-              da{" "}
-              <Text as="strong" color="fg" fontWeight={500}>
-                pedra bruta à pedra polida.
-              </Text>{" "}
               Consultoria, IA, treinamento, RH e desenvolvimento.
               Tudo que a transformação exige, lado a lado com você.
             </Text>

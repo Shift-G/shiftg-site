@@ -1,498 +1,963 @@
 import { Metadata } from "next";
 import {
   Box,
-  Container,
-  SimpleGrid,
-  VStack,
-  HStack,
-  Heading,
-  Text,
-  Button,
-
-  Badge,
   Flex,
-  Timeline,
+  Grid,
+  HStack,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
 import { Page } from "@/components/layout/page";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Section } from "@/components/layout/section";
+import { Plumb } from "@/components/ui/plumb";
+import { CTAFinalSection } from "@/components/sections/cta-final-section";
 import {
-
-  Brain,
-  Target,
-  Shield,
   Rocket,
-  TrendingUp,
-  Heart,
-  Lightbulb,
   Globe,
-  Code,
-  Database,
+  TrendingUp,
+  Brain,
   Star,
   Award,
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
 
+import { SITE_NAME, SITE_URL } from "@/constants";
+
 export const metadata: Metadata = {
-  title: "Sobre Nós | Shift+G - Inteligência que Gera Autonomia",
+  title: `Sobre | ${SITE_NAME} — Inteligência que Gera Autonomia`,
   description:
-    "Conheça a Shift+G: transformamos dados em decisões estratégicas através de IA e software sob medida. Somos mais que uma fábrica de software, somos seu parceiro na transformação digital.",
+    "Conheça a Shift+G: elevamos a maturidade tecnológica da sua organização com consultoria, IA, treinamento e desenvolvimento. Da pedra bruta à pedra polida.",
   keywords: [
     "sobre shift+g",
     "inteligência artificial",
-    "fábrica de software",
+    "consultoria tecnológica",
     "transformação digital",
-    "dados",
-    "automação",
+    "maturidade tecnológica",
+    "IA aplicada",
   ],
+  alternates: {
+    canonical: `${SITE_URL}/sobre`,
+  },
+  openGraph: {
+    title: `Sobre | ${SITE_NAME} — Inteligência que Gera Autonomia`,
+    description:
+      "Conheça a Shift+G: elevamos a maturidade tecnológica da sua organização.",
+    type: "website",
+    locale: "pt_BR",
+    url: `${SITE_URL}/sobre`,
+    siteName: SITE_NAME,
+  },
 };
 
-// Timeline data
-const timelineEvents = [
+/* ── Section Tag ── */
+function SectionTag({ children }: { children: string }) {
+  return (
+    <HStack
+      fontFamily="mono"
+      fontSize="2xs"
+      fontWeight={600}
+      letterSpacing="0.16em"
+      textTransform="uppercase"
+      color="blue.solid"
+      gap="10px"
+      mb={4}
+    >
+      <Box w="18px" h="1.5px" bg="blue.solid" />
+      <Text>{children}</Text>
+    </HStack>
+  );
+}
+
+/* ── Timeline data ── */
+interface TimelineEvent {
+  year: string;
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+}
+
+const timelineEvents: TimelineEvent[] = [
   {
     year: "2020",
     title: "Fundação",
     description:
       "A empresa nasceu para atender clientes no Brasil com desenvolvimento de aplicações personalizadas.",
-    icon: <Rocket size={20} />,
+    icon: <Rocket size={16} />,
   },
   {
     year: "2021",
     title: "Expansão Internacional",
     description:
-      "Primeiros serviços prestados para fora do Brasil - EUA, Austrália e Portugal.",
-    icon: <Globe size={20} />,
+      "Primeiros serviços prestados para fora do Brasil — EUA, Austrália e Portugal.",
+    icon: <Globe size={16} />,
   },
   {
     year: "2023",
     title: "Nova Base",
     description:
       "Mudamos para União da Vitória e mantemos os serviços remotos para o mundo.",
-    icon: <TrendingUp size={20} />,
+    icon: <TrendingUp size={16} />,
   },
   {
     year: "2024",
     title: "Era da IA",
     description:
       "Adotamos IA fortemente em todos os processos, transformando nossa operação.",
-    icon: <Brain size={20} />,
+    icon: <Brain size={16} />,
   },
   {
     year: "2025",
     title: "Crescimento Exponencial",
     description:
       "Muitos clientes conquistados e abrangemos Web3, expandindo nosso portfólio.",
-    icon: <Star size={20} />,
+    icon: <Star size={16} />,
   },
   {
     year: "2026",
     title: "Expansão Física",
     description:
       "Escritório físico em União da Vitória e expansão do time em 10x.",
-    icon: <Award size={20} />,
+    icon: <Award size={16} />,
   },
 ];
 
-// Core values
-const coreValues = [
+/* ── Core values ── */
+interface ValueData {
+  virtue: string;
+  title: string;
+  description: string;
+}
+
+const coreValues: ValueData[] = [
   {
-    icon: <Brain size={24} />,
+    virtue: "Sabedoria",
     title: "Inteligência Acionável",
     description:
-      "Transformamos dados complexos em insights claros que impulsionam decisões estratégicas reais.",
-    color: "blue",
+      "Transformamos dados complexos em insights claros que impulsionam decisões estratégicas reais. Não entregamos relatórios — entregamos direção.",
   },
   {
-    icon: <Target size={24} />,
+    virtue: "Precisão",
     title: "Foco no Resultado",
     description:
-      "Cada linha de código, cada modelo de IA, cada dashboard é projetado para gerar impacto mensurável.",
-    color: "green",
+      "Cada linha de código, cada modelo de IA, cada dashboard é projetado para gerar impacto mensurável. Sem excesso. Sem desperdício.",
   },
   {
-    icon: <Shield size={24} />,
+    virtue: "Força",
     title: "Confiabilidade",
     description:
-      "Desenvolvemos soluções robustas, seguras e escaláveis que crescem junto com seu negócio.",
-    color: "orange",
+      "Desenvolvemos soluções robustas, seguras e escaláveis que crescem junto com seu negócio. Construímos para durar.",
   },
   {
-    icon: <Heart size={24} />,
+    virtue: "Beleza",
     title: "Parceria Verdadeira",
     description:
-      "Não somos apenas fornecedores. Somos aliados estratégicos no seu caminho para o futuro.",
-    color: "red",
+      "Não somos apenas fornecedores. Somos aliados estratégicos no seu caminho para o futuro. Entramos fundo na operação.",
   },
 ];
 
-// Team expertise areas
-const expertiseAreas = [
+/* ── Expertise areas ── */
+interface ExpertiseData {
+  number: string;
+  title: string;
+  description: string;
+}
+
+const expertiseAreas: ExpertiseData[] = [
   {
-    icon: <Database size={20} />,
+    number: "01",
     title: "Engenharia de Dados",
     description:
       "Estruturação, governança e pipeline de dados para IA de alta performance.",
   },
   {
-    icon: <Brain size={20} />,
+    number: "02",
     title: "Machine Learning",
     description:
       "Modelos preditivos e algoritmos inteligentes para automação de processos críticos.",
   },
   {
-    icon: <Code size={20} />,
+    number: "03",
     title: "Desenvolvimento Full-Stack",
     description:
       "Aplicações web modernas, APIs robustas e integrações seamless.",
   },
   {
-    icon: <Globe size={20} />,
+    number: "04",
     title: "Arquitetura Cloud",
     description:
       "Soluções escaláveis em AWS, Azure e Google Cloud com foco em performance.",
   },
 ];
 
+/* ── Timeline Step component ── */
+function TimelineStep({ event }: { event: TimelineEvent }) {
+  return (
+    <Grid
+      templateColumns="44px 1fr"
+      gap="22px"
+      py="22px"
+      borderBottom="1px solid"
+      borderColor="blackAlpha.100"
+      alignItems="start"
+    >
+      <Text
+        fontFamily="mono"
+        fontSize="xs"
+        fontWeight={500}
+        color="gray.emphasized"
+        letterSpacing="0.06em"
+        pt="3px"
+      >
+        {event.year}
+      </Text>
+      <Box>
+        <Text
+          fontSize="md"
+          fontWeight={700}
+          color="fg"
+          letterSpacing="-0.2px"
+          mb="3px"
+        >
+          {event.title}
+        </Text>
+        <Text fontSize="sm" color="fg.muted" lineHeight={1.68}>
+          {event.description}
+        </Text>
+      </Box>
+    </Grid>
+  );
+}
+
+/* ── Value Card ── */
+function ValueCard({ value }: { value: ValueData }) {
+  return (
+    <VStack
+      align="flex-start"
+      bg="white"
+      px={{ base: 6, md: 8 }}
+      py={{ base: 8, md: 10 }}
+      position="relative"
+      overflow="hidden"
+      transition="background 0.2s"
+      _hover={{ bg: "#fafaf8" }}
+    >
+      {/* Top gold accent */}
+      <Box
+        position="absolute"
+        top={0}
+        left={8}
+        right={8}
+        h="3px"
+        bgGradient="to-r"
+        gradientFrom="transparent"
+        gradientVia="gold.500"
+        gradientTo="transparent"
+        opacity={0.35}
+      />
+
+      {/* Virtue */}
+      <HStack
+        fontFamily="mono"
+        fontSize="2xs"
+        fontWeight={600}
+        letterSpacing="0.18em"
+        textTransform="uppercase"
+        color="gold.500"
+        gap={2}
+        mb={4}
+      >
+        <Text opacity={0.5}>—</Text>
+        <Text>{value.virtue}</Text>
+      </HStack>
+
+      {/* Title */}
+      <Text
+        fontSize={{ base: "md", md: "lg" }}
+        fontWeight={700}
+        color="fg"
+        letterSpacing="-0.3px"
+        mb={2}
+      >
+        {value.title}
+      </Text>
+
+      {/* Description */}
+      <Text fontSize="sm" color="fg.muted" lineHeight={1.78}>
+        {value.description}
+      </Text>
+    </VStack>
+  );
+}
+
+/* ── Expertise Item ── */
+function ExpertiseItem({ area }: { area: ExpertiseData }) {
+  return (
+    <Grid
+      templateColumns="44px 1fr"
+      gap="22px"
+      py="22px"
+      borderBottom="1px solid"
+      borderColor="whiteAlpha.200"
+      alignItems="start"
+    >
+      <Text
+        fontFamily="mono"
+        fontSize="xs"
+        fontWeight={500}
+        color="whiteAlpha.400"
+        letterSpacing="0.06em"
+        pt="3px"
+      >
+        {area.number}
+      </Text>
+      <Box>
+        <Text
+          fontSize="md"
+          fontWeight={700}
+          color="white"
+          letterSpacing="-0.2px"
+          mb="3px"
+        >
+          {area.title}
+        </Text>
+        <Text fontSize="sm" color="whiteAlpha.600" lineHeight={1.68}>
+          {area.description}
+        </Text>
+      </Box>
+    </Grid>
+  );
+}
+
 export default function SobrePage() {
   return (
     <Page>
       <Navbar />
 
-      {/* Hero Section */}
-      <Section py={{ base: 20, md: 32 }}>
-        <Container maxW="7xl">
-          <VStack
-            gap={{ base: 8, md: 12 }}
-            textAlign="center"
-            maxW="5xl"
-            mx="auto"
+      <VStack gap={0} w="full" as="main" align="stretch">
+        {/* ── Hero ── */}
+        <Box
+          as="section"
+          minH={{ base: "60vh", md: "70vh" }}
+          bg="white"
+          display="flex"
+          flexDirection="column"
+          justifyContent="flex-end"
+          position="relative"
+          overflow="hidden"
+          px={{ base: 6, md: "60px", lg: "112px" }}
+        >
+          {/* Background symbol */}
+          <Box
+            as="svg"
+            position="absolute"
+            right="-10%"
+            top="50%"
+            transform="translateY(-50%)"
+            w={{ base: "80vw", lg: "56vw" }}
+            maxW="1200px"
+            opacity={0.03}
+            pointerEvents="none"
+            color="blue.solid"
+            // @ts-ignore
+            viewBox="0 0 420 380"
+            fill="none"
           >
-            <VStack gap={6}>
-              <Badge
-                variant="outline"
-                colorPalette="blue"
-                size="lg"
-                px={4}
-                py={2}
-                rounded="full"
-                fontSize="sm"
-                fontWeight="400"
-                borderColor="blue.500"
-                color="blue.500"
-                bg="transparent"
-              >
-                <Lightbulb size={14} style={{ marginRight: "8px" }} />
-                Sobre a Shift+G
-              </Badge>
+            <polygon
+              points="210,18 404,354 16,354"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              fill="none"
+            />
+            <polygon
+              points="210,65 365,330 55,330"
+              stroke="currentColor"
+              strokeWidth="1.2"
+              fill="none"
+            />
+            <ellipse
+              cx="210"
+              cy="222"
+              rx="56"
+              ry="34"
+              stroke="currentColor"
+              strokeWidth="2"
+              fill="none"
+            />
+            <path
+              d="M154,222 Q210,178 266,222"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              fill="none"
+            />
+            <path
+              d="M154,222 Q210,266 266,222"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              fill="none"
+            />
+            <circle
+              cx="210"
+              cy="222"
+              r="22"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              fill="none"
+            />
+            <circle cx="210" cy="222" r="11" fill="currentColor" />
+          </Box>
 
-              <Heading
-                as="h1"
-                size={{ base: "4xl", md: "5xl", lg: "6xl" }}
-                fontWeight="300"
-                lineHeight="shorter"
-                letterSpacing="tight"
+          {/* Hero content */}
+          <VStack
+            position="relative"
+            zIndex={2}
+            align="flex-start"
+            pt={{ base: "120px", md: "100px" }}
+          >
+            {/* Stage indicator */}
+            <HStack gap={3} mb={{ base: 6, md: "30px" }}>
+              <Box w="6px" h="6px" bg="gold.500" />
+              <Text
+                fontFamily="mono"
+                fontSize="2xs"
+                fontWeight={600}
+                letterSpacing="0.13em"
+                textTransform="uppercase"
+                color="blue.solid"
+              >
+                Quem somos
+              </Text>
+            </HStack>
+
+            {/* Main heading */}
+            <Text
+              as="h1"
+              fontSize={{ base: "42px", md: "clamp(54px, 7.8vw, 116px)" }}
+              lineHeight={0.94}
+              letterSpacing="-2px"
+              color="fg"
+              maxW="980px"
+              mb={0}
+            >
+              <Text
+                as="span"
+                fontFamily="mono"
+                fontWeight={700}
+                color="blue.solid"
+                letterSpacing="-0.04em"
+                position="relative"
+                display="inline-block"
+              >
+                Inteligência
+                <Box
+                  as="span"
+                  position="absolute"
+                  bottom="6px"
+                  left={0}
+                  right={0}
+                  h="4px"
+                  bg="gold.500"
+                  opacity={0.45}
+                />
+              </Text>{" "}
+              <Text as="span" fontWeight={800}>
+                que
+              </Text>
+              <br />
+              <Text as="span" fontWeight={800}>
+                gera{" "}
+              </Text>
+              <Text
+                as="span"
+                fontFamily="serif"
+                fontWeight={400}
+                fontStyle="italic"
+                color="blue.solid"
+              >
+                autonomia.
+              </Text>
+            </Text>
+
+            {/* Bottom bar */}
+            <Box
+              borderTop="1px solid"
+              borderColor="blackAlpha.100"
+              mt={{ base: 8, md: "44px" }}
+              pt={{ base: 6, md: "28px" }}
+              pb={{ base: 10, md: "52px" }}
+              w="full"
+            >
+              <Flex
+                direction={{ base: "column", lg: "row" }}
+                gap={{ base: 7, lg: "48px" }}
+                align={{ base: "flex-start", lg: "center" }}
+              >
+                {/* Description */}
+                <Text
+                  fontSize="md"
+                  color="fg.muted"
+                  lineHeight={1.85}
+                  flex={1}
+                >
+                  Não apenas entregamos software. Construímos a ponte entre
+                  seus{" "}
+                  <Text as="strong" color="fg" fontWeight={500}>
+                    dados e as decisões estratégicas
+                  </Text>{" "}
+                  que definem o futuro do seu negócio.
+                </Text>
+
+                {/* CTA */}
+                <Box
+                  as={Link}
+                  href="/contato"
+                  display="inline-flex"
+                  alignItems="center"
+                  gap="9px"
+                  bg="blue.solid"
+                  color="white"
+                  px={{ base: 6, md: "30px" }}
+                  py={{ base: 4, md: "15px" }}
+                  fontWeight={600}
+                  fontSize="sm"
+                  textDecoration="none"
+                  whiteSpace="nowrap"
+                  transition="all 0.22s"
+                  _hover={{ opacity: 0.88, transform: "translateY(-2px)" }}
+                >
+                  Fale conosco
+                  <ArrowRight size={14} />
+                </Box>
+              </Flex>
+            </Box>
+          </VStack>
+        </Box>
+
+        {/* Divider */}
+        <Plumb />
+
+        {/* ── Nossa Filosofia ── */}
+        <Box
+          as="section"
+          py={{ base: 16, md: "90px" }}
+          px={{ base: 6, md: "60px" }}
+          bg="white"
+          borderTop="1px solid"
+          borderColor="blackAlpha.100"
+        >
+          <Grid
+            templateColumns={{ base: "1fr", lg: "400px 1fr" }}
+            gap={{ base: 10, lg: "80px" }}
+            alignItems="start"
+          >
+            {/* Left sidebar */}
+            <Box>
+              <SectionTag>Filosofia</SectionTag>
+              <Text
+                as="h2"
+                fontSize={{ base: "34px", md: "clamp(34px, 4vw, 54px)" }}
+                fontWeight={800}
+                lineHeight={1.04}
+                letterSpacing="-1.5px"
                 color="fg"
               >
-                Inteligência que Gera{" "}
-                <Text as="span" color="blue.500" fontWeight="400">
-                  Autonomia
+                Nosso nome
+                <br />
+                é nossa{" "}
+                <Text
+                  as="span"
+                  fontFamily="serif"
+                  fontWeight={400}
+                  fontStyle="italic"
+                  color="gray.emphasized"
+                >
+                  filosofia.
                 </Text>
-              </Heading>
+              </Text>
 
-              <Text
-                fontSize={{ base: "xl", md: "2xl" }}
-                color="fg.muted"
-                maxW="3xl"
-                lineHeight="tall"
-                fontWeight="300"
+              {/* Callout note */}
+              <Box
+                mt={7}
+                px={5}
+                py="18px"
+                border="1px solid"
+                borderColor="gold.500/22"
+                borderLeft="3px solid"
+                borderLeftColor="gold.500"
               >
-                Não apenas entregamos software. Construímos a ponte entre seus
-                dados e as decisões estratégicas que definem o futuro do seu
-                negócio.
+                <Text
+                  fontSize="sm"
+                  color="fg.muted"
+                  lineHeight={1.72}
+                  fontStyle="italic"
+                >
+                  <Text
+                    as="strong"
+                    color="gold.500"
+                    fontStyle="normal"
+                    fontWeight={600}
+                  >
+                    Shift → mudança.
+                  </Text>
+                  <br />
+                  O G vem de Gnosis — conhecimento profundo que gera sabedoria
+                  acionável. Todo cliente que nos procura sai diferente.
+                </Text>
+              </Box>
+            </Box>
+
+            {/* Right content */}
+            <VStack gap={6} align="stretch" pt={{ base: 0, lg: 10 }}>
+              <Text fontSize="md" color="fg.muted" lineHeight={1.88}>
+                <Text as="strong" color="fg" fontWeight={500}>
+                  Shift
+                </Text>{" "}
+                é o movimento que separa o que era do que pode ser. A ruptura
+                necessária, o salto de maturidade.
+              </Text>
+              <Text fontSize="md" color="fg.muted" lineHeight={1.88}>
+                O{" "}
+                <Text as="strong" color="fg" fontWeight={500}>
+                  G
+                </Text>{" "}
+                no centro do triângulo é{" "}
+                <Text as="em" fontStyle="normal" color="fg" fontWeight={500}>
+                  Gnosis
+                </Text>{" "}
+                — conhecimento aplicado com propósito, que transforma
+                complexidade em clareza e dados em decisão.
+              </Text>
+              <Text fontSize="md" color="fg.muted" lineHeight={1.88}>
+                Nossa logo é um triângulo que forma o G — inscrito no quadrado
+                e no círculo. Não é coincidência.{" "}
+                <Text as="strong" color="fg" fontWeight={500}>
+                  É declaração de princípio.
+                </Text>
               </Text>
             </VStack>
+          </Grid>
+        </Box>
 
-            <HStack gap={4} flexWrap="wrap" justify="center">
-              <Link href="#nossa-historia">
-                <Button
-                  size="xl"
-                  colorPalette="blue"
-                  variant="outline"
-                  borderColor="blue.500"
-                  color="blue.500"
-                  _hover={{ bg: "blue.500", color: "white" }}
-                  rounded="full"
-                  px={8}
-                >
-                  Nossa História
-                  <ArrowRight size={18} />
-                </Button>
-              </Link>
-            </HStack>
-          </VStack>
-        </Container>
-      </Section>
-
-      {/* Our Story Section */}
-      <Section
-        id="nossa-historia"
-        title="A transformação que sua empresa precisa"
-        subtitle="Em um mundo corporativo que exige velocidade e precisão, líderes ainda se veem presos a processos manuais e sistemas desconectados."
-        centered
-        py={{ base: 16, md: 24 }}
-        bg="bg.subtle"
-      >
-        <VStack gap={{ base: 12, md: 20 }} maxW="5xl" mx="auto">
-          <VStack gap={8} textAlign="center" maxW="3xl" mx="auto">
-            <Text fontSize="xl" color="fg.muted" lineHeight="tall" fontWeight="300">
-              <Text as="strong" color="fg" fontWeight="500">
-                Nosso nome é nossa filosofia:
-              </Text>{" "}
-              <Text as="span" color="blue.500">
-                Shift
-              </Text>{" "}
-              representa a mudança. O{" "}
-              <Text as="span" color="blue.500">
-                G
-              </Text>{" "}
-              vem de{" "}
-              <Text as="em" fontStyle="normal" color="fg">
-                Gnosis
-              </Text>{" "}
-              - conhecimento profundo que gera sabedoria acionável.
-            </Text>
-          </VStack>
-
-          {/* Timeline */}
-          <Box w="full">
-            <Timeline.Root size="xl" variant="outline" colorPalette="blue">
-              {timelineEvents.map((event, index) => (
-                <Timeline.Item key={event.year}>
-                  {/* Alternating layout */}
-                  {index % 2 === 0 ? (
-                    // Left side content
-                    <>
-                      <Timeline.Content flex="1" />
-                      <Timeline.Connector>
-                        <Timeline.Separator borderColor="border" />
-                        <Timeline.Indicator
-                          bg="bg"
-                          borderColor="blue.500"
-                          color="blue.500"
-                        >
-                          {event.icon}
-                        </Timeline.Indicator>
-                      </Timeline.Connector>
-                      <Timeline.Content flex="1" py={4}>
-                        <VStack gap={2} align="flex-start">
-                          <Badge
-                            variant="outline"
-                            colorPalette="blue"
-                            size="md"
-                            borderColor="blue.500"
-                          >
-                            {event.year}
-                          </Badge>
-                          <Timeline.Title fontWeight="500" fontSize="xl" color="fg">
-                            {event.title}
-                          </Timeline.Title>
-                          <Timeline.Description
-                            color="fg.muted"
-                            fontSize="md"
-                            lineHeight="tall"
-                          >
-                            {event.description}
-                          </Timeline.Description>
-                        </VStack>
-                      </Timeline.Content>
-                    </>
-                  ) : (
-                    // Right side content
-                    <>
-                      <Timeline.Content flex="1" alignItems="flex-end" py={4}>
-                        <VStack gap={2} align="flex-end">
-                          <Badge
-                            variant="outline"
-                            colorPalette="blue"
-                            size="md"
-                            borderColor="blue.500"
-                          >
-                            {event.year}
-                          </Badge>
-                          <Timeline.Title
-                            fontWeight="500"
-                            fontSize="xl"
-                            textAlign="right"
-                            color="fg"
-                          >
-                            {event.title}
-                          </Timeline.Title>
-                          <Timeline.Description
-                            color="fg.muted"
-                            fontSize="md"
-                            lineHeight="tall"
-                            textAlign="right"
-                          >
-                            {event.description}
-                          </Timeline.Description>
-                        </VStack>
-                      </Timeline.Content>
-                      <Timeline.Connector>
-                        <Timeline.Separator borderColor="border" />
-                        <Timeline.Indicator
-                          bg="bg"
-                          borderColor="blue.500"
-                          color="blue.500"
-                        >
-                          {event.icon}
-                        </Timeline.Indicator>
-                      </Timeline.Connector>
-                      <Timeline.Content flex="1" />
-                    </>
-                  )}
-                </Timeline.Item>
-              ))}
-            </Timeline.Root>
-          </Box>
-        </VStack>
-      </Section>
-
-      {/* Core Values Section */}
-      <Section
-        title="Nossos Valores Fundamentais"
-        subtitle="Princípios que guiam cada decisão."
-        centered
-        py={{ base: 16, md: 24 }}
-      >
-        <SimpleGrid
-          columns={{ base: 1, md: 2 }}
-          gap={{ base: 6, md: 8 }}
-          maxW="5xl"
-          mx="auto"
+        {/* ── Valores ── */}
+        <Box
+          as="section"
+          py={{ base: 16, md: "90px" }}
+          px={{ base: 6, md: "60px" }}
+          bg="off"
         >
-          {coreValues.map((value) => (
-            <Box
-              key={value.title}
-              p={{ base: 8, md: 10 }}
-              rounded="xl"
-              bg="transparent"
-              border="1px solid"
-              borderColor="border"
-              transition="all 0.3s ease"
-              _hover={{
-                borderColor: "blue.500",
-                bg: "blue.500/5"
-              }}
-            >
-              <VStack gap={6} align="flex-start">
-                <Flex
-                  align="center"
-                  justify="center"
-                  w="12"
-                  h="12"
-                  rounded="lg"
-                  bg="bg.subtle"
-                  color="fg"
-                  border="1px solid"
-                  borderColor="border"
-                >
-                  {value.icon}
-                </Flex>
-                <VStack gap={3} align="flex-start">
-                  <Heading as="h3" size="lg" fontWeight="400" color="fg">
-                    {value.title}
-                  </Heading>
-                  <Text color="fg.muted" fontSize="md" lineHeight="tall">
-                    {value.description}
-                  </Text>
-                </VStack>
-              </VStack>
-            </Box>
-          ))}
-        </SimpleGrid>
-      </Section>
-
-      {/* Expertise Section */}
-      <Section
-        title="Nossa Expertise Técnica"
-        subtitle="Tecnologia de ponta para soluções reais."
-        centered
-        bg="bg.subtle"
-        py={{ base: 16, md: 24 }}
-      >
-        <SimpleGrid
-          columns={{ base: 1, md: 2, lg: 4 }}
-          gap={{ base: 6, md: 8 }}
-          maxW="7xl"
-          mx="auto"
-        >
-          {expertiseAreas.map((area) => (
-            <Box
-              key={area.title}
-              p={8}
-              rounded="xl"
-              bg="bg"
-              border="1px solid"
-              borderColor="border"
-              height="full"
-              transition="all 0.2s"
-              _hover={{ borderColor: "blue.500" }}
-            >
-              <VStack gap={4} align="flex-start" height="full">
-                <Box color="blue.500">
-                  {area.icon}
-                </Box>
-                <Heading as="h3" size="md" fontWeight="500">
-                  {area.title}
-                </Heading>
-                <Text color="fg.muted" fontSize="sm" lineHeight="relaxed">
-                  {area.description}
-                </Text>
-              </VStack>
-            </Box>
-          ))}
-        </SimpleGrid>
-      </Section>
-
-      {/* Careers Bridge Section */}
-      <Section py={{ base: 20, md: 32 }}>
-        <Container maxW="7xl">
-          <Box
-            rounded="2xl"
-            border="1px solid"
-            borderColor="border"
-            p={{ base: 8, md: 16 }}
-            textAlign="center"
-            bgGradient="linear(to-b, bg.subtle, transparent)"
+          {/* Header */}
+          <Flex
+            direction={{ base: "column", lg: "row" }}
+            gap={{ base: 7, lg: "80px" }}
+            align={{ base: "flex-start", lg: "flex-end" }}
+            mb={{ base: 10, md: 14 }}
           >
-            <VStack gap={8}>
-              <VStack gap={4}>
-                <Heading as="h2" size="3xl" fontWeight="300">
-                  Construa o Futuro Conosco
-                </Heading>
-                <Text fontSize="xl" color="fg.muted" maxW="2xl" mx="auto">
-                  Estamos sempre em busca de mentes brilhantes que compartilham nossa paixão por inovação e excelência.
-                </Text>
-              </VStack>
-
-              <Link href="/carreiras">
-                <Button
-                  size="xl"
-                  colorPalette="blue"
-                  variant="solid"
-                  rounded="full"
-                  px={10}
+            <Box flex={1}>
+              <SectionTag>Valores</SectionTag>
+              <Text
+                as="h2"
+                fontSize={{ base: "34px", md: "clamp(34px, 4vw, 54px)" }}
+                fontWeight={800}
+                lineHeight={1.04}
+                letterSpacing="-1.5px"
+                color="fg"
+              >
+                Quatro pilares.
+                <br />
+                <Text
+                  as="span"
+                  fontFamily="serif"
+                  fontWeight={400}
+                  fontStyle="italic"
+                  color="gray.emphasized"
                 >
-                  Ver Oportunidades
-                  <ArrowRight size={20} />
-                </Button>
-              </Link>
-            </VStack>
-          </Box>
-        </Container>
-      </Section>
+                  Um compromisso.
+                </Text>
+              </Text>
+            </Box>
+            <Text flex={1} fontSize="md" color="fg.muted" lineHeight={1.9}>
+              Princípios que guiam cada decisão, cada linha de código e cada
+              conversa. Não são valores de parede — são práticas diárias.
+            </Text>
+          </Flex>
+
+          {/* Values grid */}
+          <Grid
+            templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
+            gap="2px"
+          >
+            {coreValues.map((v) => (
+              <ValueCard key={v.title} value={v} />
+            ))}
+          </Grid>
+        </Box>
+
+        {/* ── Trajetória ── */}
+        <Box
+          as="section"
+          py={{ base: 16, md: "90px" }}
+          px={{ base: 6, md: "60px" }}
+          bg="white"
+          borderTop="1px solid"
+          borderColor="blackAlpha.100"
+          id="nossa-historia"
+        >
+          <Grid
+            templateColumns={{ base: "1fr", lg: "400px 1fr" }}
+            gap={{ base: 10, lg: "80px" }}
+            alignItems="start"
+          >
+            {/* Left sidebar */}
+            <Box>
+              <SectionTag>Trajetória</SectionTag>
+              <Text
+                as="h2"
+                fontSize={{ base: "34px", md: "clamp(34px, 4vw, 54px)" }}
+                fontWeight={800}
+                lineHeight={1.04}
+                letterSpacing="-1.5px"
+                color="fg"
+              >
+                De 2020
+                <br />
+                até{" "}
+                <Text
+                  as="span"
+                  fontFamily="serif"
+                  fontWeight={400}
+                  fontStyle="italic"
+                  color="gray.emphasized"
+                >
+                  o próximo
+                  <br />
+                  capítulo.
+                </Text>
+              </Text>
+
+              <Text
+                fontSize="md"
+                color="fg.muted"
+                lineHeight={1.88}
+                maxW="380px"
+                mt={4}
+              >
+                Cada ano trouxe um salto de maturidade — e a determinação de
+                ir mais longe.
+              </Text>
+            </Box>
+
+            {/* Timeline steps */}
+            <Box borderTop="1px solid" borderColor="blackAlpha.100">
+              {timelineEvents.map((event) => (
+                <TimelineStep key={event.year} event={event} />
+              ))}
+            </Box>
+          </Grid>
+        </Box>
+
+        {/* ── Expertise Técnica ── */}
+        <Box
+          as="section"
+          py={{ base: 16, md: "90px" }}
+          px={{ base: 6, md: "60px" }}
+          bg="blue.solid"
+          color="white"
+          position="relative"
+          overflow="hidden"
+        >
+          {/* Grid pattern overlay */}
+          <Box
+            position="absolute"
+            inset={0}
+            backgroundImage="repeating-conic-gradient(rgba(255,255,255,0.02) 0% 25%, transparent 0% 50%)"
+            backgroundSize="40px 40px"
+            pointerEvents="none"
+          />
+
+          <Grid
+            templateColumns={{ base: "1fr", lg: "1fr 1fr" }}
+            gap={{ base: 10, lg: "80px" }}
+            alignItems="start"
+            position="relative"
+            zIndex={1}
+          >
+            {/* Left text */}
+            <Box>
+              <Text
+                fontFamily="mono"
+                fontSize="2xs"
+                fontWeight={600}
+                letterSpacing="0.18em"
+                textTransform="uppercase"
+                color="whiteAlpha.400"
+                mb={4}
+              >
+                Expertise Técnica
+              </Text>
+              <Text
+                as="h2"
+                fontSize={{ base: "30px", md: "clamp(30px, 3.5vw, 48px)" }}
+                fontWeight={800}
+                lineHeight={1.06}
+                letterSpacing="-1.2px"
+                color="white"
+                mb={4}
+              >
+                Tecnologia de
+                <br />
+                ponta para
+                <br />
+                <Text
+                  as="span"
+                  fontFamily="serif"
+                  fontWeight={400}
+                  fontStyle="italic"
+                  color="whiteAlpha.700"
+                >
+                  soluções reais.
+                </Text>
+              </Text>
+              <Text
+                fontSize="md"
+                color="whiteAlpha.600"
+                lineHeight={1.88}
+                mt={4}
+              >
+                Nosso time combina profundidade técnica com visão de negócio.
+                Cada camada da solução é projetada para performance, escala e
+                clareza.
+              </Text>
+            </Box>
+
+            {/* Right steps */}
+            <Box borderTop="1px solid" borderColor="whiteAlpha.200">
+              {expertiseAreas.map((area) => (
+                <ExpertiseItem key={area.number} area={area} />
+              ))}
+            </Box>
+          </Grid>
+        </Box>
+
+        {/* ── Carreiras Bridge ── */}
+        <Box
+          as="section"
+          py={{ base: 16, md: "90px" }}
+          px={{ base: 6, md: "60px" }}
+          bg="stone"
+          borderTop="1px solid"
+          borderColor="blackAlpha.100"
+          position="relative"
+          overflow="hidden"
+        >
+          {/* Decorative columns (desktop only) */}
+          <Box
+            display={{ base: "none", lg: "block" }}
+            position="absolute"
+            left="60px"
+            top={0}
+            bottom={0}
+            w="3px"
+            bgGradient="to-b"
+            gradientFrom="transparent"
+            gradientVia="gold.500/20"
+            gradientTo="transparent"
+          />
+          <Box
+            display={{ base: "none", lg: "block" }}
+            position="absolute"
+            right="60px"
+            top={0}
+            bottom={0}
+            w="3px"
+            bgGradient="to-b"
+            gradientFrom="transparent"
+            gradientVia="gold.500/20"
+            gradientTo="transparent"
+          />
+
+          <VStack
+            gap={{ base: 5, md: 6 }}
+            textAlign="center"
+            position="relative"
+            zIndex={1}
+          >
+            {/* Tag */}
+            <HStack
+              fontFamily="mono"
+              fontSize="2xs"
+              fontWeight={600}
+              letterSpacing="0.16em"
+              textTransform="uppercase"
+              color="gold.500"
+              opacity={0.75}
+              gap={3}
+              justify="center"
+            >
+              <Box w="22px" h="1px" bg="gold.500" />
+              <Text>Construa o futuro conosco</Text>
+              <Box w="22px" h="1px" bg="gold.500" />
+            </HStack>
+
+            {/* Heading */}
+            <Text
+              as="h2"
+              fontSize={{ base: "34px", md: "clamp(34px, 4vw, 54px)" }}
+              fontWeight={800}
+              lineHeight={1.04}
+              letterSpacing="-1.5px"
+              color="fg"
+            >
+              Mentes brilhantes.
+              <br />
+              <Text
+                as="span"
+                fontFamily="serif"
+                fontWeight={400}
+                fontStyle="italic"
+                color="gray.emphasized"
+              >
+                Um propósito.
+              </Text>
+            </Text>
+
+            <Text
+              fontSize="md"
+              color="fg.muted"
+              lineHeight={1.82}
+              maxW="540px"
+            >
+              Estamos sempre em busca de quem compartilha nossa paixão por
+              inovação, rigor e excelência.
+            </Text>
+
+            {/* CTA */}
+            <Box
+              as={Link}
+              href="/carreiras"
+              display="inline-flex"
+              alignItems="center"
+              gap="9px"
+              bg="blue.solid"
+              color="white"
+              px={{ base: 8, md: 10 }}
+              py={{ base: 4, md: "16px" }}
+              fontWeight={600}
+              fontSize="md"
+              textDecoration="none"
+              transition="all 0.22s"
+              _hover={{ opacity: 0.88, transform: "translateY(-2px)" }}
+              mt={4}
+            >
+              Ver oportunidades
+              <ArrowRight size={14} />
+            </Box>
+          </VStack>
+        </Box>
+
+        {/* CTA Final */}
+        <CTAFinalSection />
+      </VStack>
 
       <Footer />
     </Page>

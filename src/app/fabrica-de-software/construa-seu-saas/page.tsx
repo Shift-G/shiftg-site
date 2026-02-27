@@ -1,807 +1,689 @@
 import { Metadata } from "next";
 import {
   Box,
-  Container,
-  SimpleGrid,
-  VStack,
-  Heading,
-  Text,
-  Button,
+  Flex,
+  Grid,
   HStack,
-  Stack,
-  List,
-  ListItem,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
 import { Page } from "@/components/layout/page";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Section } from "@/components/layout/section";
-import { FeatureCard } from "@/components/cards/feature-card";
+import { Plumb } from "@/components/ui/plumb";
+import { CTAFinalSection } from "@/components/sections/cta-final-section";
 import {
-  Rocket,
-  Code,
-  Cloud,
-  Shield,
-  TrendingUp,
-  Users,
-  CreditCard,
-  Settings,
+  ArrowRight,
   Database,
-  Zap,
-  Target,
-  CheckCircle,
-  ChevronRight,
-  MessageCircle,
-  Mail,
-  Layers,
-  Lock,
+  Shield,
+  Code,
+  Settings,
+  CreditCard,
   BarChart3,
-  Smartphone,
-  Globe,
-  Lightbulb,
-  DollarSign,
   Timer,
+  Lock,
+  MessageCircle,
+  Layers,
+  ChevronRight,
+  TrendingUp,
+  Target
 } from "lucide-react";
 import Link from "next/link";
-import { SITE_NAME, SITE_URL, SITE_EMAIL, SITE_PHONE } from "@/constants";
+import { SITE_NAME, SITE_URL, SITE_PHONE } from "@/constants";
 
 export const metadata: Metadata = {
   title: `Construa seu SaaS | ${SITE_NAME}`,
   description:
-    "Transforme sua ideia em um SaaS rentável. Desenvolvemos plataformas completas, escaláveis e prontas para o mercado. Da MVP ao produto final, cuidamos de toda a jornada tecnológica.",
+    "Transforme sua ideia em um SaaS rentável. Desenvolvemos plataformas completas, escaláveis e prontas para o mercado. Da MVP ao produto final.",
   keywords: [
     "desenvolvimento saas",
     "criar plataforma saas",
     "mvp saas",
     "software como serviço",
-    "desenvolvimento de plataforma",
-    "saas escalável",
     "arquitetura saas",
-    "monetização saas",
-    "plataforma multi-tenant",
-    "desenvolvimento de produto",
+    "fábrica de software",
   ],
+  alternates: {
+    canonical: `${SITE_URL}/fabrica-de-software/construa-seu-saas`,
+  },
   openGraph: {
     title: `Construa seu SaaS | ${SITE_NAME}`,
-    description:
-      "Da ideia ao SaaS rentável. Desenvolvemos sua plataforma completa, escalável e pronta para conquistar o mercado.",
+    description: "Da ideia ao SaaS rentável. Desenvolvemos sua plataforma completa e escalável.",
     type: "website",
     locale: "pt_BR",
     url: `${SITE_URL}/fabrica-de-software/construa-seu-saas`,
-    siteName: `${SITE_NAME} - Construa seu SaaS`,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `Construa seu SaaS | ${SITE_NAME}`,
-    description:
-      "Da ideia ao SaaS rentável. Desenvolvemos sua plataforma completa, escalável e pronta para conquistar o mercado.",
+    siteName: SITE_NAME,
   },
 };
 
+/* ── Section Tag ── */
+function SectionTag({ children }: { children: string }) {
+  return (
+    <HStack
+      fontFamily="mono"
+      fontSize="2xs"
+      fontWeight={600}
+      letterSpacing="0.16em"
+      textTransform="uppercase"
+      color="blue.solid"
+      gap="10px"
+      mb={4}
+    >
+      <Box w="18px" h="1.5px" bg="blue.solid" />
+      <Text>{children}</Text>
+    </HStack>
+  );
+}
+
+/* ── Data ── */
 const challenges = [
   {
-    title: "Arquitetura Complexa",
-    description:
-      "SaaS requer arquitetura multi-tenant, isolamento de dados e escalabilidade desde o primeiro dia.",
-    icon: <Layers size={24} />,
+    title: "Arquitetura Scale-Ready",
+    description: "Multi-tenant, isolamento de dados e design robusto desde a linha um de código.",
+    icon: <Layers size={20} />,
+    tag: "INFRAESTRUTURA",
   },
   {
-    title: "Segurança Avançada",
-    description:
-      "Proteção de dados de múltiplos clientes, compliance e criptografia de ponta a ponta.",
-    icon: <Lock size={24} />,
+    title: "Segurança Implacável",
+    description: "Proteção de dados de múltiplos clientes, compliance integrado e criptografia.",
+    icon: <Lock size={20} />,
+    tag: "RISCO",
   },
   {
-    title: "Monetização e Billing",
-    description:
-      "Sistemas de cobrança recorrente, planos flexíveis e gestão de assinaturas.",
-    icon: <CreditCard size={24} />,
+    title: "Monetização Contínua",
+    description: "Motor de billing e assinaturas integrado. Cobrança e gating sem dores de cabeça.",
+    icon: <CreditCard size={20} />,
+    tag: "REVENUE",
   },
   {
-    title: "Escalabilidade desde o MVP",
-    description:
-      "Código que cresce junto com seu negócio, sem necessidade de reescrita.",
-    icon: <TrendingUp size={24} />,
+    title: "Velocity",
+    description: "Código extensível que cresce com a empresa, sem necessidade de eternos refactors.",
+    icon: <TrendingUp size={20} />,
+    tag: "CRESCIMENTO",
   },
 ];
 
 const features = [
   {
     title: "Arquitetura Multi-Tenant",
-    description:
-      "Isolamento perfeito entre clientes, otimização de recursos e gestão centralizada de dados.",
-    icon: <Database size={24} />,
+    description: "Divisão lógica e segura de dados entre as contas (Data Isolation).",
+    icon: <Database size={22} />,
   },
   {
-    title: "Sistema de Autenticação",
-    description:
-      "Login seguro, SSO, autenticação de dois fatores e gestão de permissões granular.",
-    icon: <Shield size={24} />,
+    title: "Autenticação e SSO",
+    description: "Fluxos de auth modernos, 2FA, RBAC e Single Sign-On.",
+    icon: <Shield size={22} />,
   },
   {
-    title: "Dashboard Administrativo",
-    description:
-      "Painel completo para gestão de usuários, analytics, configurações e monitoramento.",
-    icon: <Settings size={24} />,
+    title: "Motor de Billing",
+    description: "Integração Stripe/Iugu, com múltiplos planos, trials e invoices.",
+    icon: <CreditCard size={22} />,
   },
   {
-    title: "API REST Completa",
-    description:
-      "APIs documentadas, versionadas e prontas para integrações e aplicativos móveis.",
-    icon: <Code size={24} />,
+    title: "API First",
+    description: "Endpoints documentados (Swagger), versionados e prontos.",
+    icon: <Code size={22} />,
   },
   {
-    title: "Billing e Assinaturas",
-    description:
-      "Sistema completo de cobrança recorrente, múltiplos planos e gestão de pagamentos.",
-    icon: <CreditCard size={24} />,
+    title: "Painel de Admin (Backoffice)",
+    description: "Visão mestre da sua operação: superadmin, métricas e onboarding.",
+    icon: <Settings size={22} />,
   },
   {
-    title: "Analytics Integrado",
-    description:
-      "Métricas de uso, performance e negócio integradas nativamente na plataforma.",
-    icon: <BarChart3 size={24} />,
+    title: "Analytics Nativo",
+    description: "Métricas de MRR, Churn e engajamento expostas na própria ferramenta.",
+    icon: <BarChart3 size={22} />,
   },
 ];
 
 const process = [
   {
     step: "01",
-    title: "Discovery e Validação",
-    description:
-      "Entendemos sua ideia, validamos o mercado e definimos o MVP que gerará maior impacto.",
-    deliverables: [
-      "Pesquisa de mercado e concorrência",
-      "Definição de personas e casos de uso",
-      "Especificação técnica do MVP",
-      "Roadmap de funcionalidades",
-    ],
+    title: "Discovery & Blueprint",
+    description: "Antes de escrevermos uma linha de código, o negócio e o escopo do produto são esculpidos.",
+    deliverables: ["Arquitetura de Banco", "Wireframes", "Casos de Uso", "Roadmap MVP"],
   },
   {
     step: "02",
-    title: "Prototipação e UX",
-    description:
-      "Criamos protótipos navegáveis e interfaces que convertem visitantes em clientes pagantes.",
-    deliverables: [
-      "Wireframes e fluxos de usuário",
-      "Design system personalizado",
-      "Protótipo interativo",
-      "Testes de usabilidade",
-    ],
+    title: "UX/UI System",
+    description: "Criamos as telas focados na melhor experiência e conversão de trial para pago.",
+    deliverables: ["Design System", "Pixel Perfect UI", "Protótipos Navegáveis", "Testes de Fluxo"],
   },
   {
     step: "03",
-    title: "Desenvolvimento MVP",
-    description:
-      "Construímos a primeira versão com as funcionalidades essenciais, pronta para validação no mercado.",
-    deliverables: [
-      "Aplicação web responsiva",
-      "Sistema de autenticação",
-      "Funcionalidades core",
-      "Infraestrutura em nuvem",
-    ],
+    title: "Continuous Build",
+    description: "Sprints de construção de API, infraestrutura, Auth & Billing integrados iterativamente.",
+    deliverables: ["Front SPA", "Backend Services", "Automações CI/CD", "Ambiente Staging"],
   },
   {
     step: "04",
-    title: "Evolução e Escala",
-    description:
-      "Iteramos baseado no feedback dos usuários e adicionamos funcionalidades conforme o crescimento.",
-    deliverables: [
-      "Novas funcionalidades",
-      "Otimizações de performance",
-      "Integrações adicionais",
-      "Suporte e manutenção",
-    ],
-  },
-];
-
-const techStack = [
-  {
-    category: "Frontend",
-    technologies: ["React/Next.js", "TypeScript", "Chakra UI", "PWA"],
-    icon: <Smartphone size={24} />,
-  },
-  {
-    category: "Backend",
-    technologies: ["Node.js/Python", "PostgreSQL", "Redis", "Microserviços"],
-    icon: <Database size={24} />,
-  },
-  {
-    category: "Cloud & DevOps",
-    technologies: ["AWS/GCP", "Docker", "CI/CD", "Monitoring"],
-    icon: <Cloud size={24} />,
-  },
-  {
-    category: "Segurança",
-    technologies: ["OAuth 2.0", "JWT", "Criptografia", "LGPD/GDPR"],
-    icon: <Shield size={24} />,
+    title: "Launch & Escala",
+    description: "Do go-live ao crescimento. Estamos lá para garantir estabilidade nos dias importantes.",
+    deliverables: ["Deploy em Nuvem", "Monitorização", "Hotfixes", "Retenção Técnica"],
   },
 ];
 
 const pricing = [
   {
-    name: "MVP Starter",
-    price: "R$ 45.000",
-    duration: "8-12 semanas",
-    description: "Ideal para validar sua ideia no mercado",
+    name: "O MVP Starter",
+    price: "R$ 45k",
+    duration: "8-12 Semanas",
+    description: "Mínimo Produto com valor máximo. Valide com código em produção.",
     features: [
-      "Aplicação web responsiva",
-      "Autenticação básica",
-      "3-5 funcionalidades core",
-      "Dashboard administrativo",
-      "Deploy em produção",
-      "2 meses de suporte",
+      "Aplicação One-Page App",
+      "Login / Cadastro / Esqueceu Senha",
+      "Até 4 funcionalidades core",
+      "Pagamento e Planos Base",
+      "Infraestrutura Serverless/Cloud",
+      "2 meses de sustentação vital",
     ],
     highlighted: false,
   },
   {
-    name: "SaaS Completo",
-    price: "R$ 85.000",
-    duration: "16-20 semanas",
-    description: "Plataforma completa pronta para escalar",
+    name: "SaaS Scale",
+    price: "R$ 85k",
+    duration: "16-20 Semanas",
+    description: "Software preparado para agressividade no mercado e alto tráfego.",
     features: [
       "Tudo do MVP Starter",
-      "Sistema de billing",
-      "Múltiplos planos de assinatura",
-      "Analytics avançado",
-      "API REST documentada",
-      "Integrações (Stripe, email, etc)",
-      "6 meses de suporte",
+      "Sistemas Financeiros e API's 3rd party",
+      "Dashboards complexos",
+      "Painel Super Admin",
+      "Documentação de API aberta",
+      "6 meses de SLA Gold",
     ],
     highlighted: true,
-  },
-  {
-    name: "Enterprise",
-    price: "Sob consulta",
-    duration: "A definir",
-    description: "Para plataformas complexas e high-scale",
-    features: [
-      "Tudo do SaaS Completo",
-      "Arquitetura customizada",
-      "Integrações complexas",
-      "Compliance avançado",
-      "Multi-região",
-      "Suporte dedicado 24/7",
-    ],
-    highlighted: false,
   },
 ];
 
 export default function SaasPage() {
+  const whatsappUrl = `https://wa.me/${SITE_PHONE.replace(/\D/g, "")}?text=Olá! Quero dar o start no meu SaaS.`;
+
   return (
     <Page>
       <Navbar />
 
-      {/* Hero Section */}
-      <Box
-        as="section"
-        position="relative"
-        overflow="hidden"
-        minH="90vh"
-        display="flex"
-        alignItems="center"
-        bg="bg"
-      >
-        {/* Background Elements */}
-        <Box
-          position="absolute"
-          top="10%"
-          right="5%"
-          w="200px"
-          h="200px"
-          borderRadius="full"
-          bg="{colors.blue.500/5}"
-          backdropFilter="blur(10px)"
-          animation="float 8s ease-in-out infinite"
-          zIndex={0}
-        />
+      <VStack gap={0} w="full" as="main" align="stretch">
 
-        <Container maxW="7xl" py={{ base: 16, md: 24 }} position="relative" zIndex={1}>
-          <VStack gap={{ base: 8, md: 12 }} maxW="5xl" mx="auto" textAlign="center">
-            {/* Badge */}
-            <Box
-              px={4}
-              py={2}
-              rounded="full"
-              bg="{colors.blue.500/10}"
-              border="1px solid {colors.blue.500/20}"
-            >
+        {/* ── Hero ── */}
+        <Box
+          as="section"
+          minH={{ base: "65vh", md: "85vh" }}
+          bg="off"
+          display="flex"
+          flexDirection="column"
+          justifyContent="flex-end"
+          position="relative"
+          overflow="hidden"
+          px={{ base: 6, md: "60px", lg: "112px" }}
+        >
+          {/* Subtle tech background */}
+          <Box
+            position="absolute"
+            inset={0}
+            backgroundImage="radial-gradient(#00000008 1px, transparent 1px)"
+            backgroundSize="24px 24px"
+            pointerEvents="none"
+          />
+
+          {/* Code syntax background element absolute */}
+          <Box
+            position="absolute"
+            right="-5%"
+            top="20%"
+            opacity={0.03}
+            pointerEvents="none"
+            transform="rotate(-5deg)"
+            color="black"
+            fontFamily="mono"
+            fontSize="48px"
+            fontWeight={900}
+            lineHeight={1}
+            whiteSpace="pre"
+            userSelect="none"
+            display={{ base: "none", md: "block" }}
+          >
+            {`npm init @shift-g/saas
+> installing core
+> architecture: multi-tenant
+> scale: infinite
+
+✓ Success!`}
+          </Box>
+
+          <VStack
+            position="relative"
+            zIndex={2}
+            align="flex-start"
+            pt={{ base: "140px", md: "140px" }}
+          >
+            <HStack gap={3} mb={{ base: 6, md: "24px" }}>
+              <Box w="6px" h="6px" bg="blue.solid" />
               <Text
-                fontSize="sm"
-                fontWeight="300"
-                color="blue.solid"
+                fontFamily="mono"
+                fontSize="2xs"
+                fontWeight={600}
+                letterSpacing="0.14em"
                 textTransform="uppercase"
-                letterSpacing="wider"
+                color="blue.solid"
               >
-                SaaS Development
+                Fábrica · Construa Seu SaaS
+              </Text>
+            </HStack>
+
+            <Text
+              as="h1"
+              fontSize={{ base: "48px", md: "clamp(60px, 8vw, 130px)" }}
+              lineHeight={0.92}
+              letterSpacing="-2.5px"
+              color="fg"
+              maxW="1300px"
+              mb={0}
+            >
+              <Text as="span" fontWeight={800}>
+                Software para
+              </Text>
+              <br />
+              <Text
+                as="span"
+                fontFamily="serif"
+                fontWeight={400}
+                fontStyle="italic"
+                color="blue.solid"
+              >
+                gerar receita.
+              </Text>
+            </Text>
+
+            {/* Bottom Info Bar */}
+            <Box
+              borderTop="1px solid"
+              borderColor="blackAlpha.100"
+              mt={{ base: 10, md: "60px" }}
+              pt={{ base: 6, md: "32px" }}
+              pb={{ base: 8, md: "48px" }}
+              w="full"
+            >
+              <Flex
+                direction={{ base: "column", lg: "row" }}
+                gap={{ base: 8, lg: "80px" }}
+                align={{ base: "flex-start", lg: "center" }}
+              >
+                <Text
+                  fontSize="md"
+                  color="fg.muted"
+                  lineHeight={1.8}
+                  flex={1.2}
+                  maxW="700px"
+                >
+                  Transforme a sua ideia em uma plataforma recorrente de
+                  alta escalabilidade. Da modelagem da arquitetura multi-tenant
+                  ao deploy serverless, construímos seu produto do zero enquanto
+                  você foca na tração.
+                </Text>
+
+                <HStack gap={{ base: 6, md: 10 }} flex={1} justify={{ base: "flex-start", lg: "flex-end" }} w="full">
+                  <VStack align="flex-start" gap={1}>
+                    <Text fontFamily="mono" fontSize="2xs" color="fg.subtle">MVP EM</Text>
+                    <Text fontSize="sm" fontWeight={600} color="fg">8-12 Semanas</Text>
+                  </VStack>
+                  <VStack align="flex-start" gap={1}>
+                    <Text fontFamily="mono" fontSize="2xs" color="fg.subtle">PADRÃO</Text>
+                    <Text fontSize="sm" fontWeight={600} color="fg">Multi-tenant</Text>
+                  </VStack>
+
+                  <Box
+                    as={Link}
+                    // @ts-ignore
+                    href={whatsappUrl}
+                    target="_blank"
+                    display={{ base: "none", md: "inline-flex" }}
+                    alignItems="center"
+                    gap="10px"
+                    bg="blue.solid"
+                    color="white"
+                    px="28px"
+                    py="14px"
+                    fontWeight={600}
+                    fontSize="sm"
+                    transition="all 0.2s"
+                    _hover={{ bg: "blue.fg" }}
+                  >
+                    Falar com Architect
+                    <ArrowRight size={14} />
+                  </Box>
+                </HStack>
+
+                <Box
+                  as={Link}
+                  // @ts-ignore
+                  href={whatsappUrl}
+                  target="_blank"
+                  display={{ base: "inline-flex", md: "none" }}
+                  alignItems="center"
+                  justifyContent="center"
+                  gap="10px"
+                  bg="blue.solid"
+                  color="white"
+                  w="full"
+                  py="16px"
+                  fontWeight={600}
+                  fontSize="sm"
+                >
+                  Falar com Architect
+                  <ArrowRight size={14} />
+                </Box>
+              </Flex>
+            </Box>
+          </VStack>
+        </Box>
+
+        <Plumb />
+
+        {/* ── Engenharia complexa (antiga Challenges) ── */}
+        <Box
+          as="section"
+          py={{ base: 16, md: "110px" }}
+          px={{ base: 6, md: "60px", lg: "112px" }}
+          bg="white"
+          borderTop="1px solid"
+          borderColor="blackAlpha.100"
+        >
+          <Grid
+            templateColumns={{ base: "1fr", lg: "400px 1fr" }}
+            gap={{ base: 12, lg: "80px" }}
+            alignItems="start"
+          >
+            <Box>
+              <SectionTag>Requirements</SectionTag>
+              <Text
+                as="h2"
+                fontSize={{ base: "32px", md: "clamp(32px, 3vw, 44px)" }}
+                fontWeight={800}
+                lineHeight={1.1}
+                letterSpacing="-1px"
+                color="fg"
+                mb={6}
+              >
+                Desenvolver SaaS<br />vai muito{" "}
+                <Text as="span" fontFamily="serif" fontStyle="italic" fontWeight={400} color="gray.emphasized">
+                  além de
+                </Text> um site.
+              </Text>
+              <Text fontSize="md" color="fg.muted" lineHeight={1.8}>
+                É engenharia complexa que precisa suportar
+                crescimento e multi-usuários sem colapsar a
+                segurança os dados. Fazemos certo, desde a linha 1.
               </Text>
             </Box>
 
-            {/* Title */}
-            <VStack gap={4}>
-              <Heading
-                as="h1"
-                size={{ base: "4xl", md: "5xl", lg: "6xl" }}
-                fontWeight="300"
-                lineHeight="none"
-                letterSpacing="tight"
-                color="fg"
-              >
-                Construa seu{" "}
-                <Text
-                  as="span"
-                  bgGradient="linear-gradient(135deg, {colors.blue.500}, {colors.blue.700})"
-                  bgClip="text"
+            <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap="2px" bg="blackAlpha.100" p="1px">
+              {challenges.map((chal) => (
+                <VStack
+                  key={chal.title}
+                  bg="white"
+                  p={{ base: 6, md: 8 }}
+                  align="flex-start"
+                  gap={4}
+                  transition="all 0.2s"
+                  _hover={{ bg: "off" }}
                 >
-                  SaaS
-                </Text>{" "}
-                Rentável
-              </Heading>
-
-              <Text
-                fontSize={{ base: "lg", md: "2xl" }}
-                color="fg.muted"
-                maxW="4xl"
-                lineHeight="tall"
-                fontWeight="400"
-              >
-                Transforme sua ideia em uma plataforma SaaS completa, escalável e
-                pronta para conquistar o mercado. Da MVP ao produto final,
-                cuidamos de toda a jornada tecnológica.
-              </Text>
-            </VStack>
-
-            {/* Stats */}
-            <SimpleGrid columns={{ base: 2, md: 4 }} gap={{ base: 4, md: 8 }} w="full" maxW="2xl">
-              {[
-                { value: "8-12", label: "Semanas MVP" },
-                { value: "Multi-tenant", label: "Arquitetura" },
-                { value: "99.9%", label: "Uptime" },
-                { value: "24/7", label: "Suporte" },
-              ].map((stat) => (
-                <Box key={stat.label} textAlign="center">
-                  <Text
-                    fontSize={{ base: "xl", md: "2xl" }}
-                    fontWeight="300"
-                    color="blue.solid"
-                    lineHeight="none"
-                  >
-                    {stat.value}
-                  </Text>
-                  <Text
-                    fontSize="sm"
-                    color="fg.muted"
-                    fontWeight="300"
-                    textTransform="uppercase"
-                    letterSpacing="wide"
-                  >
-                    {stat.label}
-                  </Text>
-                </Box>
+                  <HStack justify="space-between" w="full">
+                    <Box color="blue.solid">{chal.icon}</Box>
+                    <HStack gap={2}>
+                      <Box w="6px" h="1px" bg="gold.500" />
+                      <Text fontFamily="mono" fontSize="2xs" fontWeight={600} color="fg.subtle">
+                        {chal.tag}
+                      </Text>
+                    </HStack>
+                  </HStack>
+                  <Box>
+                    <Text fontSize="lg" fontWeight={700} color="fg" mb={2}>
+                      {chal.title}
+                    </Text>
+                    <Text fontSize="sm" color="fg.muted" lineHeight={1.6}>
+                      {chal.description}
+                    </Text>
+                  </Box>
+                </VStack>
               ))}
-            </SimpleGrid>
+            </Grid>
+          </Grid>
+        </Box>
 
-            {/* CTA */}
-            <Stack
-              direction={{ base: "column", sm: "row" }}
-              gap={6}
-              w={{ base: "full", sm: "auto" }}
-              mt={8}
+        {/* ── Feature Engineering ── */}
+        <Box
+          as="section"
+          py={{ base: 16, md: "110px" }}
+          bg="stone"
+          px={{ base: 6, md: "60px", lg: "112px" }}
+        >
+          <VStack align="center" textAlign="center" mb={{ base: 12, md: 20 }} maxW="700px" mx="auto">
+            <SectionTag>Componentes Core</SectionTag>
+            <Text
+              as="h2"
+              fontSize={{ base: "32px", md: "48px" }}
+              fontWeight={800}
+              lineHeight={1.1}
+              letterSpacing="-1.5px"
             >
-              <Link href="/contato" passHref>
-                <Button
-                  size="xl"
-                  px={10}
-                  py={6}
-                  variant="solid"
-                  colorPalette="blue"
-                >
-                  Transformar Ideia em SaaS
-                  <ChevronRight size={20} style={{ marginLeft: "12px" }} />
-                </Button>
-              </Link>
-            </Stack>
-
-            <Text fontSize="lg" color="fg.muted" fontWeight="500">
-              Consultoria gratuita • MVP em 8-12 semanas
+              A espinha{" "}
+              <Text as="span" fontFamily="serif" fontStyle="italic" fontWeight={400} color="blue.solid">
+                dorsal
+              </Text>{" "}
+              do sistema.
+            </Text>
+            <Text fontSize="md" color="fg.muted" mt={4} lineHeight={1.7}>
+              Todo software multi-tenant SaaS de sucesso precisa de motores
+              fundamentais. Nós abstraímos isso e entregamos os blocos empresariais essenciais prontos para você faturar.
             </Text>
           </VStack>
-        </Container>
-      </Box >
 
-      {/* Challenges Section */}
-      < Section
-        title="Os Desafios Únicos de um SaaS"
-        subtitle="Desenvolver um SaaS vai muito além de criar um site. É uma arquitetura complexa que precisa ser pensada desde o primeiro dia."
-        centered
-        variant="gradient"
-      >
-        <SimpleGrid columns={{ base: 1, md: 2 }} gap={{ base: 6, md: 8 }}>
-          {challenges.map((challenge, index) => (
-            <FeatureCard
-              key={challenge.title}
-              icon={challenge.icon}
-              title={challenge.title}
-              description={challenge.description}
-              highlighted={index === 0}
-            />
-          ))}
-        </SimpleGrid>
-
-        <Box
-          mt={{ base: 8, md: 12 }}
-          p={{ base: 6, md: 8 }}
-          rounded="2xl"
-          bg="{colors.blue.500/10}"
-          border="1px solid {colors.blue.500/20}"
-          textAlign="center"
-        >
-          <Text
-            fontSize={{ base: "lg", md: "xl" }}
-            fontWeight="300"
-            color="blue.solid"
-          >
-            É por isso que construir um SaaS requer expertise especializada.
-            Nós temos a experiência para fazer certo desde o início.
-          </Text>
+          <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }} gap="2px" bg="blackAlpha.100" p="1px">
+            {features.map((feat) => (
+              <VStack
+                key={feat.title}
+                bg="white"
+                p={{ base: 8, md: 10 }}
+                align="start"
+                gap={5}
+                _hover={{ bg: "#fafaf8" }}
+                transition="bg 0.2s"
+              >
+                <Box p={3} border="1px solid" borderColor="blackAlpha.200" color="blue.solid">
+                  {feat.icon}
+                </Box>
+                <Box>
+                  <Text fontSize="lg" fontWeight={700} color="fg" mb={2} letterSpacing="-0.3px">
+                    {feat.title}
+                  </Text>
+                  <Text fontSize="sm" color="fg.muted" lineHeight={1.6}>
+                    {feat.description}
+                  </Text>
+                </Box>
+              </VStack>
+            ))}
+          </Grid>
         </Box>
-      </Section >
 
-      {/* Features Section */}
-      < Section
-        title="Funcionalidades Essenciais que Desenvolvemos"
-        subtitle="Todo SaaS de sucesso precisa dessas funcionalidades. Nós construímos todas elas com qualidade enterprise."
-        centered
-      >
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={{ base: 6, md: 8 }}>
-          {features.map((feature) => (
-            <FeatureCard
-              key={feature.title}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-            />
-          ))}
-        </SimpleGrid>
-      </Section >
+        {/* ── Metodologia (O Processo) ── */}
+        <Box
+          as="section"
+          py={{ base: 16, md: "120px" }}
+          px={{ base: 6, md: "60px", lg: "112px" }}
+          bg="off"
+        >
+          <Flex direction={{ base: "column", lg: "row" }} gap={{ base: 12, lg: "80px" }}>
 
-      {/* Process Section */}
-      < Section
-        title="Nossa Metodologia de Desenvolvimento"
-        subtitle="Um processo testado e refinado para transformar ideias em SaaS de sucesso."
-        centered
-        variant="glass"
-      >
-        <VStack gap={{ base: 8, md: 12 }}>
-          {process.map((step, index) => (
-            <Box
-              key={step.step}
-              w="full"
-              p={{ base: 6, md: 8 }}
-              rounded="2xl"
-              bg={index % 2 === 0 ? "{colors.blue.500/10}" : "{colors.whiteAlpha.50}"}
-              border="1px solid"
-              borderColor={index % 2 === 0 ? "{colors.blue.500/20}" : "{colors.whiteAlpha.200}"}
-            >
-              <SimpleGrid columns={{ base: 1, lg: 2 }} gap={{ base: 6, md: 8 }} alignItems="center">
-                <VStack align="flex-start" gap={6}>
-                  <HStack gap={4}>
-                    <Box
-                      px={4}
-                      py={2}
-                      rounded="full"
-                      bg="{colors.blue.500}"
-                      color="white"
-                      fontSize="lg"
-                      fontWeight="300"
-                    >
-                      {step.step}
-                    </Box>
-                    <Heading
-                      as="h3"
-                      size={{ base: "lg", md: "xl" }}
-                      fontWeight="300"
-                      color="fg"
-                    >
-                      {step.title}
-                    </Heading>
-                  </HStack>
-                  <Text
-                    color="fg.muted"
-                    fontSize="lg"
-                    lineHeight="tall"
-                  >
-                    {step.description}
-                  </Text>
-                </VStack>
-
-                <VStack align="flex-start" gap={4}>
-                  <Text fontWeight="300" color="fg" fontSize="lg">
-                    Principais Entregas:
-                  </Text>
-                  <VStack align="flex-start" gap={3}>
-                    {step.deliverables.map((deliverable) => (
-                      <HStack key={deliverable} gap={3}>
-                        <CheckCircle size={20} color="{colors.blue.500}" />
-                        <Text color="fg.muted" fontSize="md">
-                          {deliverable}
-                        </Text>
-                      </HStack>
-                    ))}
-                  </VStack>
-                </VStack>
-              </SimpleGrid>
-            </Box>
-          ))}
-        </VStack>
-      </Section >
-
-      {/* Tech Stack Section */}
-      < Section
-        title="Stack Tecnológico Moderno"
-        subtitle="Utilizamos as melhores tecnologias do mercado para garantir performance, segurança e escalabilidade."
-        centered
-        variant="geometric"
-      >
-        <SimpleGrid columns={{ base: 1, md: 2 }} gap={{ base: 6, md: 8 }}>
-          {techStack.map((stack) => (
-            <Box
-              key={stack.category}
-              p={{ base: 6, md: 8 }}
-              rounded="2xl"
-              bg="whiteAlpha.50"
-              border="1px solid {colors.whiteAlpha.200}"
-            >
-              <VStack align="flex-start" gap={4}>
-                <HStack gap={3}>
-                  <Box
-                    p={3}
-                    rounded="xl"
-                    bg="{colors.blue.500/10}"
-                    color="blue.solid"
-                  >
-                    {stack.icon}
-                  </Box>
-                  <Heading
-                    as="h4"
-                    size="lg"
-                    fontWeight="300"
-                    color="fg"
-                  >
-                    {stack.category}
-                  </Heading>
-                </HStack>
-                <VStack align="flex-start" gap={2}>
-                  {stack.technologies.map((tech) => (
-                    <HStack key={tech} gap={2}>
-                      <CheckCircle size={16} color="{colors.blue.500}" />
-                      <Text color="fg.muted" fontSize="md">
-                        {tech}
-                      </Text>
-                    </HStack>
-                  ))}
-                </VStack>
-              </VStack>
-            </Box>
-          ))}
-        </SimpleGrid>
-      </Section >
-
-      {/* Pricing Section */}
-      < Section
-        title="Planos de Desenvolvimento"
-        subtitle="Escolha o modelo que melhor se adapta ao seu momento e orçamento."
-        centered
-      >
-        <SimpleGrid columns={{ base: 1, lg: 3 }} gap={{ base: 6, md: 8 }}>
-          {pricing.map((plan) => (
-            <Box
-              key={plan.name}
-              p={{ base: 6, md: 8 }}
-              rounded="2xl"
-              bg={plan.highlighted ? "{colors.blue.500/10}" : "{colors.whiteAlpha.50}"}
-              border="2px solid"
-              borderColor={plan.highlighted ? "{colors.blue.500}" : "{colors.whiteAlpha.200}"}
-              position="relative"
-            >
-              {plan.highlighted && (
-                <Box
-                  position="absolute"
-                  top={-3}
-                  left="50%"
-                  transform="translateX(-50%)"
-                  px={4}
-                  py={1}
-                  rounded="full"
-                  bg="{colors.blue.500}"
-                  color="white"
-                  fontSize="sm"
-                  fontWeight="300"
-                >
-                  Mais Popular
-                </Box>
-              )}
-
-              <VStack align="flex-start" gap={6}>
-                <VStack align="flex-start" gap={2}>
-                  <Heading
-                    as="h3"
-                    size="xl"
-                    fontWeight="300"
-                    color="fg"
-                  >
-                    {plan.name}
-                  </Heading>
-                  <Text color="fg.muted" fontSize="md">
-                    {plan.description}
-                  </Text>
-                </VStack>
-
-                <VStack align="flex-start" gap={1}>
-                  <Text
-                    fontSize="3xl"
-                    fontWeight="300"
-                    color="blue.solid"
-                  >
-                    {plan.price}
-                  </Text>
-                  <Text color="fg.muted" fontSize="sm">
-                    {plan.duration}
-                  </Text>
-                </VStack>
-
-                <VStack align="flex-start" gap={3} w="full">
-                  {plan.features.map((feature) => (
-                    <HStack key={feature} gap={3}>
-                      <CheckCircle size={20} color="{colors.blue.500}" />
-                      <Text color="fg.muted" fontSize="sm">
-                        {feature}
-                      </Text>
-                    </HStack>
-                  ))}
-                </VStack>
-
-                <Button
-                  size="lg"
-                  variant={plan.highlighted ? "solid" : "outline"}
-                  colorPalette="blue"
-                  w="full"
-                  mt={4}
-                >
-                  Escolher {plan.name}
-                </Button>
-              </VStack>
-            </Box>
-          ))}
-        </SimpleGrid>
-      </Section >
-
-      {/* Final CTA Section */}
-      < Box
-        as="section"
-        id="contato"
-        py={{ base: 20, md: 28 }
-        }
-        position="relative"
-        overflow="hidden"
-      >
-        {/* Dynamic Background */}
-        < Box
-          position="absolute"
-          inset={0}
-          bgGradient="radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/50}, transparent)"
-          _dark={{
-            bgGradient:
-              "radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/20}, transparent)",
-          }}
-          zIndex={- 1}
-        />
-
-        < Container maxW="5xl" >
-          <VStack gap={{ base: 8, md: 12 }} textAlign="center">
-            <VStack gap={6}>
-              <Heading
-                as="h2"
-                size={{ base: "3xl", md: "4xl", lg: "5xl" }}
-                fontWeight="300"
-                lineHeight="none"
-                letterSpacing="tight"
-              >
-                Pronto para{" "}
+            <Box flex={{ lg: "400px" }} position="relative">
+              <Box position="sticky" top="120px">
+                <SectionTag>O Path</SectionTag>
                 <Text
-                  as="span"
-                  bgGradient="linear-gradient(135deg, {colors.blue.500}, {colors.blue.700})"
-                  bgClip="text"
+                  as="h2"
+                  fontSize={{ base: "36px", md: "54px" }}
+                  fontWeight={800}
+                  lineHeight={1.1}
+                  letterSpacing="-1.5px"
+                  color="fg"
+                  mb={6}
                 >
-                  Revolucionar
-                </Text>{" "}
-                seu Mercado?
-              </Heading>
+                  Construir<br />
+                  não é{" "}
+                  <Text as="span" fontFamily="serif" fontStyle="italic" fontWeight={400} color="blue.solid">
+                    achar.
+                  </Text>
+                </Text>
+                <Text fontSize="md" color="fg.muted" lineHeight={1.8}>
+                  Aplicamos o método de "Continuous Delivery" onde entregas são frequentes e reais, reduzindo o risco e focado no seu roadmap de go-to-market.
+                </Text>
+              </Box>
+            </Box>
 
-              <Text
-                fontSize={{ base: "lg", md: "2xl" }}
-                color="fg.muted"
-                maxW="4xl"
-                lineHeight="tall"
-                fontWeight="400"
-              >
-                Sua ideia pode ser o próximo SaaS de sucesso. Vamos construir
-                juntos uma plataforma que seus clientes vão amar e que vai
-                gerar receita recorrente para seu negócio.
-              </Text>
-            </VStack>
-
-            <VStack gap={8} w="full" maxW="lg">
-              <Link
-                href={`https://wa.me/${SITE_PHONE.replace(/[^\d]/g, "")}`}
-                target="_blank"
-                passHref
-              >
-                <Button
-                  size="xl"
-                  px={{ base: 4, sm: 6 }}
-                  py={8}
-                  rounded="2xl"
-                  fontWeight="300"
-                  fontSize="xl"
-                  variant="solid"
-                  colorPalette="blue"
-                  w={{ base: "full", sm: "auto" }}
+            <VStack flex={1} gap={0} bg="blackAlpha.100" p="1px" align="stretch">
+              {process.map((step) => (
+                <Grid
+                  key={step.step}
+                  templateColumns={{ base: "1fr", md: "80px 1fr 1fr" }}
+                  bg="white"
+                  p={{ base: 6, md: 10 }}
+                  gap={{ base: 6, md: 8 }}
+                  alignItems="start"
+                  transition="bg 0.2s"
+                  _hover={{ bg: "#fafaf8" }}
+                  borderBottom="1px solid"
+                  borderColor="blackAlpha.100"
                 >
-                  <MessageCircle size={20} style={{ marginRight: "12px" }} />
-                  Começar Meu SaaS Agora
-                  <ChevronRight size={20} style={{ marginLeft: "12px" }} />
-                </Button>
-              </Link>
+                  <Text fontFamily="mono" fontSize="xl" fontWeight={700} color="gold.600">
+                    {step.step}
+                  </Text>
 
-              <HStack gap={6} wrap="wrap" justify="center">
-                <Box
-                  px={6}
-                  py={3}
-                  rounded="xl"
-                  bg="whiteAlpha.200"
-                  backdropFilter="blur(10px)"
-                  border="1px solid {colors.whiteAlpha.300}"
-                >
-                  <HStack gap={3} justify="center">
-                    <Timer size={18} color="blue.500" />
-                    <Text fontSize="md" color="fg.muted" fontWeight="500">
-                      Consultoria gratuita de 60 minutos
+                  <Box>
+                    <Text fontSize="2xl" fontWeight={800} color="fg" mb={3} letterSpacing="-0.5px">
+                      {step.title}
                     </Text>
-                  </HStack>
-                </Box>
-
-                <Box
-                  px={6}
-                  py={3}
-                  rounded="xl"
-                  bg="whiteAlpha.200"
-                  backdropFilter="blur(10px)"
-                  border="1px solid {colors.whiteAlpha.300}"
-                >
-                  <HStack gap={3} justify="center">
-                    <Mail size={18} color="blue.500" />
-                    <Text fontSize="md" color="fg.muted" fontWeight="500">
-                      <Link href={`mailto:${SITE_EMAIL}`}>
-                        <Text
-                          as="span"
-                          fontWeight="300"
-                          color="blue.solid"
-                          _hover={{ textDecoration: "underline" }}
-                        >
-                          {SITE_EMAIL}
-                        </Text>
-                      </Link>
+                    <Text fontSize="md" color="fg.muted" lineHeight={1.6}>
+                      {step.description}
                     </Text>
-                  </HStack>
-                </Box>
-              </HStack>
+                  </Box>
+
+                  <Box pl={{ md: 6 }} borderLeft={{ md: "1px solid" }} borderColor="blackAlpha.100">
+                    <Text fontFamily="mono" fontSize="10px" color="fg.subtle" mb={4}>
+                      ENTREGAS
+                    </Text>
+                    <VStack align="start" gap={3}>
+                      {step.deliverables.map((dlv) => (
+                        <HStack key={dlv} gap={3}>
+                          <Box w="6px" h="1px" bg="blue.solid" />
+                          <Text fontSize="sm" fontWeight={500} color="fg" letterSpacing="-0.2px">
+                            {dlv}
+                          </Text>
+                        </HStack>
+                      ))}
+                    </VStack>
+                  </Box>
+                </Grid>
+              ))}
             </VStack>
+          </Flex>
+        </Box>
+
+        {/* ── Pricing Board ── */}
+        <Box
+          as="section"
+          py={{ base: 16, md: "110px" }}
+          bg="blue.solid"
+          color="white"
+          px={{ base: 6, md: "60px", lg: "112px" }}
+        >
+          <VStack align="center" mb={{ base: 12, md: 16 }} maxW="700px" mx="auto" textAlign="center">
+            <HStack
+              fontFamily="mono"
+              fontSize="2xs"
+              fontWeight={600}
+              letterSpacing="0.16em"
+              textTransform="uppercase"
+              color="whiteAlpha.700"
+              gap="10px"
+              mb={4}
+            >
+              <Box w="18px" h="1.5px" bg="gold.500" />
+              <Text>Blueprint Financeiro</Text>
+            </HStack>
+            <Text
+              as="h2"
+              fontSize={{ base: "32px", md: "48px" }}
+              fontWeight={800}
+              lineHeight={1.1}
+              letterSpacing="-1px"
+            >
+              Invista{" "}
+              <Text as="span" fontFamily="serif" fontStyle="italic" fontWeight={400}>certo.</Text>
+            </Text>
           </VStack>
-        </Container >
-      </Box >
+
+          <Flex direction={{ base: "column", md: "row" }} gap={{ base: 6, md: "4px" }} maxW="1000px" mx="auto">
+            {pricing.map((plan) => (
+              <Box
+                key={plan.name}
+                flex={1}
+                bg={plan.highlighted ? "white" : "whiteAlpha.100"}
+                color={plan.highlighted ? "fg" : "white"}
+                p={{ base: 8, md: 10 }}
+              >
+                {plan.highlighted && (
+                  <Text fontFamily="mono" fontSize="2xs" fontWeight={600} color="gold.600" mb={4}>
+                    ESTRUTURA MAIS BUSCADA
+                  </Text>
+                )}
+                <Text fontSize="2xl" fontWeight={800} mb={2} letterSpacing="-0.5px">{plan.name}</Text>
+                <Text fontSize="sm" color={plan.highlighted ? "fg.muted" : "whiteAlpha.800"} h="40px">{plan.description}</Text>
+
+                <Box my={6} borderBottom="1px solid" borderColor={plan.highlighted ? "blackAlpha.200" : "whiteAlpha.200"} pb={6}>
+                  <Text fontSize="4xl" fontWeight={800} letterSpacing="-2px">{plan.price}</Text>
+                  <HStack gap={2} mt={1} fontFamily="mono" fontSize="xs" color={plan.highlighted ? "blue.solid" : "whiteAlpha.700"}>
+                    <Timer size={14} />
+                    <Text>{plan.duration}</Text>
+                  </HStack>
+                </Box>
+
+                <VStack align="start" gap={3} mb={8}>
+                  {plan.features.map(f => (
+                    <HStack key={f} gap={3}>
+                      <Box p="3px" bg={plan.highlighted ? "blue.50" : "whiteAlpha.200"}>
+                        <Target size={12} color={plan.highlighted ? "var(--chakra-colors-blue-solid)" : "white"} />
+                      </Box>
+                      <Text fontSize="sm" fontWeight={500}>{f}</Text>
+                    </HStack>
+                  ))}
+                </VStack>
+
+                <Box
+                  as={Link}
+                  // @ts-ignore
+                  href={whatsappUrl}
+                  w="full"
+                  display="inline-flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  bg={plan.highlighted ? "blue.solid" : "white"}
+                  color={plan.highlighted ? "white" : "fg"}
+                  py="16px"
+                  fontWeight={600}
+                  fontSize="sm"
+                  transition="all 0.2s"
+                  _hover={{ opacity: 0.9 }}
+                >
+                  Montar este Projeto
+                </Box>
+              </Box>
+            ))}
+          </Flex>
+        </Box>
+
+        <CTAFinalSection />
+      </VStack>
 
       <Footer />
-    </Page >
+    </Page>
   );
 }

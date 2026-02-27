@@ -1,46 +1,20 @@
 import { Metadata } from "next";
 import {
   Box,
-  Container,
-  SimpleGrid,
-  VStack,
-  Heading,
-  Text,
-  Button,
+  Flex,
+  Grid,
   HStack,
-  Stack,
-  Table,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
 import { Page } from "@/components/layout/page";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Section } from "@/components/layout/section";
-import { FeatureCard } from "@/components/cards/feature-card";
-import {
-  Zap,
-  Target,
-  Shield,
-  Rocket,
-  TrendingUp,
-  Database,
-  Settings,
-  Brain,
-  Search,
-  Layers,
-  Code,
-  TestTube,
-  ChevronRight,
-  Mail,
-  Calendar,
-  AlertTriangle,
-  FileText,
-  Users,
-  Lightbulb,
-  CheckCircle,
-  Clock,
-} from "lucide-react";
+import { Plumb } from "@/components/ui/plumb";
+import { CTAFinalSection } from "@/components/sections/cta-final-section";
+import { ArrowRight, Database, FileText, AlertTriangle, Lightbulb, Search, Code, Layers, TestTube, Target, Settings, Cpu } from "lucide-react";
 import Link from "next/link";
-import { SITE_NAME, SITE_URL, SITE_EMAIL, SITE_PHONE } from "@/constants";
+import { SITE_NAME, SITE_URL, SITE_PHONE } from "@/constants";
 
 export const metadata: Metadata = {
   title: `Transformação Digital | ${SITE_NAME}`,
@@ -53,11 +27,10 @@ export const metadata: Metadata = {
     "arquitetura de sistemas",
     "digitalização empresarial",
     "inovação tecnológica",
-    "automação de processos",
-    "sistemas integrados",
-    "estratégia digital",
-    "maturidade digital",
   ],
+  alternates: {
+    canonical: `${SITE_URL}/transformacao-digital`,
+  },
   openGraph: {
     title: `Transformação Digital | ${SITE_NAME}`,
     description:
@@ -65,40 +38,54 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     url: `${SITE_URL}/transformacao-digital`,
-    siteName: `${SITE_NAME} - Transformação Digital`,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `Transformação Digital | ${SITE_NAME}`,
-    description:
-      "Da estratégia à execução, o futuro do seu negócio começa agora. Jornada completa de modernização com tecnologia, processos e pessoas.",
+    siteName: SITE_NAME,
   },
 };
 
+/* ── Section Tag ── */
+function SectionTag({ children }: { children: string }) {
+  return (
+    <HStack
+      fontFamily="mono"
+      fontSize="2xs"
+      fontWeight={600}
+      letterSpacing="0.16em"
+      textTransform="uppercase"
+      color="blue.solid"
+      gap="10px"
+      mb={4}
+    >
+      <Box w="18px" h="1.5px" bg="blue.solid" />
+      <Text>{children}</Text>
+    </HStack>
+  );
+}
+
+/* ── Data ── */
 const challenges = [
   {
     title: "Sistemas Legados",
-    description:
-      "Tecnologias antigas que não se comunicam e criam silos de informação.",
-    icon: <Database size={24} />,
+    description: "Tecnologias antigas que não se comunicam e criam silos de informação.",
+    icon: <Database size={20} />,
+    status: "Risco Alto",
   },
   {
     title: "Processos Manuais",
-    description:
-      "Workflows baseados em papel e planilhas que são lentos, caros e propensos a erros.",
-    icon: <FileText size={24} />,
+    description: "Workflows baseados em papel e planilhas, lentos e propensos a erros.",
+    icon: <FileText size={20} />,
+    status: "Ineficiente",
   },
   {
     title: "Decisões sem Dados",
-    description:
-      "Uma cultura onde a intuição supera a análise, gerando incerteza e perda de oportunidades.",
-    icon: <AlertTriangle size={24} />,
+    description: "Cultura onde a intuição supera a análise, gerando perda de oportunidades.",
+    icon: <AlertTriangle size={20} />,
+    status: "Risco Crítico",
   },
   {
     title: "Dificuldade para Inovar",
-    description:
-      "Falta de conhecimento técnico ou de um parceiro capaz de traduzir ideias em soluções funcionais.",
-    icon: <Lightbulb size={24} />,
+    description: "Falta de conhecimento técnico ou parceiro para traduzir ideias em software.",
+    icon: <Lightbulb size={20} />,
+    status: "Estagnação",
   },
 ];
 
@@ -106,600 +93,497 @@ const pillars = [
   {
     number: "01",
     title: "Consultoria Estratégica & Diagnóstico",
-    description:
-      "Antes de construir, planejamos. Analisamos seus processos, sistemas e desafios para identificar as oportunidades de maior impacto.",
-    features: [
-      "Análise de Maturidade Digital",
-      "Mapeamento de Processos (As-Is & To-Be)",
-      "Roadmap Tecnológico",
-    ],
-    icon: <Search size={24} />,
+    description: "Antes de construir, planejamos. Analisamos seus processos, sistemas e desafios para identificar as oportunidades de maior impacto.",
+    features: ["Análise de Maturidade Digital", "Mapeamento As-Is & To-Be", "Roadmap Tecnológico"],
+    icon: <Search size={22} />,
   },
   {
     number: "02",
-    title: "Desenho de Soluções e Arquitetura de Sistemas",
-    description:
-      "Traduzimos a estratégia em um plano técnico. Desenhamos a arquitetura da solução ideal, seja ela a integração de sistemas existentes, a adoção de uma nova plataforma ou o desenvolvimento de um software sob medida.",
-    features: [
-      "Arquitetura de Soluções",
-      "Integração de Sistemas",
-      "Plataformas Customizadas",
-    ],
-    icon: <Layers size={24} />,
+    title: "Arquitetura e Desenho de Soluções",
+    description: "Traduzimos a estratégia em um plano técnico. Desenhamos a arquitetura ideal, seja integração, nova plataforma ou software sob medida.",
+    features: ["Arquitetura de Soluções", "Integração de Sistemas", "Escolha de Stack"],
+    icon: <Layers size={22} />,
   },
   {
     number: "03",
     title: "Provas de Conceito (PoC) & MVP",
-    description:
-      "Reduzimos os riscos e aceleramos o aprendizado. Antes de grandes investimentos, construímos versões simplificadas da solução (PoCs ou MVPs) para validar hipóteses, testar a viabilidade técnica e comprovar o ROI em um ambiente controlado.",
-    features: [
-      "Validação de Hipóteses",
-      "Testes de Viabilidade",
-      "Comprovação de ROI",
-    ],
-    icon: <TestTube size={24} />,
+    description: "Reduzimos os riscos. Antes de grandes investimentos, construímos versões simplificadas para testar a viabilidade e comprovar o ROI.",
+    features: ["Validação de Hipóteses", "Testes de Viabilidade", "Comprovação de ROI"],
+    icon: <TestTube size={22} />,
   },
   {
     number: "04",
-    title: "Implementação e Desenvolvimento",
-    description:
-      "É aqui que a transformação se torna realidade. Com nossas equipes de Fábrica de Software e Dados & IA, construímos, integramos e implementamos as ferramentas que sua operação precisa para saltar para o próximo nível.",
-    features: [
-      "Desenvolvimento Sob Medida",
-      "Implementação Completa",
-      "Suporte Especializado",
-    ],
-    icon: <Code size={24} />,
+    title: "Implementação e Escala",
+    description: "É aqui que a transformação vira realidade. Construímos, integramos e implementamos as ferramentas que sua operação precisa.",
+    features: ["Desenvolvimento Ágil", "Deploy Completo", "Suporte e Evolução"],
+    icon: <Code size={22} />,
   },
 ];
 
 const differentials = [
   {
     title: "Visão 360°",
-    description:
-      "Unimos a visão estratégica de uma consultoria com a capacidade técnica de uma fábrica de software e a inteligência de uma casa de IA.",
-    benefit: "Solução completa do diagnóstico à implementação",
+    description: "Unimos a visão estratégica de uma consultoria com a capacidade técnica de execução.",
+    benefit: "Diagnóstico à implementação estruturada.",
   },
   {
-    title: "Pragmatismo e Foco no ROI",
-    description:
-      "Priorizamos ações que geram valor rápido. Nossa abordagem com PoCs e MVPs garante que seu investimento tenha retorno comprovado.",
-    benefit: "Resultados mensuráveis em curto prazo",
+    title: "Foco no ROI",
+    description: "Priorizamos ações que geram valor rápido. Nossa abordagem garante retorno comprovado.",
+    benefit: "Resultados em curto prazo.",
   },
   {
-    title: "Independência Tecnológica",
-    description:
-      "Não somos revendedores de nenhuma marca. Nossa única lealdade é com a melhor solução para o seu desafio específico.",
-    benefit: "Imparcialidade e flexibilidade total",
+    title: "Agosticismo Tecnológico",
+    description: "Não somos revendedores de licenças. Nossa lealdade é com a melhor solução técnica.",
+    benefit: "Independência total.",
   },
   {
-    title: "Parceria de Longo Prazo",
-    description:
-      "Nosso objetivo não é entregar um projeto, mas construir uma parceria que apoie a evolução contínua do seu negócio.",
-    benefit: "Evolução constante e suporte contínuo",
+    title: "Parceria Estendida",
+    description: "Não apenas entregamos o código. Apoiamos a adoção e a evolução contínua.",
+    benefit: "Suporte e melhoria constante.",
   },
 ];
 
 export default function DigitalTransformationPage() {
+  const whatsappUrl = `https://wa.me/${SITE_PHONE.replace(/\D/g, "")}?text=Olá! Gostaria de falar sobre transformação digital para minha empresa.`;
+
   return (
     <Page>
       <Navbar />
 
-      {/* Hero Section */}
-      <Box
-        as="section"
-        position="relative"
-        overflow="hidden"
-        minH="90vh"
-        display="flex"
-        alignItems="center"
-        bg="bg"
-      >
-        {/* Background Elements */}
-        <Box
-          position="absolute"
-          top="15%"
-          right="8%"
-          w="180px"
-          h="180px"
-          borderRadius="full"
-          bg="{colors.blue.500/5}"
-          backdropFilter="blur(10px)"
-          animation="float 12s ease-in-out infinite"
-          zIndex={0}
-        />
-        <Box
-          position="absolute"
-          bottom="20%"
-          left="5%"
-          w="120px"
-          h="120px"
-          borderRadius="xl"
-          bg="{colors.blue.500/5}"
-          backdropFilter="blur(10px)"
-          animation="float 8s ease-in-out infinite reverse"
-          zIndex={0}
-        />
+      <VStack gap={0} w="full" as="main" align="stretch">
 
-        <Container maxW="7xl" py={{ base: 16, md: 24 }} position="relative" zIndex={1}>
-          <VStack gap={{ base: 8, md: 12 }} maxW="6xl" mx="auto" textAlign="center">
-            {/* Badge */}
-            <Box
-              px={4}
-              py={2}
-              rounded="full"
-              bg="{colors.blue.500/10}"
-              border="1px solid {colors.blue.500/20}"
-            >
+        {/* ── Hero ── */}
+        <Box
+          as="section"
+          minH={{ base: "65vh", md: "75vh" }}
+          bg="off"
+          display="flex"
+          flexDirection="column"
+          justifyContent="flex-end"
+          position="relative"
+          overflow="hidden"
+          px={{ base: 6, md: "60px", lg: "112px" }}
+        >
+          {/* Geomeric grid background */}
+          <Box
+            position="absolute"
+            inset={0}
+            backgroundImage="linear-gradient(#00000006 1px, transparent 1px), linear-gradient(90deg, #00000006 1px, transparent 1px)"
+            backgroundSize="40px 40px"
+            pointerEvents="none"
+            maskImage="linear-gradient(to bottom, transparent 10%, black 80%)"
+          />
+
+          {/* Abstract SVG shape in background */}
+          <Box
+            as="svg"
+            position="absolute"
+            right="-10%"
+            top="40%"
+            transform="translateY(-50%)"
+            w={{ base: "90vw", lg: "60vw" }}
+            maxW="1000px"
+            opacity={0.03}
+            pointerEvents="none"
+            color="fg"
+            // @ts-ignore
+            viewBox="0 0 400 400"
+            fill="none"
+          >
+            <path d="M200 50 L350 125 L350 275 L200 350 L50 275 L50 125 Z" stroke="currentColor" strokeWidth="1" />
+            <path d="M200 100 L300 150 L300 250 L200 300 L100 250 L100 150 Z" stroke="currentColor" strokeWidth="0.5" />
+            <line x1="200" y1="50" x2="200" y2="350" stroke="currentColor" strokeWidth="0.5" />
+            <line x1="50" y1="125" x2="350" y2="275" stroke="currentColor" strokeWidth="0.5" />
+            <line x1="50" y1="275" x2="350" y2="125" stroke="currentColor" strokeWidth="0.5" />
+          </Box>
+
+          <VStack
+            position="relative"
+            zIndex={2}
+            align="flex-start"
+            pt={{ base: "140px", md: "120px" }}
+          >
+            <HStack gap={3} mb={{ base: 6, md: "24px" }}>
+              <Box w="6px" h="6px" bg="gold.500" />
               <Text
-                fontSize="sm"
-                fontWeight="300"
-                color="blue.solid"
+                fontFamily="mono"
+                fontSize="2xs"
+                fontWeight={600}
+                letterSpacing="0.14em"
                 textTransform="uppercase"
-                letterSpacing="wider"
+                color="gold.600"
               >
                 Transformação Digital
               </Text>
+            </HStack>
+
+            <Text
+              as="h1"
+              fontSize={{ base: "48px", md: "clamp(60px, 8vw, 120px)" }}
+              lineHeight={0.92}
+              letterSpacing="-2.5px"
+              color="fg"
+              maxW="1100px"
+              mb={0}
+            >
+              <Text as="span" fontWeight={800}>
+                Da estratégia
+              </Text>
+              <br />
+              <Text as="span" fontWeight={800}>
+                à{" "}
+              </Text>
+              <Text
+                as="span"
+                fontFamily="serif"
+                fontWeight={400}
+                fontStyle="italic"
+                color="blue.solid"
+              >
+                execução.
+              </Text>
+            </Text>
+
+            {/* Bottom Info Bar */}
+            <Box
+              borderTop="1px solid"
+              borderColor="blackAlpha.100"
+              mt={{ base: 10, md: "52px" }}
+              pt={{ base: 6, md: "32px" }}
+              pb={{ base: 8, md: "48px" }}
+              w="full"
+            >
+              <Flex
+                direction={{ base: "column", lg: "row" }}
+                gap={{ base: 8, lg: "60px" }}
+                align={{ base: "flex-start", lg: "center" }}
+              >
+                <Text
+                  fontSize="md"
+                  color="fg.muted"
+                  lineHeight={1.8}
+                  flex={1.2}
+                  maxW="800px"
+                >
+                  Conduza sua empresa em uma jornada completa de modernização.
+                  Integramos <Text as="strong" color="fg" fontWeight={600}>tecnologia, processos e pessoas</Text> para
+                  gerar agilidade e crescimento sustentável na nova economia.
+                </Text>
+
+                <HStack gap={8} flex={1} justify={{ base: "flex-start", lg: "flex-end" }} w="full">
+                  <VStack align="flex-start" gap={1}>
+                    <Text fontFamily="mono" fontSize="2xs" color="fg.subtle">ESCOPO</Text>
+                    <Text fontSize="sm" fontWeight={600} color="fg">Engenharia Exata</Text>
+                  </VStack>
+                  <VStack align="flex-start" gap={1}>
+                    <Text fontFamily="mono" fontSize="2xs" color="fg.subtle">FOCO</Text>
+                    <Text fontSize="sm" fontWeight={600} color="fg">ROI Comprovado</Text>
+                  </VStack>
+
+                  <Box
+                    as={Link}
+                    // @ts-ignore
+                    href={whatsappUrl}
+                    target="_blank"
+                    display={{ base: "none", md: "inline-flex" }}
+                    alignItems="center"
+                    gap="10px"
+                    bg="fg"
+                    color="white"
+                    px="28px"
+                    py="14px"
+                    fontWeight={600}
+                    fontSize="sm"
+                    transition="all 0.2s"
+                    _hover={{ bg: "blackAlpha.800" }}
+                  >
+                    Diagnóstico
+                    <ArrowRight size={14} />
+                  </Box>
+                </HStack>
+
+                <Box
+                  as={Link}
+                  // @ts-ignore
+                  href={whatsappUrl}
+                  target="_blank"
+                  display={{ base: "inline-flex", md: "none" }}
+                  alignItems="center"
+                  justifyContent="center"
+                  gap="10px"
+                  bg="fg"
+                  color="white"
+                  w="full"
+                  py="16px"
+                  fontWeight={600}
+                  fontSize="sm"
+                >
+                  Agendar Diagnóstico
+                  <ArrowRight size={14} />
+                </Box>
+              </Flex>
+            </Box>
+          </VStack>
+        </Box>
+
+        <Plumb />
+
+        {/* ── Desafios ── */}
+        <Box
+          as="section"
+          py={{ base: 16, md: "110px" }}
+          px={{ base: 6, md: "60px", lg: "112px" }}
+          bg="white"
+          borderTop="1px solid"
+          borderColor="blackAlpha.100"
+        >
+          <Grid
+            templateColumns={{ base: "1fr", lg: "400px 1fr" }}
+            gap={{ base: 12, lg: "80px" }}
+            alignItems="start"
+          >
+            <Box>
+              <SectionTag>O Contexto</SectionTag>
+              <Text
+                as="h2"
+                fontSize={{ base: "32px", md: "clamp(32px, 3.5vw, 54px)" }}
+                fontWeight={800}
+                lineHeight={1.08}
+                letterSpacing="-1.2px"
+                color="fg"
+                mb={6}
+              >
+                Inércia é<br />o maior{" "}
+                <Text as="span" fontFamily="serif" fontStyle="italic" fontWeight={400} color="gray.emphasized">
+                  risco.
+                </Text>
+              </Text>
+              <Text fontSize="md" color="fg.muted" lineHeight={1.8}>
+                Clientes esperam experiências fluidas e a eficiência operacional se tornou
+                questão de sobrevivência. Muitos líderes se sentem paralisados
+                por desafios operacionais enraizados.
+              </Text>
             </Box>
 
-            {/* Title */}
-            <VStack gap={4}>
-              <Heading
-                as="h1"
-                size={{ base: "4xl", md: "5xl", lg: "6xl" }}
-                fontWeight="300"
-                lineHeight="none"
-                letterSpacing="tight"
-                color="fg"
-              >
-                Da{" "}
-                <Text
-                  as="span"
-                  bgGradient="linear-gradient(135deg, {colors.blue.500}, {colors.blue.700})"
-                  bgClip="text"
+            <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap="2px" bg="blackAlpha.100" p="1px">
+              {challenges.map((challenge) => (
+                <VStack
+                  key={challenge.title}
+                  bg="white"
+                  p={{ base: 6, md: 8 }}
+                  align="flex-start"
+                  gap={4}
+                  transition="background 0.2s"
+                  _hover={{ bg: "off" }}
                 >
-                  Estratégia
-                </Text>{" "}
-                à Execução
-              </Heading>
-
-              <Text
-                fontSize={{ base: "lg", md: "2xl" }}
-                color="fg.muted"
-                maxW="5xl"
-                lineHeight="tall"
-                fontWeight="400"
-              >
-                Conduza sua empresa em uma jornada completa de modernização,
-                integrando tecnologia, processos e pessoas para gerar agilidade,
-                inteligência e crescimento sustentável.
-              </Text>
-            </VStack>
-
-            {/* Stats */}
-            <SimpleGrid columns={{ base: 2, md: 4 }} gap={{ base: 4, md: 8 }} w="full" maxW="3xl">
-              {[
-                { value: "360°", label: "Visão Completa" },
-                { value: "PoC", label: "Validação Rápida" },
-                { value: "ROI", label: "Garantido" },
-                { value: "24/7", label: "Suporte" },
-              ].map((stat) => (
-                <Box key={stat.label} textAlign="center">
-                  <Text
-                    fontSize={{ base: "2xl", md: "3xl" }}
-                    fontWeight="300"
-                    color="blue.solid"
-                    lineHeight="none"
-                  >
-                    {stat.value}
-                  </Text>
-                  <Text
-                    fontSize="sm"
-                    color="fg.muted"
-                    fontWeight="300"
-                    textTransform="uppercase"
-                    letterSpacing="wide"
-                  >
-                    {stat.label}
-                  </Text>
-                </Box>
+                  <HStack justify="space-between" w="full">
+                    <Box color="blue.solid">{challenge.icon}</Box>
+                    <HStack gap={2}>
+                      <Box w="6px" h="6px" bg="red.500" />
+                      <Text fontFamily="mono" fontSize="xs" fontWeight={600} color="red.600">
+                        {challenge.status}
+                      </Text>
+                    </HStack>
+                  </HStack>
+                  <Box>
+                    <Text fontSize="lg" fontWeight={700} color="fg" mb={2}>
+                      {challenge.title}
+                    </Text>
+                    <Text fontSize="sm" color="fg.muted" lineHeight={1.6}>
+                      {challenge.description}
+                    </Text>
+                  </Box>
+                </VStack>
               ))}
-            </SimpleGrid>
+            </Grid>
+          </Grid>
+        </Box>
 
-            {/* CTA */}
-            <Stack
-              direction={{ base: "column", sm: "row" }}
-              gap={4}
-              w={{ base: "full", sm: "auto" }}
-              mt={6}
+        {/* ── Jornada ── */}
+        <Box
+          as="section"
+          py={{ base: 16, md: "120px" }}
+          bg="blue.solid"
+          color="white"
+          px={{ base: 6, md: "60px", lg: "112px" }}
+          position="relative"
+          overflow="hidden"
+        >
+          {/* Subtle Grid overlay */}
+          <Box
+            position="absolute"
+            inset={0}
+            backgroundImage="linear-gradient(#ffffff08 1px, transparent 1px), linear-gradient(90deg, #ffffff08 1px, transparent 1px)"
+            backgroundSize="30px 30px"
+          />
+
+          <VStack position="relative" zIndex={1} maxW="container.lg" mx="auto" align="center" textAlign="center" gap={6}>
+            <Text fontFamily="mono" fontSize="xs" textTransform="uppercase" letterSpacing="0.2em" color="whiteAlpha.600">
+              A Abordagem
+            </Text>
+            <Text
+              as="h2"
+              fontSize={{ base: "32px", md: "48px" }}
+              fontWeight={800}
+              lineHeight={1.1}
+              letterSpacing="-1px"
+              maxW="800px"
             >
-              <Link href="#diagnostico" passHref>
-                <Button
-                  size="xl"
-                  px={8}
-                  py={6}
-                  variant="solid"
-                  colorPalette="blue"
-                >
-                  Diagnóstico de Maturidade Digital
-                  <ChevronRight size={20} style={{ marginLeft: "12px" }} />
-                </Button>
-              </Link>
-            </Stack>
-
-            <Text fontSize="lg" color="fg.muted" fontWeight="500">
-              Consultoria gratuita • Roadmap personalizado
+              Uma jornada de modernização{" "}
+              <Text as="span" fontFamily="serif" fontStyle="italic" fontWeight={400}>guiada.</Text>
+            </Text>
+            <Box w="1px" h="40px" bg="whiteAlpha.300" my={2} />
+            <Text fontSize={{ base: "md", md: "lg" }} color="whiteAlpha.800" maxW="700px" lineHeight={1.8}>
+              A verdadeira transformação vai além de adotar uma ferramenta. Na Shift+G,
+              co-criamos o caminho para o futuro. Do diagnóstico que revela gargalos
+              à implementação da tecnologia que irá eliminá-los. Somos arquitetos e executores.
             </Text>
           </VStack>
-        </Container>
-      </Box>
-
-      {/* Challenges Section */}
-      <Section
-        title="O Ritmo da Mudança Acelerou. Sua Empresa Está Preparada?"
-        subtitle="No cenário atual, a inércia é o maior risco. Clientes esperam experiências digitais fluidas, concorrentes inovam em velocidade recorde e a eficiência operacional se tornou uma questão de sobrevivência."
-        centered
-        variant="gradient"
-      >
-        <Text
-          fontSize={{ base: "lg", md: "xl" }}
-          color="fg.muted"
-          textAlign="center"
-          mb={{ base: 8, md: 12 }}
-          maxW="4xl"
-          mx="auto"
-        >
-          Muitos líderes se sentem paralisados por desafios como:
-        </Text>
-
-        <SimpleGrid columns={{ base: 1, md: 2 }} gap={{ base: 6, md: 8 }}>
-          {challenges.map((challenge, index) => (
-            <FeatureCard
-              key={challenge.title}
-              icon={challenge.icon}
-              title={challenge.title}
-              description={challenge.description}
-              highlighted={index === 0}
-            />
-          ))}
-        </SimpleGrid>
-
-        <Box
-          mt={{ base: 8, md: 12 }}
-          p={{ base: 6, md: 8 }}
-          rounded="2xl"
-          bg="{colors.blue.500/10}"
-          border="1px solid {colors.blue.500/20}"
-          textAlign="center"
-        >
-          <Text
-            fontSize={{ base: "lg", md: "xl" }}
-            fontWeight="300"
-            color="blue.solid"
-          >
-            A questão não é mais <Text as="span" fontStyle="italic">se</Text> transformar,
-            mas <Text as="span" fontWeight="300">como</Text> fazer isso de forma inteligente
-            e com o parceiro certo.
-          </Text>
         </Box>
-      </Section>
 
-      {/* Approach Section */}
-      <Section
-        title="Nossa Abordagem: Uma Jornada de Transformação Guiada"
-        subtitle="A verdadeira transformação digital vai além de adotar uma nova ferramenta. É uma mudança de mentalidade, impulsionada pela tecnologia certa."
-        centered
-      >
-        <VStack gap={{ base: 8, md: 12 }}>
-          <Text
-            fontSize={{ base: "lg", md: "xl" }}
-            color="fg.muted"
-            textAlign="center"
-            maxW="5xl"
-            mx="auto"
-            lineHeight="tall"
-          >
-            Na Shift+G, não vendemos soluções de prateleira; co-criamos o caminho
-            para o futuro do seu negócio. Mais do que um fornecedor, somos o seu{" "}
-            <Text as="span" fontWeight="300" color="blue.solid">
-              arquiteto e executor da jornada digital
-            </Text>.
-          </Text>
-
-          <Box
-            p={{ base: 6, md: 8 }}
-            rounded="2xl"
-            bg="whiteAlpha.50"
-            border="1px solid {colors.whiteAlpha.200}"
-            textAlign="center"
-            maxW="4xl"
-            mx="auto"
-          >
+        {/* ── Pilares (Metodologia) ── */}
+        <Box
+          as="section"
+          py={{ base: 16, md: "110px" }}
+          px={{ base: 6, md: "60px", lg: "112px" }}
+          bg="stone"
+        >
+          <Box mb={{ base: 10, md: 16 }} maxW="800px">
+            <SectionTag>Metodologia</SectionTag>
             <Text
-              fontSize={{ base: "lg", md: "xl" }}
-              fontWeight="300"
+              as="h2"
+              fontSize={{ base: "32px", md: "48px" }}
+              fontWeight={800}
+              lineHeight={1.1}
+              letterSpacing="-1.5px"
               color="fg"
+              mb={4}
             >
-              Nossa abordagem é completa: do diagnóstico que revela os maiores
-              gargalos à implementação da tecnologia que irá eliminá-los.
+              Nossos{" "}
+              <Text as="span" fontFamily="serif" fontStyle="italic" fontWeight={400} color="blue.solid">
+                pilares
+              </Text>{" "}
+              para mudança escalar.
+            </Text>
+            <Text fontSize="md" color="fg.muted" lineHeight={1.8}>
+              Portfólio end-to-end adaptado ao nível de maturidade da sua operação.
+              Garantimos resultados desde a ideação até o código em produção.
             </Text>
           </Box>
-        </VStack>
-      </Section>
 
-      {/* Pillars Section */}
-      <Section
-        title="Nossos Pilares para uma Transformação de Sucesso"
-        subtitle="Oferecemos um portfólio de serviços end-to-end, adaptado ao nível de maturidade e aos objetivos da sua empresa."
-        centered
-        variant="glass"
-      >
-        <VStack gap={{ base: 12, md: 16 }}>
-          {pillars.map((pillar, index) => (
-            <Box
-              key={pillar.number}
-              w="full"
-              p={{ base: 6, md: 8 }}
-              rounded="2xl"
-              bg={index % 2 === 0 ? "{colors.blue.500/10}" : "{colors.whiteAlpha.50}"}
-              border="1px solid"
-              borderColor={index % 2 === 0 ? "{colors.blue.500/20}" : "{colors.whiteAlpha.200}"}
-            >
-              <SimpleGrid columns={{ base: 1, lg: 2 }} gap={{ base: 6, md: 8 }} alignItems="center">
-                <VStack align="flex-start" gap={6}>
-                  <HStack gap={4}>
-                    <Box
-                      px={4}
-                      py={2}
-                      rounded="full"
-                      bg="blue.500"
-                      color="white"
-                      fontSize="lg"
-                      fontWeight="300"
-                    >
-                      {pillar.number}
-                    </Box>
-                    <Box
-                      p={3}
-                      rounded="xl"
-                      bg={index % 2 === 0 ? "blue.500" : "blue.500/10"}
-                      color={index % 2 === 0 ? "white" : "blue.solid"}
-                    >
-                      {pillar.icon}
-                    </Box>
-                  </HStack>
-                  <VStack align="flex-start" gap={4}>
-                    <Heading
-                      as="h3"
-                      size={{ base: "lg", md: "xl" }}
-                      fontWeight="300"
-                      color="fg"
-                    >
+          <VStack gap="2px" align="stretch" bg="blackAlpha.100" p="1px">
+            {pillars.map((pillar) => (
+              <Grid
+                key={pillar.number}
+                templateColumns={{ base: "1fr", lg: "80px 1fr 1.5fr" }}
+                gap={{ base: 6, lg: 12 }}
+                bg="white"
+                p={{ base: 6, md: 10 }}
+                alignItems="start"
+                transition="all 0.2s"
+                _hover={{ bg: "#fafaf8" }}
+              >
+                {/* Number */}
+                <Text fontFamily="mono" fontSize="lg" fontWeight={700} color="gold.600">
+                  {pillar.number}
+                </Text>
+
+                {/* Title & Desc */}
+                <Box>
+                  <HStack gap={3} mb={4} color="blue.solid">
+                    {pillar.icon}
+                    <Text fontSize="xl" fontWeight={800} color="fg">
                       {pillar.title}
-                    </Heading>
-                    <Text
-                      color="fg.muted"
-                      fontSize="lg"
-                      lineHeight="tall"
-                    >
-                      {pillar.description}
                     </Text>
-                  </VStack>
-                </VStack>
-
-                <VStack align="flex-start" gap={4}>
-                  <Text fontWeight="300" color="fg" fontSize="lg">
-                    Principais Entregas:
+                  </HStack>
+                  <Text fontSize="sm" color="fg.muted" lineHeight={1.7}>
+                    {pillar.description}
                   </Text>
-                  <VStack align="flex-start" gap={3}>
+                </Box>
+
+                {/* Entregas */}
+                <Box pl={{ lg: 8 }} borderLeft={{ lg: "1px solid" }} borderColor="blackAlpha.100">
+                  <Text fontFamily="mono" fontSize="2xs" color="fg.subtle" mb={4}>
+                    ENTREGAS CHAVE
+                  </Text>
+                  <VStack align="start" gap={3}>
                     {pillar.features.map((feature) => (
                       <HStack key={feature} gap={3}>
-                        <CheckCircle size={20} color="{colors.blue.500}" />
-                        <Text color="fg.muted" fontSize="md">
+                        <Box w="10px" h="1px" bg="blue.solid" />
+                        <Text fontSize="sm" fontWeight={500} color="fg" letterSpacing="-0.2px">
                           {feature}
                         </Text>
                       </HStack>
                     ))}
                   </VStack>
-                </VStack>
-              </SimpleGrid>
-            </Box>
-          ))}
-        </VStack>
-      </Section>
-
-      {/* Differentials Section */}
-      <Section
-        title="Shift+G: O Parceiro que Constrói, Não Apenas Aconselha"
-        subtitle="Muitos podem criar um plano. Poucos podem executá-lo com excelência. Nosso grande diferencial é a capacidade de acompanhar sua empresa do início ao fim."
-        centered
-        variant="geometric"
-      >
-        <Box
-          w="full"
-          overflowX="auto"
-          rounded="2xl"
-          border="1px solid {colors.whiteAlpha.200}"
-          bg="whiteAlpha.50"
-        >
-          <Table.Root size="lg">
-            <Table.Header>
-              <Table.Row>
-                <Table.ColumnHeader
-                  p={6}
-                  fontSize="lg"
-                  fontWeight="300"
-                  color="blue.solid"
-                  bg="blue.500/10"
-                >
-                  Diferencial
-                </Table.ColumnHeader>
-                <Table.ColumnHeader
-                  p={6}
-                  fontSize="lg"
-                  fontWeight="300"
-                  color="blue.fg"
-                  bg="blue.500/10"
-                >
-                  O que isso significa para você
-                </Table.ColumnHeader>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {differentials.map((diff, index) => (
-                <Table.Row
-                  key={diff.title}
-                  _hover={{ bg: "{colors.blue.500/5}" }}
-                  transition="all 0.2s ease"
-                >
-                  <Table.Cell p={6} verticalAlign="top">
-                    <VStack align="flex-start" gap={2}>
-                      <Text fontWeight="300" color="fg" fontSize="lg">
-                        {diff.title}
-                      </Text>
-                      <Text color="fg.muted" fontSize="md" lineHeight="tall">
-                        {diff.description}
-                      </Text>
-                    </VStack>
-                  </Table.Cell>
-                  <Table.Cell p={6} verticalAlign="top">
-                    <HStack gap={3}>
-                      <Target size={20} color="{colors.blue.500}" />
-                      <Text color="fg" fontSize="md" fontWeight="300">
-                        {diff.benefit}
-                      </Text>
-                    </HStack>
-                  </Table.Cell>
-                </Table.Row>
-              ))}
-            </Table.Body>
-          </Table.Root>
-        </Box>
-      </Section>
-
-      {/* Final CTA Section */}
-      <Box
-        as="section"
-        id="diagnostico"
-        py={{ base: 20, md: 28 }}
-        position="relative"
-        overflow="hidden"
-      >
-        {/* Dynamic Background */}
-        <Box
-          position="absolute"
-          inset={0}
-          bgGradient="radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/50}, transparent)"
-          _dark={{
-            bgGradient:
-              "radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/20}, transparent)",
-          }}
-          zIndex={-1}
-        />
-
-        <Container maxW="5xl">
-          <VStack gap={{ base: 8, md: 12 }} textAlign="center">
-            <VStack gap={6}>
-              <Heading
-                as="h2"
-                size={{ base: "3xl", md: "4xl", lg: "5xl" }}
-                fontWeight="300"
-                lineHeight="none"
-                letterSpacing="tight"
-              >
-                Qual é o Próximo{" "}
-                <Text
-                  as="span"
-                  bgGradient="linear-gradient(135deg, {colors.blue.500}, {colors.blue.700})"
-                  bgClip="text"
-                >
-                  'Shift'
-                </Text>{" "}
-                da sua Empresa?
-              </Heading>
-
-              <Text
-                fontSize={{ base: "lg", md: "2xl" }}
-                color="fg.muted"
-                maxW="4xl"
-                lineHeight="tall"
-                fontWeight="400"
-              >
-                Não deixe sua empresa reagir ao futuro. Comece a construí-lo hoje.
-                O primeiro passo é entender seu ponto de partida e o potencial
-                que a tecnologia pode destravar.
-              </Text>
-            </VStack>
-
-            <VStack gap={8} w="full" maxW="lg">
-              <Link
-                href={`https://wa.me/${SITE_PHONE.replace(/[^\d]/g, "")}`}
-                target="_blank"
-                passHref
-              >
-                <Button
-                  size="xl"
-                  px={{ base: 4, sm: 6 }}
-                  py={8}
-                  rounded="2xl"
-                  fontWeight="300"
-                  fontSize="xl"
-                  variant="solid"
-                  colorPalette="blue"
-                  w={{ base: "full", sm: "auto" }}
-                >
-                  <Calendar size={20} style={{ marginRight: "12px" }} />
-                  Agendar Diagnóstico de Maturidade Digital
-                  <ChevronRight size={20} style={{ marginLeft: "12px" }} />
-                </Button>
-              </Link>
-
-              <HStack gap={6} wrap="wrap" justify="center">
-                <Box
-                  px={6}
-                  py={3}
-                  rounded="xl"
-                  bg="{colors.whiteAlpha.200}"
-                  backdropFilter="blur(20px)"
-                  border="1px solid {colors.whiteAlpha.300}"
-                >
-                  <HStack gap={3} justify="center">
-                    <Clock size={18} color="blue.500" />
-                    <Text fontSize="md" color="fg.muted" fontWeight="500">
-                      Diagnóstico gratuito de 60 minutos
-                    </Text>
-                  </HStack>
                 </Box>
-
-                <Box
-                  px={6}
-                  py={3}
-                  rounded="xl"
-                  bg="{colors.whiteAlpha.200}"
-                  backdropFilter="blur(20px)"
-                  border="1px solid {colors.whiteAlpha.300}"
-                >
-                  <HStack gap={3} justify="center">
-                    <Mail size={18} color="blue.500" />
-                    <Text fontSize="md" color="fg.muted" fontWeight="500">
-                      <Link href={`mailto:${SITE_EMAIL}`}>
-                        <Text
-                          as="span"
-                          fontWeight="300"
-                          color="blue.solid"
-                          _hover={{ textDecoration: "underline" }}
-                        >
-                          {SITE_EMAIL}
-                        </Text>
-                      </Link>
-                    </Text>
-                  </HStack>
-                </Box>
-              </HStack>
-            </VStack>
+              </Grid>
+            ))}
           </VStack>
-        </Container>
-      </Box>
+        </Box>
+
+        {/* ── Diferenciais ── */}
+        <Box
+          as="section"
+          py={{ base: 16, md: "110px" }}
+          px={{ base: 6, md: "60px", lg: "112px" }}
+          bg="white"
+          borderTop="1px solid"
+          borderColor="blackAlpha.100"
+        >
+          <Grid
+            templateColumns={{ base: "1fr", lg: "400px 1fr" }}
+            gap={{ base: 12, lg: "80px" }}
+            alignItems="start"
+          >
+            <Box>
+              <SectionTag>Shift+G</SectionTag>
+              <Text
+                as="h2"
+                fontSize={{ base: "32px", md: "46px" }}
+                fontWeight={800}
+                lineHeight={1.1}
+                letterSpacing="-1.2px"
+                color="fg"
+                mb={6}
+              >
+                Muito além<br />
+                do{" "}
+                <Text as="span" fontFamily="serif" fontStyle="italic" fontWeight={400} color="gray.emphasized">
+                  conselho.
+                </Text>
+              </Text>
+              <Text fontSize="md" color="fg.muted" lineHeight={1.8}>
+                Muitos desenham diagramas. Nós fazemos o ponteiro mover. Como construtores,
+                nosso compromisso é ir até a última milha da implementação.
+              </Text>
+            </Box>
+
+            <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={8}>
+              {differentials.map((diff, i) => (
+                <VStack key={diff.title} align="flex-start" gap={3}>
+                  <Text fontFamily="mono" fontSize="2xs" color="fg.subtle">
+                    {String(i + 1).padStart(2, "0")}
+                  </Text>
+                  <Text fontSize="lg" fontWeight={700} color="fg" letterSpacing="-0.2px">
+                    {diff.title}
+                  </Text>
+                  <Text fontSize="sm" color="fg.muted" lineHeight={1.6}>
+                    {diff.description}
+                  </Text>
+                  <Text fontSize="xs" fontWeight={600} color="blue.solid" display="flex" alignItems="center" gap={2} mt={1}>
+                    <Target size={12} /> {diff.benefit}
+                  </Text>
+                </VStack>
+              ))}
+            </Grid>
+          </Grid>
+        </Box>
+
+        {/* CTA Final */}
+        <CTAFinalSection />
+
+      </VStack>
 
       <Footer />
     </Page>

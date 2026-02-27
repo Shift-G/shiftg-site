@@ -1,143 +1,142 @@
 import { Metadata } from "next";
 import {
   Box,
-  Container,
-  SimpleGrid,
-  VStack,
-  Heading,
-  Text,
-  Button,
+  Flex,
+  Grid,
   HStack,
-  List,
-  Stack,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
 import { Page } from "@/components/layout/page";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Section } from "@/components/layout/section";
-import { FeatureCard } from "@/components/cards/feature-card";
+import { Plumb } from "@/components/ui/plumb";
+import { CTAFinalSection } from "@/components/sections/cta-final-section";
 import {
-  Code,
-  Cog,
+  ArrowRight,
   Database,
   Users,
   TrendingUp,
   Shield,
   Zap,
   Target,
-  ChevronRight,
-  MessageCircle,
-  Mail,
   Wrench,
   Building2,
   BarChart3,
   Lock,
   Layers,
   Rocket,
-  CheckCircle,
+  Code,
   Globe,
+  Cog
 } from "lucide-react";
 import Link from "next/link";
-import { SITE_NAME, SITE_URL, SITE_EMAIL, SITE_PHONE } from "@/constants";
+import { SITE_NAME, SITE_URL, SITE_PHONE } from "@/constants";
 
 export const metadata: Metadata = {
   title: `Fábrica de Software | ${SITE_NAME}`,
   description:
-    "Desenvolvemos software sob medida que resolve desafios únicos do seu negócio. Sistemas personalizados, integração inteligente e automação de processos para empresas que buscam eficiência e autonomia.",
+    "Desenvolvemos software sob medida que resolve desafios únicos do seu negócio. Sistemas personalizados, integração inteligente e automação de processos.",
   keywords: [
     "fábrica de software",
     "desenvolvimento personalizado",
     "software sob medida",
     "automação de processos",
     "sistemas corporativos",
-    "integração de sistemas",
     "dashboards executivos",
-    "desenvolvimento ágil",
-    "ferramentas corporativas",
-    "plataformas internas",
   ],
+  alternates: {
+    canonical: `${SITE_URL}/fabrica-de-software`,
+  },
   openGraph: {
     title: `Fábrica de Software | ${SITE_NAME}`,
-    description:
-      "Software sob medida que resolve os desafios únicos do seu negócio. Deixe as limitações das ferramentas genéricas para trás.",
+    description: "Software sob medida que resolve os desafios únicos do seu negócio.",
     type: "website",
     locale: "pt_BR",
     url: `${SITE_URL}/fabrica-de-software`,
-    siteName: `${SITE_NAME} - Fábrica de Software`,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `Fábrica de Software | ${SITE_NAME}`,
-    description:
-      "Software sob medida que resolve os desafios únicos do seu negócio. Deixe as limitações das ferramentas genéricas para trás.",
+    siteName: SITE_NAME,
   },
 };
 
+/* ── Section Tag ── */
+function SectionTag({ children }: { children: string }) {
+  return (
+    <HStack
+      fontFamily="mono"
+      fontSize="2xs"
+      fontWeight={600}
+      letterSpacing="0.16em"
+      textTransform="uppercase"
+      color="blue.solid"
+      gap="10px"
+      mb={4}
+    >
+      <Box w="18px" h="1.5px" bg="blue.solid" />
+      <Text>{children}</Text>
+    </HStack>
+  );
+}
+
+/* ── Data ── */
 const problems = [
   {
-    title: "Processos Manuais e Lentos",
-    description:
-      "Tarefas repetitivas que consomem tempo precioso e geram gargalos operacionais na sua equipe.",
-    icon: <Cog size={24} />,
+    title: "Processos Manuais",
+    description: "Tarefas repetitivas que consomem tempo precioso e geram gargalos na sua equipe.",
+    icon: <Cog size={20} />,
+    tag: "LENTIDÃO",
   },
   {
-    title: "Silos de Informação",
-    description:
-      "Dados importantes espalhados por diferentes sistemas, impedindo uma visão unificada do negócio.",
-    icon: <Database size={24} />,
+    title: "Silos de Dados",
+    description: "Dados importantes espalhados por sistemas que não conversam, impedindo a visão unificada.",
+    icon: <Database size={20} />,
+    tag: "CEGUEIRA OCULTA",
   },
   {
-    title: "Baixa Autonomia",
-    description:
-      "Dependência constante de fornecedores externos para customizações simples ou extração de relatórios.",
-    icon: <Lock size={24} />,
+    title: "Falta de Autonomia",
+    description: "Dependência de fornecedores engessados para gerar um simples relatório ou customização.",
+    icon: <Lock size={20} />,
+    tag: "DEPENDÊNCIA",
   },
   {
-    title: "Soluções Rígidas",
-    description:
-      "Ferramentas que forçam sua operação a se adaptar a elas, e não o contrário.",
-    icon: <Wrench size={24} />,
+    title: "Sistemas Rígidos",
+    description: "Sua operação tendo que se adaptar a ferramentas genéricas, e não o oposto.",
+    icon: <Wrench size={20} />,
+    tag: "FRICÇÃO",
   },
 ];
 
 const teamSolutions = [
   {
-    title: "Plataformas Internas Customizadas",
-    description:
-      "Sistemas de onboarding, avaliação de desempenho, gestão de metas e solicitações internas, desenhados para a sua cultura.",
+    title: "Sistemas Corporativos",
+    description: "Plataformas internas para RH, gestão de metas e aprovações, mapeadas para sua cultura.",
     icon: <Building2 size={24} />,
   },
   {
     title: "Automação de Workflows",
-    description:
-      "Ferramentas para automatizar aprovações, relatórios financeiros, conciliação de dados e processos de back-office.",
+    description: "Scripts e motores lógicos para conciliação de dados, tarefas de back-office e processos críticos.",
     icon: <Zap size={24} />,
   },
   {
-    title: "Portais de Colaboradores e Clientes",
-    description:
-      "Ambientes centralizados e seguros para comunicação, consulta de informações e autoatendimento.",
+    title: "Portais Seguros",
+    description: "Ambientes isolados (B2B/B2C) com autenticação, para colaboradores, fornecedores e autoatendimento.",
     icon: <Users size={24} />,
   },
 ];
 
 const managementSolutions = [
   {
-    title: "Dashboards Operacionais em Tempo Real",
-    description:
-      "Painéis que consolidam métricas de diferentes fontes (ERP, CRM, planilhas) para uma visão clara da performance.",
+    title: "Dashboards Executivos",
+    description: "Consolidação de métricas em tempo real (ERP + CRM + Legacy) para direção precisa.",
     icon: <BarChart3 size={24} />,
   },
   {
-    title: "Sistemas de Controle e Compliance",
-    description:
-      "Ferramentas para garantir a conformidade com regulações, auditar processos e gerenciar riscos.",
+    title: "Governança e Compliance",
+    description: "Sistemas fechados para garantir travas, rastreabilidade de acessos (logs gerais) e auditoria.",
     icon: <Shield size={24} />,
   },
   {
-    title: "Integrações Inteligentes",
-    description:
-      "Conectamos seus softwares existentes (ERP, CRM, ATS) para criar um ecossistema de dados coeso e funcional.",
+    title: "Orquestração de APIs",
+    description: "Middlewares seguros que conectam o ERP arcaico ao novo SaaS moderno sem perder dados.",
     icon: <Layers size={24} />,
   },
 ];
@@ -145,667 +144,496 @@ const managementSolutions = [
 const approach = [
   {
     step: "01",
-    title: "Imersão e Diagnóstico",
-    description:
-      "Mergulhamos no seu desafio para entender as causas e não apenas os sintomas. Mapeamos processos, entrevistamos usuários e definimos os KPIs de sucesso.",
+    title: "Mapeamento Estratégico",
+    description: "Mergulhamos na sua operação para achar a raiz do gargalo. Definimos escopo e KPIs antes de codar.",
   },
   {
     step: "02",
-    title: "Design e Prototipação",
-    description:
-      "Desenhamos a solução com foco total na experiência do usuário (UX). Validamos fluxos e interfaces antes de escrever a primeira linha de código.",
+    title: "UX/UI & Specs",
+    description: "Prototipagem em alta fidelidade. O software deve requerer treinamento zero de tão óbvio de ser usado.",
   },
   {
     step: "03",
-    title: "Desenvolvimento Ágil",
-    description:
-      "Construímos sua solução em ciclos rápidos, com entregas incrementais. Você acompanha o progresso de perto e tem visibilidade total do projeto.",
+    title: "Dev & Integrações",
+    description: "Ciclos ágeis de entrega contínua. Você testa funcionalidades reais semana a semana.",
   },
   {
     step: "04",
-    title: "Entrega e Evolução",
-    description:
-      "Entregamos uma solução pronta para uso, com treinamento e suporte. Nossos sistemas são feitos para evoluir junto com a sua empresa.",
-  },
-];
-
-const differentials = [
-  {
-    title: "DNA de Dados e IA",
-    description:
-      "Mesmo nas soluções sem IA, construímos sistemas com uma arquitetura preparada para o futuro, facilitando análises e a eventual implementação de inteligência.",
-    icon: <Code size={24} />,
-  },
-  {
-    title: "Foco no Executivo",
-    description:
-      "Falamos a sua língua. Entendemos de budget, ROI e impacto estratégico. Nossa meta é resolver seu problema de negócio, não apenas entregar um software.",
-    icon: <Target size={24} />,
-  },
-  {
-    title: "Escalabilidade Nativa",
-    description:
-      "Nossas soluções são desenvolvidas em nuvem, prontas para crescer em volume de usuários e dados sem perder performance.",
-    icon: <TrendingUp size={24} />,
-  },
-  {
-    title: "Autonomia Real",
-    description:
-      "Nosso objetivo é empoderar seu time. Entregamos ferramentas que reduzem dependências, simplificam processos e dão mais autonomia para a gestão.",
-    icon: <Rocket size={24} />,
+    title: "Rollout e Sustentação",
+    description: "O código não morre no deploy. Mantemos, escalamos e evoluímos as ferramentas com a sua empresa.",
   },
 ];
 
 export default function SoftwareFactoryPage() {
+  const whatsappUrl = `https://wa.me/${SITE_PHONE.replace(/\D/g, "")}?text=Olá! Quero falar sobre desenvolvimento sob medida.`;
+
   return (
     <Page>
       <Navbar />
 
-      {/* Hero Section */}
-      <Box
-        as="section"
-        position="relative"
-        overflow="hidden"
-        minH="90vh"
-        display="flex"
-        alignItems="center"
-        bg="bg"
-      >
-        {/* Background Elements */}
-        <Box
-          position="absolute"
-          top="10%"
-          right="5%"
-          w="200px"
-          h="200px"
-          borderRadius="full"
-          bg="{colors.blue.500/5}"
-          backdropFilter="blur(10px)"
-          animation="float 8s ease-in-out infinite"
-          zIndex={0}
-        />
-        <Box
-          position="absolute"
-          bottom="15%"
-          left="3%"
-          w="120px"
-          h="120px"
-          borderRadius="lg"
-          bg="{colors.blue.500/5}"
-          backdropFilter="blur(10px)"
-          animation="float 6s ease-in-out infinite reverse"
-          zIndex={0}
-        />
+      <VStack gap={0} w="full" as="main" align="stretch">
 
-        <Container maxW="7xl" py={{ base: 16, md: 24 }} position="relative" zIndex={1}>
-          <VStack gap={{ base: 8, md: 12 }} maxW="5xl" mx="auto" textAlign="center">
-            {/* Badge */}
-            <Box
-              px={4}
-              py={2}
-              rounded="full"
-              bg="{colors.blue.500/10}"
-              border="1px solid {colors.blue.500/20}"
-            >
+        {/* ── Hero ── */}
+        <Box
+          as="section"
+          minH={{ base: "65vh", md: "85vh" }}
+          bg="stone"
+          display="flex"
+          flexDirection="column"
+          justifyContent="flex-end"
+          position="relative"
+          overflow="hidden"
+          px={{ base: 6, md: "60px", lg: "112px" }}
+        >
+          {/* Subtle math/grid pattern */}
+          <Box
+            position="absolute"
+            inset={0}
+            backgroundImage="linear-gradient(#00000004 1px, transparent 1px), linear-gradient(90deg, #00000004 1px, transparent 1px)"
+            backgroundSize="40px 40px"
+            pointerEvents="none"
+          />
+
+          {/* Geometric Tech Element */}
+          <Box
+            position="absolute"
+            top="15%"
+            right="-5%"
+            opacity={0.02}
+            color="black"
+            pointerEvents="none"
+          >
+            <svg width="600" height="600" viewBox="0 0 100 100">
+              <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="none" stroke="currentColor" strokeWidth="1" />
+              <polygon points="50,15 85,30 85,70 50,85 15,70 15,30" fill="none" stroke="currentColor" strokeWidth="0.5" />
+              <line x1="50" y1="5" x2="50" y2="95" stroke="currentColor" strokeWidth="0.5" />
+              <line x1="5" y1="25" x2="95" y2="75" stroke="currentColor" strokeWidth="0.5" />
+              <line x1="5" y1="75" x2="95" y2="25" stroke="currentColor" strokeWidth="0.5" />
+            </svg>
+          </Box>
+
+          <VStack
+            position="relative"
+            zIndex={2}
+            align="flex-start"
+            pt={{ base: "140px", md: "140px" }}
+          >
+            <HStack gap={3} mb={{ base: 6, md: "24px" }}>
+              <Box w="6px" h="6px" bg="blue.solid" />
               <Text
-                fontSize="sm"
-                fontWeight="300"
-                color="blue.solid"
+                fontFamily="mono"
+                fontSize="2xs"
+                fontWeight={600}
+                letterSpacing="0.14em"
                 textTransform="uppercase"
-                letterSpacing="wider"
+                color="blue.solid"
               >
-                Fábrica de Software
+                Engenharia de Software
+              </Text>
+            </HStack>
+
+            <Text
+              as="h1"
+              fontSize={{ base: "48px", md: "clamp(60px, 8vw, 130px)" }}
+              lineHeight={0.92}
+              letterSpacing="-2.5px"
+              color="fg"
+              maxW="1400px"
+              mb={0}
+            >
+              <Text as="span" fontWeight={800}>
+                Software que
+              </Text>
+              <br />
+              <Text
+                as="span"
+                fontFamily="serif"
+                fontWeight={400}
+                fontStyle="italic"
+                color="blue.solid"
+              >
+                muda o jogo.
+              </Text>
+            </Text>
+
+            {/* Bottom Info Bar */}
+            <Box
+              borderTop="1px solid"
+              borderColor="blackAlpha.100"
+              mt={{ base: 10, md: "60px" }}
+              pt={{ base: 6, md: "32px" }}
+              pb={{ base: 8, md: "48px" }}
+              w="full"
+            >
+              <Flex
+                direction={{ base: "column", lg: "row" }}
+                gap={{ base: 8, lg: "80px" }}
+                align={{ base: "flex-start", lg: "center" }}
+              >
+                <Text
+                  fontSize="md"
+                  color="fg.muted"
+                  lineHeight={1.8}
+                  flex={1.2}
+                  maxW="700px"
+                >
+                  Desenvolvemos a camada tecnológica que falta para o seu
+                  negócio rodar sozinho. Substitua as gambiarras em planilhas
+                  e os sistemas lentos por softwares robustos e integrados,
+                  criados sob medida para as regras do seu jogo.
+                </Text>
+
+                <HStack gap={{ base: 6, md: 10 }} flex={1} justify={{ base: "flex-start", lg: "flex-end" }} w="full">
+                  <VStack align="flex-start" gap={1}>
+                    <Text fontFamily="mono" fontSize="2xs" color="fg.subtle">ESCOPO</Text>
+                    <Text fontSize="sm" fontWeight={600} color="fg">Soluções Nativas</Text>
+                  </VStack>
+                  <VStack align="flex-start" gap={1}>
+                    <Text fontFamily="mono" fontSize="2xs" color="fg.subtle">PROCESSOS</Text>
+                    <Text fontSize="sm" fontWeight={600} color="fg">Automatizados</Text>
+                  </VStack>
+
+                  <Box
+                    as={Link}
+                    // @ts-ignore
+                    href={whatsappUrl}
+                    target="_blank"
+                    display={{ base: "none", md: "inline-flex" }}
+                    alignItems="center"
+                    gap="10px"
+                    bg="blue.solid"
+                    color="white"
+                    px="28px"
+                    py="14px"
+                    fontWeight={600}
+                    fontSize="sm"
+                    transition="all 0.2s"
+                    _hover={{ bg: "blue.fg" }}
+                  >
+                    Agendar Consultoria
+                    <ArrowRight size={14} />
+                  </Box>
+                </HStack>
+
+                <Box
+                  as={Link}
+                  // @ts-ignore
+                  href={whatsappUrl}
+                  target="_blank"
+                  display={{ base: "inline-flex", md: "none" }}
+                  alignItems="center"
+                  justifyContent="center"
+                  gap="10px"
+                  bg="blue.solid"
+                  color="white"
+                  w="full"
+                  py="16px"
+                  fontWeight={600}
+                  fontSize="sm"
+                >
+                  Agendar Consultoria
+                  <ArrowRight size={14} />
+                </Box>
+              </Flex>
+            </Box>
+          </VStack>
+        </Box>
+
+        <Plumb />
+
+        {/* ── Problemas que resolvemos ── */}
+        <Box
+          as="section"
+          py={{ base: 16, md: "110px" }}
+          px={{ base: 6, md: "60px", lg: "112px" }}
+          bg="off"
+        >
+          <Grid
+            templateColumns={{ base: "1fr", lg: "450px 1fr" }}
+            gap={{ base: 12, lg: "80px" }}
+            alignItems="start"
+          >
+            <Box>
+              <SectionTag>O Diagnóstico</SectionTag>
+              <Text
+                as="h2"
+                fontSize={{ base: "32px", md: "44px" }}
+                fontWeight={800}
+                lineHeight={1.1}
+                letterSpacing="-1px"
+                color="fg"
+                mb={6}
+              >
+                SaaS engessado <br /> não resolve o{" "}
+                <Text as="span" fontFamily="serif" fontStyle="italic" fontWeight={400} color="blue.solid">
+                  seu problema.
+                </Text>
+              </Text>
+              <Text fontSize="md" color="fg.muted" lineHeight={1.8}>
+                A realidade dura: softwares de "prateleira" te obrigam
+                a modificar os processos da empresa para se adequar a eles.
+                Nós fazemos a tecnologia nascer moldada ao seu fluxo.
               </Text>
             </Box>
 
-            {/* Title */}
-            <VStack gap={4}>
-              <Heading
-                as="h1"
-                size={{ base: "4xl", md: "5xl", lg: "6xl" }}
-                fontWeight="300"
-                lineHeight="none"
-                letterSpacing="tight"
-                color="fg"
-              >
-                Tecnologia que{" "}
-                <Text
-                  as="span"
-                  bgGradient="linear-gradient(135deg, {colors.blue.500}, {colors.blue.700})"
-                  bgClip="text"
+            <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap="2px" bg="blackAlpha.100" p="1px">
+              {problems.map((prob) => (
+                <VStack
+                  key={prob.title}
+                  bg="white"
+                  p={{ base: 6, md: 8 }}
+                  align="flex-start"
+                  gap={4}
+                  transition="all 0.2s"
+                  _hover={{ bg: "stone" }}
                 >
-                  Impulsiona
-                </Text>{" "}
-                sua Operação
-              </Heading>
-
-              <Text
-                fontSize={{ base: "lg", md: "2xl" }}
-                color="fg.muted"
-                maxW="4xl"
-                lineHeight="tall"
-                fontWeight="400"
-              >
-                Desenvolvemos as ferramentas que sua empresa precisa para operar
-                com máxima eficiência, autonomia e inteligência. Com ou sem IA.
-              </Text>
-            </VStack>
-
-            {/* CTA */}
-            <Stack
-              direction={{ base: "column", sm: "row" }}
-              gap={6}
-              w={{ base: "full", sm: "auto" }}
-              mt={8}
-            >
-              <Link href="/contato" passHref>
-                <Button
-                  size="xl"
-                  px={10}
-                  py={6}
-                  variant="solid"
-                  colorPalette="blue"
-                >
-                  Falar com um Especialista
-                  <ChevronRight size={20} style={{ marginLeft: "12px" }} />
-                </Button>
-              </Link>
-            </Stack>
-
-            <Text fontSize="lg" color="fg.muted" fontWeight="500">
-              Consultoria gratuita • Software sob medida
-            </Text>
-          </VStack>
-        </Container>
-      </Box >
-
-      {/* Problems Section */}
-      < Section
-        title="Ferramentas Genéricas Não Resolvem Desafios Únicos"
-        subtitle="Sua equipe ainda depende de planilhas complexas que só uma pessoa entende? Seus processos estão amarrados a sistemas legados ou a softwares de prateleira que não conversam entre si?"
-        centered
-        variant="gradient"
-      >
-        <Text
-          fontSize={{ base: "lg", md: "xl" }}
-          color="fg.muted"
-          textAlign="center"
-          mb={{ base: 8, md: 12 }}
-          maxW="4xl"
-          mx="auto"
-        >
-          A realidade de muitas empresas é clara:
-        </Text>
-
-        <SimpleGrid columns={{ base: 1, md: 2 }} gap={{ base: 6, md: 8 }}>
-          {problems.map((problem, index) => (
-            <FeatureCard
-              key={problem.title}
-              icon={problem.icon}
-              title={problem.title}
-              description={problem.description}
-              highlighted={index === 0}
-            />
-          ))}
-        </SimpleGrid>
-
-        <Text
-          fontSize={{ base: "lg", md: "xl" }}
-          color="fg.muted"
-          textAlign="center"
-          mt={{ base: 8, md: 12 }}
-          maxW="4xl"
-          mx="auto"
-        >
-          Essa falta de flexibilidade não apenas reduz a produtividade, mas
-          também impede a inovação e o crescimento.
-        </Text>
-      </Section >
-
-      {/* Solution Section */}
-      < Section
-        title="A Solução: Software Sob Medida, Desenvolvido para Você"
-        subtitle="Nem todo desafio precisa de Inteligência Artificial, mas todo desafio precisa da ferramenta certa."
-        centered
-      >
-        <Text
-          fontSize={{ base: "lg", md: "xl" }}
-          color="fg.muted"
-          textAlign="center"
-          maxW="5xl"
-          mx="auto"
-          lineHeight="tall"
-        >
-          Nossa{" "}
-          <Text as="span" fontWeight="300" color="blue.solid">
-            Fábrica de Software
-          </Text>{" "}
-          é o braço de desenvolvimento da Shift+G dedicado a construir soluções
-          corporativas personalizadas. Traduzimos as necessidades específicas
-          do seu negócio em sistemas robustos, escaláveis e intuitivos, que
-          entregam o controle da operação de volta para as suas mãos.
-        </Text>
-
-        <Box
-          mt={{ base: 8, md: 12 }}
-          p={{ base: 6, md: 8 }}
-          rounded="2xl"
-          bg="{colors.blue.500/10}"
-          border="1px solid {colors.blue.500/20}"
-          textAlign="center"
-        >
-          <Text
-            fontSize={{ base: "lg", md: "xl" }}
-            fontWeight="300"
-            color="blue.solid"
-          >
-            Nós criamos a ponte entre a sua estratégia e a execução, garantindo
-            que a tecnologia trabalhe a seu favor.
-          </Text>
+                  <HStack justify="space-between" w="full">
+                    <Box color="red.500">{prob.icon}</Box>
+                    <HStack gap={2}>
+                      <Box w="6px" h="1px" bg="red.500" />
+                      <Text fontFamily="mono" fontSize="2xs" fontWeight={600} color="fg.subtle">
+                        {prob.tag}
+                      </Text>
+                    </HStack>
+                  </HStack>
+                  <Box>
+                    <Text fontSize="lg" fontWeight={700} color="fg" mb={2}>
+                      {prob.title}
+                    </Text>
+                    <Text fontSize="sm" color="fg.muted" lineHeight={1.6}>
+                      {prob.description}
+                    </Text>
+                  </Box>
+                </VStack>
+              ))}
+            </Grid>
+          </Grid>
         </Box>
-      </Section >
 
-      {/* Specialized Services Section */}
-      < Section
-        title="Nossos Serviços Especializados"
-        subtitle="Duas verticais especializadas para atender diferentes necessidades do seu negócio digital."
-        centered
-        variant="glass"
-      >
-        <SimpleGrid columns={{ base: 1, lg: 2 }} gap={{ base: 8, md: 12 }}>
-          {/* SaaS Development */}
-          <Box
-            p={{ base: 6, md: 8 }}
-            rounded="2xl"
-            bg="{colors.blue.500/10}"
-            border="1px solid {colors.blue.500/20}"
-            transition="all 0.3s ease"
-            _hover={{
-              transform: "translateY(-4px)",
-              borderColor: "{colors.blue.500/40}",
-            }}
-          >
-            <VStack align="flex-start" gap={6}>
-              <HStack gap={4}>
-                <Box
-                  p={4}
-                  rounded="xl"
-                  bg="{colors.blue.500}"
-                  color="white"
-                >
-                  <Rocket size={24} />
-                </Box>
-                <VStack align="flex-start" gap={1}>
-                  <Heading
-                    as="h3"
-                    size="xl"
-                    fontWeight="300"
-                    color="fg"
-                  >
-                    Construa seu SaaS
-                  </Heading>
-                  <Text color="blue.solid" fontSize="sm" fontWeight="300">
-                    Plataformas Escaláveis
-                  </Text>
-                </VStack>
-              </HStack>
-
-              <Text
-                color="fg.muted"
-                fontSize="lg"
-                lineHeight="tall"
-              >
-                Transforme sua ideia em um SaaS rentável. Desenvolvemos
-                plataformas completas, escaláveis e prontas para conquistar o
-                mercado. Da MVP ao produto final.
-              </Text>
-
-              <VStack align="flex-start" gap={3} w="full">
-                {[
-                  "Arquitetura Multi-tenant",
-                  "Sistema de Billing",
-                  "MVP em 8-12 semanas",
-                  "Escalabilidade garantida",
-                ].map((feature) => (
-                  <HStack key={feature} gap={3}>
-                    <CheckCircle size={20} color="{colors.blue.500}" />
-                    <Text color="fg.muted" fontSize="md">
-                      {feature}
-                    </Text>
-                  </HStack>
-                ))}
-              </VStack>
-
-              <Link href="/fabrica-de-software/construa-seu-saas" passHref>
-                <Button
-                  size="lg"
-                  variant="solid"
-                  colorPalette="blue"
-                  w="full"
-                  mt={4}
-                >
-                  Explorar SaaS Development
-                  <ChevronRight size={18} style={{ marginLeft: "8px" }} />
-                </Button>
-              </Link>
-            </VStack>
-          </Box>
-
-          {/* Web Development */}
-          <Box
-            p={{ base: 6, md: 8 }}
-            rounded="2xl"
-            bg="whiteAlpha.50"
-            border="1px solid {colors.whiteAlpha.200}"
-            transition="all 0.3s ease"
-            _hover={{
-              transform: "translateY(-4px)",
-              borderColor: "blue.500/40",
-              bg: "whiteAlpha.100",
-            }}
-          >
-            <VStack align="flex-start" gap={6}>
-              <HStack gap={4}>
-                <Box
-                  p={4}
-                  rounded="xl"
-                  bg="blue.500/10"
-                  color="blue.solid"
-                >
-                  <Globe size={24} />
-                </Box>
-                <VStack align="flex-start" gap={1}>
-                  <Heading
-                    as="h3"
-                    size="xl"
-                    fontWeight="300"
-                    color="fg"
-                  >
-                    Seu Negócio na Web
-                  </Heading>
-                  <Text color="blue.solid" fontSize="sm" fontWeight="300">
-                    Sites & E-commerce
-                  </Text>
-                </VStack>
-              </HStack>
-
-              <Text
-                color="fg.muted"
-                fontSize="lg"
-                lineHeight="tall"
-              >
-                Sites e e-commerces profissionais que transformam visitantes em
-                clientes. Presença digital que realmente vende e gera
-                resultados para seu negócio.
-              </Text>
-
-              <VStack align="flex-start" gap={3} w="full">
-                {[
-                  "Design Responsivo",
-                  "SEO Otimizado",
-                  "E-commerce Completo",
-                  "Performance Máxima",
-                ].map((feature) => (
-                  <HStack key={feature} gap={3}>
-                    <CheckCircle size={20} color="{colors.blue.500}" />
-                    <Text color="fg.muted" fontSize="md">
-                      {feature}
-                    </Text>
-                  </HStack>
-                ))}
-              </VStack>
-
-              <Link href="/fabrica-de-software/seu-negocio-na-web" passHref>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  colorPalette="blue"
-                  w="full"
-                  mt={4}
-                >
-                  Explorar Web Development
-                  <ChevronRight size={18} style={{ marginLeft: "8px" }} />
-                </Button>
-              </Link>
-            </VStack>
-          </Box>
-        </SimpleGrid>
-      </Section >
-
-      {/* Solutions by Category */}
-      < Section
-        title="Soluções que Geram Impacto Real"
-        subtitle="Construímos sistemas que resolvem problemas concretos e capacitam seus times."
-        centered
-        variant="glass"
-      >
-        <VStack gap={{ base: 12, md: 16 }}>
-          {/* Team Solutions */}
-          <VStack gap={{ base: 6, md: 8 }}>
-            <Heading
-              as="h3"
-              size={{ base: "xl", md: "2xl" }}
-              fontWeight="300"
-              color="fg"
-              textAlign="center"
-            >
-              Para seus Times (RH, Financeiro, Operações)
-            </Heading>
-            <SimpleGrid columns={{ base: 1, md: 3 }} gap={{ base: 6, md: 8 }}>
-              {teamSolutions.map((solution) => (
-                <FeatureCard
-                  key={solution.title}
-                  icon={solution.icon}
-                  title={solution.title}
-                  description={solution.description}
-                />
-              ))}
-            </SimpleGrid>
-          </VStack>
-
-          {/* Management Solutions */}
-          <VStack gap={{ base: 6, md: 8 }}>
-            <Heading
-              as="h3"
-              size={{ base: "xl", md: "2xl" }}
-              fontWeight="300"
-              color="fg"
-              textAlign="center"
-            >
-              Para sua Gestão
-            </Heading>
-            <SimpleGrid columns={{ base: 1, md: 3 }} gap={{ base: 6, md: 8 }}>
-              {managementSolutions.map((solution) => (
-                <FeatureCard
-                  key={solution.title}
-                  icon={solution.icon}
-                  title={solution.title}
-                  description={solution.description}
-                />
-              ))}
-            </SimpleGrid>
-          </VStack>
-        </VStack>
-      </Section >
-
-      {/* Approach Section */}
-      < Section
-        title="Nossa Abordagem: Da Estratégia ao Código"
-        subtitle="Não somos apenas desenvolvedores. Somos parceiros estratégicos que entendem de negócio."
-        centered
-        variant="geometric"
-      >
-        <SimpleGrid columns={{ base: 1, md: 2 }} gap={{ base: 8, md: 12 }}>
-          {approach.map((step, index) => (
+        {/* ── Verticais da Fábrica (SaaS / Web) ── */}
+        <Box
+          as="section"
+          bg="blue.solid"
+          color="white"
+        >
+          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }}>
+            {/* Lado A: SAAS */}
             <Box
-              key={step.step}
-              p={{ base: 6, md: 8 }}
-              rounded="2xl"
-              bg="whiteAlpha.50"
-              border="1px solid whiteAlpha.200"
+              p={{ base: 10, md: "80px", xl: "112px" }}
+              borderRight={{ lg: "1px solid" }}
+              borderBottom={{ base: "1px solid", lg: "none" }}
+              borderColor="whiteAlpha.200"
               position="relative"
             >
-              <VStack align="flex-start" gap={4}>
-                <Box
-                  px={4}
-                  py={2}
-                  rounded="full"
-                  bg="{colors.blue.500}"
-                  color="white"
-                  fontSize="sm"
-                  fontWeight="300"
-                >
-                  {step.step}
-                </Box>
-                <Heading
-                  as="h4"
-                  size="lg"
-                  fontWeight="300"
-                  color="fg"
-                >
-                  {step.title}
-                </Heading>
-                <Text
-                  color="fg.muted"
-                  fontSize="md"
-                  lineHeight="tall"
-                >
-                  {step.description}
+              <VStack align="flex-start" gap={6} maxW="500px">
+                <HStack gap={3}>
+                  <Box p={3} bg="gold.500" color="blue.solid">
+                    <Rocket size={24} />
+                  </Box>
+                  <Box>
+                    <Text fontFamily="mono" fontSize="xs" fontWeight={600} color="gold.500" letterSpacing="0.1em" mb={1}>
+                      VERTICAL 01
+                    </Text>
+                    <Text fontSize="3xl" fontWeight={800} letterSpacing="-1px">
+                      SaaS & MVP's
+                    </Text>
+                  </Box>
+                </HStack>
+                <Text fontSize="md" color="whiteAlpha.800" lineHeight={1.8}>
+                  Transformamos suas ideias corporativas ou intenção mercadológica em um
+                  Data-Produto real. De pagamentos recorrentes a ambientes isolados na nuvem,
+                  construímos a base para escalar.
                 </Text>
+
+                <Box mt={4}>
+                  <Link href="/fabrica-de-software/construa-seu-saas" passHref>
+                    <HStack
+                      fontFamily="mono"
+                      fontSize="sm"
+                      fontWeight={600}
+                      color="white"
+                      gap={2}
+                      _hover={{ color: "gold.500" }}
+                      transition="all 0.2s"
+                    >
+                      <Text as="span">EXPLORAR SAAS</Text>
+                      <ArrowRight size={16} />
+                    </HStack>
+                  </Link>
+                </Box>
               </VStack>
             </Box>
-          ))}
-        </SimpleGrid>
-      </Section >
 
-      {/* Differentials Section */}
-      < Section
-        title="Por que a Fábrica de Software da Shift+G?"
-        centered
-        variant="gradient"
-      >
-        <SimpleGrid columns={{ base: 1, md: 2 }} gap={{ base: 6, md: 8 }}>
-          {differentials.map((diff, index) => (
-            <FeatureCard
-              key={diff.title}
-              icon={diff.icon}
-              title={diff.title}
-              description={diff.description}
-              highlighted={index === 0}
-            />
-          ))}
-        </SimpleGrid>
-      </Section >
-
-      {/* Final CTA Section */}
-      < Box
-        as="section"
-        id="contato"
-        py={{ base: 20, md: 28 }
-        }
-        position="relative"
-        overflow="hidden"
-      >
-        {/* Dynamic Background */}
-        < Box
-          position="absolute"
-          inset={0}
-          bgGradient="radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/50}, transparent)"
-          _dark={{
-            bgGradient:
-              "radial-gradient(ellipse 100% 60% at 50% 0%, {colors.blue.500/20}, transparent)",
-          }}
-          zIndex={- 1}
-        />
-
-        < Container maxW="5xl" >
-          <VStack gap={{ base: 8, md: 12 }} textAlign="center">
-            <VStack gap={6}>
-              <Heading
-                as="h2"
-                size={{ base: "3xl", md: "4xl", lg: "5xl" }}
-                fontWeight="300"
-                lineHeight="none"
-                letterSpacing="tight"
-              >
-                Pronto para{" "}
-                <Text
-                  as="span"
-                  bgGradient="linear-gradient(135deg, {colors.blue.500}, {colors.blue.700})"
-                  bgClip="text"
-                >
-                  Transformar
-                </Text>{" "}
-                sua Operação?
-              </Heading>
-
-              <Text
-                fontSize={{ base: "lg", md: "2xl" }}
-                color="fg.muted"
-                maxW="4xl"
-                lineHeight="tall"
-                fontWeight="400"
-              >
-                Deixe as limitações das ferramentas genéricas para trás. Vamos
-                construir juntos a solução que sua empresa realmente precisa
-                para alcançar o próximo nível de eficiência e crescimento.
-              </Text>
-            </VStack>
-
-            <VStack gap={8} w="full" maxW="lg">
-              <Link
-                href={`https://wa.me/${SITE_PHONE.replace(/[^\d]/g, "")}`}
-                target="_blank"
-                passHref
-              >
-                <Button
-                  size="xl"
-                  px={{ base: 4, sm: 6 }}
-                  py={8}
-                  rounded="2xl"
-                  fontWeight="300"
-                  fontSize="xl"
-                  variant="solid"
-                  colorPalette="blue"
-                  w={{ base: "full", sm: "auto" }}
-                >
-                  <MessageCircle size={20} style={{ marginRight: "12px" }} />
-                  Fale com Nossos Especialistas
-                  <ChevronRight size={20} style={{ marginLeft: "12px" }} />
-                </Button>
-              </Link>
-
-              <HStack gap={6} wrap="wrap" justify="center">
-                <Box
-                  px={6}
-                  py={3}
-                  rounded="xl"
-                  bg="whiteAlpha.200"
-                  backdropFilter="blur(10px)"
-                  border="1px solid {colors.whiteAlpha.300}"
-                >
-                  <HStack gap={3} justify="center">
-                    <Mail size={18} color="blue.500" />
-                    <Text fontSize="md" color="fg.muted" fontWeight="500">
-                      <Link href={`mailto:${SITE_EMAIL}`}>
-                        <Text
-                          as="span"
-                          fontWeight="300"
-                          color="blue.solid"
-                          _hover={{ textDecoration: "underline" }}
-                        >
-                          {SITE_EMAIL}
-                        </Text>
-                      </Link>
+            {/* Lado B: WEB */}
+            <Box
+              p={{ base: 10, md: "80px", xl: "112px" }}
+              bg="rgba(0,0,0,0.15)"
+            >
+              <VStack align="flex-start" gap={6} maxW="500px">
+                <HStack gap={3}>
+                  <Box p={3} bg="white" color="blue.solid">
+                    <Globe size={24} />
+                  </Box>
+                  <Box>
+                    <Text fontFamily="mono" fontSize="xs" fontWeight={600} color="whiteAlpha.700" letterSpacing="0.1em" mb={1}>
+                      VERTICAL 02
                     </Text>
-                  </HStack>
+                    <Text fontSize="3xl" fontWeight={800} letterSpacing="-1px">
+                      Web platforms
+                    </Text>
+                  </Box>
+                </HStack>
+                <Text fontSize="md" color="whiteAlpha.800" lineHeight={1.8}>
+                  A presença digital da sua empresa não deve ser apenas mais
+                  um template genérico. Criamos portais corporativos complexos,
+                  e-commerce deep-integrated e vitrines B2B que impõem autoridade.
+                </Text>
+
+                <Box mt={4}>
+                  <Link href="/fabrica-de-software/seu-negocio-na-web" passHref>
+                    <HStack
+                      fontFamily="mono"
+                      fontSize="sm"
+                      fontWeight={600}
+                      color="white"
+                      gap={2}
+                      _hover={{ color: "gold.500" }}
+                      transition="all 0.2s"
+                    >
+                      <Text as="span">EXPLORAR WEB</Text>
+                      <ArrowRight size={16} />
+                    </HStack>
+                  </Link>
                 </Box>
+              </VStack>
+            </Box>
+          </Grid>
+        </Box>
+
+        {/* ── Capabilities (Grid System) ── */}
+        <Box
+          as="section"
+          py={{ base: 16, md: "110px" }}
+          px={{ base: 6, md: "60px", lg: "112px" }}
+          bg="white"
+        >
+          <VStack align="center" textAlign="center" mb={{ base: 12, md: 20 }} maxW="700px" mx="auto">
+            <SectionTag>Core Tools</SectionTag>
+            <Text
+              as="h2"
+              fontSize={{ base: "32px", md: "48px" }}
+              fontWeight={800}
+              lineHeight={1.1}
+              letterSpacing="-1px"
+            >
+              Sistemas que{" "}
+              <Text as="span" fontFamily="serif" fontStyle="italic" fontWeight={400} color="blue.solid">
+                removem a incerteza.
+              </Text>
+            </Text>
+          </VStack>
+
+          <Box border="1px solid" borderColor="blackAlpha.100" bg="off" mb={12}>
+            <Box borderBottom="1px solid" borderColor="blackAlpha.100" p={{ base: 6, md: 8 }} bg="white">
+              <HStack gap={3} align="center">
+                <Box w="8px" h="8px" bg="blue.solid" />
+                <Text fontSize="sm" fontWeight={700} letterSpacing="0.5px">OPERAÇÃO INTERNA</Text>
+              </HStack>
+            </Box>
+            <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap="1px" bg="blackAlpha.100">
+              {teamSolutions.map((sol) => (
+                <Box key={sol.title} bg="off" p={{ base: 6, md: 8 }} _hover={{ bg: "white" }} transition="bg 0.2s">
+                  <Box color="blue.solid" mb={4}>{sol.icon}</Box>
+                  <Text fontSize="lg" fontWeight={700} color="fg" mb={2} letterSpacing="-0.3px">{sol.title}</Text>
+                  <Text fontSize="sm" color="fg.muted" lineHeight={1.6}>{sol.description}</Text>
+                </Box>
+              ))}
+            </Grid>
+          </Box>
+
+          <Box border="1px solid" borderColor="blackAlpha.100" bg="off">
+            <Box borderBottom="1px solid" borderColor="blackAlpha.100" p={{ base: 6, md: 8 }} bg="white">
+              <HStack gap={3} align="center">
+                <Box w="8px" h="8px" bg="blue.solid" />
+                <Text fontSize="sm" fontWeight={700} letterSpacing="0.5px">ALTA GESTÃO</Text>
+              </HStack>
+            </Box>
+            <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap="1px" bg="blackAlpha.100">
+              {managementSolutions.map((sol) => (
+                <Box key={sol.title} bg="off" p={{ base: 6, md: 8 }} _hover={{ bg: "white" }} transition="bg 0.2s">
+                  <Box color="blue.solid" mb={4}>{sol.icon}</Box>
+                  <Text fontSize="lg" fontWeight={700} color="fg" mb={2} letterSpacing="-0.3px">{sol.title}</Text>
+                  <Text fontSize="sm" color="fg.muted" lineHeight={1.6}>{sol.description}</Text>
+                </Box>
+              ))}
+            </Grid>
+          </Box>
+        </Box>
+
+        {/* ── Diferenciais: O Jeito Shift+G ── */}
+        <Box
+          as="section"
+          py={{ base: 16, md: "110px" }}
+          px={{ base: 6, md: "60px", lg: "112px" }}
+          bg="stone"
+          borderTop="1px solid"
+          borderColor="blackAlpha.100"
+        >
+          <Grid templateColumns={{ base: "1fr", lg: "500px 1fr" }} gap={{ base: 12, lg: "60px" }} alignItems="start">
+            <VStack align="flex-start" position={{ lg: "sticky" }} top="120px">
+              <SectionTag>DNA</SectionTag>
+              <Text as="h2" fontSize={{ base: "36px", md: "48px" }} fontWeight={800} lineHeight={1.1} letterSpacing="-1px">
+                Nós entregamos <br />o ponteiro
+                <Text as="span" fontFamily="serif" fontStyle="italic" fontWeight={400} color="blue.solid"> final.</Text>
+              </Text>
+              <Text fontSize="md" color="fg.muted" mt={6} lineHeight={1.8}>
+                Não somos apenas construtores de código genérico. Nossa base técnica
+                surgiu desenhando softwares ultra-complexos de AI e Analytis. Cada linha
+                é escrita focada em ROI, estabilidade e inteligência de dados nativa.
+              </Text>
+
+              <HStack gap={8} mt={10}>
+                <VStack align="start" gap={1}>
+                  <Text fontSize="3xl" fontWeight={800} color="blue.solid">Cloud</Text>
+                  <Text fontFamily="mono" fontSize="2xs" color="fg.muted">BORN SYSTEM</Text>
+                </VStack>
+                <VStack align="start" gap={1}>
+                  <Text fontSize="3xl" fontWeight={800} color="blue.solid">Data</Text>
+                  <Text fontFamily="mono" fontSize="2xs" color="fg.muted">DRIVEN ARCH</Text>
+                </VStack>
               </HStack>
             </VStack>
-          </VStack>
-        </Container >
-      </Box >
+
+            <VStack gap={0} bg="blackAlpha.100" p="1px" align="stretch">
+              {approach.map((step) => (
+                <Box
+                  key={step.step}
+                  bg="white"
+                  p={{ base: 8, md: 10 }}
+                  transition="background 0.2s"
+                  _hover={{ bg: "off" }}
+                >
+                  <HStack gap={4} mb={4}>
+                    <Text fontFamily="mono" fontSize="sm" fontWeight={700} color="gold.600">
+                      {step.step}.
+                    </Text>
+                    <Text fontSize="xl" fontWeight={800} letterSpacing="-0.5px">
+                      {step.title}
+                    </Text>
+                  </HStack>
+                  <Text fontSize="md" color="fg.muted" lineHeight={1.6} pl="36px">
+                    {step.description}
+                  </Text>
+                </Box>
+              ))}
+            </VStack>
+          </Grid>
+        </Box>
+
+        <CTAFinalSection />
+      </VStack>
+
       <Footer />
-    </Page >
+    </Page>
   );
 }

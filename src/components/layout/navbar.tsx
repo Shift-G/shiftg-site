@@ -112,11 +112,6 @@ const menuSections: Record<string, MenuSection> = {
         description: "Desenvolvimento de plataformas SaaS escaláveis",
         href: "/fabrica-de-software/construa-seu-saas",
       },
-      {
-        title: "Seu negócio na Web",
-        description: "Sites e e-commerce de alta performance",
-        href: "/fabrica-de-software/seu-negocio-na-web",
-      },
     ],
   },
   insights: {
