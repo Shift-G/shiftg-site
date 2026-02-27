@@ -7,36 +7,37 @@ import {
   Text,
   Button,
   IconButton,
-  Stack,
   Drawer,
   useDisclosure,
   Link as ChakraLink,
   Image,
-  Span,
   SimpleGrid,
   VStack,
   HStack,
   Heading,
   Badge,
   Portal,
+  DrawerRoot,
+  DrawerBackdrop,
+  DrawerContent,
+  DrawerCloseTrigger,
+  DrawerHeader,
+  DrawerBody,
 } from "@chakra-ui/react";
 import {
   Menu,
-  X,
   ChevronDown,
-  Rocket,
-  Globe,
-  Lightbulb,
-  Users,
-  TrendingUp,
-  Brain,
-  ArrowRight,
-  Star,
-  Zap,
-  Target,
-  FileText,
   ChevronRight,
-  Shield,
+  Terminal,
+  Cpu,
+  ShieldAlert,
+  HardDrive,
+  Database,
+  Network,
+  Activity,
+  FileCode,
+  Fingerprint,
+  Users,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -65,126 +66,106 @@ interface MenuSection {
 
 const menuSections: Record<string, MenuSection> = {
   solucoes: {
-    title: "Soluções",
-    subtitle: "Transforme seu negócio com tecnologia",
+    title: "OPERAÇÕES",
+    subtitle: "Frameworks operacionais sob licença",
     items: [
       {
-        icon: <Brain size={20} />,
-        title: "Treinamento IA",
-        description: "Capacite sua equipe para usar IA com segurança",
+        icon: <Cpu size={20} />,
+        title: "Doutrinação em I.A",
+        description: "Protocolos de capacitação para frotas corporativas",
         href: "/treinamento-ia-para-sua-empresa",
-        badge: "Popular",
+        badge: "PRIORIDADE",
         badgeColor: "blue",
       },
       {
-        icon: <Target size={20} />,
-        title: "Diagnóstico Inteligente",
-        description: "Descubra onde aplicar IA no seu negócio",
+        icon: <Activity size={20} />,
+        title: "Auditoria de Back-Office",
+        description: "Mapeamento tático de gargalos e oportunidades",
         href: "/diagnostico-inteligente",
-        badge: "Novo",
-        badgeColor: "purple",
+        badge: "NOVO MÓDULO",
+        badgeColor: "gray",
       },
       {
-        icon: <Shield size={20} />,
+        icon: <ShieldAlert size={20} />,
         title: "Sentinela",
-        description: "Vigilância operacional inteligente para DP",
+        description: "Sistema de monitoramento e auditoria em tempo real",
         href: "/sentinela",
-        badge: null,
-        badgeColor: null,
       },
       {
-        icon: <Rocket size={20} />,
-        title: "Fábrica de Software",
-        description: "Software sob medida para sua operação",
+        icon: <HardDrive size={20} />,
+        title: "Fábrica de Engenharia",
+        description: "Desenvolvimento puro de software B2B escalável",
         href: "/fabrica-de-software",
-        badge: null,
-        badgeColor: null,
       },
     ],
     secondaryItems: [
       {
         title: "Transformação Digital",
-        description: "Estratégia completa de digitalização",
+        description: "Transição arquitetural de negócios locais",
         href: "/transformacao-digital",
       },
       {
-        title: "Construa seu SaaS",
-        description: "Desenvolvimento de plataformas SaaS escaláveis",
+        title: "SaaS Frameworks",
+        description: "Matrizes de infraestrutura para novas startups",
         href: "/fabrica-de-software/construa-seu-saas",
       },
     ],
   },
   insights: {
-    title: "Insights",
-    subtitle: "Conteúdo estratégico para líderes",
+    title: "INTELIGÊNCIA",
+    subtitle: "Dossiês analíticos para C-Levels",
     items: [
       {
-        icon: <Lightbulb size={20} />,
-        title: "ROI da Inteligência Artificial",
-        description: "Como calcular o impacto da IA no seu negócio",
+        icon: <Database size={20} />,
+        title: "R.O.I da Inteligência Artificial",
+        description: "Cálculo técnico do impacto de I.A no balanço",
         href: "/insights/o-roi-da-inteligencia-artificial-como-calcular-o-impacto-da-ia-no-balanco-da-sua-empresa",
-        badge: "Trending",
+        badge: "EM ALTA",
         badgeColor: "orange",
       },
       {
-        icon: <Zap size={20} />,
-        title: "RPA: Automação Inteligente",
-        description: "Liberte sua equipe das tarefas repetitivas",
+        icon: <Network size={20} />,
+        title: "R.P.A. Automático",
+        description: "Extração de valor via automações programáveis",
         href: "/insights/rpa-liberte-sua-equipe-das-tarefas-repetitivas-e-foque-no-que-realmente-importa",
-        badge: null,
-        badgeColor: null,
       },
       {
-        icon: <Target size={20} />,
-        title: "Transformação Digital",
-        description: "Estratégia de sobrevivência empresarial",
+        icon: <Terminal size={20} />,
+        title: "Sobrevivência Digital",
+        description: "Mais que tecnologia, uma pauta de mitigação de risco",
         href: "/insights/transformacao-digital-mais-do-que-tecnologia-uma-estrategia-de-sobrevivencia",
-        badge: null,
-        badgeColor: null,
       },
       {
-        icon: <FileText size={20} />,
-        title: "Todos os Insights",
-        description: "Explore todo nosso conteúdo estratégico",
+        icon: <FileCode size={20} />,
+        title: "Menu Root (Todos os Logs)",
+        description: "Acesse o diretório completo de relatórios logísticos",
         href: "/insights",
-        badge: null,
-        badgeColor: null,
       },
     ],
   },
   empresa: {
-    title: "Empresa",
-    subtitle: "Conheça a Shift+G",
+    title: "MATRIZ",
+    subtitle: "Governança da Shift+G Company",
     items: [
       {
         icon: <Users size={20} />,
-        title: "Carreiras",
-        description: "Faça parte do futuro da tecnologia",
+        title: "Alocação Tática (Carreiras)",
+        description: "Integração a nossa base de engenharia",
         href: "/carreiras",
-        badge: "Vagas abertas",
+        badge: "VAGAS",
         badgeColor: "blue",
       },
       {
-        icon: <Globe size={20} />,
-        title: "Sobre Nós",
-        description: "Nossa missão e valores",
+        icon: <Fingerprint size={20} />,
+        title: "Diretrizes Corporativas",
+        description: "Manifesto operacional e compliance",
         href: "/sobre",
-        badge: null,
-        badgeColor: null,
       },
     ],
   },
 };
 
-const mobileMenuItems = [
-  { label: "Soluções", href: "/#solucoes" },
-  { label: "Fábrica de Software", href: "/fabrica-de-software" },
-  { label: "Transformação Digital", href: "/transformacao-digital" },
-  { label: "Insights", href: "/insights" },
-  { label: "Carreiras", href: "/carreiras" },
-];
-
-// Component for megamenu dropdown
+// MegaMenu Component brutalist
 function MegaMenu({
   section,
   isOpen,
@@ -200,107 +181,114 @@ function MegaMenu({
     <Portal>
       <Box
         position="fixed"
-        top="80px"
+        top={{ base: "64px", lg: "80px" }}
         left={0}
         right={0}
-        bg="bg.subtle"
-        backdropFilter="blur(20px)"
-        borderBottom="1px"
-        borderColor="border"
-        zIndex="dropdown"
-        py={8}
+        bg="white"
+        borderBottom="1px solid"
+        borderColor="blackAlpha.200"
+        zIndex={1200}
+        py={{ base: 6, lg: 12 }}
         onMouseLeave={onClose}
+        boxShadow="0px 10px 30px -10px rgba(0,0,0,0.1)" // Slight shadow for dropdown depth, or keep rigid
       >
         <Container maxW="7xl">
-          <VStack gap={8} align="stretch">
-            {/* Header */}
-            <VStack gap={2} align="flex-start">
-              <Heading size="lg" fontWeight="600" color="fg">
+          <HStack align="flex-start" gap={12}>
+            {/* Context Left */}
+            <VStack gap={4} align="flex-start" w="300px" flexShrink={0} display={{ base: "none", lg: "flex" }}>
+              <Box w="8px" h="8px" bg="blue.solid" />
+              <Heading size="2xl" fontWeight="800" color="fg" letterSpacing="-1px">
                 {section.title}
               </Heading>
-              <Text color="fg.muted" fontSize="md">
+              <Text color="fg.muted" fontSize="md" lineHeight="1.6" fontFamily="serif" fontStyle="italic">
                 {section.subtitle}
               </Text>
+
+              {/* Call to arm for this section */}
+              <Box mt={6} pt={6} borderTop="1px solid" borderColor="blackAlpha.200" w="full">
+                <Text fontFamily="mono" fontSize="2xs" color="fg.muted" mb={2} textTransform="uppercase">Ação Imediata</Text>
+                <Link href="/contato" passHref>
+                  <HStack
+                    color="blue.solid"
+                    fontWeight={700}
+                    fontSize="sm"
+                    _hover={{ color: "fg" }}
+                    transition="color 0.2s"
+                    onClick={onClose}
+                  >
+                    <Text>Solicitar Briefing</Text>
+                    <ChevronRight size={16} />
+                  </HStack>
+                </Link>
+              </Box>
             </VStack>
 
             {/* Items Grid */}
-            <SimpleGrid
-              columns={{
-                base: 1,
-                md: section.items.length >= 4 ? 2 : section.items.length,
-              }}
-              gap={6}
-              w="full"
-            >
-              {section.items.map((item: MenuItem) => (
-                <Link key={item.title} href={item.href} passHref legacyBehavior>
-                  <ChakraLink
-                    p={4}
-                    rounded="0"
-                    bg="bg.subtle"
-                    border="1px"
-                    borderColor="border"
-                    _hover={{
-                      bg: "bg.muted",
-                      borderColor: "blue.200",
-                      transform: "translateY(-2px)",
-                    }}
-                    transition="all 0.2s"
-                    display="block"
-                    textDecoration="none"
-                    onClick={onClose}
-                  >
-                    <HStack gap={4} align="flex-start">
-                      <Box
-                        p={3}
-                        bg="blue.500/10"
-                        color="blue.solid"
-                        flexShrink={0}
-                      >
-                        {item.icon}
-                      </Box>
-                      <VStack gap={2} align="flex-start" flex={1}>
-                        <HStack gap={2} align="center">
-                          <Text fontWeight="medium" color="fg" fontSize="md">
-                            {item.title}
+            <VStack align="stretch" gap={0} flex={1} border="1px solid" borderColor="blackAlpha.200" bg="blackAlpha.200">
+              <SimpleGrid
+                columns={{ base: 1, md: 2 }}
+                gap="1px"
+                w="full"
+              >
+                {section.items.map((item: MenuItem) => (
+                  <Link key={item.title} href={item.href} passHref legacyBehavior>
+                    <ChakraLink
+                      p={6}
+                      bg="white"
+                      _hover={{
+                        bg: "stone",
+                      }}
+                      transition="background 0.2s"
+                      display="block"
+                      textDecoration="none"
+                      onClick={onClose}
+                    >
+                      <HStack gap={4} align="flex-start">
+                        <Box
+                          color="blue.solid"
+                          flexShrink={0}
+                        >
+                          {item.icon}
+                        </Box>
+                        <VStack gap={1} align="flex-start" flex={1}>
+                          <HStack gap={2} align="center">
+                            <Text fontWeight="700" color="fg" fontSize="md">
+                              {item.title}
+                            </Text>
+                            {item.badge && (
+                              <Badge
+                                variant="solid"
+                                bg="fg"
+                                color="white"
+                                rounded="none"
+                                px={1}
+                                fontSize="2xs"
+                                fontFamily="mono"
+                              >
+                                {item.badge}
+                              </Badge>
+                            )}
+                          </HStack>
+                          <Text color="fg.muted" fontSize="sm" lineHeight="1.6">
+                            {item.description}
                           </Text>
-                          {item.badge && item.badgeColor && (
-                            <Badge
-                              colorPalette={item.badgeColor}
-                              variant="subtle"
-                              size="sm"
-                              fontSize="xs"
-                            >
-                              {item.badge}
-                            </Badge>
-                          )}
-                        </HStack>
-                        <Text color="fg.muted" fontSize="sm" lineHeight="short">
-                          {item.description}
-                        </Text>
-                      </VStack>
-                      <Box color="fg.muted" flexShrink={0} mt={1}>
-                        <ArrowRight size={16} />
-                      </Box>
-                    </HStack>
-                  </ChakraLink>
-                </Link>
-              ))}
-            </SimpleGrid>
+                        </VStack>
+                      </HStack>
+                    </ChakraLink>
+                  </Link>
+                ))}
+              </SimpleGrid>
+            </VStack>
 
-            {/* Secondary Items - Links com menor destaque */}
+            {/* Secondary Items Column */}
             {section.secondaryItems && (
-              <VStack gap={3} align="stretch" pt={2}>
-                <Text
-                  fontSize="sm"
-                  fontWeight="600"
-                  color="fg.subtle"
-                  textTransform="uppercase"
-                  letterSpacing="wide"
-                >
-                  Outras Soluções
-                </Text>
-                <SimpleGrid columns={{ base: 1, md: 2 }} gap={3}>
+              <VStack gap={0} align="stretch" w="250px" flexShrink={0} display={{ base: "none", lg: "flex" }} border="1px solid" borderColor="blackAlpha.200" bg="blackAlpha.200">
+                <Box bg="stone" p={4} borderBottom="1px solid" borderColor="blackAlpha.200">
+                  <Text fontFamily="mono" fontSize="2xs" fontWeight="700" color="fg" textTransform="uppercase">
+                    Protocolos Extras
+                  </Text>
+                </Box>
+                <VStack gap="1px" align="stretch">
                   {section.secondaryItems.map((item: SecondaryMenuItem) => (
                     <Link
                       key={item.title}
@@ -309,74 +297,35 @@ function MegaMenu({
                       legacyBehavior
                     >
                       <ChakraLink
-                        p={3}
-                        bg="transparent"
-                        border="1px"
-                        borderColor="border/50"
+                        p={4}
+                        bg="white"
                         _hover={{
-                          bg: "bg.subtle",
-                          borderColor: "border",
+                          bg: "stone",
                         }}
-                        transition="all 0.2s"
+                        transition="background 0.2s"
                         display="block"
                         textDecoration="none"
                         onClick={onClose}
                       >
-                        <HStack gap={3} align="center">
-                          <VStack gap={1} align="flex-start" flex={1}>
-                            <Text fontWeight="500" color="fg" fontSize="sm">
-                              {item.title}
-                            </Text>
-                            <Text
-                              color="fg.muted"
-                              fontSize="xs"
-                              lineHeight="short"
-                            >
-                              {item.description}
-                            </Text>
-                          </VStack>
-                          <Box color="fg.muted" flexShrink={0}>
-                            <ChevronRight size={14} />
-                          </Box>
-                        </HStack>
+                        <VStack gap={1} align="flex-start">
+                          <Text fontWeight="600" color="fg" fontSize="sm">
+                            {item.title}
+                          </Text>
+                          <Text
+                            color="fg.muted"
+                            fontSize="xs"
+                            lineHeight="1.5"
+                          >
+                            {item.description}
+                          </Text>
+                        </VStack>
                       </ChakraLink>
                     </Link>
                   ))}
-                </SimpleGrid>
+                </VStack>
               </VStack>
             )}
-
-            {/* CTA */}
-            <Box
-              p={6}
-              bg="blue.500/10"
-              border="1px"
-              borderColor="blue.200"
-              w="full"
-            >
-              <HStack justify="space-between" align="center">
-                <VStack gap={1} align="flex-start">
-                  <Text fontWeight="300" color="blue.solid" fontSize="md">
-                    Pronto para transformar seu negócio?
-                  </Text>
-                  <Text color="fg.muted" fontSize="sm">
-                    Fale com nossos especialistas e descubra como podemos ajudar
-                  </Text>
-                </VStack>
-                <Link href="/contato" passHref>
-                  <Button
-                    size="sm"
-                    colorPalette="blue"
-                    variant="solid"
-                    onClick={onClose}
-                  >
-                    Entre em contato
-                    <ChevronRight size={16} />
-                  </Button>
-                </Link>
-              </HStack>
-            </Box>
-          </VStack>
+          </HStack>
         </Container>
       </Box>
     </Portal>
@@ -393,57 +342,56 @@ export function Navbar() {
         as="nav"
         position="sticky"
         top={0}
-        zIndex="sticky"
-        bg="bg/80"
-        backdropFilter="blur(10px)"
-        borderBottom="1px"
-        borderColor="border"
+        zIndex={1100}
+        bg="white"
+        borderBottom="1px solid"
+        borderColor="blackAlpha.200"
       >
-        <Container maxW="7xl" py={4}>
-          <Flex justify="space-between" align="center">
+        <Container maxW="7xl" py={0}>
+          <Flex justify="space-between" align="stretch" h={{ base: "64px", lg: "80px" }}>
             {/* Logo */}
-            <Link href="/" passHref legacyBehavior>
-              <ChakraLink
-                display="flex"
-                alignItems="center"
-                gap={2}
-                _hover={{ textDecoration: "none", opacity: 0.8 }}
-                transition="opacity 0.2s"
-                onClick={() => setActiveMenu(null)}
-              >
-                <Image src="/logo.png" alt="Shift G Logo" h={12} />
-              </ChakraLink>
-            </Link>
+            <Flex align="center">
+              <Link href="/" passHref legacyBehavior>
+                <ChakraLink
+                  display="flex"
+                  alignItems="center"
+                  gap={2}
+                  _hover={{ textDecoration: "none", opacity: 0.8 }}
+                  transition="opacity 0.2s"
+                  onClick={() => setActiveMenu(null)}
+                >
+                  <Image src="/logo.png" alt="Shift G Logo" h={12} />
+                </ChakraLink>
+              </Link>
+            </Flex>
 
             {/* Desktop Menu */}
-            <Stack
-              direction="row"
-              gap={1}
-              align="center"
+            <HStack
+              gap={0}
+              align="stretch"
               display={{ base: "none", lg: "flex" }}
             >
-              {/* Megamenu Items */}
               {Object.entries(menuSections).map(([key, section]) => (
-                <Box key={key} position="relative">
+                <Box key={key} position="relative" display="flex">
                   <Button
                     variant="ghost"
-                    size="sm"
-                    px={4}
-                    py={2}
-                    fontSize="md"
-                    fontWeight="400"
-                    fontFamily="heading"
-                    color={activeMenu === key ? "fg" : "fg.muted"}
-                    bg={activeMenu === key ? "bg.muted" : "transparent"}
+                    h="full"
+                    rounded="none"
+                    px={6}
+                    fontSize="sm"
+                    fontWeight="700"
+                    fontFamily="mono"
+                    textTransform="uppercase"
+                    color={activeMenu === key ? "white" : "fg"}
+                    bg={activeMenu === key ? "blue.solid" : "transparent"}
                     _hover={{
-                      color: "fg",
-                      bg: "bg.muted",
+                      color: activeMenu === key ? "white" : "blue.solid",
+                      bg: activeMenu === key ? "blue.solid" : "stone",
                     }}
-                    transition="all 0.2s"
+                    transition="none"
                     onMouseEnter={() => setActiveMenu(key)}
                   >
                     {section.title}
-                    <ChevronDown size={14} style={{ marginLeft: "8px" }} />
                   </Button>
                   <MegaMenu
                     section={section}
@@ -453,186 +401,145 @@ export function Navbar() {
                 </Box>
               ))}
 
-              <Link href="/contato" passHref>
-                <Button
-                  colorPalette="blue"
-                  fontWeight="500"
-                  size="sm"
-                  variant="subtle"
-                  onClick={() => setActiveMenu(null)}
-                >
-                  Entre em contato
-                </Button>
-              </Link>
-            </Stack>
+              <Flex align="center" pl={6} ml={2} borderLeft="1px solid" borderColor="blackAlpha.200">
+                <Link href="/contato" passHref>
+                  <Button
+                    bg="fg"
+                    color="white"
+                    rounded="none"
+                    px={8}
+                    h="48px"
+                    fontWeight="700"
+                    fontSize="sm"
+                    fontFamily="mono"
+                    textTransform="uppercase"
+                    _hover={{ bg: "blue.solid" }}
+                    onClick={() => setActiveMenu(null)}
+                  >
+                    Requisitar Engenharia
+                  </Button>
+                </Link>
+              </Flex>
+            </HStack>
 
             {/* Mobile Menu Button */}
-            <IconButton
-              display={{ base: "flex", lg: "none" }}
-              onClick={onOpen}
-              variant="ghost"
-              aria-label="Abrir menu"
-              size="sm"
-            >
-              <Menu size={20} />
-            </IconButton>
+            <Flex align="center" display={{ base: "flex", lg: "none" }}>
+              <IconButton
+                onClick={onOpen}
+                variant="ghost"
+                aria-label="Abrir menu"
+                rounded="none"
+                color="fg"
+              >
+                <Menu size={24} />
+              </IconButton>
+            </Flex>
           </Flex>
         </Container>
       </Box>
 
       {/* Mobile Drawer */}
-      <Drawer.Root open={open} onOpenChange={onClose}>
-        <Drawer.Positioner>
-          <Drawer.Backdrop />
-          <Drawer.Content>
-            <Drawer.CloseTrigger />
-            <Drawer.Header borderBottomWidth="1px">
-              <Heading size="md" fontWeight="300">
-                Menu
-              </Heading>
-            </Drawer.Header>
-            <Drawer.Body py={6}>
-              <VStack gap={6} align="stretch">
-                {/* Mobile Menu Sections */}
-                {Object.entries(menuSections).map(([key, section]) => (
-                  <VStack key={key} gap={3} align="stretch">
+      <DrawerRoot open={open} onOpenChange={onClose} placement="end">
+        <DrawerBackdrop />
+        <DrawerContent bg="white" rounded="none">
+          <DrawerCloseTrigger color="fg" />
+          <DrawerHeader borderBottom="1px solid" borderColor="blackAlpha.200" py={4}>
+            <Heading size="md" fontWeight="800" fontFamily="mono" textTransform="uppercase">
+              MENU OVERRIDE
+            </Heading>
+          </DrawerHeader>
+          <DrawerBody px={0} py={0} overflowY="auto">
+            <VStack gap={0} align="stretch" bg="blackAlpha.200">
+              {Object.entries(menuSections).map(([key, section]) => (
+                <Box key={key} bg="white" borderBottom="1px solid" borderColor="blackAlpha.200" pb={4}>
+                  <Box p={4} bg="stone">
                     <Text
                       fontSize="sm"
-                      fontWeight="300"
+                      fontWeight="700"
+                      fontFamily="mono"
                       color="blue.solid"
                       textTransform="uppercase"
-                      letterSpacing="wider"
                     >
                       {section.title}
                     </Text>
-                    <VStack gap={2} align="stretch">
-                      {section.items.map((item: MenuItem) => (
-                        <Link
-                          key={item.title}
-                          href={item.href}
-                          passHref
-                          legacyBehavior
+                  </Box>
+                  <VStack gap={0} align="stretch">
+                    {section.items.map((item: MenuItem) => (
+                      <Link
+                        key={item.title}
+                        href={item.href}
+                        passHref
+                        legacyBehavior
+                      >
+                        <ChakraLink
+                          p={4}
+                          borderBottom="1px solid"
+                          borderColor="blackAlpha.100"
+                          _last={{ borderBottom: "none" }}
+                          color="fg"
+                          onClick={onClose}
+                          _hover={{ bg: "stone" }}
+                          display="flex"
+                          alignItems="flex-start"
+                          gap={4}
+                          textDecoration="none"
                         >
-                          <ChakraLink
-                            p={3}
-                            rounded="lg"
-                            fontSize="md"
-                            fontWeight="500"
-                            color="fg.muted"
-                            onClick={onClose}
-                            _hover={{
-                              color: "fg",
-                              bg: "bg.muted",
-                            }}
-                            transition="all 0.2s"
-                            display="flex"
-                            alignItems="center"
-                            gap={3}
-                            textDecoration="none"
-                          >
-                            <Box color="blue.solid">{item.icon}</Box>
-                            <VStack gap={1} align="flex-start" flex={1}>
-                              <HStack gap={2} align="center">
-                                <Text fontSize="md">{item.title}</Text>
-                                {item.badge && item.badgeColor && (
-                                  <Badge
-                                    colorPalette={item.badgeColor}
-                                    variant="subtle"
-                                    size="sm"
-                                    fontSize="xs"
-                                  >
-                                    {item.badge}
-                                  </Badge>
-                                )}
-                              </HStack>
-                              <Text
-                                fontSize="xs"
-                                color="fg.muted"
-                                lineHeight="shorter"
-                              >
-                                {item.description}
-                              </Text>
-                            </VStack>
-                          </ChakraLink>
-                        </Link>
-                      ))}
-
-                      {/* Secondary Items no Mobile */}
-                      {section.secondaryItems && (
-                        <VStack gap={2} align="stretch" mt={2} pl={4}>
-                          {section.secondaryItems.map(
-                            (item: SecondaryMenuItem) => (
-                              <Link
-                                key={item.title}
-                                href={item.href}
-                                passHref
-                                legacyBehavior
-                              >
-                                <ChakraLink
-                                  p={2}
-                                  pl={3}
-                                  rounded="md"
-                                  fontSize="sm"
-                                  fontWeight="400"
-                                  color="fg.muted"
-                                  onClick={onClose}
-                                  _hover={{
-                                    color: "fg",
-                                    bg: "bg.subtle",
-                                  }}
-                                  transition="all 0.2s"
-                                  display="flex"
-                                  alignItems="center"
-                                  gap={2}
-                                  textDecoration="none"
-                                  borderLeft="2px"
-                                  borderColor="border"
+                          <Box color="blue.solid" mt={1}>{item.icon}</Box>
+                          <VStack gap={1} align="flex-start" flex={1}>
+                            <HStack gap={2} align="center">
+                              <Text fontSize="md" fontWeight="700">{item.title}</Text>
+                              {item.badge && (
+                                <Badge
+                                  bg="fg"
+                                  color="white"
+                                  variant="solid"
+                                  rounded="none"
+                                  px={1}
+                                  fontSize="2xs"
+                                  fontFamily="mono"
                                 >
-                                  <VStack gap={0} align="flex-start" flex={1}>
-                                    <Text fontSize="sm" fontWeight="500">
-                                      {item.title}
-                                    </Text>
-                                    <Text
-                                      fontSize="xs"
-                                      color="fg.muted"
-                                      lineHeight="shorter"
-                                    >
-                                      {item.description}
-                                    </Text>
-                                  </VStack>
-                                  <Box color="fg.muted">
-                                    <ChevronRight size={14} />
-                                  </Box>
-                                </ChakraLink>
-                              </Link>
-                            )
-                          )}
-                        </VStack>
-                      )}
-                    </VStack>
+                                  {item.badge}
+                                </Badge>
+                              )}
+                            </HStack>
+                            <Text
+                              fontSize="sm"
+                              color="fg.muted"
+                              lineHeight="1.5"
+                            >
+                              {item.description}
+                            </Text>
+                          </VStack>
+                        </ChakraLink>
+                      </Link>
+                    ))}
                   </VStack>
-                ))}
-
-                {/* Mobile CTA */}
-                <Box mt={4}>
-                  <Link href="/contato" passHref>
-                    <Button
-                      colorPalette="blue"
-                      size="lg"
-                      width="full"
-                      onClick={onClose}
-                      fontWeight="medium"
-                    >
-                      Entre em contato
-                      <ChevronRight size={18} />
-                    </Button>
-                  </Link>
                 </Box>
-              </VStack>
-            </Drawer.Body>
-          </Drawer.Content>
-        </Drawer.Positioner>
-      </Drawer.Root>
+              ))}
+
+              {/* Mobile CTA */}
+              <Box p={6} bg="white">
+                <Link href="/contato" passHref>
+                  <Button
+                    bg="fg"
+                    color="white"
+                    size="lg"
+                    width="full"
+                    rounded="none"
+                    onClick={onClose}
+                    fontWeight="700"
+                    fontFamily="mono"
+                    textTransform="uppercase"
+                    _hover={{ bg: "blue.solid" }}
+                  >
+                    Requisitar Engenharia
+                  </Button>
+                </Link>
+              </Box>
+            </VStack>
+          </DrawerBody>
+        </DrawerContent>
+      </DrawerRoot>
     </>
   );
 }
