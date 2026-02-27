@@ -204,6 +204,7 @@ function ProductCard({ product }: { product: ProductData }) {
       {/* CTA */}
       <HStack
         as={Link}
+        // @ts-ignore
         href={product.url}
         mt={8}
         fontFamily="mono"

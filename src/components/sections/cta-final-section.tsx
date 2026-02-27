@@ -109,6 +109,7 @@ export function CTAFinalSection() {
         {/* CTA button */}
         <Box
           as={Link}
+          // @ts-ignore
           href="/contato"
           display="inline-flex"
           alignItems="center"

@@ -327,6 +327,7 @@ export function HeroHome() {
             {/* CTA */}
             <Box
               as={Link}
+              // @ts-ignore
               href="/contato"
               display="inline-flex"
               alignItems="center"

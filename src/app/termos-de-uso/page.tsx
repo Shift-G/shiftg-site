@@ -22,7 +22,7 @@ export default function TermosDeUso() {
   return (
     <Page>
       <Navbar />
-      
+
       <Container maxW="4xl" py={{ base: 12, md: 16 }}>
         <VStack align="flex-start" gap={8}>
           <Box>
@@ -40,8 +40,8 @@ export default function TermosDeUso() {
                 1. Aceitação dos Termos
               </Heading>
               <Text color="fg.muted" lineHeight="tall">
-                Ao acessar e usar este site, você aceita e concorda em cumprir 
-                os termos e condições estabelecidos nestes Termos de Uso. Se você 
+                Ao acessar e usar este site, você aceita e concorda em cumprir
+                os termos e condições estabelecidos nestes Termos de Uso. Se você
                 não concordar com alguma parte destes termos, não deve usar nosso site.
               </Text>
             </Box>
@@ -51,9 +51,9 @@ export default function TermosDeUso() {
                 2. Uso do Site
               </Heading>
               <Text color="fg.muted" lineHeight="tall">
-                Este site é fornecido pela SHIFT+G para fins informativos sobre 
-                nossos serviços de inteligência artificial e análise de dados. 
-                Você pode usar este site apenas para fins legais e de acordo com 
+                Este site é fornecido pela SHIFT+G para fins informativos sobre
+                nossos serviços de inteligência artificial e análise de dados.
+                Você pode usar este site apenas para fins legais e de acordo com
                 estes Termos de Uso.
               </Text>
             </Box>
@@ -63,9 +63,9 @@ export default function TermosDeUso() {
                 3. Propriedade Intelectual
               </Heading>
               <Text color="fg.muted" lineHeight="tall">
-                Todo o conteúdo deste site, incluindo textos, gráficos, logos, 
-                ícones, imagens, clipes de áudio, downloads digitais e compilações 
-                de dados, é propriedade da SHIFT+G ou de seus fornecedores de conteúdo 
+                Todo o conteúdo deste site, incluindo textos, gráficos, logos,
+                ícones, imagens, clipes de áudio, downloads digitais e compilações
+                de dados, é propriedade da SHIFT+G ou de seus fornecedores de conteúdo
                 e está protegido pelas leis brasileiras e internacionais de direitos autorais.
               </Text>
             </Box>
@@ -75,9 +75,9 @@ export default function TermosDeUso() {
                 4. Serviços Oferecidos
               </Heading>
               <Text color="fg.muted" lineHeight="tall">
-                A SHIFT+G oferece serviços de desenvolvimento de software sob medida, 
-                inteligência artificial, análise de dados e consultoria tecnológica. 
-                Os termos específicos de cada serviço serão estabelecidos em contratos 
+                A SHIFT+G oferece serviços de desenvolvimento de software sob medida,
+                inteligência artificial, análise de dados e consultoria tecnológica.
+                Os termos específicos de cada serviço serão estabelecidos em contratos
                 individuais com cada cliente.
               </Text>
             </Box>
@@ -87,8 +87,8 @@ export default function TermosDeUso() {
                 5. Limitação de Responsabilidade
               </Heading>
               <Text color="fg.muted" lineHeight="tall">
-                A SHIFT+G não será responsável por quaisquer danos diretos, indiretos, 
-                incidentais, especiais, consequenciais ou punitivos resultantes do uso 
+                A SHIFT+G não será responsável por quaisquer danos diretos, indiretos,
+                incidentais, especiais, consequenciais ou punitivos resultantes do uso
                 ou incapacidade de usar este site ou nossos serviços.
               </Text>
             </Box>
@@ -101,13 +101,14 @@ export default function TermosDeUso() {
                 Sua privacidade é importante para nós. Nossa{" "}
                 <ChakraLink
                   as={Link}
+                  // @ts-ignore
                   href="/politica-de-privacidade"
                   color="blue.500"
                   _hover={{ textDecoration: "underline" }}
                 >
                   Política de Privacidade
                 </ChakraLink>{" "}
-                explica como coletamos, usamos e protegemos suas informações quando 
+                explica como coletamos, usamos e protegemos suas informações quando
                 você usa nosso site e serviços.
               </Text>
             </Box>
@@ -117,9 +118,9 @@ export default function TermosDeUso() {
                 7. Modificações dos Termos
               </Heading>
               <Text color="fg.muted" lineHeight="tall">
-                A SHIFT+G reserva-se o direito de modificar estes termos a qualquer 
-                momento. As modificações entrarão em vigor imediatamente após a 
-                publicação no site. O uso continuado do site após quaisquer alterações 
+                A SHIFT+G reserva-se o direito de modificar estes termos a qualquer
+                momento. As modificações entrarão em vigor imediatamente após a
+                publicação no site. O uso continuado do site após quaisquer alterações
                 constitui sua aceitação dos novos Termos de Uso.
               </Text>
             </Box>
@@ -129,8 +130,8 @@ export default function TermosDeUso() {
                 8. Lei Aplicável
               </Heading>
               <Text color="fg.muted" lineHeight="tall">
-                Estes Termos de Uso são regidos e interpretados de acordo com as 
-                leis do Brasil, e você se submete irrevogavelmente à jurisdição 
+                Estes Termos de Uso são regidos e interpretados de acordo com as
+                leis do Brasil, e você se submete irrevogavelmente à jurisdição
                 exclusiva dos tribunais deste país.
               </Text>
             </Box>
@@ -140,7 +141,7 @@ export default function TermosDeUso() {
                 9. Contato
               </Heading>
               <Text color="fg.muted" lineHeight="tall">
-                Se você tiver alguma dúvida sobre estes Termos de Uso, entre em 
+                Se você tiver alguma dúvida sobre estes Termos de Uso, entre em
                 contato conosco através do e-mail:{" "}
                 <ChakraLink
                   href={`mailto:${SITE_EMAIL}`}

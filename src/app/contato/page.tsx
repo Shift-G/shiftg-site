@@ -1,134 +1,153 @@
 import { Metadata } from "next";
 import {
   Box,
-  Container,
-  Heading,
+  Flex,
+  Grid,
+  HStack,
   Text,
   VStack,
-  SimpleGrid,
-  HStack,
-  Link,
 } from "@chakra-ui/react";
 import { Page } from "@/components/layout/page";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { GeneralContactForm } from "@/components/forms/GeneralContactForm";
-import { Mail, MapPin, Phone } from "lucide-react";
-import { SITE_EMAIL, SITE_PHONE } from "@/constants";
+import {
+  SITE_NAME,
+  SITE_URL,
+  SITE_PHONE,
+  SITE_EMAIL,
+  SITE_ADDRESS,
+  SITE_CITY,
+  SITE_STATE,
+  SITE_COUNTRY,
+  SITE_ZIP
+} from "@/constants";
 
 export const metadata: Metadata = {
-  title: "Contato | Shift+G",
-  description: "Entre em contato conosco para saber mais sobre nossas soluções em IA, desenvolvimento de software e transformação digital.",
+  title: `Contato | ${SITE_NAME}`,
+  description:
+    "Inicie um protocolo. Arquitetos de inteligência artificial e software para elevar sua operação ao nível C-Level.",
+  alternates: {
+    canonical: `${SITE_URL}/contato`,
+  },
+  openGraph: {
+    title: `Contato | ${SITE_NAME}`,
+    description: "Conecte-se com especialistas para redefinir o limite tecnológico do seu negócio.",
+    type: "website",
+    locale: "pt_BR",
+    url: `${SITE_URL}/contato`,
+    siteName: SITE_NAME,
+  },
 };
-
-function ContactHero() {
-  return (
-    <Box
-      as="section"
-      w="full"
-      position="relative"
-      py={{ base: 20, md: 32 }}
-      overflow="hidden"
-    >
-      {/* Background Pattern */}
-      <Box
-        position="absolute"
-        inset={0}
-        zIndex={0}
-        opacity={0.4}
-        backgroundImage="radial-gradient(circle at 20% 30%, #3b82f6 0%, transparent 40%), radial-gradient(circle at 80% 70%, #8b5cf6 0%, transparent 40%)"
-        backgroundSize="100% 100%"
-      />
-
-      <Container maxW="7xl" position="relative" zIndex={1}>
-        <SimpleGrid columns={{ base: 1, lg: 2 }} gap={{ base: 12, lg: 20 }} alignItems="start">
-          <VStack align="start" gap={8}>
-            <VStack align="start" gap={4}>
-              <Heading
-                as="h1"
-                size={{ base: "4xl", md: "5xl" }}
-                fontWeight="700"
-                letterSpacing="-0.04em"
-                lineHeight="1.1"
-              >
-                Vamos construir o futuro do seu negócio?
-              </Heading>
-              <Text
-                fontSize={{ base: "xl", md: "2xl" }}
-                color="gray.600"
-                lineHeight="tall"
-              >
-                Estamos prontos para entender seus desafios e propor as melhores soluções em tecnologia e inovação.
-              </Text>
-            </VStack>
-
-            <VStack align="start" gap={6} w="full" pt={4}>
-              <HStack gap={4} align="flex-start">
-                <Box p={3} bg="blue.50" color="blue.600" rounded="xl">
-                  <Phone size={24} />
-                </Box>
-                <VStack align="start" gap={0}>
-                  <Text fontWeight="bold" fontSize="lg">Telefone / WhatsApp</Text>
-                  <Link href={`https://wa.me/${SITE_PHONE.replace(/\D/g, '')}`} color="blue.600" fontSize="lg">
-                    {SITE_PHONE}
-                  </Link>
-                </VStack>
-              </HStack>
-
-              <HStack gap={4} align="flex-start">
-                <Box p={3} bg="purple.50" color="purple.600" rounded="xl">
-                  <Mail size={24} />
-                </Box>
-                <VStack align="start" gap={0}>
-                  <Text fontWeight="bold" fontSize="lg">Email</Text>
-                  <Link href={`mailto:${SITE_EMAIL}`} color="blue.600" fontSize="lg">
-                    {SITE_EMAIL}
-                  </Link>
-                </VStack>
-              </HStack>
-
-              <HStack gap={4} align="flex-start">
-                <Box p={3} bg="green.50" color="green.600" rounded="xl">
-                  <MapPin size={24} />
-                </Box>
-                <VStack align="start" gap={0}>
-                  <Text fontWeight="bold" fontSize="lg">Localização</Text>
-                  <Text color="gray.600" fontSize="lg">São Paulo, SP - Brasil</Text>
-                  <Text color="gray.500" fontSize="sm">Atendimento global remoto</Text>
-                </VStack>
-              </HStack>
-            </VStack>
-          </VStack>
-
-          <Box position="relative">
-            {/* Decorative blob behind form */}
-            <Box
-              position="absolute"
-              top="50%"
-              left="50%"
-              transform="translate(-50%, -50%)"
-              w="120%"
-              h="120%"
-              bgGradient="radial(blue.200, transparent 70%)"
-              opacity={0.5}
-              filter="blur(40px)"
-              zIndex={-1}
-            />
-            <GeneralContactForm />
-          </Box>
-        </SimpleGrid>
-      </Container>
-    </Box>
-  );
-}
 
 export default function ContactPage() {
   return (
     <Page>
       <Navbar />
+
       <VStack gap={0} w="full" as="main" align="stretch">
-        <ContactHero />
+
+        {/* ── Hero / Form Section ── */}
+        <Box
+          as="section"
+          minH="100vh"
+          bg="stone"
+          position="relative"
+          px={{ base: 6, md: "60px", lg: "112px" }}
+          pt={{ base: "140px", md: "180px" }}
+          pb={{ base: 16, md: "80px" }}
+        >
+          {/* Subtle math/grid pattern */}
+          <Box
+            position="absolute"
+            inset={0}
+            backgroundImage="linear-gradient(#00000004 1px, transparent 1px), linear-gradient(90deg, #00000004 1px, transparent 1px)"
+            backgroundSize="40px 40px"
+            pointerEvents="none"
+          />
+
+          <Grid
+            templateColumns={{ base: "1fr", lg: "1fr 500px" }}
+            gap={{ base: 12, lg: "80px" }}
+            position="relative"
+            zIndex={2}
+          >
+            <VStack align="flex-start" gap={10} maxW="700px">
+              <Box>
+                <HStack gap={3} mb={{ base: 6, md: "24px" }}>
+                  <Box w="6px" h="6px" bg="blue.solid" />
+                  <Text
+                    fontFamily="mono"
+                    fontSize="2xs"
+                    fontWeight={600}
+                    letterSpacing="0.14em"
+                    textTransform="uppercase"
+                    color="blue.solid"
+                  >
+                    Protocolo de Atendimento
+                  </Text>
+                </HStack>
+
+                <Text
+                  as="h1"
+                  fontSize={{ base: "48px", md: "clamp(60px, 8vw, 100px)" }}
+                  lineHeight={0.92}
+                  letterSpacing="-2.5px"
+                  color="fg"
+                  mb={6}
+                >
+                  <Text as="span" fontWeight={800}>
+                    Conecte-se aos{" "}
+                  </Text>
+                  <Text
+                    as="span"
+                    fontFamily="serif"
+                    fontWeight={400}
+                    fontStyle="italic"
+                    color="blue.solid"
+                  >
+                    construtores.
+                  </Text>
+                </Text>
+
+                <Text fontSize="lg" color="fg.muted" lineHeight={1.8} maxW="500px">
+                  Estamos prontos para converter a visão bruta do seu negócio
+                  em arquiteturas viáveis. Preencha o formulário ou requisite um
+                  contato direto pelos canais oficiais da operação.
+                </Text>
+              </Box>
+
+              <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap="1px" bg="blackAlpha.100" p="1px" w="full">
+                <VStack align="flex-start" bg="white" p={{ base: 6, md: 8 }} gap={1}>
+                  <Text fontFamily="mono" fontSize="2xs" fontWeight={700} color="fg.subtle">LINHA DIRETA</Text>
+                  <Text fontSize="xl" fontWeight={800} color="blue.solid" letterSpacing="-0.5px">
+                    {SITE_PHONE}
+                  </Text>
+                </VStack>
+                <VStack align="flex-start" bg="white" p={{ base: 6, md: 8 }} gap={1}>
+                  <Text fontFamily="mono" fontSize="2xs" fontWeight={700} color="fg.subtle">E-MAIL OFICIAL</Text>
+                  <Text fontSize="xl" fontWeight={800} color="fg" letterSpacing="-0.5px">
+                    {SITE_EMAIL}
+                  </Text>
+                </VStack>
+                <VStack align="flex-start" bg="white" p={{ base: 6, md: 8 }} gap={1} gridColumn={{ md: "span 2" }}>
+                  <Text fontFamily="mono" fontSize="2xs" fontWeight={700} color="fg.subtle">INFRAESTRUTURA BR</Text>
+                  <Text fontSize="xl" fontWeight={800} color="fg" letterSpacing="-0.5px" lineHeight={1.4}>
+                    {SITE_ADDRESS}.<br />{SITE_CITY} — {SITE_STATE}, {SITE_COUNTRY}. {SITE_ZIP}
+                  </Text>
+                </VStack>
+              </Grid>
+            </VStack>
+
+            {/* Formulário Wrapper */}
+            <Box bg="white" border="1px solid" borderColor="blackAlpha.100" position="relative" w="full">
+              <Box position="absolute" top={0} left={0} w="full" h="3px" bg="blue.solid" />
+              <GeneralContactForm />
+            </Box>
+          </Grid>
+        </Box>
       </VStack>
+
       <Footer />
     </Page>
   );

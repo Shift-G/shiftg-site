@@ -511,6 +511,7 @@ export default function SobrePage() {
                 {/* CTA */}
                 <Box
                   as={Link}
+                  // @ts-ignore
                   href="/contato"
                   display="inline-flex"
                   alignItems="center"
@@ -934,6 +935,7 @@ export default function SobrePage() {
             {/* CTA */}
             <Box
               as={Link}
+              // @ts-ignore
               href="/carreiras"
               display="inline-flex"
               alignItems="center"

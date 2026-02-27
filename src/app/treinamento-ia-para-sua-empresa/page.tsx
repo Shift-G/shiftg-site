@@ -593,6 +593,7 @@ export default function TreinamentoIAPage() {
                 {/* CTA */}
                 <Box
                   as={Link}
+                  // @ts-ignore
                   href="#contato"
                   display="inline-flex"
                   alignItems="center"
