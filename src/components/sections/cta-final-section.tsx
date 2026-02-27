@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Box,
   HStack,
@@ -23,47 +21,6 @@ export function CTAFinalSection() {
       overflow="hidden"
       id="contato"
     >
-      {/* Star symbol background */}
-      <Box
-        as="svg"
-        position="absolute"
-        top="50%"
-        left="50%"
-        transform="translate(-50%, -50%)"
-        w={{ base: "350px", md: "580px" }}
-        opacity={0.03}
-        pointerEvents="none"
-        color="blue.solid"
-        // @ts-ignore
-        viewBox="0 0 560 560"
-        fill="none"
-      >
-        <polygon
-          points="280,20 310,250 540,280 310,310 280,540 250,310 20,280 250,250"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          fill="none"
-        />
-        <polygon
-          points="280,80 302,258 480,280 302,302 280,480 258,302 80,280 258,258"
-          stroke="currentColor"
-          strokeWidth="1"
-          fill="none"
-        />
-        <circle cx="280" cy="280" r="52" stroke="currentColor" strokeWidth="1.5" fill="none" />
-        <text
-          x="280"
-          y="280"
-          textAnchor="middle"
-          dominantBaseline="middle"
-          fontFamily="'DM Serif Display', serif"
-          fontSize="60"
-          fill="currentColor"
-        >
-          G
-        </text>
-      </Box>
-
       <VStack gap={{ base: 5, md: 6 }} position="relative" zIndex={1}>
         {/* Subtitle */}
         <HStack
