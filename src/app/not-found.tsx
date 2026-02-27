@@ -1,23 +1,21 @@
 import { Metadata } from "next";
 import {
   Box,
-  Container,
   VStack,
   Heading,
   Text,
-  Button,
   HStack,
 } from "@chakra-ui/react";
 import { Page } from "@/components/layout/page";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Home, ArrowLeft, Search, MessageCircle } from "lucide-react";
+import { Terminal, MoveLeft, TerminalSquare } from "lucide-react";
 import Link from "next/link";
-import { SITE_NAME, SITE_PHONE } from "@/constants";
+import { SITE_NAME } from "@/constants";
 
 export const metadata: Metadata = {
-  title: "Página não encontrada | " + SITE_NAME,
-  description: "A página que você está procurando não foi encontrada.",
+  title: "404 Error | " + SITE_NAME,
+  description: "Fatal Error: Resource Not Found.",
   robots: {
     index: false,
     follow: false,
@@ -29,287 +27,75 @@ export default function NotFoundPage() {
     <Page>
       <Navbar />
 
-      <Box
-        as="main"
-        minH="80vh"
-        display="flex"
-        alignItems="center"
-        position="relative"
-        overflow="hidden"
-      >
-        {/* Elementos geométricos decorativos - seguindo padrão do projeto */}
-        <Box
-          position="absolute"
-          top="15%"
-          right="10%"
-          w={{ base: "80px", md: "120px" }}
-          h={{ base: "80px", md: "120px" }}
-          borderRadius="full"
-          bg="blue.500/8"
-          backdropFilter="blur(10px)"
-          animation="float 8s ease-in-out infinite"
-          zIndex={0}
-        />
+      <VStack gap={0} w="full" as="main" align="stretch" bg="off" minH="calc(100vh - 100px)" justify="center">
 
-        <Box
-          position="absolute"
-          bottom="20%"
-          left="5%"
-          w={{ base: "60px", md: "80px" }}
-          h={{ base: "60px", md: "80px" }}
-          borderRadius="lg"
-          bg="blue.500/8"
-          backdropFilter="blur(10px)"
-          animation="float 6s ease-in-out infinite reverse"
-          zIndex={0}
-        />
+        {/* ── Content Body ── */}
+        <Box px={{ base: 6, md: 10 }} py={{ base: 16, md: 24 }}>
+          <VStack maxW="800px" mx="auto" align="stretch" gap={10}>
 
-        <Container maxW="5xl" position="relative" zIndex={1}>
-          <VStack
-            gap={{ base: 8, md: 12 }}
-            textAlign="center"
-            py={{ base: 16, md: 20 }}
-          >
-            {/* Número 404 */}
-            <Box>
-              <Text
-                fontSize={{ base: "8xl", md: "9xl", lg: "10xl" }}
-                fontWeight="300"
-                lineHeight="none"
-                letterSpacing="tight"
-                bgGradient="linear-gradient(135deg, blue.500, blue.700, blue.500)"
-                bgClip="text"
-                opacity={0.1}
-                position="absolute"
-                transform="translate(-50%, -50%)"
-                left="50%"
-                top="50%"
-                zIndex={-1}
-              >
-                404
+            {/* Box Callout Error */}
+            <Box p={8} bg="blackAlpha.200" border="1px solid" borderColor="blackAlpha.200" position="relative">
+              <Box position="absolute" top={0} left={0} w="4px" h="full" bg="red.500" />
+              <HStack gap={4} mb={4}>
+                <Terminal size={20} color="var(--chakra-colors-red-500)" />
+                <Text fontFamily="mono" fontSize="xs" fontWeight={700} color="red.500">EXCEPTION CATCHED</Text>
+              </HStack>
+              <Text fontSize="md" fontWeight={500} color="fg" lineHeight={1.6}>
+                ERROR 404: O diretório, arquivo ou cluster de inteligência que você requisitou não está mapeado no nosso banco de dados ou foi destituído pelos engenheiros responsáveis.
               </Text>
+            </Box>
 
+            {/* Title and Back Link */}
+            <Box pt={4}>
               <Heading
                 as="h1"
-                size={{ base: "3xl", md: "4xl", lg: "5xl" }}
-                fontWeight="400"
-                lineHeight="shorter"
-                letterSpacing="tight"
+                fontSize={{ base: "60px", md: "80px", lg: "120px" }}
+                fontWeight={800}
+                lineHeight={1}
+                letterSpacing="-4px"
                 color="fg"
-                mb={4}
+                mb={6}
               >
-                Página não encontrada
+                404.
+                <Text as="span" display="block" fontSize={{ base: "32px", md: "48px" }} color="fg.muted" letterSpacing="-2px">
+                  Target Unreachable.
+                </Text>
               </Heading>
-            </Box>
 
-            {/* Descrição */}
-            <VStack gap={4} maxW="2xl">
-              <Text
-                fontSize={{ base: "lg", md: "xl" }}
-                color="fg.muted"
-                lineHeight="tall"
-                fontWeight="400"
-              >
-                A página que você está procurando não existe ou foi movida. Mas
-                não se preocupe, temos várias outras páginas interessantes para
-                você explorar.
-              </Text>
-
-              <Text
-                fontSize={{ base: "md", md: "lg" }}
-                color="fg.muted"
-                lineHeight="tall"
-                fontWeight="400"
-              >
-                Que tal conhecer nossas soluções de IA e analytics?
-              </Text>
-            </VStack>
-
-            {/* Botões de ação */}
-            <VStack gap={6} w="full" maxW="lg">
-              <HStack
-                gap={4}
-                w="full"
-                flexDir={{ base: "column", sm: "row" }}
-                justify="center"
-              >
-                <Link href="/" passHref style={{ width: "100%" }}>
-                  <Button
-                    size="lg"
-                    px={8}
-                    py={6}
-                    rounded="xl"
-                    fontWeight="300"
-                    fontSize="lg"
-                    bg="blue.500"
-                    color="white"
-                    border="none"
-                    _hover={{
-                      bg: "blue.600",
-                      transform: "translateY(-2px)",
-                    }}
-                    _active={{
-                      transform: "translateY(0px)",
-                    }}
-                    transition="all 0.2s ease"
-                    w={{ base: "full", sm: "auto" }}
-                  >
-                    <Home size={18} style={{ marginRight: "8px" }} />
-                    Ir para o início
-                  </Button>
-                </Link>
-
-                <Button
-                  as={Link}
-                  // @ts-ignore
-                  href="/"
-                  size="lg"
-                  px={8}
-                  py={6}
-                  rounded="xl"
-                  fontWeight="300"
-                  fontSize="lg"
-                  variant="outline"
-                  borderColor="border"
-                  color="fg"
-                  _hover={{
-                    bg: "surface",
-                    borderColor: "blue.500",
-                    color: "blue.500",
-                    transform: "translateY(-2px)",
-                  }}
-                  _active={{
-                    transform: "translateY(0px)",
-                  }}
-                  transition="all 0.2s ease"
-                  w={{ base: "full", sm: "auto" }}
-                >
-                  <ArrowLeft size={18} style={{ marginRight: "8px" }} />
-                  Voltar
-                </Button>
-              </HStack>
-
-              {/* Links úteis */}
-              <VStack gap={3} pt={4}>
-                <Text fontSize="sm" color="fg.muted" fontWeight="500">
-                  Ou explore estas seções:
-                </Text>
-
-                <HStack gap={6} wrap="wrap" justify="center" fontSize="sm">
-                  <Link href="/#solucoes">
-                    <Text
-                      color="blue.solid"
-                      fontWeight="500"
-                      _hover={{
-                        textDecoration: "underline",
-                        color: "blue.600",
-                      }}
-                      transition="color 0.2s ease"
+              <VStack align="flex-start" gap="1px" bg="blackAlpha.200" border="1px solid" borderColor="blackAlpha.200">
+                <Box bg="white" w="full" p={6}>
+                  <Link href="/">
+                    <HStack
+                      gap={4}
+                      color="fg"
+                      _hover={{ color: "blue.solid" }}
+                      transition="color 0.2s"
                     >
-                      Soluções
-                    </Text>
+                      <TerminalSquare size={20} />
+                      <Text fontFamily="mono" fontSize="sm" fontWeight={700}>ABORTAR E RETORNAR AO MENU ROOT</Text>
+                    </HStack>
                   </Link>
-
+                </Box>
+                <Box bg="white" w="full" p={6}>
                   <Link href="/insights">
-                    <Text
-                      color="blue.500"
-                      fontWeight="500"
-                      _hover={{
-                        textDecoration: "underline",
-                        color: "blue.600",
-                      }}
-                      transition="color 0.2s ease"
+                    <HStack
+                      gap={4}
+                      color="fg.muted"
+                      _hover={{ color: "blue.solid" }}
+                      transition="color 0.2s"
                     >
-                      Insights
-                    </Text>
+                      <MoveLeft size={20} />
+                      <Text fontFamily="mono" fontSize="sm" fontWeight={700}>LER LOGS DE RELATÓRIOS (BLOG)</Text>
+                    </HStack>
                   </Link>
-
-                  <Link href="/fabrica-de-software">
-                    <Text
-                      color="blue.500"
-                      fontWeight="500"
-                      _hover={{
-                        textDecoration: "underline",
-                        color: "blue.600",
-                      }}
-                      transition="color 0.2s ease"
-                    >
-                      Fábrica de Software
-                    </Text>
-                  </Link>
-
-                  <Link href="/carreiras">
-                    <Text
-                      color="blue.500"
-                      fontWeight="500"
-                      _hover={{
-                        textDecoration: "underline",
-                        color: "blue.600",
-                      }}
-                      transition="color 0.2s ease"
-                    >
-                      Carreiras
-                    </Text>
-                  </Link>
-                </HStack>
-              </VStack>
-            </VStack>
-
-            {/* CTA de contato */}
-            <Box
-              mt={8}
-              p={6}
-              rounded="2xl"
-              bg="surface"
-              border="1px solid"
-              borderColor="border"
-              maxW="md"
-              w="full"
-            >
-              <VStack gap={4}>
-                <Text
-                  fontSize="md"
-                  color="fg"
-                  fontWeight="500"
-                  textAlign="center"
-                >
-                  Precisa de ajuda específica?
-                </Text>
-
-                <Link
-                  href={`https://wa.me/${SITE_PHONE.replace(/[^\d]/g, "")}`}
-                  target="_blank"
-                  passHref
-                >
-                  <Button
-                    size="md"
-                    px={6}
-                    py={4}
-                    rounded="xl"
-                    fontWeight="300"
-                    fontSize="md"
-                    variant="outline"
-                    borderColor="blue.500"
-                    color="blue.500"
-                    _hover={{
-                      bg: "blue.50",
-                      _dark: { bg: "blue.500/10" },
-                    }}
-                    _active={{
-                      transform: "scale(0.98)",
-                    }}
-                    transition="all 0.2s ease"
-                    w="full"
-                  >
-                    <MessageCircle size={16} style={{ marginRight: "8px" }} />
-                    Fale conosco no WhatsApp
-                  </Button>
-                </Link>
+                </Box>
               </VStack>
             </Box>
+
           </VStack>
-        </Container>
-      </Box>
+        </Box>
+
+      </VStack>
 
       <Footer />
     </Page>
