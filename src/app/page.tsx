@@ -1,31 +1,24 @@
 import { Metadata } from "next";
-import {
-  SimpleGrid,
-  VStack,
-  Heading,
-  Text,
-} from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
 import { Page } from "@/components/layout/page";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Section } from "@/components/layout/section";
-import { ServiceCard } from "@/components/cards/service-card";
-import { Hero } from "@/components/sections/hero";
-import { TransformationSection } from "@/components/sections/transformation-section";
-import { ServicesSection } from "@/components/sections/services-section";
-import { ProductSlider } from "@/components/sections/product-slider";
-import { PhilosophySection } from "@/components/sections/philosophy-section";
-import { ProcessSection } from "@/components/sections/process-section";
-import { AboutSection } from "@/components/sections/about-section";
-import { CTASection } from "@/components/sections/cta-section";
-import { FAQSection } from "@/components/sections/faq-section";
+import { HeroHome } from "@/components/sections/hero-home";
+import { Plumb } from "@/components/ui/plumb";
+import { EcosystemSection } from "@/components/sections/ecosystem-section";
+import { ProductsSection } from "@/components/sections/products-section";
+import { PillarsSection } from "@/components/sections/pillars-section";
+import { MethodSection } from "@/components/sections/method-section";
+import { IdentitySection } from "@/components/sections/identity-section";
+import { TeamSection } from "@/components/sections/team-section";
+import { CTAFinalSection } from "@/components/sections/cta-final-section";
 
 import { SITE_NAME, SITE_URL } from "@/constants";
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} | Consultoria Estratégica de Tecnologia e IA`,
+  title: `${SITE_NAME} — Maturidade Tecnológica para Empresas que Querem Ir Além`,
   description:
-    "Transforme sua empresa com Inteligência Artificial e Estratégia de Dados. A Shift+G oferece consultoria especializada para elevar eficiência, escala e competitividade.",
+    "Elevamos a maturidade tecnológica da sua organização — consultoria, IA, treinamento, RH e desenvolvimento. Tudo que a transformação exige, lado a lado com você.",
   keywords: [
     "consultoria estratégica tecnologia",
     "inteligência artificial empresarial",
@@ -37,14 +30,15 @@ export const metadata: Metadata = {
     "treinamentos IA",
     "soluções corporativas",
     "consultoria de dados",
-    "machine learning para empresas"
+    "machine learning para empresas",
+    "maturidade tecnológica",
   ],
   alternates: {
     canonical: SITE_URL,
   },
   category: "technology",
   openGraph: {
-    title: `${SITE_NAME} | Consultoria Estratégica de Tecnologia e IA`,
+    title: `${SITE_NAME} — Maturidade Tecnológica para Empresas que Querem Ir Além`,
     description:
       "Estratégia, IA e arquitetura para elevar eficiência, escala e competitividade da sua empresa.",
     type: "website",
@@ -62,7 +56,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} | Consultoria Estratégica de Tecnologia`,
+    title: `${SITE_NAME} — Maturidade Tecnológica`,
     description:
       "Estratégia, IA e arquitetura para elevar eficiência, escala e competitividade.",
     images: ["/og-image.png"],
@@ -80,10 +74,7 @@ export const metadata: Metadata = {
   },
 };
 
-
-
 export default function HomePage() {
-  // Structured Data for SEO
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -158,31 +149,31 @@ export default function HomePage() {
 
       <VStack gap={0} w="full" as="main" align="stretch">
         {/* Hero */}
-        <Hero />
+        <HeroHome />
 
-        {/* Transformation Section (O Que Fazemos) */}
-        <TransformationSection />
+        {/* Divider */}
+        <Plumb />
 
-        {/* Serviços - Bento Grid */}
-        <ServicesSection />
+        {/* Ecossistema — Animated transformation flowchart */}
+        <EcosystemSection />
 
-        {/* Produtos - Seção completa com slider */}
-        <ProductSlider />
+        {/* Produtos */}
+        <ProductsSection />
 
-        {/* Como a Shift+G Pensa Tecnologia - Full viewport */}
-        <PhilosophySection />
+        {/* Três Pilares */}
+        <PillarsSection />
 
-        {/* Como Trabalhamos - Seção visual com números */}
-        <ProcessSection />
+        {/* Método */}
+        <MethodSection />
 
-        {/* Sobre + Liderança unificados */}
-        <AboutSection />
+        {/* Identidade — Origem do nome */}
+        <IdentitySection />
 
-        {/* FAQ Section */}
-        <FAQSection />
+        {/* Time — Fundadores */}
+        <TeamSection />
 
         {/* CTA Final */}
-        <CTASection />
+        <CTAFinalSection />
       </VStack>
 
       <Footer />

@@ -241,7 +241,7 @@ function MegaMenu({
                 <Link key={item.title} href={item.href} passHref legacyBehavior>
                   <ChakraLink
                     p={4}
-                    rounded="xl"
+                    rounded="0"
                     bg="bg.subtle"
                     border="1px"
                     borderColor="border"
@@ -258,7 +258,6 @@ function MegaMenu({
                     <HStack gap={4} align="flex-start">
                       <Box
                         p={3}
-                        rounded="lg"
                         bg="blue.500/10"
                         color="blue.solid"
                         flexShrink={0}
@@ -316,7 +315,6 @@ function MegaMenu({
                     >
                       <ChakraLink
                         p={3}
-                        rounded="lg"
                         bg="transparent"
                         border="1px"
                         borderColor="border/50"
@@ -356,7 +354,6 @@ function MegaMenu({
             {/* CTA */}
             <Box
               p={6}
-              rounded="xl"
               bg="blue.500/10"
               border="1px"
               borderColor="blue.200"
@@ -438,7 +435,6 @@ export function Navbar() {
                     size="sm"
                     px={4}
                     py={2}
-                    rounded="sm"
                     fontSize="md"
                     fontWeight="400"
                     fontFamily="heading"

@@ -102,7 +102,7 @@ export const colors = defineTokens.colors({
     200: { value: "#b1baff" },
     300: { value: "#8a99ff" },
     400: { value: "#5a74ff" },
-    500: { value: "#0057FF" },
+    500: { value: "#0051FF" },
     600: { value: "#003fcd" },
     700: { value: "#0030a2" },
     800: { value: "#002074" },
@@ -110,9 +110,27 @@ export const colors = defineTokens.colors({
     950: { value: "#000934" },
   },
 
+  gold: {
+    50: { value: "#faf6eb" },
+    100: { value: "#f2e9cd" },
+    200: { value: "#e5d49e" },
+    300: { value: "#d4b96b" },
+    400: { value: "#c4a04a" },
+    500: { value: "#b8923a" },
+    600: { value: "#9a7a30" },
+    700: { value: "#7c6227" },
+    800: { value: "#5e4a1d" },
+    900: { value: "#403214" },
+    950: { value: "#201909" },
+  },
+
+  // Off-white and stone backgrounds from the reference
+  off: { value: "#f4f4f1" },
+  stone: { value: "#eceae4" },
+
   // Modern AI-inspired gradients and colors
   gradient: {
-    blue: { value: "linear-gradient(135deg, #0057FF 0%, #00134e 100%)" },
+    blue: { value: "linear-gradient(135deg, #0051FF 0%, #00134e 100%)" },
   },
 
   // Glass morphism colors

@@ -139,9 +139,17 @@ export function Footer() {
                   {SITE_PHONE}
                 </ChakraLink>
               </HStack>
-              <HStack gap={2}>
+              <HStack gap={2} as="address">
                 <MapPin size={16} />
-                <Text fontSize="sm" color="fg.muted">
+                <Text
+                  fontSize="sm"
+                  color="fg.muted"
+                  as={Link}
+                  // @ts-ignore
+                  href="https://share.google/pdwxAqtLixXnOV9Pj"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {SITE_ADDRESS}
                 </Text>
               </HStack>

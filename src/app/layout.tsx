@@ -33,6 +33,11 @@ import "@fontsource/dm-sans/700.css";
 import "@fontsource/dm-sans/800.css";
 import "@fontsource/dm-sans/900.css";
 
+import "@fontsource/dm-serif-display/400.css";
+import "@fontsource/dm-serif-display/400-italic.css";
+
+import "@fontsource-variable/geist-mono";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
