@@ -198,7 +198,7 @@ export default function NotFoundPage() {
                 <HStack gap={6} wrap="wrap" justify="center" fontSize="sm">
                   <Link href="/#solucoes">
                     <Text
-                      color="blue.500"
+                      color="blue.solid"
                       fontWeight="500"
                       _hover={{
                         textDecoration: "underline",

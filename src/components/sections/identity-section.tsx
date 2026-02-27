@@ -94,6 +94,7 @@ export function IdentitySection() {
         opacity={0.06}
         pointerEvents="none"
         color="white"
+        // @ts-ignore
         viewBox="0 0 420 380"
         fill="none"
       >

@@ -173,6 +173,7 @@ export function GeneralContactForm() {
 
         <Box
           as="button"
+          //@ts-ignore
           type="submit"
           mt={4}
           display="inline-flex"
