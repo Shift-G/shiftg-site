@@ -229,6 +229,7 @@ export default function CareersPage() {
 
                   <Box
                     as="a"
+                    // @ts-ignore
                     href="#open-roles"
                     display={{ base: "none", md: "inline-flex" }}
                     alignItems="center"
@@ -385,6 +386,7 @@ export default function CareersPage() {
                   </VStack>
                   <Box
                     as="a"
+                    // @ts-ignore
                     href={`mailto:${CAREERS_EMAIL}?subject=Candidatura: ${job.title}&body=Olá! Segue em anexo meu histórico para a posição de ${job.title}.`}
                     display="inline-flex"
                     alignItems="center"
@@ -428,6 +430,7 @@ export default function CareersPage() {
           </Text>
           <Box
             as="a"
+            // @ts-ignore
             href={`mailto:${CAREERS_EMAIL}?subject=Candidatura Espontânea&body=Nenhuma vaga se aplica, mas vocês precisam olhar esse currículo anexado.`}
             display="inline-flex"
             alignItems="center"

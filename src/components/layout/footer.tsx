@@ -24,6 +24,10 @@ import {
   SITE_PHONE,
   SITE_ADDRESS,
   INSTAGRAM_URL,
+  SITE_CITY,
+  SITE_STATE,
+  SITE_COUNTRY,
+  SITE_ZIP,
 } from "@/constants";
 
 export function Footer() {
@@ -150,7 +154,9 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {SITE_ADDRESS}
+                  {SITE_ADDRESS}<br />
+                  {SITE_CITY}, {SITE_STATE}, {SITE_COUNTRY}<br />
+                  {SITE_ZIP}
                 </Text>
               </HStack>
               <HStack gap={3} mt={2}>

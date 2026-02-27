@@ -1,22 +1,14 @@
 import { Metadata } from "next";
 import {
   Box,
-  Container,
-  VStack,
-  Heading,
-  Text,
-  Button,
+  Grid,
   HStack,
-  Badge,
-  SimpleGrid,
-  Card,
-  Icon,
-  Separator,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
 import { Page } from "@/components/layout/page";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Section } from "@/components/layout/section";
 import {
   AlertTriangle,
   TrendingDown,
@@ -30,119 +22,77 @@ import Link from "next/link";
 import { SITE_NAME, SITE_URL } from "@/constants";
 
 export const metadata: Metadata = {
-  title: "Transformação Digital: Mais do que Tecnologia, uma Estratégia de Sobrevivência",
+  title: `Transformação Digital B2B | ${SITE_NAME}`,
   description:
-    "Descubra como a transformação digital vai além da tecnologia e se torna uma estratégia essencial de sobrevivência para empresas modernas. Entenda os 4 pilares fundamentais e o roteiro prático em 3 passos.",
-  keywords: [
-    "transformação digital",
-    "estratégia empresarial",
-    "eficiência operacional",
-    "business intelligence",
-    "inovação",
-    "cultura data-driven",
-    "processos inteligentes",
-    "experiência do cliente",
-  ],
+    "Descubra como a transformação digital vai muito além do código: é a reconstrução da logística operante e de um fluxo de sobrevivência corporativa.",
+  alternates: {
+    canonical: `${SITE_URL}/insights/transformacao-digital-mais-do-que-tecnologia-uma-estrategia-de-sobrevivencia`,
+  },
   openGraph: {
-    title: "Transformação Digital: Mais do que Tecnologia, uma Estratégia de Sobrevivência",
+    title: "A Reestruturação Tecnológica e Digital",
     description:
-      "Descubra como a transformação digital vai além da tecnologia e se torna uma estratégia essencial de sobrevivência para empresas modernas.",
+      "A sobrevivência B2B ancorada em frameworks consistentes de automação, não apenas na compra empilhada de softwares temporários.",
     url: `${SITE_URL}/insights/transformacao-digital-mais-do-que-tecnologia-uma-estrategia-de-sobrevivencia`,
     type: "article",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Transformação Digital - SHIFT+G",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Transformação Digital: Mais do que Tecnologia, uma Estratégia de Sobrevivência",
-    description:
-      "Descubra como a transformação digital vai além da tecnologia e se torna uma estratégia essencial de sobrevivência para empresas modernas.",
-    images: ["/og-image.png"],
+    siteName: SITE_NAME,
   },
 };
 
 const riskFactors = [
   {
-    title: "Perda de Competitividade",
+    title: "Falência Operacional por Desgaste",
     description:
-      "Concorrentes mais ágeis, que usam dados para entender o cliente e otimizar a operação, saem na frente.",
+      "A fadiga dos times varando a noite em conciliações assíncronas custa um preço gravíssimo ao P&L no longo prazo.",
     icon: TrendingDown,
   },
   {
-    title: "Ineficiência que Custa Caro",
+    title: "Gargalos Intramuros Acelerados",
     description:
-      "Processos manuais e sistemas desconectados geram custos ocultos, consomem tempo valioso da sua equipe e criam gargalos que impedem o crescimento.",
+      "Sistemas ERP antigos amarrados a módulos incompatíveis empurram gargalos que escalam, sugando lucro líquido a cada passo mal executado.",
     icon: AlertTriangle,
   },
   {
-    title: "Experiência do Cliente Defasada",
+    title: "Concorrência e Baixa Fricção",
     description:
-      "Clientes modernos esperam interações rápidas, personalizadas e digitais. Um atendimento lento ou um processo de compra complicado é um convite para que procurem a concorrência.",
+      "A barreira B2B exige SLA rígido. Seu concorrente fecha ordens com robôs via WhatsApp sem fricção burocrática; você perde o lifetime value na prancheta.",
     icon: Users,
   },
   {
-    title: "Decisões no Escuro",
+    title: "Cegueira Analítica",
     description:
-      "Sem dados centralizados e acessíveis, a gestão opera com uma visão parcial da realidade, aumentando os riscos e perdendo oportunidades estratégicas.",
+      "Relatórios da semana passada? A mesa de diretores da sua organização deve ler os dados processados há menos de cinco minutos.",
     icon: BarChart3,
   },
 ];
 
 const pillars = [
   {
-    number: "01",
-    title: "Processos Inteligentes",
+    number: "ALPHA",
+    title: "Design de Automação Fluida",
     description:
-      "É sobre redesenhar workflows para eliminar atritos. Significa automatizar tarefas repetitivas, integrar sistemas para que os dados fluam livremente e dar à sua equipe as ferramentas certas para que possam focar no que realmente importa: o trabalho estratégico.",
+      "Ignorar redesenhos antes do deploy tecnológico é jogar dinheiro fora. Automatizar um sistema falho é acelerar os bloqueios. Nós reescrevemos o fluxo completo no diagrama cru e o preenchemos de robôs e integrações severas.",
     icon: Zap,
   },
   {
-    number: "02",
-    title: "Cultura Orientada a Dados",
+    number: "BRAVO",
+    title: "Data Lake Controlado",
     description:
-      "É a mudança de uma cultura baseada em 'achismo' para uma que valoriza a evidência. Significa capacitar gestores com dashboards intuitivos e insights preditivos, tornando as decisões mais rápidas, precisas e confiáveis em todos os níveis da organização.",
+      "Extração centralizada: Sem 'achismos' nas quartas-feiras. Tabelas interligadas injetadas sob métricas preditivas apontando qual setor exige mais capex agora, em qual frente investir na próxima semana, etc.",
     icon: BarChart3,
   },
   {
-    number: "03",
-    title: "Foco na Experiência do Cliente (CX)",
+    number: "CHARLIE",
+    title: "Máquina de Aceleração CX",
     description:
-      "É usar a tecnologia para entender e servir melhor seu cliente. Desde um chatbot que resolve dúvidas instantaneamente até a análise de dados para prever suas necessidades, o objetivo é criar uma jornada fluida e memorável que gera lealdade.",
+      "No final, tudo é entregue ao cliente através de fricção-zero na camada visual. De LLMs processando dúvidas no suporte de Tier 1 até bots programando onboarding imediato em 10 segundos.",
     icon: Target,
   },
   {
-    number: "04",
-    title: "Pessoas e Colaboração",
+    number: "DELTA",
+    title: "Alinhamento e Deploy Humano",
     description:
-      "A melhor tecnologia do mundo é inútil se as pessoas não a adotarem. A transformação bem-sucedida envolve capacitar os colaboradores, quebrar silos entre departamentos e promover um ambiente onde a inovação e a adaptação são a norma.",
+      "Sistemas pesados assustam amadores. Destruímos silos. Uma interface deve ser cirúrgica e limpa a tal ponto em que a corporação respire com ela, tornando o ambiente coeso.",
     icon: Users,
-  },
-];
-
-const steps = [
-  {
-    number: "01",
-    title: "Diagnóstico – Onde Estamos?",
-    description:
-      "O ponto de partida é um mergulho profundo na sua operação atual. Quais são os maiores gargalos? Onde os dados estão escondidos? Qual o nível de maturidade digital de cada área? Sem um diagnóstico preciso, qualquer investimento é um tiro no escuro.",
-  },
-  {
-    number: "02",
-    title: "Estratégia – Para Onde Vamos?",
-    description:
-      "Com o diagnóstico em mãos, é hora de traçar o mapa. Definir prioridades claras (o que trará mais impacto com menor esforço?), criar um roadmap de implementação e estabelecer os KPIs que medirão o sucesso. A estratégia garante que cada ação esteja alinhada aos objetivos maiores do negócio.",
-  },
-  {
-    number: "03",
-    title: "Execução – Como Chegamos Lá?",
-    description:
-      "É aqui que a estratégia se torna realidade. Seja através do desenvolvimento de um software sob medida, da implementação de uma plataforma de dados ou da automação de um workflow crítico, a execução precisa ser ágil. Começar com Provas de Conceito (PoCs) ou um Produto Mínimo Viável (MVP) é a forma mais inteligente de validar ideias, gerar resultados rápidos e ajustar o curso conforme necessário.",
   },
 ];
 
@@ -151,282 +101,153 @@ export default function TransformacaoDigitalBlogPost() {
     <Page>
       <Navbar />
 
-      {/* Hero Section */}
-      <Section py={{ base: 16, md: 20 }}>
-        <Container maxW="4xl">
-          <VStack gap={6} textAlign="center">
-            <HStack flexWrap="wrap" justify="center" gap={2}>
-              <Badge colorPalette="blue" variant="surface">
-                Transformação Digital
-              </Badge>
-              <Badge colorPalette="blue" variant="surface">
-                Estratégia
-              </Badge>
-              <Badge colorPalette="blue" variant="surface">
-                Inovação
-              </Badge>
+      <VStack gap={0} w="full" as="main" align="stretch" bg="off">
+
+        {/* ── Header ── */}
+        <Box
+          bg="stone"
+          px={{ base: 6, md: "60px", lg: "112px" }}
+          pt={{ base: "140px", md: "180px" }}
+          pb={{ base: 16, md: "80px" }}
+          borderBottom="1px solid"
+          borderColor="blackAlpha.200"
+          position="relative"
+        >
+          {/* Subtle math/grid pattern */}
+          <Box
+            position="absolute"
+            inset={0}
+            backgroundImage="linear-gradient(#00000004 1px, transparent 1px), linear-gradient(90deg, #00000004 1px, transparent 1px)"
+            backgroundSize="40px 40px"
+            pointerEvents="none"
+          />
+
+          <VStack align="flex-start" gap={6} maxW="900px" mx="auto" position="relative" zIndex={2}>
+            <HStack gap={3}>
+              <Box w="6px" h="6px" bg="blue.solid" />
+              <Text fontFamily="mono" fontSize="2xs" fontWeight={600} letterSpacing="0.1em" textTransform="uppercase" color="blue.solid">
+                Report de Inteligência // Digital Core
+              </Text>
             </HStack>
-            
-            <Heading
-              as="h1"
-              size={{ base: "2xl", md: "3xl", lg: "4xl" }}
-              fontWeight="400"
-              color="fg"
-              lineHeight="shorter"
-              letterSpacing="tight"
-            >
-              Transformação Digital: Mais do que Tecnologia, uma Estratégia de Sobrevivência
-            </Heading>
 
             <Text
-              fontSize={{ base: "lg", md: "xl" }}
-              color="fg.muted"
-              lineHeight="tall"
-              maxW="3xl"
+              as="h1"
+              fontSize={{ base: "40px", md: "56px", lg: "70px" }}
+              fontWeight={800}
+              lineHeight={1}
+              letterSpacing="-2px"
+              color="fg"
             >
-              Planilhas intermináveis que viram a noite para serem consolidadas. Sistemas que não conversam entre si, forçando o retrabalho manual. Decisões importantes baseadas mais em intuição do que em dados concretos.
+              Extrema Sobrevivência na Nova {" "}
+              <Text as="span" fontFamily="serif" fontWeight={400} fontStyle="italic" color="blue.solid">
+                Era da Informação.
+              </Text>
             </Text>
 
-            <Text
-              fontSize={{ base: "md", md: "lg" }}
-              color="fg.muted"
-              lineHeight="tall"
-              maxW="2xl"
-            >
-              Se esse cenário soa familiar, sua empresa não está sozinha. Mas em um mundo onde a agilidade define os vencedores, operar dessa forma não é mais uma opção.
+            <Text fontSize="lg" color="fg.muted" lineHeight={1.8}>
+              Mapeamento sobre os 4 Pilares Inquebráveis: não se baseie apenas na pilha técnica (Stack), reconstrua a logística corporativa do zero através de um modelo mental agressivo.
             </Text>
           </VStack>
-        </Container>
-      </Section>
+        </Box>
 
-      {/* Intro Section */}
-      <Section bg="bg.subtle">
-        <Container maxW="4xl">
-          <VStack gap={6} textAlign="center">
-            <Text
-              fontSize={{ base: "lg", md: "xl" }}
-              color="fg"
-              lineHeight="tall"
-              fontWeight="500"
-            >
-              O termo "Transformação Digital" é frequentemente jogado em reuniões e apresentações, mas seu significado real muitas vezes se perde. Muitos o associam a projetos de TI complexos ou à adoção de um software da moda.
-            </Text>
-            
-            <Text
-              fontSize={{ base: "lg", md: "xl" }}
-              color="fg.muted"
-              lineHeight="tall"
-            >
-              Na Shift+G, vemos de outra forma: é uma redefinição fundamental de como sua empresa opera, compete e entrega valor aos seus clientes.
+        {/* ── Content Body ── */}
+        <Box px={{ base: 6, md: 10 }} py={{ base: 16, md: 24 }}>
+          <VStack maxW="800px" mx="auto" align="stretch" gap={10}>
+            <Text fontSize="lg" color="fg" lineHeight={1.8} fontWeight={500}>
+              A expressão 'Transformação Digital' soa diluída repetida à exaustão por consultorias padrão. Quando aplicamos este modelo mental na Shift+G não queremos forçar assinaturas mensais de dezenas de SaaS (Software As a Service) coloridos e sim desmontar o veículo organizacional com a engenharia reversa mais pura e refazê-lo.
             </Text>
 
-            <Box
-              p={6}
-              bg="blue.50"
-              _dark={{ bg: "blue.950" }}
-              borderRadius="lg"
-              borderLeft="4px solid"
-              borderColor="blue.500"
-            >
-              <Text
-                fontSize={{ base: "lg", md: "xl" }}
-                fontWeight="300"
-                color="blue.700"
-                _dark={{ color: "blue.300" }}
-                textAlign="center"
-              >
-                Não se trata de digitalizar o caos. Trata-se de usar a tecnologia como um catalisador para ser mais inteligente, mais rápido e mais resiliente.
+            <Text fontSize="md" color="fg.muted" lineHeight={1.8}>
+              Compram-se módulos complexos para resolver fluxos internos simples — adicionando ruídos impagáveis e redundâncias mortais à operação. Transformação não é digitalização compulsiva do lixo prévio de dados, é a destruição da engrenagem enferrujada e substituição desta por pipelines invisíveis e autoescaláveis.
+            </Text>
+
+            {/* Box Callout */}
+            <Box p={8} bg="white" border="1px solid" borderColor="blackAlpha.200" position="relative">
+              <Box position="absolute" top={0} left={0} w="4px" h="full" bg="blue.solid" />
+              <Text fontSize="lg" fontWeight={600} color="fg" lineHeight={1.6}>
+                Evitamos a falácia dos pacotes "ágil" pré-feitos. Operações verdadeiramente perigosas no mercado B2B constroem soluções robustas dedicadas ao estresse — desenhando processos com IA para matar gargalos em 4 macros.
               </Text>
             </Box>
-          </VStack>
-        </Container>
-      </Section>
 
-      {/* Risk Factors Section */}
-      <Section
-        title="Por que a Inércia se Tornou o Maior Risco do seu Negócio?"
-        subtitle="Ignorar a transformação digital hoje é como uma empresa do século XX que se recusava a usar o telefone. As consequências da inércia são claras e cada vez mais aceleradas:"
-        centered
-      >
-        <SimpleGrid columns={{ base: 1, md: 2 }} gap={6}>
-          {riskFactors.map((risk) => (
-            <Card.Root key={risk.title} variant="outline">
-              <Card.Body p={6}>
-                <VStack gap={4} alignItems="flex-start">
-                  <HStack>
-                    <Icon color="red.500" size="lg">
-                      <risk.icon />
-                    </Icon>
-                    <Heading as="h3" size="md" color="fg">
-                      {risk.title}
-                    </Heading>
-                  </HStack>
-                  <Text color="fg.muted" lineHeight="tall">
-                    {risk.description}
-                  </Text>
-                </VStack>
-              </Card.Body>
-            </Card.Root>
-          ))}
-        </SimpleGrid>
-      </Section>
+            {/* Inercia Risk Grid */}
+            <Box pt={8}>
+              <Text as="h2" fontSize="2xl" fontWeight={800} mb={6} color="fg">
+                A Inércia Institucional Corrói Patrimônio
+              </Text>
 
-      {/* Pillars Section */}
-      <Section
-        title="Os 4 Pilares da Verdadeira Transformação Digital"
-        subtitle="Uma transformação bem-sucedida não se apoia em uma única tecnologia, mas em uma mudança integrada que equilibra quatro pilares essenciais:"
-        centered
-        bg="bg.subtle"
-      >
-        <VStack gap={8}>
-          {pillars.map((pillar, index) => (
-            <Box key={pillar.title} w="full">
-              <Card.Root variant="outline" bg="bg">
-                <Card.Body p={8}>
-                  <HStack gap={6} alignItems="flex-start">
-                    <VStack gap={4} alignItems="center" minW="80px">
-                      <Text
-                        fontSize="3xl"
-                        fontWeight="400"
-                        color="blue.500"
-                        lineHeight="1"
-                      >
+              <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap="1px" bg="blackAlpha.200" border="1px solid" borderColor="blackAlpha.200">
+                {riskFactors.map((risk, i) => (
+                  <VStack key={i} bg="white" p={8} align="flex-start" gap={4}>
+                    <Box color="red.600"><risk.icon size={24} /></Box>
+                    <Text fontSize="lg" fontWeight={800}>{risk.title}</Text>
+                    <Text fontSize="sm" color="fg.muted" lineHeight={1.6}>{risk.description}</Text>
+                  </VStack>
+                ))}
+              </Grid>
+            </Box>
+
+            {/* Pilares */}
+            <Box pt={10} borderTop="1px solid" borderColor="blackAlpha.200">
+              <Text as="h2" fontSize="2xl" fontWeight={800} mb={8} color="fg">
+                Os Quatro Vetores do Core Brutal
+              </Text>
+              <Text fontSize="md" color="fg.muted" lineHeight={1.8} mb={8}>
+                Operar num nível militar nos projetos não significa abandonar a intuição humana, e sim livrá-la da mediocridade do data entry repetitivo entregando-a focos hiper-analíticos (estratégia global B2B, inovação pura, alianças pesadas).
+              </Text>
+
+              <VStack align="stretch" gap={8}>
+                {pillars.map((pillar) => (
+                  <Box key={pillar.title} bg="white" border="1px solid" borderColor="blackAlpha.200" p={{ base: 8, md: 10 }}>
+                    <HStack gap={6} mb={6} align="flex-start">
+                      <Text fontFamily="mono" fontSize="2xl" fontWeight={800} color="blackAlpha.300" transform="rotate(-90deg)" transformOrigin="center left" position="absolute" mt={8} ml={-4} display={{ base: "none", md: "block" }}>
                         {pillar.number}
                       </Text>
-                      <Icon color="blue.500" size="xl">
-                        <pillar.icon />
-                      </Icon>
-                    </VStack>
-                    <VStack gap={4} alignItems="flex-start" flex={1}>
-                      <Heading as="h3" size="lg" color="fg">
-                        {pillar.title}
-                      </Heading>
-                      <Text color="fg.muted" lineHeight="tall" fontSize="md">
-                        {pillar.description}
-                      </Text>
-                    </VStack>
-                  </HStack>
-                </Card.Body>
-              </Card.Root>
-              {index < pillars.length - 1 && (
-                <Box textAlign="center" py={4}>
-                  <Icon color="blue.300" size="sm">
-                    <ArrowRight />
-                  </Icon>
-                </Box>
-              )}
+                      <Box pl={{ base: 0, md: 8 }} flex={1}>
+                        <HStack gap={4} mb={3}>
+                          <Box color="blue.solid"><pillar.icon size={24} /></Box>
+                          <Text fontSize="xl" fontWeight={800}>{pillar.title}</Text>
+                        </HStack>
+                        <Text fontSize="sm" color="fg.muted" lineHeight={1.7}>
+                          {pillar.description}
+                        </Text>
+                      </Box>
+                    </HStack>
+                  </Box>
+                ))}
+              </VStack>
             </Box>
-          ))}
-        </VStack>
-      </Section>
 
-      {/* Roadmap Section */}
-      <Section
-        title="Como Começar? Um Roteiro Prático em 3 Passos"
-        subtitle="A jornada pode parecer complexa, mas ela começa com um primeiro passo claro e estruturado."
-        centered
-      >
-        <VStack gap={6}>
-          {steps.map((step, index) => (
-            <Box key={step.title} w="full">
-              <Card.Root variant="outline">
-                <Card.Body p={8}>
-                  <HStack gap={6} alignItems="flex-start">
-                    <Box
-                      minW="60px"
-                      h="60px"
-                      bg="blue.500"
-                      color="white"
-                      borderRadius="full"
-                      display="flex"
-                      alignItems="center"
-                      justifyContent="center"
-                      fontSize="xl"
-                      fontWeight="300"
-                    >
-                      {step.number}
-                    </Box>
-                    <VStack gap={4} alignItems="flex-start" flex={1}>
-                      <Heading as="h3" size="lg" color="fg">
-                        {step.title}
-                      </Heading>
-                      <Text color="fg.muted" lineHeight="tall" fontSize="md">
-                        {step.description}
-                      </Text>
-                    </VStack>
-                  </HStack>
-                </Card.Body>
-              </Card.Root>
-              {index < steps.length - 1 && (
-                <Box textAlign="center" py={4}>
-                  <Icon color="blue.300" size="sm">
-                    <ArrowRight />
-                  </Icon>
+            {/* Conclusion Box CTA */}
+            <Box mt={12} bg="fg" color="white" p={{ base: 8, md: 12 }} textAlign="center">
+              <Text fontSize="2xl" fontWeight={800} mb={4}>Cortes Precisos na Jornada Corporativa</Text>
+              <Text fontSize="md" color="whiteAlpha.800" maxW="600px" mx="auto" mb={8} lineHeight={1.6}>
+                Evite ser mais uma corporação esmagada sob milhões do P&L estocados em ineficiência burocrática por recusa à base tecnológica de nova esteira.
+              </Text>
+              <Link href="/diagnostico-inteligente">
+                <Box
+                  display="inline-flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  gap="10px"
+                  bg="blue.solid"
+                  color="white"
+                  px="32px"
+                  py="16px"
+                  fontWeight={600}
+                  fontSize="sm"
+                  transition="all 0.2s"
+                  _hover={{ bg: "blue.fg" }}
+                >
+                  Acessar o Portal de Diagnósticos
+                  <ArrowRight size={14} />
                 </Box>
-              )}
+              </Link>
             </Box>
-          ))}
-        </VStack>
-      </Section>
 
-      {/* Conclusion Section */}
-      <Section bg="bg.subtle">
-        <Container maxW="4xl">
-          <VStack gap={8} textAlign="center">
-            <Heading
-              as="h2"
-              size={{ base: "xl", md: "2xl" }}
-              color="fg"
-              fontWeight="300"
-            >
-              A Jornada é Contínua, o Parceiro é Fundamental
-            </Heading>
-            
-            <Text
-              fontSize={{ base: "lg", md: "xl" }}
-              color="fg.muted"
-              lineHeight="tall"
-            >
-              A transformação digital não é um projeto com início, meio e fim. É uma jornada contínua de melhoria e adaptação.
-            </Text>
-
-            <Text
-              fontSize={{ base: "md", md: "lg" }}
-              color="fg.muted"
-              lineHeight="tall"
-              maxW="3xl"
-            >
-              Navegar por essa jornada exige mais do que apenas tecnologia; exige um parceiro com visão de negócio, expertise técnica e a capacidade de não apenas planejar, mas executar. Um parceiro que entende que o objetivo final não é implementar um sistema, mas sim destravar o potencial da sua empresa.
-            </Text>
-
-            <Separator />
-
-            <VStack gap={4}>
-              <Heading
-                as="h3"
-                size="lg"
-                color="fg"
-                fontWeight="300"
-              >
-                Pronto para dar o primeiro passo e entender em que estágio de maturidade digital sua empresa se encontra?
-              </Heading>
-
-              <Button
-                asChild
-                size="lg"
-                colorPalette="blue"
-                variant="solid"
-              >
-                <Link href="/transformacao-digital">
-                  Converse com nossos especialistas
-                  <ArrowRight />
-                </Link>
-              </Button>
-            </VStack>
           </VStack>
-        </Container>
-      </Section>
+        </Box>
 
+      </VStack>
       <Footer />
     </Page>
   );

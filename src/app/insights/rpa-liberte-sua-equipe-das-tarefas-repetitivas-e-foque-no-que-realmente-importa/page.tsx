@@ -1,140 +1,107 @@
 import { Metadata } from "next";
 import {
   Box,
-  Container,
-  VStack,
-  Heading,
-  Text,
-  Button,
+  Grid,
   HStack,
-  Badge,
-  SimpleGrid,
-  Card,
-  Icon,
-  Separator,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
 import { Page } from "@/components/layout/page";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Section } from "@/components/layout/section";
 import {
   Bot,
-  Clock,
-  Target,
   TrendingUp,
+  Target,
   Users,
   Shield,
-  BarChart3,
   ArrowRight,
   Zap,
-  FileText,
   DollarSign,
+  BarChart3,
 } from "lucide-react";
 import Link from "next/link";
 import { SITE_NAME, SITE_URL } from "@/constants";
 
 export const metadata: Metadata = {
-  title: "RPA: Liberte sua Equipe das Tarefas Repetitivas e Foque no que Realmente Importa",
+  title: `RPA: Automação Absoluta | ${SITE_NAME}`,
   description:
-    "Descubra como o RPA (Robotic Process Automation) pode transformar sua operação, eliminando tarefas repetitivas e liberando sua equipe para atividades estratégicas. Entenda os benefícios, casos de uso e como combinar RPA com IA.",
-  keywords: [
-    "RPA",
-    "automação de processos",
-    "robotic process automation",
-    "eficiência operacional",
-    "redução de custos",
-    "transformação digital",
-    "automação inteligente",
-    "hiperautomação",
-  ],
+    "Descubra como o RPA de performance em conjunto à IA pode eliminar operações robóticas dos ombros humanos e fatiar despesas contábeis.",
+  alternates: {
+    canonical: `${SITE_URL}/insights/rpa-liberte-sua-equipe-das-tarefas-repetitivas-e-foque-no-que-realmente-importa`,
+  },
   openGraph: {
-    title: "RPA: Liberte sua Equipe das Tarefas Repetitivas e Foque no que Realmente Importa",
+    title: "Hiperautomação via RPA + I.A.",
     description:
-      "Descubra como o RPA pode transformar sua operação, eliminando tarefas repetitivas e liberando sua equipe para atividades estratégicas.",
+      "A aniquilação definitiva das rotinas robóticas através de engines RPA customizadas e blindadas pela inteligência computacional.",
     url: `${SITE_URL}/insights/rpa-liberte-sua-equipe-das-tarefas-repetitivas-e-foque-no-que-realmente-importa`,
     type: "article",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "RPA e Automação de Processos - SHIFT+G",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "RPA: Liberte sua Equipe das Tarefas Repetitivas e Foque no que Realmente Importa",
-    description:
-      "Descubra como o RPA pode transformar sua operação, eliminando tarefas repetitivas e liberando sua equipe para atividades estratégicas.",
-    images: ["/og-image.png"],
+    siteName: SITE_NAME,
   },
 };
 
 const useCases = [
   {
-    title: "Financeiro e Contábil",
+    title: "Mesa Financeira e Controladoria",
     icon: DollarSign,
     examples: [
-      "Processamento de contas a pagar e a receber",
-      "Conciliação bancária e de cartões de crédito",
-      "Geração automática de relatórios financeiros e de fechamento",
+      "Leitura cega de contas a pagar sob arquiteturas assíncronas",
+      "Puxadas massivas de relatórios para conciliação em múltiplos CNPJs",
+      "Processos D-1 gerados instantaneamente sem intervenção às 03:00 da manhã.",
     ],
   },
   {
-    title: "Recursos Humanos (RH)",
+    title: "RH & Gestão Analítica da Base",
     icon: Users,
     examples: [
-      "Processos de onboarding (criação de logins, envio de e-mails de boas-vindas)",
-      "Atualização de dados de funcionários em diferentes sistemas",
-      "Processamento da folha de pagamento e gestão de benefícios",
+      "Onboarding: Acesso preditivo completo e criação de usuários com perfis prévios",
+      "Atualização assíncrona cruzada entre a folha ADP, o software de performance e a rede intraweb",
     ],
   },
   {
-    title: "Operações e Logística",
+    title: "Engenharia Logística Subjacente",
     icon: BarChart3,
     examples: [
-      "Processamento de pedidos de compra e venda",
-      "Rastreamento de remessas e atualização de status",
-      "Gestão e atualização de inventário em sistemas",
+      "Despacho cruzado (Drop / CrossDock) autônomo baseado em métrica ML",
+      "Ocorrências em transportadoras detectadas e reportadas à matriz via RPA sem necessidade de painel."
     ],
   },
 ];
 
 const benefits = [
   {
-    title: "ROI Rápido e Mensurável",
-    description: "A economia gerada pela automação de horas de trabalho é direta e fácil de calcular. Projetos de RPA costumam se pagar em poucos meses.",
+    title: "ROI Acelerado na Primeira Milha",
+    description: "Cada processo estático é dinheiro sangrando à base de custo-hora por operador. Extirpou as horas, lucrou integralmente.",
     icon: TrendingUp,
   },
   {
-    title: "Aumento Exponencial da Eficiência",
-    description: "Um robô pode executar uma tarefa em uma fração do tempo que um humano levaria, liberando gargalos e acelerando ciclos de negócio inteiros.",
+    title: "Torque e Eficiência Desenfreada",
+    description: "Sem cansaço ocular, sem intervalo de descanso, taxa de processamento de dezenas a centenas de tarefas/s em VM clusterizada.",
     icon: Zap,
   },
   {
-    title: "Qualidade e Precisão (Erro Zero)",
-    description: "Elimina erros de digitação e falhas humanas em processos críticos, garantindo a integridade dos seus dados.",
+    title: "Latência ou Erro: Zero",
+    description: "O Copy/Paste humano falha à taxa de exaustão, custando milhões em devoluções. Máquinas em pipeline não faturam errado o CTe.",
     icon: Target,
   },
   {
-    title: "Satisfação e Valorização da Equipe",
-    description: "Ao remover as tarefas monótonas, você permite que sua equipe foque em análise, estratégia e interação com clientes — atividades de maior valor agregado.",
+    title: "Alívio C-Level e Escala Tática",
+    description: "Ao demitir o funcionário virtual (o humano que só preenche planilhas), você o aloca estrategicamente para desenhar novas engrenagens nas Key-Accounts vitais.",
     icon: Users,
   },
   {
-    title: "Compliance e Auditoria Simplificados",
-    description: "Cada passo executado por um robô é registrado, criando um log completo e rastreável de todas as atividades.",
+    title: "Malha de Logs Intransponível (Compliance)",
+    description: "RPA não comete desvios éticos em sistemas bancários, emitindo footprints em cada cursor num Datawarehouse perfeitamente rastreável.",
     icon: Shield,
   },
 ];
 
 const rpaCapabilities = [
-  "Clica em botões",
-  "Preenche formulários",
-  "Copia e cola dados",
-  "Abre sistemas e aplicativos",
-  "Lê e-mails e manipula arquivos",
+  "Aciona Gatilhos do Windows Server",
+  "Preenche DOMS em navegadores Web",
+  "Opera Legacy Mainframes via SSH",
+  "Leitura de Arrays pesados no Excel",
+  "Anexação massiva e envios SMTP"
 ];
 
 export default function RPABlogPost() {
@@ -142,384 +109,173 @@ export default function RPABlogPost() {
     <Page>
       <Navbar />
 
-      {/* Hero Section */}
-      <Section py={{ base: 16, md: 20 }}>
-        <Container maxW="4xl">
-          <VStack gap={6} textAlign="center">
-            <HStack flexWrap="wrap" justify="center" gap={2}>
-              <Badge colorPalette="blue" variant="surface">
-                RPA
-              </Badge>
-              <Badge colorPalette="blue" variant="surface">
-                Automação
-              </Badge>
-              <Badge colorPalette="blue" variant="surface">
-                Eficiência Operacional
-              </Badge>
+      <VStack gap={0} w="full" as="main" align="stretch" bg="off">
+
+        {/* ── Header ── */}
+        <Box
+          bg="stone"
+          px={{ base: 6, md: "60px", lg: "112px" }}
+          pt={{ base: "140px", md: "180px" }}
+          pb={{ base: 16, md: "80px" }}
+          borderBottom="1px solid"
+          borderColor="blackAlpha.200"
+          position="relative"
+        >
+          {/* Subtle math/grid pattern */}
+          <Box
+            position="absolute"
+            inset={0}
+            backgroundImage="linear-gradient(#00000004 1px, transparent 1px), linear-gradient(90deg, #00000004 1px, transparent 1px)"
+            backgroundSize="40px 40px"
+            pointerEvents="none"
+          />
+
+          <VStack align="flex-start" gap={6} maxW="900px" mx="auto" position="relative" zIndex={2}>
+            <HStack gap={3}>
+              <Box w="6px" h="6px" bg="blue.solid" />
+              <Text fontFamily="mono" fontSize="2xs" fontWeight={600} letterSpacing="0.1em" textTransform="uppercase" color="blue.solid">
+                Report de Inteligência // RPA Engine
+              </Text>
             </HStack>
-            
-            <Heading
-              as="h1"
-              size={{ base: "2xl", md: "3xl", lg: "4xl" }}
-              fontWeight="400"
-              color="fg"
-              lineHeight="shorter"
-              letterSpacing="tight"
-            >
-              RPA: Liberte sua Equipe das Tarefas Repetitivas e Foque no que Realmente Importa
-            </Heading>
 
             <Text
-              fontSize={{ base: "lg", md: "xl" }}
-              color="fg.muted"
-              lineHeight="tall"
-              maxW="3xl"
+              as="h1"
+              fontSize={{ base: "40px", md: "56px", lg: "70px" }}
+              fontWeight={800}
+              lineHeight={1}
+              letterSpacing="-2px"
+              color="fg"
             >
-              Copiar dados de uma planilha para um sistema. Colar informações de um e-mail em um CRM. Baixar relatórios, anexar em um e-mail e enviar para uma lista de pessoas. Todos os dias. Repetidamente.
+              Aniquilação Imediata da {" "}
+              <Text as="span" fontFamily="serif" fontWeight={400} fontStyle="italic" color="blue.solid">
+                Burocracia Manual.
+              </Text>
+            </Text>
+
+            <Text fontSize="lg" color="fg.muted" lineHeight={1.8}>
+              Deixe máquinas conduzirem tarefas de máquinas. Alinhe robôs automatizados em suas interfaces corporativas e expulse os gargalos crônicos do sistema.
             </Text>
           </VStack>
-        </Container>
-      </Section>
+        </Box>
 
-      {/* Problem Section */}
-      <Section bg="bg.subtle">
-        <Container maxW="4xl">
-          <VStack gap={6} textAlign="center">
-            <Text
-              fontSize={{ base: "lg", md: "xl" }}
-              color="fg"
-              lineHeight="tall"
-              fontWeight="500"
-            >
-              Essa rotina manual e repetitiva não é apenas tediosa; ela é um ladrão silencioso de produtividade, um convite a erros humanos e um obstáculo ao crescimento do seu negócio.
-            </Text>
-            
-            <Text
-              fontSize={{ base: "lg", md: "xl" }}
-              color="fg.muted"
-              lineHeight="tall"
-            >
-              E se você pudesse delegar todas essas tarefas a um "funcionário digital" que trabalha 24 horas por dia, 7 dias por semana, sem se cansar e com 100% de precisão?
+        {/* ── Content Body ── */}
+        <Box px={{ base: 6, md: 10 }} py={{ base: 16, md: 24 }}>
+          <VStack maxW="800px" mx="auto" align="stretch" gap={10}>
+            <Text fontSize="lg" color="fg" lineHeight={1.8} fontWeight={500}>
+              Copiar strings de um PDF e colá-las no ERP base. Puxar as estatísticas por ID semanal em portais desconexos, aglutiná-las, rodar uma macro e encaminhá-las via intranet. Todas as rotinas que não dependem da criatividade humana são lixo metabólico da organização moderna, drenando performance e o P&L inteiro em silêncio.
             </Text>
 
-            <Box
-              p={6}
-              bg="blue.50"
-              _dark={{ bg: "blue.950" }}
-              borderRadius="lg"
-              borderLeft="4px solid"
-              borderColor="blue.500"
-            >
-              <Text
-                fontSize={{ base: "lg", md: "xl" }}
-                fontWeight="300"
-                color="blue.700"
-                _dark={{ color: "blue.300" }}
-                textAlign="center"
-              >
-                Bem-vindo ao mundo do RPA (Robotic Process Automation), o primeiro passo, e um dos mais impactantes, na jornada de automação inteligente da sua empresa.
+            <Text fontSize="md" color="fg.muted" lineHeight={1.8}>
+              E se sua equipe executiva pudesse apenas liderar? Um operador digital (bot RPA embarcado em Virtual Machine) jamais se dispersa. Ele mapeia os pixels e coletores de interface do seu sistema velho e traciona 24hrs de produtividade letal entregando taxas zero-error nas tabelas finais.
+            </Text>
+
+            {/* Box Callout */}
+            <Box p={8} bg="white" border="1px solid" borderColor="blackAlpha.200" position="relative">
+              <Box position="absolute" top={0} left={0} w="4px" h="full" bg="blue.solid" />
+              <Text fontSize="lg" fontWeight={600} color="fg" lineHeight={1.6}>
+                O cenário RPA no B2B atual ignora processos artesanais e vai direto à fonte. Você aponta uma regra, nós alocamos uma instância Serverless de RPA, e o processo ocorre assincronamente (Invisível aos seus olhos) a milissegundos.
               </Text>
             </Box>
-          </VStack>
-        </Container>
-      </Section>
 
-      {/* What is RPA Section */}
-      <Section
-        title="O que é, Exatamente, o RPA?"
-        subtitle="Esqueça os robôs de metal dos filmes de ficção científica. O RPA é um robô de software, um 'trabalhador digital' que você treina para executar tarefas baseadas em regras em qualquer sistema de computador."
-        centered
-      >
-        <VStack gap={8}>
-          <Text
-            fontSize={{ base: "md", md: "lg" }}
-            color="fg.muted"
-            lineHeight="tall"
-            textAlign="center"
-            maxW="3xl"
-          >
-            Pense nele como um assistente virtual que opera a interface do usuário (a tela do computador) da mesma forma que uma pessoa faria:
-          </Text>
+            {/* Core capabilities */}
+            <Box pt={8}>
+              <Text as="h2" fontSize="2xl" fontWeight={800} mb={6} color="fg">
+                Mapeamento Brutal de Interfaces
+              </Text>
+              <Text fontSize="md" color="fg.muted" lineHeight={1.8} mb={6}>
+                Com o framework da Shift+G operante, não precisamos de API abertas dos portais antigos (embora favoreçam). Nossos extratores dissecam elementos renderizados de tela e executam a regra corporativa:
+              </Text>
 
-          <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} gap={4} w="full">
-            {rpaCapabilities.map((capability) => (
-              <Card.Root key={capability} variant="outline">
-                <Card.Body p={4} textAlign="center">
-                  <Icon color="blue.500" size="lg" mb={3}>
-                    <Bot />
-                  </Icon>
-                  <Text fontWeight="300" color="fg" fontSize="sm">
-                    {capability}
-                  </Text>
-                </Card.Body>
-              </Card.Root>
-            ))}
-          </SimpleGrid>
-
-          <Text
-            fontSize={{ base: "lg", md: "xl" }}
-            color="fg"
-            lineHeight="tall"
-            fontWeight="300"
-            textAlign="center"
-          >
-            A grande vantagem é que ele faz tudo isso de forma mais rápida, sem erros e sem precisar de pausas.
-          </Text>
-
-          <Box
-            p={6}
-            bg="yellow.50"
-            _dark={{ bg: "yellow.950" }}
-            borderRadius="lg"
-            borderLeft="4px solid"
-            borderColor="yellow.500"
-          >
-            <Text
-              fontSize={{ base: "md", md: "lg" }}
-              color="yellow.700"
-              _dark={{ color: "yellow.300" }}
-              lineHeight="tall"
-            >
-              <strong>Importante:</strong> RPA não é o mesmo que Inteligência Artificial. Enquanto o RPA é o mestre em seguir instruções (as "mãos" da operação), a IA é capaz de aprender e tomar decisões (o "cérebro"). A magia, como veremos, acontece quando os dois trabalham juntos.
-            </Text>
-          </Box>
-        </VStack>
-      </Section>
-
-      {/* Use Cases Section */}
-      <Section
-        title="Onde o RPA Pode Gerar Impacto Imediato?"
-        subtitle="A beleza do RPA está em sua aplicabilidade em praticamente qualquer departamento que lide com processos digitais repetitivos."
-        centered
-        bg="bg.subtle"
-      >
-        <VStack gap={8}>
-          {useCases.map((useCase) => (
-            <Card.Root key={useCase.title} variant="outline" w="full">
-              <Card.Body p={8}>
-                <VStack gap={6} alignItems="flex-start">
-                  <HStack gap={4}>
-                    <Icon color="blue.500" size="xl">
-                      <useCase.icon />
-                    </Icon>
-                    <Heading as="h3" size="lg" color="fg">
-                      {useCase.title}
-                    </Heading>
+              <VStack align="stretch" gap="1px" bg="blackAlpha.200" p="1px">
+                {rpaCapabilities.map((capability, i) => (
+                  <HStack key={i} bg="white" p={6} gap={4}>
+                    <Bot color="var(--chakra-colors-blue-solid)" size={20} />
+                    <Text fontFamily="mono" fontSize="sm" fontWeight={600}>{capability.toUpperCase()}</Text>
                   </HStack>
-                  <VStack gap={3} alignItems="flex-start" w="full" pl={12}>
-                    {useCase.examples.map((example) => (
-                      <Text key={example} color="fg.muted" lineHeight="tall">
-                        • {example}
-                      </Text>
-                    ))}
+                ))}
+              </VStack>
+            </Box>
+
+            {/* Impact / Benefits */}
+            <Box pt={10} borderTop="1px solid" borderColor="blackAlpha.200">
+              <Text as="h2" fontSize="2xl" fontWeight={800} mb={8} color="fg">
+                Por que a Inversão RPA paga as contas
+              </Text>
+
+              <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap="1px" bg="blackAlpha.200" border="1px solid" borderColor="blackAlpha.200">
+                {benefits.map((benefit, i) => (
+                  <VStack key={i} bg="white" p={8} align="flex-start" gap={4}>
+                    <Box color="blue.solid"><benefit.icon size={24} /></Box>
+                    <Text fontSize="lg" fontWeight={800}>{benefit.title}</Text>
+                    <Text fontSize="sm" color="fg.muted" lineHeight={1.6}>{benefit.description}</Text>
                   </VStack>
-                </VStack>
-              </Card.Body>
-            </Card.Root>
-          ))}
-        </VStack>
-      </Section>
+                ))}
+              </Grid>
+            </Box>
 
-      {/* Benefits Section */}
-      <Section
-        title="Os Benefícios que Vão Além da Automação"
-        subtitle="Implementar RPA não se trata apenas de cortar custos. O retorno sobre o investimento (ROI) se manifesta de várias formas:"
-        centered
-      >
-        <SimpleGrid columns={{ base: 1, md: 2 }} gap={6}>
-          {benefits.map((benefit) => (
-            <Card.Root key={benefit.title} variant="outline">
-              <Card.Body p={6}>
-                <VStack gap={4} alignItems="flex-start">
-                  <HStack>
-                    <Icon color="green.500" size="lg">
-                      <benefit.icon />
-                    </Icon>
-                    <Heading as="h3" size="md" color="fg">
-                      {benefit.title}
-                    </Heading>
-                  </HStack>
-                  <Text color="fg.muted" lineHeight="tall" fontSize="sm">
-                    {benefit.description}
-                  </Text>
-                </VStack>
-              </Card.Body>
-            </Card.Root>
-          ))}
-        </SimpleGrid>
-      </Section>
+            {/* Advanced Matrix */}
+            <Box pt={10} borderTop="1px solid" borderColor="blackAlpha.200">
+              <Text as="h2" fontSize="2xl" fontWeight={800} mb={6} color="fg">
+                A Virada Estratégica: Quando RPA invoca Modelos LLM
+              </Text>
+              <Text fontSize="md" color="fg.muted" lineHeight={1.8} mb={8}>
+                Sistemas convencionais de automação travam perante a irregularidade de uma Invoice (Nota de Insumos extrativista) manchada em PDF. O diferencial SHIFT+G é arquitetar a mescla implacável de RPA e I.A generativa (Vision):
+              </Text>
 
-      {/* RPA + AI Section */}
-      <Section
-        title="O Próximo Shift: Quando o RPA Encontra a Inteligência Artificial"
-        subtitle="O RPA por si só é poderoso, mas ele brilha ainda mais quando combinado com a IA, um conceito conhecido como Automação Inteligente ou Hiperautomação."
-        centered
-        bg="bg.subtle"
-      >
-        <VStack gap={8}>
-          <Text
-            fontSize={{ base: "md", md: "lg" }}
-            color="fg.muted"
-            lineHeight="tall"
-            textAlign="center"
-            maxW="3xl"
-          >
-            Imagine o seguinte cenário:
-          </Text>
+              <VStack align="stretch" gap={8}>
+                {useCases.map((useCase) => (
+                  <Box key={useCase.title} bg="white" border="1px solid" borderColor="blackAlpha.200" p={{ base: 8, md: 10 }}>
+                    <HStack gap={6} mb={6} align="flex-start">
+                      <Box color="blue.solid"><useCase.icon size={24} /></Box>
+                      <Text fontSize="xl" fontWeight={800} flex={1}>{useCase.title}</Text>
+                    </HStack>
 
-          <VStack gap={6} w="full">
-            <Card.Root variant="outline">
-              <Card.Body p={6}>
-                <HStack gap={4}>
-                  <Box
-                    minW="40px"
-                    h="40px"
-                    bg="blue.500"
-                    color="white"
-                    borderRadius="full"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    fontSize="lg"
-                    fontWeight="300"
-                  >
-                    1
+                    <Box pl={12}>
+                      <Text fontFamily="mono" fontSize="2xs" fontWeight={700} color="fg.subtle" mb={4}>DEPLOY EXECUTADO</Text>
+                      <VStack align="stretch" gap={4}>
+                        {useCase.examples.map((ex, idx) => (
+                          <Box key={idx} borderLeft="1px solid" borderColor="blackAlpha.200" pl={4}>
+                            <Text fontSize="sm" color="fg.muted" lineHeight={1.6}>{ex}</Text>
+                          </Box>
+                        ))}
+                      </VStack>
+                    </Box>
                   </Box>
-                  <Text color="fg" lineHeight="tall">
-                    Um robô RPA abre um e-mail e baixa o anexo de uma nota fiscal.
-                  </Text>
-                </HStack>
-              </Card.Body>
-            </Card.Root>
+                ))}
+              </VStack>
+            </Box>
 
-            <Card.Root variant="outline">
-              <Card.Body p={6}>
-                <HStack gap={4}>
-                  <Box
-                    minW="40px"
-                    h="40px"
-                    bg="purple.500"
-                    color="white"
-                    borderRadius="full"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    fontSize="lg"
-                    fontWeight="300"
-                  >
-                    2
-                  </Box>
-                  <Text color="fg" lineHeight="tall">
-                    Uma IA (com Visão Computacional e Processamento de Linguagem Natural) lê e entende os dados não estruturados daquela nota (fornecedor, valor, data, itens).
-                  </Text>
-                </HStack>
-              </Card.Body>
-            </Card.Root>
+            {/* Conclusion Box CTA */}
+            <Box mt={12} bg="fg" color="white" p={{ base: 8, md: 12 }} textAlign="center">
+              <Text fontSize="2xl" fontWeight={800} mb={4}>Substitua Imediatamente o Trabalho Arcaico.</Text>
+              <Text fontSize="md" color="whiteAlpha.800" maxW="600px" mx="auto" mb={8} lineHeight={1.6}>
+                Nós calculamos onde as máquinas podem drenar os custos inúteis com exatidão matemática. Despache as burocracias para pipelines RPA.
+              </Text>
+              <Link href="/diagnostico-inteligente">
+                <Box
+                  display="inline-flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  gap="10px"
+                  bg="blue.solid"
+                  color="white"
+                  px="32px"
+                  py="16px"
+                  fontWeight={600}
+                  fontSize="sm"
+                  transition="all 0.2s"
+                  _hover={{ bg: "blue.fg" }}
+                >
+                  Solicitar Robô via Diagnóstico
+                  <ArrowRight size={14} />
+                </Box>
+              </Link>
+            </Box>
 
-            <Card.Root variant="outline">
-              <Card.Body p={6}>
-                <HStack gap={4}>
-                  <Box
-                    minW="40px"
-                    h="40px"
-                    bg="green.500"
-                    color="white"
-                    borderRadius="full"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    fontSize="lg"
-                    fontWeight="300"
-                  >
-                    3
-                  </Box>
-                  <Text color="fg" lineHeight="tall">
-                    O robô RPA pega esses dados já validados pela IA e os insere no seu sistema ERP para aprovação.
-                  </Text>
-                </HStack>
-              </Card.Body>
-            </Card.Root>
           </VStack>
+        </Box>
 
-          <Box
-            p={6}
-            bg="purple.50"
-            _dark={{ bg: "purple.950" }}
-            borderRadius="lg"
-            borderLeft="4px solid"
-            borderColor="purple.500"
-            textAlign="center"
-          >
-            <Text
-              fontSize={{ base: "md", md: "lg" }}
-              color="purple.700"
-              _dark={{ color: "purple.300" }}
-              lineHeight="tall"
-            >
-              Essa combinação permite automatizar processos de ponta a ponta, mesmo aqueles que envolvem tomada de decisão ou interpretação de documentos complexos.
-            </Text>
-          </Box>
-        </VStack>
-      </Section>
-
-      {/* Conclusion Section */}
-      <Section>
-        <Container maxW="4xl">
-          <VStack gap={8} textAlign="center">
-            <Heading
-              as="h2"
-              size={{ base: "xl", md: "2xl" }}
-              color="fg"
-              fontWeight="300"
-            >
-              Sua Jornada de Automação Começa Hoje
-            </Heading>
-            
-            <Text
-              fontSize={{ base: "lg", md: "xl" }}
-              color="fg.muted"
-              lineHeight="tall"
-            >
-              A transformação digital não precisa começar com um projeto gigantesco e intimidador. O RPA oferece uma porta de entrada pragmática, com vitórias rápidas e um impacto profundo na eficiência e na moral da sua equipe.
-            </Text>
-
-            <Text
-              fontSize={{ base: "md", md: "lg" }}
-              color="fg.muted"
-              lineHeight="tall"
-              maxW="3xl"
-            >
-              Ao libertar seus talentos humanos da tirania das tarefas repetitivas, você não está apenas otimizando o presente; está capacitando sua empresa para construir o futuro.
-            </Text>
-
-            <Separator />
-
-            <VStack gap={4}>
-              <Heading
-                as="h3"
-                size="lg"
-                color="fg"
-                fontWeight="300"
-              >
-                Quer identificar os processos com maior potencial de automação e alto ROI na sua empresa?
-              </Heading>
-
-              <Button
-                asChild
-                size="lg"
-                colorPalette="blue"
-                variant="solid"
-              >
-                <Link href="/transformacao-digital">
-                  Solicite um Mapeamento de Oportunidades de Automação
-                  <ArrowRight />
-                </Link>
-              </Button>
-            </VStack>
-          </VStack>
-        </Container>
-      </Section>
-
+      </VStack>
       <Footer />
     </Page>
   );
