@@ -8,7 +8,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { ArrowRight, Network, Shield, Users } from "lucide-react";
+import { Activity, ArrowRight, Network, Shield, Users } from "lucide-react";
 import Link from "next/link";
 
 /* ── Section Tag ── */
@@ -84,6 +84,15 @@ const products: ProductData[] = [
     description:
       "Terceirização inteligente que substitui até 90% do RH/DP. Escala, controle e previsibilidade — sem o custo e a complexidade de uma equipe interna.",
     url: "/sentinela",
+  },
+  {
+    index: "04",
+    icon: <Activity size={22} />,
+    tag: "Psicossocial · NR-1",
+    name: "NEARONE",
+    description:
+      "Sistema para adequação e conformidade de risco psicossociais da normativa NR-1. Foco em saúde mental e prevenção de riscos corporativos.",
+    url: "https://www.nearone.com.br",
   },
 ];
 
@@ -269,7 +278,7 @@ export function ProductsSection() {
 
       {/* Product grid */}
       <Grid
-        templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }}
+        templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
         gap="2px"
       >
         {products.map((product) => (
