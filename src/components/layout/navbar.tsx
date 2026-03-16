@@ -444,105 +444,109 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       <Drawer.Root open={open} onOpenChange={onClose} placement="end" size="full">
-        <Drawer.Backdrop />
-        <Drawer.Content bg="white" rounded="none">
-          <Drawer.CloseTrigger color="fg" />
-          <Drawer.Header borderBottom="1px solid" borderColor="blackAlpha.200" py={4}>
-            <Heading size="md" fontWeight="800" fontFamily="mono" textTransform="uppercase">
-              MENU OVERRIDE
-            </Heading>
-          </Drawer.Header>
-          <Drawer.Body px={0} py={0} overflowY="auto">
-            <VStack gap={0} align="stretch" bg="blackAlpha.200">
-              {Object.entries(menuSections).map(([key, section]) => (
-                <Box key={key} bg="white" borderBottom="1px solid" borderColor="blackAlpha.200" pb={4}>
-                  <Box p={4} bg="stone">
-                    <Text
-                      fontSize="sm"
-                      fontWeight="700"
-                      fontFamily="mono"
-                      color="blue.solid"
-                      textTransform="uppercase"
-                    >
-                      {section.title}
-                    </Text>
-                  </Box>
-                  <VStack gap={0} align="stretch">
-                    {section.items.map((item: MenuItem) => (
-                      <Link
-                        key={item.title}
-                        href={item.href}
-                        passHref
-                        legacyBehavior
-                      >
-                        <ChakraLink
-                          p={4}
-                          borderBottom="1px solid"
-                          borderColor="blackAlpha.100"
-                          _last={{ borderBottom: "none" }}
-                          color="fg"
-                          onClick={onClose}
-                          _hover={{ bg: "stone" }}
-                          display="flex"
-                          alignItems="flex-start"
-                          gap={4}
-                          textDecoration="none"
+        <Portal>
+          <Drawer.Backdrop />
+          <Drawer.Positioner>
+            <Drawer.Content bg="white" rounded="none">
+              <Drawer.CloseTrigger color="fg" />
+              <Drawer.Header borderBottom="1px solid" borderColor="blackAlpha.200" py={4}>
+                <Heading size="md" fontWeight="800" fontFamily="mono" textTransform="uppercase">
+                  MENU OVERRIDE
+                </Heading>
+              </Drawer.Header>
+              <Drawer.Body px={0} py={0} overflowY="auto">
+                <VStack gap={0} align="stretch" bg="blackAlpha.200">
+                  {Object.entries(menuSections).map(([key, section]) => (
+                    <Box key={key} bg="white" borderBottom="1px solid" borderColor="blackAlpha.200" pb={4}>
+                      <Box p={4} bg="stone">
+                        <Text
+                          fontSize="sm"
+                          fontWeight="700"
+                          fontFamily="mono"
+                          color="blue.solid"
+                          textTransform="uppercase"
                         >
-                          <Box color="blue.solid" mt={1}>{item.icon}</Box>
-                          <VStack gap={1} align="flex-start" flex={1}>
-                            <HStack gap={2} align="center">
-                              <Text fontSize="md" fontWeight="700">{item.title}</Text>
-                              {item.badge && (
-                                <Badge
-                                  bg="fg"
-                                  color="white"
-                                  variant="solid"
-                                  rounded="none"
-                                  px={1}
-                                  fontSize="2xs"
-                                  fontFamily="mono"
-                                >
-                                  {item.badge}
-                                </Badge>
-                              )}
-                            </HStack>
-                            <Text
-                              fontSize="sm"
-                              color="fg.muted"
-                              lineHeight="1.5"
+                          {section.title}
+                        </Text>
+                      </Box>
+                      <VStack gap={0} align="stretch">
+                        {section.items.map((item: MenuItem) => (
+                          <Link
+                            key={item.title}
+                            href={item.href}
+                            passHref
+                            legacyBehavior
+                          >
+                            <ChakraLink
+                              p={4}
+                              borderBottom="1px solid"
+                              borderColor="blackAlpha.100"
+                              _last={{ borderBottom: "none" }}
+                              color="fg"
+                              onClick={onClose}
+                              _hover={{ bg: "stone" }}
+                              display="flex"
+                              alignItems="flex-start"
+                              gap={4}
+                              textDecoration="none"
                             >
-                              {item.description}
-                            </Text>
-                          </VStack>
-                        </ChakraLink>
-                      </Link>
-                    ))}
-                  </VStack>
-                </Box>
-              ))}
+                              <Box color="blue.solid" mt={1}>{item.icon}</Box>
+                              <VStack gap={1} align="flex-start" flex={1}>
+                                <HStack gap={2} align="center">
+                                  <Text fontSize="md" fontWeight="700">{item.title}</Text>
+                                  {item.badge && (
+                                    <Badge
+                                      bg="fg"
+                                      color="white"
+                                      variant="solid"
+                                      rounded="none"
+                                      px={1}
+                                      fontSize="2xs"
+                                      fontFamily="mono"
+                                    >
+                                      {item.badge}
+                                    </Badge>
+                                  )}
+                                </HStack>
+                                <Text
+                                  fontSize="sm"
+                                  color="fg.muted"
+                                  lineHeight="1.5"
+                                >
+                                  {item.description}
+                                </Text>
+                              </VStack>
+                            </ChakraLink>
+                          </Link>
+                        ))}
+                      </VStack>
+                    </Box>
+                  ))}
 
-              {/* Mobile CTA */}
-              <Box p={6} bg="white">
-                <Link href="/contato" passHref>
-                  <Button
-                    bg="fg"
-                    color="white"
-                    size="lg"
-                    width="full"
-                    rounded="none"
-                    onClick={onClose}
-                    fontWeight="700"
-                    fontFamily="mono"
-                    textTransform="uppercase"
-                    _hover={{ bg: "blue.solid" }}
-                  >
-                    Fale Conosco
-                  </Button>
-                </Link>
-              </Box>
-            </VStack>
-          </Drawer.Body>
-        </Drawer.Content>
+                  {/* Mobile CTA */}
+                  <Box p={6} bg="white">
+                    <Link href="/contato" passHref>
+                      <Button
+                        bg="fg"
+                        color="white"
+                        size="lg"
+                        width="full"
+                        rounded="none"
+                        onClick={onClose}
+                        fontWeight="700"
+                        fontFamily="mono"
+                        textTransform="uppercase"
+                        _hover={{ bg: "blue.solid" }}
+                      >
+                        Fale Conosco
+                      </Button>
+                    </Link>
+                  </Box>
+                </VStack>
+              </Drawer.Body>
+            </Drawer.Content>
+          </Drawer.Positioner>
+        </Portal>
       </Drawer.Root>
     </>
   );
