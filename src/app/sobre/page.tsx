@@ -629,13 +629,6 @@ export default function SobrePage() {
                 — conhecimento aplicado com propósito, que transforma
                 complexidade em clareza e dados em decisão.
               </Text>
-              <Text fontSize="md" color="fg.muted" lineHeight={1.88}>
-                Nossa logo é um triângulo que forma o G — inscrito no quadrado
-                e no círculo. Não é coincidência.{" "}
-                <Text as="strong" color="fg" fontWeight={500}>
-                  É declaração de princípio.
-                </Text>
-              </Text>
             </VStack>
           </Grid>
         </Box>

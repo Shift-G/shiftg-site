@@ -22,6 +22,7 @@ import {
   SITE_COUNTRY,
   SITE_ZIP
 } from "@/constants";
+import { getWhatsAppLink } from "@/utils/whatsapp";
 
 export const metadata: Metadata = {
   title: `Contato | ${SITE_NAME}`,
@@ -120,15 +121,19 @@ export default function ContactPage() {
               <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap="1px" bg="blackAlpha.100" p="1px" w="full">
                 <VStack align="flex-start" bg="white" p={{ base: 6, md: 8 }} gap={1}>
                   <Text fontFamily="mono" fontSize="2xs" fontWeight={700} color="fg.subtle">LINHA DIRETA</Text>
-                  <Text fontSize="xl" fontWeight={800} color="blue.solid" letterSpacing="-0.5px">
-                    {SITE_PHONE}
-                  </Text>
+                  <a href={getWhatsAppLink()}>
+                    <Text fontSize="xl" fontWeight={800} color="blue.solid" letterSpacing="-0.5px">
+                      {SITE_PHONE}
+                    </Text>
+                  </a>
                 </VStack>
                 <VStack align="flex-start" bg="white" p={{ base: 6, md: 8 }} gap={1}>
                   <Text fontFamily="mono" fontSize="2xs" fontWeight={700} color="fg.subtle">E-MAIL OFICIAL</Text>
-                  <Text fontSize="xl" fontWeight={800} color="fg" letterSpacing="-0.5px">
-                    {SITE_EMAIL}
-                  </Text>
+                  <a href={`mailto:${SITE_EMAIL}`}>
+                    <Text fontSize="xl" fontWeight={800} color="fg" letterSpacing="-0.5px">
+                      {SITE_EMAIL}
+                    </Text>
+                  </a>
                 </VStack>
                 <VStack align="flex-start" bg="white" p={{ base: 6, md: 8 }} gap={1} gridColumn={{ md: "span 2" }}>
                   <Text fontFamily="mono" fontSize="2xs" fontWeight={700} color="fg.subtle">INFRAESTRUTURA BR</Text>
@@ -145,10 +150,9 @@ export default function ContactPage() {
               <GeneralContactForm />
             </Box>
           </Grid>
-        </Box>
-      </VStack>
-
+        </Box >
+      </VStack >
       <Footer />
-    </Page>
+    </Page >
   );
 }
