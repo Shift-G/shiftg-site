@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Turbopack empty configuration to silence webpack config warning
+  turbopack: {},
+
   // Configurações de SEO e Performance
   experimental: {
     optimizeCss: true,

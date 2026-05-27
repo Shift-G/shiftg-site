@@ -65,9 +65,7 @@ export function CTAFinalSection() {
 
         {/* CTA button */}
         <Box
-          as={Link}
-          // @ts-ignore
-          href="/contato"
+          asChild
           display="inline-flex"
           alignItems="center"
           gap="9px"
@@ -82,8 +80,10 @@ export function CTAFinalSection() {
           _hover={{ opacity: 0.88, transform: "translateY(-2px)" }}
           mt={6}
         >
-          Agendar consulta executiva
-          <ArrowRight size={14} />
+          <Link href="/contato">
+            Agendar consulta executiva
+            <ArrowRight size={14} />
+          </Link>
         </Box>
       </VStack>
     </Box>

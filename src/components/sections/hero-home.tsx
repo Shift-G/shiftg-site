@@ -289,9 +289,7 @@ export function HeroHome() {
 
             {/* CTA */}
             <Box
-              as={Link}
-              // @ts-ignore
-              href="/contato"
+              asChild
               display="inline-flex"
               alignItems="center"
               gap="9px"
@@ -306,8 +304,10 @@ export function HeroHome() {
               transition="all 0.22s"
               _hover={{ opacity: 0.88, transform: "translateY(-2px)" }}
             >
-              Iniciar a transformação
-              <ArrowRight size={14} />
+              <Link href="/contato">
+                Iniciar a transformação
+                <ArrowRight size={14} />
+              </Link>
             </Box>
           </Flex>
         </Box>

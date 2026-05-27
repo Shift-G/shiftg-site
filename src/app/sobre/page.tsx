@@ -510,9 +510,7 @@ export default function SobrePage() {
 
                 {/* CTA */}
                 <Box
-                  as={Link}
-                  // @ts-ignore
-                  href="/contato"
+                  asChild
                   display="inline-flex"
                   alignItems="center"
                   gap="9px"
@@ -527,8 +525,10 @@ export default function SobrePage() {
                   transition="all 0.22s"
                   _hover={{ opacity: 0.88, transform: "translateY(-2px)" }}
                 >
-                  Fale conosco
-                  <ArrowRight size={14} />
+                  <Link href="/contato">
+                    Fale conosco
+                    <ArrowRight size={14} />
+                  </Link>
                 </Box>
               </Flex>
             </Box>
@@ -927,9 +927,7 @@ export default function SobrePage() {
 
             {/* CTA */}
             <Box
-              as={Link}
-              // @ts-ignore
-              href="/carreiras"
+              asChild
               display="inline-flex"
               alignItems="center"
               gap="9px"
@@ -944,8 +942,10 @@ export default function SobrePage() {
               _hover={{ opacity: 0.88, transform: "translateY(-2px)" }}
               mt={4}
             >
-              Ver oportunidades
-              <ArrowRight size={14} />
+              <Link href="/carreiras">
+                Ver oportunidades
+                <ArrowRight size={14} />
+              </Link>
             </Box>
           </VStack>
         </Box>

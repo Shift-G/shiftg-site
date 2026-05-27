@@ -54,11 +54,7 @@ const products: Product[] = [
 function ProductCard({ product }: { product: Product }) {
   return (
     <VStack
-      as={Link}
-      // @ts-ignore
-      href={product.url}
-      rel="noopener noreferrer"
-      target="_blank"
+      asChild
       bg={{ base: "{colors.whiteAlpha.50}", _dark: "{colors.whiteAlpha.50}" }}
       backdropFilter="blur(10px)"
       border="1px solid"
@@ -72,60 +68,62 @@ function ProductCard({ product }: { product: Product }) {
         bg: { base: "{colors.whiteAlpha.100}", _dark: "{colors.whiteAlpha.100}" },
       }}
     >
-      {/* Image area */}
-      <AspectRatio ratio={4 / 5} w="full">
-        <Box
-          bg="{colors.blue.500/10}"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          rounded="lg"
-        >
-          {product.image ? (
-            <Box
-              as="img"
-              // @ts-ignore
-              src={product.image}
-              alt={product.title}
-              w="full"
-              h="full"
-              objectFit="cover"
-              onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
-                e.currentTarget.style.display = "none";
-              }}
-            />
-          ) : (
-            <Text color="fg.muted" fontSize="xs">
-              Imagem do produto
-            </Text>
-          )}
-        </Box>
-      </AspectRatio>
-
-      {/* Content */}
-      <VStack align="start" gap={3} p={{ base: 5, md: 6 }}>
-        {product.badge && (
-          <Badge
-            colorPalette="blue"
-            variant="subtle"
-            fontSize="xs"
-            px={2}
-            py={1}
-            rounded="md"
+      <Link href={product.url} target="_blank" rel="noopener noreferrer">
+        {/* Image area */}
+        <AspectRatio ratio={4 / 5} w="full">
+          <Box
+            bg="{colors.blue.500/10}"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            rounded="lg"
           >
-            {product.badge}
-          </Badge>
-        )}
+            {product.image ? (
+              <Box
+                as="img"
+                // @ts-ignore
+                src={product.image}
+                alt={product.title}
+                w="full"
+                h="full"
+                objectFit="cover"
+                onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                  e.currentTarget.style.display = "none";
+                }}
+              />
+            ) : (
+              <Text color="fg.muted" fontSize="xs">
+                Imagem do produto
+              </Text>
+            )}
+          </Box>
+        </AspectRatio>
 
-        <VStack align="start" gap={2}>
-          <Heading as="h3" size="sm" color="fg" lineHeight="tight">
-            {product.title}
-          </Heading>
-          <Text color="fg.muted" fontSize="sm" lineHeight="tall">
-            {product.description}
-          </Text>
+        {/* Content */}
+        <VStack align="start" gap={3} p={{ base: 5, md: 6 }}>
+          {product.badge && (
+            <Badge
+              colorPalette="blue"
+              variant="subtle"
+              fontSize="xs"
+              px={2}
+              py={1}
+              rounded="md"
+            >
+              {product.badge}
+            </Badge>
+          )}
+
+          <VStack align="start" gap={2}>
+            <Heading as="h3" size="sm" color="fg" lineHeight="tight">
+              {product.title}
+            </Heading>
+            <Text color="fg.muted" fontSize="sm" lineHeight="tall">
+              {product.description}
+            </Text>
+          </VStack>
         </VStack>
-      </VStack>
+      </Link>
     </VStack>
   );
 }

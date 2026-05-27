@@ -294,10 +294,7 @@ export default function SoftwareFactoryPage() {
                   </VStack>
 
                   <Box
-                    as={Link}
-                    // @ts-ignore
-                    href={whatsappUrl}
-                    target="_blank"
+                    asChild
                     display={{ base: "none", md: "inline-flex" }}
                     alignItems="center"
                     gap="10px"
@@ -310,16 +307,15 @@ export default function SoftwareFactoryPage() {
                     transition="all 0.2s"
                     _hover={{ bg: "blue.fg" }}
                   >
-                    Agendar Consultoria
-                    <ArrowRight size={14} />
+                    <Link href={whatsappUrl} target="_blank">
+                      Agendar Consultoria
+                      <ArrowRight size={14} />
+                    </Link>
                   </Box>
                 </HStack>
 
                 <Box
-                  as={Link}
-                  // @ts-ignore
-                  href={whatsappUrl}
-                  target="_blank"
+                  asChild
                   display={{ base: "inline-flex", md: "none" }}
                   alignItems="center"
                   justifyContent="center"
@@ -331,8 +327,10 @@ export default function SoftwareFactoryPage() {
                   fontWeight={600}
                   fontSize="sm"
                 >
-                  Agendar Consultoria
-                  <ArrowRight size={14} />
+                  <Link href={whatsappUrl} target="_blank">
+                    Agendar Consultoria
+                    <ArrowRight size={14} />
+                  </Link>
                 </Box>
               </Flex>
             </Box>

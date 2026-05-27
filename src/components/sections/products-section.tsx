@@ -212,9 +212,7 @@ function ProductCard({ product }: { product: ProductData }) {
 
       {/* CTA */}
       <HStack
-        as={Link}
-        // @ts-ignore
-        href={product.url}
+        asChild
         mt={8}
         fontFamily="mono"
         fontSize="xs"
@@ -227,8 +225,10 @@ function ProductCard({ product }: { product: ProductData }) {
         transition="color 0.2s, gap 0.2s"
         _hover={{ color: "blue.solid", gap: 3 }}
       >
-        <Text>Conhecer produto</Text>
-        <ArrowRight size={12} />
+        <Link href={product.url}>
+          <Text as="span">Conhecer produto</Text>
+          <ArrowRight size={12} />
+        </Link>
       </HStack>
     </VStack>
   );

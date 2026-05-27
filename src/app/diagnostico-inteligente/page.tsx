@@ -221,10 +221,7 @@ export default function DiagnosticoPage() {
                   </VStack>
 
                   <Box
-                    as={Link}
-                    // @ts-ignore
-                    href={whatsappUrl}
-                    target="_blank"
+                    asChild
                     display={{ base: "none", md: "inline-flex" }}
                     alignItems="center"
                     gap="10px"
@@ -237,16 +234,15 @@ export default function DiagnosticoPage() {
                     transition="all 0.2s"
                     _hover={{ bg: "blue.fg" }}
                   >
-                    Iniciar Protocolo
-                    <ArrowRight size={14} />
+                    <Link href={whatsappUrl} target="_blank">
+                      Iniciar Protocolo
+                      <ArrowRight size={14} />
+                    </Link>
                   </Box>
                 </HStack>
 
                 <Box
-                  as={Link}
-                  // @ts-ignore
-                  href={whatsappUrl}
-                  target="_blank"
+                  asChild
                   display={{ base: "inline-flex", md: "none" }}
                   alignItems="center"
                   justifyContent="center"
@@ -258,8 +254,10 @@ export default function DiagnosticoPage() {
                   fontWeight={600}
                   fontSize="sm"
                 >
-                  Iniciar Protocolo
-                  <ArrowRight size={14} />
+                  <Link href={whatsappUrl} target="_blank">
+                    Iniciar Protocolo
+                    <ArrowRight size={14} />
+                  </Link>
                 </Box>
               </Flex>
             </Box>

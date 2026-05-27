@@ -72,8 +72,7 @@ export function Footer() {
             ].map((link) => (
               <ChakraLink
                 key={link.label}
-                as={Link}
-                href={link.href}
+                asChild
                 fontSize="sm"
                 fontWeight={500}
                 color="fg"
@@ -83,7 +82,9 @@ export function Footer() {
                 _hover={{ color: "blue.solid" }}
                 transition="all 0.2s"
               >
-                {link.label}
+                <Link href={link.href}>
+                  {link.label}
+                </Link>
               </ChakraLink>
             ))}
           </VStack>
@@ -108,8 +109,7 @@ export function Footer() {
             ].map((link) => (
               <ChakraLink
                 key={link.label}
-                as={Link}
-                href={link.href}
+                asChild
                 fontSize="sm"
                 fontWeight={500}
                 color="fg"
@@ -119,7 +119,9 @@ export function Footer() {
                 _hover={{ color: "blue.solid" }}
                 transition="all 0.2s"
               >
-                {link.label}
+                <Link href={link.href}>
+                  {link.label}
+                </Link>
               </ChakraLink>
             ))}
           </VStack>
@@ -202,8 +204,7 @@ export function Footer() {
         </Text>
         <HStack gap={6}>
           <ChakraLink
-            as={Link}
-            href="/politica-de-privacidade"
+            asChild
             fontFamily="mono"
             fontSize="2xs"
             color="fg.muted"
@@ -211,11 +212,12 @@ export function Footer() {
             _hover={{ color: "blue.solid" }}
             transition="color 0.2s"
           >
-            Data Privacy
+            <Link href="/politica-de-privacidade">
+              Data Privacy
+            </Link>
           </ChakraLink>
           <ChakraLink
-            as={Link}
-            href="/termos-de-uso"
+            asChild
             fontFamily="mono"
             fontSize="2xs"
             color="fg.muted"
@@ -223,7 +225,9 @@ export function Footer() {
             _hover={{ color: "blue.solid" }}
             transition="color 0.2s"
           >
-            TOS
+            <Link href="/termos-de-uso">
+              TOS
+            </Link>
           </ChakraLink>
           <ChakraLink
             href={INSTAGRAM_URL}

@@ -333,10 +333,7 @@ export default function SaasPage() {
                   </VStack>
 
                   <Box
-                    as={Link}
-                    // @ts-ignore
-                    href={whatsappUrl}
-                    target="_blank"
+                    asChild
                     display={{ base: "none", md: "inline-flex" }}
                     alignItems="center"
                     gap="10px"
@@ -349,16 +346,15 @@ export default function SaasPage() {
                     transition="all 0.2s"
                     _hover={{ bg: "blue.fg" }}
                   >
-                    Falar com Architect
-                    <ArrowRight size={14} />
+                    <Link href={whatsappUrl} target="_blank">
+                      Falar com Architect
+                      <ArrowRight size={14} />
+                    </Link>
                   </Box>
                 </HStack>
 
                 <Box
-                  as={Link}
-                  // @ts-ignore
-                  href={whatsappUrl}
-                  target="_blank"
+                  asChild
                   display={{ base: "inline-flex", md: "none" }}
                   alignItems="center"
                   justifyContent="center"
@@ -370,8 +366,10 @@ export default function SaasPage() {
                   fontWeight={600}
                   fontSize="sm"
                 >
-                  Falar com Architect
-                  <ArrowRight size={14} />
+                  <Link href={whatsappUrl} target="_blank">
+                    Falar com Architect
+                    <ArrowRight size={14} />
+                  </Link>
                 </Box>
               </Flex>
             </Box>
@@ -658,9 +656,7 @@ export default function SaasPage() {
                 </VStack>
 
                 <Box
-                  as={Link}
-                  // @ts-ignore
-                  href={whatsappUrl}
+                  asChild
                   w="full"
                   display="inline-flex"
                   justifyContent="center"
@@ -673,7 +669,9 @@ export default function SaasPage() {
                   transition="all 0.2s"
                   _hover={{ opacity: 0.9 }}
                 >
-                  Montar este Projeto
+                  <Link href={whatsappUrl}>
+                    Montar este Projeto
+                  </Link>
                 </Box>
               </Box>
             ))}

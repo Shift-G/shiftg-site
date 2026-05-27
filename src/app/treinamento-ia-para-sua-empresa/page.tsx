@@ -592,9 +592,7 @@ export default function TreinamentoIAPage() {
 
                 {/* CTA */}
                 <Box
-                  as={Link}
-                  // @ts-ignore
-                  href="#contato"
+                  asChild
                   display="inline-flex"
                   alignItems="center"
                   gap="9px"
@@ -609,8 +607,10 @@ export default function TreinamentoIAPage() {
                   transition="all 0.22s"
                   _hover={{ opacity: 0.88, transform: "translateY(-2px)" }}
                 >
-                  Agendar treinamento
-                  <ArrowRight size={14} />
+                  <Link href="#contato">
+                    Agendar treinamento
+                    <ArrowRight size={14} />
+                  </Link>
                 </Box>
               </Flex>
             </Box>
