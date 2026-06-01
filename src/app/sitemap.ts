@@ -35,12 +35,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${SITE_URL}/sentinela`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
       url: `${SITE_URL}/treinamento-ia-para-sua-empresa`,
       lastModified: currentDate,
       changeFrequency: 'weekly',

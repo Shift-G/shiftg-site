@@ -1,4 +1,4 @@
-import { SITE_NAME, SITE_URL, SITE_EMAIL, SITE_CITY, SITE_STATE, SITE_COUNTRY, INSTAGRAM_URL } from "@/constants";
+import { SITE_NAME, SITE_URL, SITE_EMAIL, SITE_CITY, SITE_STATE, SITE_COUNTRY, INSTAGRAM_URL, LINKEDIN_URL } from "@/constants";
 
 /**
  * SEO Utilities for generating structured data (JSON-LD) schemas
@@ -85,7 +85,7 @@ export function generateOrganizationSchema() {
       availableLanguage: ["Portuguese", "English"],
     },
     sameAs: [
-      "https://linkedin.com/company/shiftg",
+      LINKEDIN_URL,
       INSTAGRAM_URL,
     ],
     address: {

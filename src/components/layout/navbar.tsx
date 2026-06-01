@@ -24,7 +24,6 @@ import {
   ChevronRight,
   Terminal,
   Cpu,
-  ShieldAlert,
   HardDrive,
   Database,
   Network,
@@ -78,12 +77,6 @@ const menuSections: Record<string, MenuSection> = {
         href: "/diagnostico-inteligente",
         badge: "NOVO MÓDULO",
         badgeColor: "gray",
-      },
-      {
-        icon: <ShieldAlert size={20} />,
-        title: "Sentinela",
-        description: "Sistema de monitoramento e auditoria em tempo real",
-        href: "/sentinela",
       },
       {
         icon: <HardDrive size={20} />,

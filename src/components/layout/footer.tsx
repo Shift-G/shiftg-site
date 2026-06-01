@@ -13,6 +13,7 @@ import Link from "next/link";
 import {
   MapPin,
   Instagram,
+  Linkedin,
 } from "lucide-react";
 import {
   SITE_NAME,
@@ -20,6 +21,7 @@ import {
   SITE_PHONE,
   SITE_ADDRESS,
   INSTAGRAM_URL,
+  LINKEDIN_URL,
   SITE_CITY,
   SITE_STATE,
   SITE_COUNTRY,
@@ -66,7 +68,6 @@ export function Footer() {
             {[
               { label: "Software & SaaS", href: "/fabrica-de-software" },
               { label: "Auditoria de Back-Office", href: "/diagnostico-inteligente" },
-              { label: "Sentinela (Monitoramento)", href: "/sentinela" },
               { label: "Treinamento de IA para sua Empresa", href: "/treinamento-ia-para-sua-empresa" },
               { label: "Digital Core", href: "/transformacao-digital" },
             ].map((link) => (
@@ -228,6 +229,17 @@ export function Footer() {
             <Link href="/termos-de-uso">
               TOS
             </Link>
+          </ChakraLink>
+          <ChakraLink
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            color="fg.muted"
+            _hover={{ color: "blue.solid" }}
+            transition="color 0.2s"
+          >
+            <Linkedin size={16} />
           </ChakraLink>
           <ChakraLink
             href={INSTAGRAM_URL}

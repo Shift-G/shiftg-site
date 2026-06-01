@@ -8,6 +8,7 @@ import {
   SITE_CITY,
   SITE_COUNTRY,
   SITE_STATE,
+  LINKEDIN_URL,
 } from "@/constants";
 import { Toaster } from "@/components/ui/toaster";
 import { GoogleAnalytics } from "@next/third-parties/google";

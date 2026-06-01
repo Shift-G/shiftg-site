@@ -89,7 +89,7 @@ const NODES_DATA: Omit<EcoNode, "x" | "y" | "w" | "h">[] = [
   { id: "ai", label: "IA", sub: "LLMs · Automação", type: T.TECH },
   { id: "arch", label: "Arquitetura", sub: "Sistemas & APIs", type: T.TECH },
   { id: "train", label: "Treinamento", sub: "Capacitação", type: T.TECH },
-  { id: "rhaas", label: "RHaaS", sub: "Sentinela", type: T.TECH },
+  { id: "rhaas", label: "RHaaS", sub: "Terceirização RH", type: T.TECH },
   { id: "mat", label: "Maturidade", sub: "Digital", type: T.OUTPUT },
   { id: "eff", label: "Eficiência", sub: "Operacional", type: T.OUTPUT },
   { id: "dec", label: "Decisões", sub: "Dados", type: T.OUTPUT },

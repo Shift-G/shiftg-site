@@ -8,7 +8,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { Activity, ArrowRight, Network, Shield, Users } from "lucide-react";
+import { Activity, ArrowRight, Network, Users } from "lucide-react";
 import Link from "next/link";
 
 /* ── Section Tag ── */
@@ -72,21 +72,6 @@ const products: ProductData[] = [
   },
   {
     index: "03",
-    icon: <Shield size={22} />,
-    tag: "RHaaS · Alta Eficiência",
-    name: (
-      <>
-        Sentinela —
-        <br />
-        RH como Serviço
-      </>
-    ),
-    description:
-      "Terceirização inteligente que substitui até 90% do RH/DP. Escala, controle e previsibilidade — sem o custo e a complexidade de uma equipe interna.",
-    url: "/sentinela",
-  },
-  {
-    index: "04",
     icon: <Activity size={22} />,
     tag: "Psicossocial · NR-1",
     name: "NEARONE",

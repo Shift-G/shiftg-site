@@ -93,7 +93,7 @@ export default function HomePage() {
     "@type": "ItemList",
     name: "Serviços SHIFT+G",
     description: "Soluções de tecnologia e inteligência artificial",
-    numberOfItems: 5,
+    numberOfItems: 4,
     itemListElement: [
       {
         "@type": "ListItem",
@@ -112,13 +112,6 @@ export default function HomePage() {
       {
         "@type": "ListItem",
         position: 3,
-        name: "Sentinela",
-        url: `${SITE_URL}/sentinela`,
-        description: "Plataforma de People Analytics",
-      },
-      {
-        "@type": "ListItem",
-        position: 4,
         name: "Treinamento IA",
         url: `${SITE_URL}/treinamento-ia-para-sua-empresa`,
         description: "Capacitação em inteligência artificial",

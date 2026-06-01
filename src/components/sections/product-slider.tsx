@@ -41,14 +41,6 @@ const products: Product[] = [
     image: "/images/products/acp-cover.png",
     url: "https://acpersonalidade.com.br/"
   },
-  {
-    title: "Sentinela — RHaaS de Alta Eficiência",
-    description:
-      "Terceirização inteligente que substitui até 90% do RH/DP. Escala, controle e previsibilidade.",
-    badge: "BPAAS",
-    image: "/images/products/sentinela-bpaas-cover.png",
-    url: "https://shiftg.com.br/sentinela"
-  },
 ];
 
 function ProductCard({ product }: { product: Product }) {

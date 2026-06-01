@@ -8,6 +8,7 @@ export const SITE_STATE = "PR";
 export const SITE_COUNTRY = "Brasil";
 export const SITE_ZIP = "84600-040";
 export const INSTAGRAM_URL = "https://instagram.com/shiftgnosis";
+export const LINKEDIN_URL = "https://www.linkedin.com/company/shiftgnosis";
 export const CONTACT_EMAIL = "negocios@shiftg.com.br";
 export const COMERCIAL_EMAIL = "negocios@shiftg.com.br";
 export const CAREERS_EMAIL = "carreiras@shiftg.com.br";
