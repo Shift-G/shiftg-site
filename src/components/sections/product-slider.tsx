@@ -33,14 +33,6 @@ const products: Product[] = [
     image: "/images/products/somos-aliados-cover.png",
     url: "https://somosaliados.com.br/"
   },
-  {
-    title: "ACP — People Analytics Inteligente",
-    description:
-      "Transforma dados de pessoas em decisões claras, preditivas e estratégicas.",
-    badge: "SAAS",
-    image: "/images/products/acp-cover.png",
-    url: "https://acpersonalidade.com.br/"
-  },
 ];
 
 function ProductCard({ product }: { product: Product }) {

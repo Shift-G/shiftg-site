@@ -8,7 +8,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { Activity, ArrowRight, Network, Users } from "lucide-react";
+import { Activity, ArrowRight, Network } from "lucide-react";
 import Link from "next/link";
 
 /* ── Section Tag ── */
@@ -57,21 +57,6 @@ const products: ProductData[] = [
   },
   {
     index: "02",
-    icon: <Users size={22} />,
-    tag: "People Analytics",
-    name: (
-      <>
-        ACP — Analytics
-        <br />
-        de Pessoas
-      </>
-    ),
-    description:
-      "Transforma dados de pessoas em decisões claras, preditivas e estratégicas. Identifica riscos, potenciais e oportunidades antes que o gestor perceba que existem.",
-    url: "https://acpersonalidade.com.br/",
-  },
-  {
-    index: "03",
     icon: <Activity size={22} />,
     tag: "Psicossocial · NR-1",
     name: "NEARONE",

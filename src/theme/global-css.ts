@@ -1,6 +1,6 @@
 import { defineGlobalStyles } from "@chakra-ui/react";
 
-const empty = "var(--acp-empty,/*!*/ /*!*/)";
+const empty = "var(--sg-empty,/*!*/ /*!*/)";
 export const globalCss = defineGlobalStyles({
   "*": {
     fontFeatureSettings: '"cv11"',

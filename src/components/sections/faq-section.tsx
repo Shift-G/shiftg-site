@@ -26,7 +26,7 @@ const faqs = [
   {
     question: "Qual a diferença entre a consultoria e os produtos?",
     answer:
-      "A consultoria é um serviço personalizado de estratégia e implementação. Os produtos (como ACP e Aliados) são ferramentas SaaS prontas para resolver dores específicas de gestão e operação.",
+      "A consultoria é um serviço personalizado de estratégia e implementação. Os produtos (como o Aliados) são ferramentas SaaS prontas para resolver dores específicas de gestão e operação.",
   },
   {
     question: "Vocês desenvolvem software sob medida?",
