@@ -21,7 +21,7 @@ export const API_BASE = `${API_URL}/api/v1`;
 
 // Material institucional (PDF público no S3).
 export const INSTITUTIONAL_PDF_URL =
-  "https://shift-gnosis-221556120598-us-east-1-an.s3.us-east-1.amazonaws.com/assets/public/SHIFT%2BG+·+Material+Institucional.pdf";
+  "https://shift-gnosis-221556120598-us-east-1-an.s3.us-east-1.amazonaws.com/assets/public/shiftg-g-material-institucional.pdf";
 
 // Guia de Prompts v1.0 (PDF público no S3).
 export const PROMPTS_GUIDE_PDF_URL =

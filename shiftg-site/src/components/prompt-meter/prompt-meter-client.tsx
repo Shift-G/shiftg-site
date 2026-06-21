@@ -23,7 +23,7 @@ interface Analysis {
 }
 
 const EXAMPLES = [
-  "Escreva um e-mail para cobrar um cliente atrasado há 30 dias",
+  "Escreva um e-mail para cobrar um cliente por inadimplência há 30 dias.",
   "Me ajude a criar um plano de marketing",
   "Resuma este relatório",
   "Crie um post para o Instagram da minha empresa",
@@ -109,7 +109,7 @@ export function PromptMeterClient() {
           </Text>
 
           <Text color="fg.muted" fontSize="md" lineHeight={1.6} mb={6}>
-            Escreva o que você pediria para uma IA. A nossa analisa, pontua e te mostra como deixar muito melhor — na hora.
+            Escreva o que você questionaria a uma IA. Nossa IA analisa, estrutura e disponibiliza aprimoramentos - na hora.
           </Text>
 
           <Textarea
@@ -489,7 +489,7 @@ function LeadCapture({ analysis, prompt }: { analysis: Analysis; prompt: string 
         Receba por e-mail seu prompt melhorado
       </Text>
       <Text fontSize="sm" opacity={0.92} mb={4}>
-        Informe seu nome e e-mail: enviamos a versão reescrita do seu prompt, com a cara da Shift+G.
+        Informe seu nome e e-mail: enviamos a versão reescrita do seu prompt, com o padrão da Shift+G.
       </Text>
 
       <VStack align="stretch" gap={2}>
