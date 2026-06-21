@@ -5,10 +5,12 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { HeroHome } from "@/components/sections/hero-home";
 import { Plumb } from "@/components/ui/plumb";
+import { Reveal } from "@/components/ui/reveal";
 import { EcosystemSection } from "@/components/sections/ecosystem-section";
 import { ProductsSection } from "@/components/sections/products-section";
 import { PillarsSection } from "@/components/sections/pillars-section";
 import { MethodSection } from "@/components/sections/method-section";
+import { StatsSection } from "@/components/sections/stats-section";
 import { IdentitySection } from "@/components/sections/identity-section";
 import { TeamSection } from "@/components/sections/team-section";
 import { MaterialSection } from "@/components/sections/material-section";
@@ -142,35 +144,54 @@ export default function HomePage() {
       />
 
       <VStack gap={0} w="full" as="main" align="stretch">
-        {/* Hero */}
+        {/* Hero — above the fold, self-animates (no reveal wrapper) */}
         <HeroHome />
 
         {/* Divider */}
         <Plumb />
 
         {/* Ecossistema — Animated transformation flowchart */}
-        <EcosystemSection />
+        <Reveal>
+          <EcosystemSection />
+        </Reveal>
 
         {/* Produtos */}
-        <ProductsSection />
+        <Reveal>
+          <ProductsSection />
+        </Reveal>
 
         {/* Três Pilares */}
-        <PillarsSection />
+        <Reveal>
+          <PillarsSection />
+        </Reveal>
 
         {/* Método */}
-        <MethodSection />
+        <Reveal>
+          <MethodSection />
+        </Reveal>
 
-        {/* Identidade — Origem do nome */}
+        {/* Em números — dark stat wall (contrast-break beat) */}
+        <Reveal>
+          <StatsSection />
+        </Reveal>
+
+        {/* Identidade — Origem do nome (self-choreographs: eye draw + stagger) */}
         <IdentitySection />
 
         {/* Time — Fundadores */}
-        <TeamSection />
+        <Reveal>
+          <TeamSection />
+        </Reveal>
 
         {/* Material institucional — download PDF */}
-        <MaterialSection />
+        <Reveal>
+          <MaterialSection />
+        </Reveal>
 
         {/* CTA Final */}
-        <CTAFinalSection />
+        <Reveal>
+          <CTAFinalSection />
+        </Reveal>
       </VStack>
 
       <Footer />

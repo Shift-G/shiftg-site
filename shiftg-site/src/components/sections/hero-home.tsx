@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { ArrowRight, Gauge } from "lucide-react";
 import Link from "next/link";
+import { ShiftMeter, MaturityBar } from "./hero-meter";
 
 /* ── Stage dots ── */
 function StageDots() {
@@ -37,121 +38,6 @@ function StageDots() {
         />
       ))}
     </HStack>
-  );
-}
-
-/* ── Maturity meter bar ── */
-function ShiftMeter() {
-  const labels = ["Inicial", "Estruturado", "Inteligente", "Preditivo", "Adaptativo"];
-  const activeIdx = 2;
-
-  return (
-    <VStack align="stretch" gap={2}>
-      <Text
-        fontFamily="mono"
-        fontSize="2xs"
-        fontWeight={500}
-        letterSpacing="0.14em"
-        textTransform="uppercase"
-        color="fg.subtle"
-      >
-        Onde sua empresa está → onde vai chegar
-      </Text>
-
-      <HStack gap="4px">
-        {[0, 1, 2, 3, 4].map((i) => (
-          <Box
-            key={i}
-            flex={1}
-            h="3px"
-            bg="stone"
-            position="relative"
-            overflow="hidden"
-          >
-            <Box
-              position="absolute"
-              inset={0}
-              bg="blue.solid"
-              transform={
-                i <= 3
-                  ? "scaleX(1)"
-                  : "scaleX(0.45)"
-              }
-              transformOrigin="left"
-              opacity={i <= 4 ? 1 : 0}
-            />
-          </Box>
-        ))}
-      </HStack>
-
-      <HStack justify="space-between" mt={1}>
-        {labels.map((l, i) => (
-          <Text
-            key={l}
-            fontFamily="mono"
-            fontSize="sm"
-            fontWeight={500}
-            color={i === activeIdx ? "blue.solid" : "fg.subtle"}
-            letterSpacing="0.04em"
-          >
-            {l}
-          </Text>
-        ))}
-      </HStack>
-    </VStack>
-  );
-}
-
-/* ── Vertical Maturity Bar (desktop only) ── */
-function MaturityBar() {
-  return (
-    <VStack
-      display={{ base: "none", lg: "flex" }}
-      position="absolute"
-      left={{ base: 6, lg: "60px" }}
-      top="50%"
-      transform="translateY(-50%)"
-      zIndex={2}
-      align="center"
-    >
-      <Text
-        css={{
-          writingMode: "vertical-rl",
-          textOrientation: "mixed",
-          transform: "rotate(180deg)",
-        }}
-        fontFamily="mono"
-        fontSize="2xs"
-        fontWeight={500}
-        letterSpacing="0.2em"
-        textTransform="uppercase"
-        color="fg.subtle"
-        mb={3}
-      >
-        Maturidade Digital
-      </Text>
-      <Box w="2px" h="180px" bg="blackAlpha.100" position="relative">
-        <Box
-          position="absolute"
-          bottom={0}
-          left={0}
-          right={0}
-          h="72%"
-          bgGradient="to-t"
-          gradientFrom="blue.solid"
-          gradientTo="blue.solid/25"
-        />
-      </Box>
-      <Text
-        mt={2}
-        fontFamily="mono"
-        fontSize="2xs"
-        fontWeight={700}
-        color="blue.solid"
-      >
-        +G
-      </Text>
-    </VStack>
   );
 }
 
@@ -198,16 +84,15 @@ export function HeroHome() {
             bg="white"
             border="1px solid"
             borderColor="blackAlpha.200"
-            rounded="full"
+            rounded="none"
             pl="5px"
             pr={{ base: 3, md: 4 }}
             py="5px"
-            boxShadow="0 6px 24px rgba(8,18,48,0.08)"
-            transition="all 0.2s"
-            _hover={{
-              borderColor: "blue.solid",
-              boxShadow: "0 12px 34px rgba(0,63,205,0.16)",
-              transform: "translateY(-1px)",
+            transition="border-color 0.2s, background 0.2s"
+            css={{
+              "& .badge-arrow": { transition: "transform 0.2s" },
+              "&:hover": { borderColor: "var(--chakra-colors-blue-solid)" },
+              "&:hover .badge-arrow": { transform: "translateX(3px)" },
             }}
           >
             <HStack
@@ -216,15 +101,14 @@ export function HeroHome() {
               align="center"
               bg="blue.solid"
               color="white"
-              rounded="full"
+              rounded="none"
               px="10px"
-              py="4px"
+              py="5px"
             >
               <Box
                 as="span"
                 w="6px"
                 h="6px"
-                rounded="full"
                 bg="white"
                 animation="pulse 1.6s ease-in-out infinite"
               />
@@ -244,7 +128,7 @@ export function HeroHome() {
               </Text>
             </Text>
 
-            <Box as="span" color="blue.solid" display="inline-flex">
+            <Box as="span" className="badge-arrow" color="blue.solid" display="inline-flex">
               <ArrowRight size={14} />
             </Box>
           </HStack>
@@ -318,12 +202,10 @@ export function HeroHome() {
             fontWeight={400}
             fontStyle="italic"
             color="blue.solid"
+            letterSpacing="-3px"
+            css={{ lineHeight: 0.92 }}
           >
-            o próximo
-          </Text>
-          <br />
-          <Text as="span" fontWeight={800}>
-            nível.
+            o próximo nível.
           </Text>
         </Heading>
 
@@ -361,6 +243,7 @@ export function HeroHome() {
             {/* CTA */}
             <Box
               asChild
+              position="relative"
               display="inline-flex"
               alignItems="center"
               gap="9px"
@@ -372,12 +255,42 @@ export function HeroHome() {
               fontSize="sm"
               textDecoration="none"
               whiteSpace="nowrap"
-              transition="all 0.22s"
-              _hover={{ opacity: 0.88, transform: "translateY(-2px)" }}
+              overflow="hidden"
+              css={{
+                "& .cta-wipe": {
+                  transformOrigin: "left",
+                  transform: "scaleX(0)",
+                  transition: "transform 0.32s cubic-bezier(.32,.72,0,1)",
+                },
+                "& .cta-label, & .cta-arrow": { transition: "color 0.22s, transform 0.2s" },
+                "&:hover .cta-wipe": { transform: "scaleX(1)" },
+                "&:hover .cta-label, &:hover .cta-arrow": {
+                  color: "var(--chakra-colors-black)",
+                },
+                "&:hover .cta-arrow": { transform: "translateX(4px)" },
+              }}
             >
               <Link href="/contato">
-                Iniciar a transformação
-                <ArrowRight size={14} />
+                <Box
+                  as="span"
+                  className="cta-wipe"
+                  position="absolute"
+                  inset={0}
+                  bg="gold.500"
+                  zIndex={0}
+                />
+                <Box as="span" className="cta-label" position="relative" zIndex={1}>
+                  Iniciar a transformação
+                </Box>
+                <Box
+                  as="span"
+                  className="cta-arrow"
+                  position="relative"
+                  zIndex={1}
+                  display="inline-flex"
+                >
+                  <ArrowRight size={14} />
+                </Box>
               </Link>
             </Box>
           </Flex>

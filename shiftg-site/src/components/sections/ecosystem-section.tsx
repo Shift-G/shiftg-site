@@ -153,6 +153,9 @@ function EcoCanvas() {
   const particlesRef = useRef<Particle[]>([]);
   const nodeMapRef = useRef<Record<string, EcoNode>>({});
   const pulseRef = useRef(0);
+  const hoverRef = useRef<EcoNode | null>(null);
+  const activeNodesRef = useRef<Set<string> | null>(null);
+  const activeEdgesRef = useRef<Set<number> | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -160,6 +163,10 @@ function EcoCanvas() {
     if (!canvas || !wrap) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let W = 0;
@@ -172,6 +179,43 @@ function EcoCanvas() {
     const nodeMap: Record<string, EcoNode> = {};
     nodes.forEach((n) => { nodeMap[n.id] = n; });
     nodeMapRef.current = nodeMap;
+
+    // Adjacency (both directions) for hover path-tracing
+    const outAdj: Record<string, string[]> = {};
+    const inAdj: Record<string, string[]> = {};
+    EDGES.forEach(([a, b]) => {
+      (outAdj[a] ||= []).push(b);
+      (inAdj[b] ||= []).push(a);
+    });
+
+    function computeActive(node: EcoNode | null) {
+      if (!node) {
+        activeNodesRef.current = null;
+        activeEdgesRef.current = null;
+        return;
+      }
+      const nodeSet = new Set<string>([node.id]);
+      const walk = (adj: Record<string, string[]>) => {
+        const stack = [node.id];
+        while (stack.length) {
+          const cur = stack.pop()!;
+          (adj[cur] || []).forEach((nx) => {
+            if (!nodeSet.has(nx)) {
+              nodeSet.add(nx);
+              stack.push(nx);
+            }
+          });
+        }
+      };
+      walk(outAdj);
+      walk(inAdj);
+      const edgeSet = new Set<number>();
+      EDGES.forEach(([a, b], i) => {
+        if (nodeSet.has(a) && nodeSet.has(b)) edgeSet.add(i);
+      });
+      activeNodesRef.current = nodeSet;
+      activeEdgesRef.current = edgeSet;
+    }
 
     function layoutNodes() {
       const cx = W / 2;
@@ -221,7 +265,15 @@ function EcoCanvas() {
 
     function spawnParticle() {
       if (particlesRef.current.length >= MAX_PAR) return;
-      const edge = EDGES[Math.floor(Math.random() * EDGES.length)];
+      const activeEdges = activeEdgesRef.current;
+      let idx: number;
+      if (activeEdges && activeEdges.size) {
+        const arr = Array.from(activeEdges);
+        idx = arr[Math.floor(Math.random() * arr.length)];
+      } else {
+        idx = Math.floor(Math.random() * EDGES.length);
+      }
+      const edge = EDGES[idx];
       const from = nodeMap[edge[0]];
       const to = nodeMap[edge[1]];
       if (!from || !to) return;
@@ -243,17 +295,19 @@ function EcoCanvas() {
       ctx!.fillRect(0, 0, W, H);
 
       // Edges - smoother curves with gradient strokes
-      EDGES.forEach(([fid, tid]) => {
+      const activeEdges = activeEdgesRef.current;
+      EDGES.forEach(([fid, tid], ei) => {
         const f = nodeMap[fid];
         const t = nodeMap[tid];
         if (!f || !t) return;
         const cp = ctrl(f, t);
+        const em = !activeEdges ? 1 : activeEdges.has(ei) ? 3 : 0.16;
 
         // Subtle glow line
         ctx!.beginPath();
         ctx!.moveTo(f.x, f.y);
         ctx!.quadraticCurveTo(cp.x, cp.y, t.x, t.y);
-        ctx!.strokeStyle = `rgba(255,255,255,${0.03 + pulse * 0.015})`;
+        ctx!.strokeStyle = `rgba(255,255,255,${(0.03 + pulse * 0.015) * em})`;
         ctx!.lineWidth = 2.5;
         ctx!.lineCap = "round";
         ctx!.stroke();
@@ -262,21 +316,23 @@ function EcoCanvas() {
         ctx!.beginPath();
         ctx!.moveTo(f.x, f.y);
         ctx!.quadraticCurveTo(cp.x, cp.y, t.x, t.y);
-        ctx!.strokeStyle = `rgba(255,255,255,${0.05 + pulse * 0.02})`;
+        ctx!.strokeStyle = `rgba(255,255,255,${(0.05 + pulse * 0.02) * em})`;
         ctx!.lineWidth = 1;
         ctx!.lineCap = "round";
         ctx!.stroke();
       });
 
       // Nodes with sharp-edged rects
+      const activeNodes = activeNodesRef.current;
       nodes.forEach((n) => {
         const hw = n.w / 2;
         const hh = n.h / 2;
+        const nm = !activeNodes ? 1 : activeNodes.has(n.id) ? 1 : 0.16;
 
         // Center glow
         if (n.type === T.CENTER) {
           const g = ctx!.createRadialGradient(n.x, n.y, 0, n.x, n.y, hw * 3);
-          g.addColorStop(0, `rgba(0,81,255,${0.1 + pulse * 0.06})`);
+          g.addColorStop(0, `rgba(0,81,255,${(0.1 + pulse * 0.06) * nm})`);
           g.addColorStop(1, "rgba(0,81,255,0)");
           ctx!.fillStyle = g;
           ctx!.beginPath();
@@ -285,25 +341,25 @@ function EcoCanvas() {
         }
 
         // Node background - sharp rect
-        ctx!.fillStyle = nodeColor(n.type, n.type === T.CENTER ? 0.14 : 0.07);
+        ctx!.fillStyle = nodeColor(n.type, (n.type === T.CENTER ? 0.14 : 0.07) * nm);
         ctx!.fillRect(n.x - hw, n.y - hh, n.w, n.h);
 
         // Node border - sharp rect
-        ctx!.strokeStyle = nodeColor(n.type, n.type === T.CENTER ? (0.7 + pulse * 0.3) : 0.4);
+        ctx!.strokeStyle = nodeColor(n.type, (n.type === T.CENTER ? (0.7 + pulse * 0.3) : 0.4) * nm);
         ctx!.lineWidth = n.type === T.CENTER ? 1.5 : 1;
         ctx!.strokeRect(n.x - hw, n.y - hh, n.w, n.h);
 
         // Label text
         ctx!.textAlign = "center";
         ctx!.textBaseline = "middle";
-        ctx!.fillStyle = n.type === T.CENTER ? "rgba(255,255,255,.95)" : "rgba(255,255,255,.7)";
+        ctx!.fillStyle = `rgba(255,255,255,${(n.type === T.CENTER ? 0.95 : 0.7) * nm})`;
         ctx!.font = n.type === T.CENTER
           ? "700 13px 'Geist Mono Variable','Geist Mono',monospace"
           : "600 11px 'DM Sans',sans-serif";
         ctx!.fillText(n.label, n.x, n.y - 6);
 
         // Sublabel text
-        ctx!.fillStyle = "rgba(255,255,255,.38)";
+        ctx!.fillStyle = `rgba(255,255,255,${0.38 * nm})`;
         ctx!.font = "400 10px 'DM Sans',sans-serif";
         ctx!.fillText(n.sub, n.x, n.y + 9);
       });
@@ -367,8 +423,8 @@ function EcoCanvas() {
       }
 
       // Spawn particles more frequently for dynamism
-      if (Math.random() < 0.06) spawnParticle();
-      requestAnimationFrame(draw);
+      if (!prefersReduced && Math.random() < 0.06) spawnParticle();
+      if (!prefersReduced) requestAnimationFrame(draw);
     }
 
     resize();
@@ -376,34 +432,110 @@ function EcoCanvas() {
     let resizeTimer: ReturnType<typeof setTimeout>;
     const handleResize = () => {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(resize, 100);
+      resizeTimer = setTimeout(() => {
+        resize();
+        // The animated path repaints on the next rAF frame; the reduced-motion
+        // path has no loop, so repaint the single static frame here.
+        if (prefersReduced) draw();
+      }, 100);
     };
     window.addEventListener("resize", handleResize);
 
-    const obs = new IntersectionObserver(
-      (entries) => {
-        const visible = entries[0].isIntersecting;
-        if (visible && !animRef.current) {
-          animRef.current = true;
-          requestAnimationFrame(draw);
-        } else if (!visible) {
-          animRef.current = false;
+    // Hover hit-testing → trace the transformation path through a node
+    function handleMove(e: MouseEvent) {
+      const rect = canvas!.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+      let found: EcoNode | null = null;
+      for (const n of nodes) {
+        if (
+          mx >= n.x - n.w / 2 && mx <= n.x + n.w / 2 &&
+          my >= n.y - n.h / 2 && my <= n.y + n.h / 2
+        ) {
+          found = n;
+          break;
         }
-      },
-      { threshold: 0.05 }
-    );
-    obs.observe(canvas);
+      }
+      if (found !== hoverRef.current) {
+        hoverRef.current = found;
+        computeActive(found);
+        canvas!.style.cursor = found ? "pointer" : "default";
+      }
+    }
+    function handleLeave() {
+      if (hoverRef.current) {
+        hoverRef.current = null;
+        computeActive(null);
+        canvas!.style.cursor = "default";
+      }
+    }
+
+    let obs: IntersectionObserver | null = null;
+
+    if (prefersReduced) {
+      // Single static frame, no loop, no interaction
+      animRef.current = true;
+      draw();
+      // Canvas text measures with fallback fonts until web fonts load; repaint
+      // the one static frame once fonts are ready so node boxes size correctly.
+      if (document.fonts?.ready) {
+        document.fonts.ready.then(() => {
+          if (animRef.current) {
+            layoutNodes();
+            draw();
+          }
+        });
+      }
+    } else {
+      canvas.addEventListener("mousemove", handleMove);
+      canvas.addEventListener("mouseleave", handleLeave);
+
+      obs = new IntersectionObserver(
+        (entries) => {
+          const visible = entries[0].isIntersecting;
+          if (visible && !animRef.current) {
+            animRef.current = true;
+            requestAnimationFrame(draw);
+          } else if (!visible) {
+            animRef.current = false;
+          }
+        },
+        { threshold: 0.05 }
+      );
+      obs.observe(canvas);
+    }
 
     return () => {
       animRef.current = false;
       window.removeEventListener("resize", handleResize);
-      obs.disconnect();
+      canvas.removeEventListener("mousemove", handleMove);
+      canvas.removeEventListener("mouseleave", handleLeave);
+      obs?.disconnect();
     };
   }, []);
 
   return (
     <Box ref={wrapRef} position="relative" w="full" h={{ base: "400px", md: "580px" }} overflow="hidden">
-      <canvas ref={canvasRef} style={{ display: "block", width: "100%", height: "100%" }} />
+      <canvas
+        ref={canvasRef}
+        aria-hidden="true"
+        style={{ display: "block", width: "100%", height: "100%" }}
+      />
+      <Text
+        position="absolute"
+        bottom={{ base: 3, md: 5 }}
+        left={{ base: 4, md: 6 }}
+        display={{ base: "none", md: "block" }}
+        fontFamily="mono"
+        fontSize="2xs"
+        fontWeight={500}
+        letterSpacing="0.14em"
+        textTransform="uppercase"
+        color="whiteAlpha.400"
+        pointerEvents="none"
+      >
+        Passe o mouse sobre um nó para traçar o caminho
+      </Text>
     </Box>
   );
 }

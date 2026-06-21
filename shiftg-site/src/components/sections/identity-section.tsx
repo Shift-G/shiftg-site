@@ -1,9 +1,9 @@
-import {
-  Box,
-  Grid,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+"use client";
+
+import { Box, Grid, Text, VStack } from "@chakra-ui/react";
+import { Reveal } from "@/components/ui/reveal";
+import { useInView } from "@/hooks/use-in-view";
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 
 /* ── Identity Block ── */
 interface IdentityBlockData {
@@ -49,14 +49,14 @@ function IdentityBlock({ block }: { block: IdentityBlockData }) {
         fontFamily="mono"
         fontSize="2xs"
         fontWeight={600}
-        color="whiteAlpha.400"
+        color="whiteAlpha.500"
         letterSpacing="0.1em"
         textTransform="uppercase"
         mb={1}
       >
         {block.label}
       </Text>
-      <Text fontSize="sm" color="whiteAlpha.500" lineHeight={1.68}>
+      <Text fontSize="sm" color="whiteAlpha.600" lineHeight={1.68}>
         {block.description}
       </Text>
     </Box>
@@ -64,10 +64,22 @@ function IdentityBlock({ block }: { block: IdentityBlockData }) {
 }
 
 export function IdentitySection() {
+  const reduced = usePrefersReducedMotion();
+  const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.3 });
+  const drawn = inView || reduced;
+
+  // Stroke draw-on for the all-seeing triangles
+  const drawStyle = (len: number): React.CSSProperties => ({
+    strokeDasharray: len,
+    strokeDashoffset: drawn ? 0 : len,
+    transition: reduced ? undefined : "stroke-dashoffset 2.2s cubic-bezier(.32,.72,0,1)",
+  });
+
   return (
     <Box
+      ref={ref}
       as="section"
-      py={{ base: 16, md: "90px" }}
+      py={{ base: 16, md: "110px" }}
       px={{ base: 6, md: "60px" }}
       bg="blue.solid"
       color="white"
@@ -83,23 +95,23 @@ export function IdentitySection() {
         pointerEvents="none"
       />
 
-      {/* Eye symbol */}
+      {/* Eye symbol — draws on as the section enters view */}
       <Box
         as="svg"
         position="absolute"
-        right="-30px"
+        right={{ base: "-40px", md: "-30px" }}
         top="50%"
         transform="translateY(-50%)"
-        w={{ base: "250px", md: "420px" }}
-        opacity={0.06}
+        w={{ base: "280px", md: "480px" }}
+        opacity={0.13}
         pointerEvents="none"
         color="white"
         // @ts-ignore
         viewBox="0 0 420 380"
         fill="none"
       >
-        <polygon points="210,18 404,354 16,354" stroke="currentColor" strokeWidth="2.5" fill="none" />
-        <polygon points="210,65 365,330 55,330" stroke="currentColor" strokeWidth="1.2" fill="none" />
+        <polygon points="210,18 404,354 16,354" stroke="currentColor" strokeWidth="2.5" fill="none" style={drawStyle(1180)} />
+        <polygon points="210,65 365,330 55,330" stroke="currentColor" strokeWidth="1.2" fill="none" style={drawStyle(980)} />
         <line x1="210" y1="18" x2="210" y2="0" stroke="currentColor" strokeWidth="1.5" />
         <line x1="210" y1="18" x2="195" y2="2" stroke="currentColor" strokeWidth="1" />
         <line x1="210" y1="18" x2="225" y2="2" stroke="currentColor" strokeWidth="1" />
@@ -117,7 +129,7 @@ export function IdentitySection() {
         position="relative"
         zIndex={1}
       >
-        {/* Left text */}
+        {/* Left text — the climax */}
         <Box>
           <Text
             fontFamily="mono"
@@ -125,33 +137,46 @@ export function IdentitySection() {
             fontWeight={600}
             letterSpacing="0.18em"
             textTransform="uppercase"
-            color="whiteAlpha.400"
-            mb={4}
+            color="whiteAlpha.500"
+            mb={5}
           >
             A origem do nome
           </Text>
           <Text
-            as="h2"
-            fontSize={{ base: "30px", md: "clamp(30px, 3.5vw, 48px)" }}
-            fontWeight={800}
-            lineHeight={1.06}
-            letterSpacing="-1.2px"
+            fontFamily="serif"
+            fontStyle="italic"
+            fontWeight={400}
+            fontSize={{ base: "64px", md: "clamp(64px, 9vw, 132px)" }}
+            lineHeight={0.86}
+            letterSpacing="-3px"
             color="white"
-            mb={4}
           >
-            O símbolo
-            <br />
-            que carregamos.
+            Gnosis.
           </Text>
-          <Text fontSize="md" color="whiteAlpha.600" lineHeight={1.88} mt={4}>
-            Nossa logo é um triângulo que forma o G — inscrito no quadrado e no círculo. Não é coincidência. É declaração de princípio.
+          <Text
+            as="h2"
+            fontSize={{ base: "26px", md: "clamp(26px, 3vw, 40px)" }}
+            fontWeight={800}
+            lineHeight={1.08}
+            letterSpacing="-1px"
+            color="white"
+            mt={5}
+          >
+            O conhecimento que ilumina
+            <br />
+            o que estava no escuro.
+          </Text>
+          <Text fontSize="md" color="whiteAlpha.700" lineHeight={1.88} mt={6} maxW="46ch">
+            Nossa logo é um triângulo que forma o G — inscrito no quadrado e no círculo. Não é coincidência. É declaração de princípio: transformar complexidade em clareza, e dados em decisão.
           </Text>
         </Box>
 
-        {/* Right blocks */}
+        {/* Right blocks — staggered reveal */}
         <VStack gap="2px" align="stretch">
-          {blocks.map((block) => (
-            <IdentityBlock key={block.label} block={block} />
+          {blocks.map((block, i) => (
+            <Reveal key={block.label} delay={i * 120} y={18}>
+              <IdentityBlock block={block} />
+            </Reveal>
           ))}
         </VStack>
       </Grid>

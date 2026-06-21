@@ -72,4 +72,15 @@ export const globalCss = defineGlobalStyles({
   "::-webkit-scrollbar-thumb:hover": {
     background: "{colors.blue.500/50}",
   },
+
+  // Respect prefers-reduced-motion: collapse animations/transitions so
+  // reveal/count-up/canvas motion degrades to its final state instantly.
+  "*, *::before, *::after": {
+    "@media (prefers-reduced-motion: reduce)": {
+      animationDuration: "0.01ms !important",
+      animationIterationCount: "1 !important",
+      transitionDuration: "0.01ms !important",
+      scrollBehavior: "auto !important",
+    },
+  },
 });
