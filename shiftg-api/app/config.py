@@ -20,6 +20,10 @@ class Settings(BaseSettings):
     # Logging level for the app loggers (DEBUG, INFO, WARNING, ...).
     log_level: str = "INFO"
 
+    # Rate limiting (per client IP). Format: "<n>/<period>" e.g. "5/minute".
+    rate_limit: str = "5/minute"
+    rate_limit_enabled: bool = True
+
     # Prompt Meter model. Haiku 4.5 = fast/cheap (ideal for the booth queue).
     # Switch to claude-sonnet-4-6 or claude-opus-4-8 for deeper analysis.
     prompt_meter_model: str = "claude-haiku-4-5"

@@ -12,12 +12,13 @@ import logging
 import re
 from datetime import datetime, timezone
 
-from fastapi import APIRouter, BackgroundTasks, HTTPException
+from fastapi import APIRouter, BackgroundTasks, HTTPException, Request
 from pydantic import BaseModel, Field
 
 from .anthropic_client import get_client
 from .config import settings
 from .email_service import send_email
+from .rate_limit import EMAIL_RATE_LIMIT, RATE_LIMIT, limiter
 
 SITE_URL = "https://shiftg.com.br"
 LOGO_URL = "https://shift-gnosis-221556120598-us-east-1-an.s3.us-east-1.amazonaws.com/assets/images/shift-gnosis-logo-light-mode.png"
@@ -174,7 +175,8 @@ class LeadRequest(BaseModel):
 
 
 @router.post("/analyze")
-async def analyze(req: AnalyzeRequest) -> dict:
+@limiter.limit(RATE_LIMIT)
+async def analyze(request: Request, req: AnalyzeRequest) -> dict:
     prompt = req.prompt.strip()
     if not prompt:
         raise HTTPException(status_code=400, detail="Prompt vazio.")
@@ -331,7 +333,8 @@ def build_diagnosis_email(req: LeadRequest) -> tuple[str, str, str]:
 
 
 @router.post("/lead")
-def save_lead(req: LeadRequest, background: BackgroundTasks) -> dict:
+@limiter.limit(RATE_LIMIT)
+def save_lead(request: Request, req: LeadRequest, background: BackgroundTasks) -> dict:
     if not EMAIL_RE.match(req.email):
         raise HTTPException(status_code=400, detail="E-mail inválido.")
     if not settings.mongo_url:
@@ -368,7 +371,8 @@ def save_lead(req: LeadRequest, background: BackgroundTasks) -> dict:
 
 
 @router.post("/test-email")
-async def test_email(req: TestEmailRequest) -> dict:
+@limiter.limit(EMAIL_RATE_LIMIT)
+async def test_email(request: Request, req: TestEmailRequest) -> dict:
     """Synchronous send for investigation: returns the real MailerSend result
     (status + error body), instead of swallowing it like the background flow."""
     if not EMAIL_RE.match(req.email):

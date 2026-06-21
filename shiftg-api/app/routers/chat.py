@@ -1,11 +1,12 @@
 import json
 
 import anthropic
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import StreamingResponse
 
 from ..anthropic_client import get_client
 from ..config import settings
+from ..rate_limit import RATE_LIMIT, limiter
 from ..schemas import ChatRequest, ChatResponse
 
 router = APIRouter(tags=["chat"])
@@ -28,7 +29,8 @@ def _build_kwargs(req: ChatRequest, *, streaming: bool) -> dict:
 
 
 @router.post("/chat", response_model=ChatResponse)
-async def chat(req: ChatRequest) -> ChatResponse:
+@limiter.limit(RATE_LIMIT)
+async def chat(request: Request, req: ChatRequest) -> ChatResponse:
     """Single response (non-streaming). Good for short/medium answers."""
     if not settings.anthropic_api_key:
         raise HTTPException(status_code=503, detail="ANTHROPIC_API_KEY não configurada.")
@@ -56,7 +58,8 @@ async def chat(req: ChatRequest) -> ChatResponse:
 
 
 @router.post("/chat/stream")
-async def chat_stream(req: ChatRequest) -> StreamingResponse:
+@limiter.limit(RATE_LIMIT)
+async def chat_stream(request: Request, req: ChatRequest) -> StreamingResponse:
     """Streaming via Server-Sent Events (SSE). Recommended for long answers."""
     if not settings.anthropic_api_key:
         raise HTTPException(status_code=503, detail="ANTHROPIC_API_KEY não configurada.")

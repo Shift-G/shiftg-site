@@ -86,6 +86,19 @@ docker run -p 8000:8000 -e ANTHROPIC_API_KEY=sk-ant-... shiftg-api
 | `MAILERSEND_API_KEY`| —                 | Chave da MailerSend (vazia = e-mail desligado).|
 | `MAILERSEND_NO_REPLY_EMAIL` | —         | Remetente do e-mail de diagnóstico.          |
 | `MAILERSEND_NO_REPLY_NAME`  | `SHIFT+G` | Nome do remetente.                            |
+| `RATE_LIMIT`        | `5/minute`        | Limite por IP nos endpoints (ex.: `10/minute`).|
+| `RATE_LIMIT_ENABLED`| `true`            | Liga/desliga o rate limit.                    |
+
+## Rate limiting
+
+Endpoints de negócio têm limite **por IP do cliente** (via `slowapi`): padrão
+`5/minute` (`RATE_LIMIT`); `/prompt-meter/test-email` é mais restrito (`3/minute`).
+Estourou → `429` com `{"detail": "Muitas requisições..."}` e header `Retry-After`.
+`/` e `/health` não têm limite. O `Dockerfile` roda uvicorn com `--proxy-headers`
+para o limite enxergar o IP real do cliente atrás do proxy do Railway.
+
+> Armazenamento em memória (por processo). Com múltiplas réplicas no Railway, o limite
+> é por réplica — para um limite global, aponte o storage do slowapi para um Redis.
 
 ## Medidor de Prompt
 

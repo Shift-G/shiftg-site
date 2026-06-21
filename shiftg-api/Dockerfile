@@ -15,4 +15,6 @@ EXPOSE 8000
 
 # Railway injects $PORT. Binding to 0.0.0.0 is required to be reachable.
 # Logs go to stdout (PYTHONUNBUFFERED=1). Tune verbosity with UVICORN_LOG_LEVEL / LOG_LEVEL.
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000} --log-level ${UVICORN_LOG_LEVEL:-info} --access-log"]
+# --proxy-headers + trusting forwarded IPs so rate limiting sees the real client
+# IP (X-Forwarded-For) behind Railway's proxy, not the proxy's own IP.
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000} --log-level ${UVICORN_LOG_LEVEL:-info} --access-log --proxy-headers --forwarded-allow-ips='*'"]
