@@ -1,0 +1,191 @@
+import { Provider } from "@/components/ui/provider";
+import type { Metadata } from "next";
+import {
+  SITE_NAME,
+  SITE_URL,
+  SITE_EMAIL,
+  INSTAGRAM_URL,
+  SITE_CITY,
+  SITE_COUNTRY,
+  SITE_STATE,
+  LINKEDIN_URL,
+} from "@/constants";
+import { Toaster } from "@/components/ui/toaster";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import "@fontsource/rubik/300.css";
+import "@fontsource/rubik/400.css";
+import "@fontsource/rubik/500.css";
+import "@fontsource/rubik/600.css";
+import "@fontsource/rubik/700.css";
+import "@fontsource/rubik/800.css";
+import "@fontsource/rubik/900.css";
+
+import "@fontsource/dm-sans/100.css";
+import "@fontsource/dm-sans/200.css";
+import "@fontsource/dm-sans/300.css";
+import "@fontsource/dm-sans/400.css";
+import "@fontsource/dm-sans/500.css";
+import "@fontsource/dm-sans/600.css";
+import "@fontsource/dm-sans/700.css";
+import "@fontsource/dm-sans/800.css";
+import "@fontsource/dm-sans/900.css";
+
+import "@fontsource/dm-serif-display/400.css";
+import "@fontsource/dm-serif-display/400-italic.css";
+
+import "@fontsource-variable/geist-mono";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    template: `%s | ${SITE_NAME} AI & Data`,
+    default: `${SITE_NAME} | Inteligência Artificial e Dados sob medida`,
+  },
+  description:
+    "Desenvolvemos soluções de software que transformam dados complexos em decisões estratégicas, entregando autonomia e eficiência para sua empresa.",
+  keywords: [
+    "inteligência artificial",
+    "IA",
+    "data science",
+    "análise de dados",
+    "people analytics",
+    "automação",
+    "business intelligence",
+    "machine learning",
+    "software sob medida",
+    "transformação digital",
+  ],
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: SITE_URL,
+    siteName: `${SITE_NAME} AI & Data`,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "SHIFT+G AI & Data",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@shiftg",
+    creator: "@shiftg",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#1a202c" />
+        <meta name="color-scheme" content="light dark" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+        <link rel="dns-prefetch" href="//www.google-analytics.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        {/* Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: `${SITE_NAME} AI & Data`,
+              alternateName: SITE_NAME,
+              url: SITE_URL,
+              logo: `${SITE_URL}/apple-icon.png`,
+              description:
+                "Desenvolvemos soluções de software que transformam dados complexos em decisões estratégicas, entregando autonomia e eficiência para sua empresa.",
+              foundingDate: "2020",
+              contactPoint: {
+                "@type": "ContactPoint",
+                email: SITE_EMAIL,
+                contactType: "customer service",
+                availableLanguage: ["Portuguese", "English"],
+              },
+              sameAs: ["https://linkedin.com/company/shiftg", INSTAGRAM_URL],
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: SITE_CITY,
+                addressRegion: SITE_STATE,
+                addressCountry: SITE_COUNTRY,
+              },
+              areaServed: {
+                "@type": "Country",
+                name: "Brasil",
+              },
+            }),
+          }}
+        />
+
+        {/* WebSite Schema with SearchAction */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: `${SITE_NAME} AI & Data`,
+              url: SITE_URL,
+              description:
+                "Consultoria estratégica de tecnologia e inteligência artificial para empresas que buscam transformação digital.",
+              publisher: {
+                "@type": "Organization",
+                name: SITE_NAME,
+              },
+              potentialAction: {
+                "@type": "SearchAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate: `${SITE_URL}/insights?q={search_term_string}`,
+                },
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
+      </head>
+      <body suppressHydrationWarning>
+        <Provider>
+          <Toaster />
+          {children}
+        </Provider>
+        <GoogleAnalytics gaId="G-MC52XBJ3FS" />
+      </body>
+    </html>
+  );
+}
