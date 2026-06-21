@@ -11,6 +11,7 @@ import { PillarsSection } from "@/components/sections/pillars-section";
 import { MethodSection } from "@/components/sections/method-section";
 import { IdentitySection } from "@/components/sections/identity-section";
 import { TeamSection } from "@/components/sections/team-section";
+import { MaterialSection } from "@/components/sections/material-section";
 import { CTAFinalSection } from "@/components/sections/cta-final-section";
 
 import { SITE_NAME, SITE_URL } from "@/constants";
@@ -164,6 +165,9 @@ export default function HomePage() {
 
         {/* Time — Fundadores */}
         <TeamSection />
+
+        {/* Material institucional — download PDF */}
+        <MaterialSection />
 
         {/* CTA Final */}
         <CTAFinalSection />

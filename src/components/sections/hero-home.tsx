@@ -6,7 +6,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Gauge } from "lucide-react";
 import Link from "next/link";
 
 /* ── Stage dots ── */
@@ -179,6 +179,77 @@ export function HeroHome() {
       /> */}
 
       <MaturityBar />
+
+      {/* Medidor de Prompt — floating badge (top center) */}
+      <Box
+        asChild
+        position="absolute"
+        top={{ base: "16px", md: "26px" }}
+        left="50%"
+        transform="translateX(-50%)"
+        zIndex={4}
+        maxW="calc(100% - 24px)"
+      >
+        <Link href="/medidor-de-prompt">
+          <HStack
+            as="span"
+            gap={{ base: 2, md: "10px" }}
+            align="center"
+            bg="white"
+            border="1px solid"
+            borderColor="blackAlpha.200"
+            rounded="full"
+            pl="5px"
+            pr={{ base: 3, md: 4 }}
+            py="5px"
+            boxShadow="0 6px 24px rgba(8,18,48,0.08)"
+            transition="all 0.2s"
+            _hover={{
+              borderColor: "blue.solid",
+              boxShadow: "0 12px 34px rgba(0,63,205,0.16)",
+              transform: "translateY(-1px)",
+            }}
+          >
+            <HStack
+              as="span"
+              gap="6px"
+              align="center"
+              bg="blue.solid"
+              color="white"
+              rounded="full"
+              px="10px"
+              py="4px"
+            >
+              <Box
+                as="span"
+                w="6px"
+                h="6px"
+                rounded="full"
+                bg="white"
+                animation="pulse 1.6s ease-in-out infinite"
+              />
+              <Text fontFamily="mono" fontSize="2xs" fontWeight={700} letterSpacing="0.12em">
+                NOVO
+              </Text>
+            </HStack>
+
+            <Box as="span" color="blue.solid" display="inline-flex">
+              <Gauge size={16} strokeWidth={2} />
+            </Box>
+
+            <Text fontSize={{ base: "xs", md: "sm" }} fontWeight={700} color="fg" whiteSpace="nowrap">
+              Medidor de Prompt
+              <Text as="span" display={{ base: "none", md: "inline" }} fontWeight={500} color="fg.muted">
+                {" "}— sua pontuação e dicas pra falar melhor com a IA
+              </Text>
+            </Text>
+
+            <Box as="span" color="blue.solid" display="inline-flex">
+              <ArrowRight size={14} />
+            </Box>
+          </HStack>
+        </Link>
+      </Box>
 
       {/* Hero content */}
       <VStack

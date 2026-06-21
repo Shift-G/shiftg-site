@@ -69,6 +69,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
 
+    // Ferramenta interativa
+    {
+      url: `${SITE_URL}/medidor-de-prompt`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+
     // Blog - Página principal de insights
     {
       url: `${SITE_URL}/insights`,
