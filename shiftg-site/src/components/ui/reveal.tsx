@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Box, type BoxProps } from "@chakra-ui/react";
 import { useInView } from "@/hooks/use-in-view";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
@@ -19,14 +20,19 @@ interface RevealProps extends BoxProps {
  */
 export function Reveal({ children, delay = 0, y = 14, ...rest }: RevealProps) {
   const reduced = usePrefersReducedMotion();
+  const [mounted, setMounted] = useState(false);
   const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.15 });
-  const active = inView || reduced;
+
+  // Visible during SSR / before hydration so content is never hidden when JS
+  // is absent or fails. Only after mount does the scroll-reveal take over.
+  useEffect(() => setMounted(true), []);
+  const active = !mounted || reduced || inView;
 
   return (
     <Box
       ref={ref}
       opacity={active ? 1 : 0}
-      transform={active ? "translateY(0)" : `translateY(${y}px)`}
+      transform={active ? undefined : `translateY(${y}px)`}
       transition={
         reduced
           ? undefined
