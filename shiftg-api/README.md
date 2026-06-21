@@ -9,10 +9,12 @@ API FastAPI com integração à Anthropic (Claude), pronta para deploy no Railwa
 | GET    | `/`            | Status básico                              |
 | GET    | `/health`      | Healthcheck (usado pelo Railway)           |
 | GET    | `/docs`        | Swagger UI (interativo)                     |
-| POST   | `/chat`        | Resposta única (não-streaming)             |
-| POST   | `/chat/stream` | Streaming via SSE (respostas longas)        |
-| POST   | `/prompt-meter/analyze` | Medidor de Prompt: pontua e reescreve um prompt |
-| POST   | `/prompt-meter/lead`    | Salva lead (nome, e-mail, nota) no MongoDB |
+| POST   | `/api/v1/chat`        | Resposta única (não-streaming)             |
+| POST   | `/api/v1/chat/stream` | Streaming via SSE (respostas longas)        |
+| POST   | `/api/v1/prompt-meter/analyze` | Medidor de Prompt: pontua e reescreve um prompt |
+| POST   | `/api/v1/prompt-meter/lead`    | Salva lead (nome, e-mail, nota) no MongoDB |
+
+> Endpoints de negócio ficam sob `/api/v1`. `/` e `/health` ficam na raiz (convenção de healthcheck).
 
 Modelo padrão: `claude-opus-4-8` com adaptive thinking ligado.
 
@@ -45,7 +47,7 @@ Abra http://localhost:8000/docs
 Teste rápido:
 
 ```bash
-curl -s http://localhost:8000/chat \
+curl -s http://localhost:8000/api/v1/chat \
   -H "content-type: application/json" \
   -d '{"messages":[{"role":"user","content":"Diga oi em uma frase"}]}'
 ```
@@ -90,11 +92,11 @@ docker run -p 8000:8000 -e ANTHROPIC_API_KEY=sk-ant-... shiftg-api
 Atração interativa (porte do `medidor-de-prompt` em Node). O front é a página
 `/medidor-de-prompt` no site Next.js (`shiftg-site`), que chama estes endpoints.
 
-- `POST /prompt-meter/analyze` `{ "prompt": "..." }` → score, level, criteria, strengths,
+- `POST /api/v1/prompt-meter/analyze` `{ "prompt": "..." }` → score, level, criteria, strengths,
   improvements e rewritten_prompt. Usa **Structured Outputs** (JSON garantido). Sem
   `ANTHROPIC_API_KEY`, ou em qualquer falha de IA, cai automaticamente para um
   **modo demo offline** (heurístico) — rede de segurança para o estande.
-- `POST /prompt-meter/lead` `{ "email", "name", "score", "level", "prompt", + análise }` →
+- `POST /api/v1/prompt-meter/lead` `{ "email", "name", "score", "level", "prompt", + análise }` →
   grava no MongoDB (collection `leads` no banco `MONGO_DB`; exige `MONGO_URL`) e dispara o
   **e-mail de diagnóstico** via MailerSend em background (best-effort).
 
@@ -108,7 +110,7 @@ Atração interativa (porte do `medidor-de-prompt` em Node). O front é a págin
 
 ### Investigar e-mail que não chega
 
-O `/prompt-meter/lead` envia o e-mail em **background**, então a API responde `ok`
+O `/api/v1/prompt-meter/lead` envia o e-mail em **background**, então a API responde `ok`
 mesmo se a MailerSend rejeitar. Para ver a causa real:
 
 1. **Logs** (`make logs` / Railway → Deploy logs). Procure por `email:`. Em falha aparece
@@ -117,7 +119,7 @@ mesmo se a MailerSend rejeitar. Para ver a causa real:
 2. **Endpoint de teste** (síncrono — retorna o resultado real, não em background):
 
    ```bash
-   curl -s -X POST "$API/prompt-meter/test-email" \
+   curl -s -X POST "$API/api/v1/prompt-meter/test-email" \
      -H "content-type: application/json" -d '{"email":"voce@dominio.com"}'
    # ok:false, status:422, body:... → diz exatamente o porquê
    ```
@@ -130,5 +132,5 @@ mesmo se a MailerSend rejeitar. Para ver a causa real:
 - **Chave inválida** → 401 `Unauthenticated`.
 
 > `LOG_LEVEL` (default `INFO`) controla os logs da app; `UVICORN_LOG_LEVEL` os do servidor.
-> `POST /prompt-meter/test-email` é um endpoint de depuração sem autenticação — considere
+> `POST /api/v1/prompt-meter/test-email` é um endpoint de depuração sem autenticação — considere
 > removê-lo ou protegê-lo em produção.

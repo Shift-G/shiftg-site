@@ -35,13 +35,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(chat.router)
-app.include_router(prompt_meter.router)
+# Business endpoints are versioned under /api/v1. Health/meta stay at the root.
+API_V1 = "/api/v1"
+app.include_router(chat.router, prefix=API_V1)
+app.include_router(prompt_meter.router, prefix=API_V1)
 
 
 @app.get("/", tags=["meta"])
 def root():
-    return {"service": "shiftg-api", "status": "ok", "docs": "/docs"}
+    return {"service": "shiftg-api", "status": "ok", "api": API_V1, "docs": "/docs"}
 
 
 @app.get("/health", tags=["meta"])

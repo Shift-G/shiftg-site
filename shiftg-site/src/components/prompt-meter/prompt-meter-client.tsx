@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Box, HStack, Input, Text, Textarea, VStack } from "@chakra-ui/react";
 import { ArrowRight, Check } from "lucide-react";
-import { API_URL } from "@/constants";
+import { API_BASE } from "@/constants";
 
 /* ── types (English) — displayed strings stay pt-BR ── */
 interface Criterion {
@@ -46,7 +46,7 @@ export function PromptMeterClient() {
     }
     setView("loading");
     try {
-      const res = await fetch(`${API_URL}/prompt-meter/analyze`, {
+      const res = await fetch(`${API_BASE}/prompt-meter/analyze`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ prompt: value }),
@@ -435,7 +435,7 @@ function LeadCapture({ analysis, prompt }: { analysis: Analysis; prompt: string 
     }
     setLoading(true);
     try {
-      const res = await fetch(`${API_URL}/prompt-meter/lead`, {
+      const res = await fetch(`${API_BASE}/prompt-meter/lead`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
