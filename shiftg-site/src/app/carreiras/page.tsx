@@ -14,10 +14,6 @@ import { Plumb } from "@/components/ui/plumb";
 import { CTAFinalSection } from "@/components/sections/cta-final-section";
 import {
   ArrowRight,
-  Database,
-  Phone,
-  HeadphonesIcon,
-  Briefcase,
   Terminal,
   Activity,
   Cpu,
@@ -30,14 +26,14 @@ import { SITE_NAME, SITE_URL, CAREERS_EMAIL } from "@/constants";
 export const metadata: Metadata = {
   title: `Carreiras | ${SITE_NAME}`,
   description:
-    "Torne-se um arquiteto na SHIFT+G. Vagas remotas em Inteligência Artificial, Dados e Vendas de Elite para nível C-Level.",
+    "Torne-se um arquiteto na SHIFT+G. Vagas presenciais (CLT) em União da Vitória/PR para FullStack e IA.",
   alternates: {
     canonical: `${SITE_URL}/carreiras`,
   },
   openGraph: {
     title: `Carreiras | ${SITE_NAME}`,
     description:
-      "Vagas remotas para profissionais que querem construir o futuro da IA e Dados em grandes arquiteturas.",
+      "Vagas presenciais (CLT) em União da Vitória/PR para quem quer construir o futuro da IA e Dados.",
     type: "website",
     locale: "pt_BR",
     url: `${SITE_URL}/carreiras`,
@@ -66,49 +62,20 @@ function SectionTag({ children, color = "blue.solid" }: { children: string; colo
 
 const jobs = [
   {
-    title: "Engenheiro de Dados Sênior",
+    title: "Desenvolvedor FullStack (Python & React)",
     department: "Cloud & Engine",
-    type: "REMOTO",
-    salary: "R$ 12k — R$ 18k",
-    description: "Lidere pipelines críticos. Esperamos vivência absoluta em Python, infraestruturas escaláveis e Data Lakes.",
-    icon: <Database size={24} />,
-    featured: true,
-  },
-  {
-    title: "Engenheiro de Dados (Especialista)",
-    department: "Cloud & Engine",
-    type: "REMOTO",
-    salary: "R$ 18k — R$ 25k",
-    description: "Tech lead de infraestrutura. Definição da arquitetura de base para machine learning e real-time processing.",
+    type: "PRESENCIAL · UNIÃO DA VITÓRIA/PR",
+    description: "Construa de ponta a ponta. Backend em Python e frontend em React, entregando produtos sólidos em produção.",
     icon: <Cpu size={24} />,
     featured: true,
   },
   {
-    title: "SDR - Vendas B2B Elite",
-    department: "Revenue",
-    type: "HÍBRIDO PR",
-    salary: "R$ 4k — R$ 8k + ACEL",
-    description: "Abra trincheiras e qualifique tickets C-Level. Conhecimento B2B de alto volume é mandatório.",
-    icon: <Phone size={24} />,
-    featured: false,
-  },
-  {
-    title: "Project Manager",
-    department: "Ops",
-    type: "REMOTO",
-    salary: "R$ 8k — R$ 12k",
-    description: "Entrega não se negocia. Orquestre nossos engenheiros dentro dos prazos SLA dos clientes enterprise.",
-    icon: <Briefcase size={24} />,
-    featured: false,
-  },
-  {
-    title: "Customer Support C-Level",
-    department: "Support",
-    type: "REMOTO",
-    salary: "R$ 4.5k — R$ 6.5k",
-    description: "A linha de frente não cai. Monitoramento ativo, queries rápidas e capacidade de alinhar com diretoria cliente.",
-    icon: <HeadphonesIcon size={24} />,
-    featured: false,
+    title: "AI Prompt Engineer Júnior",
+    department: "AI Lab",
+    type: "PRESENCIAL · UNIÃO DA VITÓRIA/PR",
+    description: "Desenhe e refine prompts para LLMs. Itere, avalie e otimize fluxos de IA com método e curiosidade.",
+    icon: <Terminal size={24} />,
+    featured: true,
   },
 ];
 
@@ -163,7 +130,7 @@ export default function CareersPage() {
                 textTransform="uppercase"
                 color="blue.solid"
               >
-                05 Vagas em Aberto
+                02 Vagas em Aberto
               </Text>
             </HStack>
 
@@ -213,18 +180,18 @@ export default function CareersPage() {
                   maxW="750px"
                 >
                   Somos exigentes, austeros com futilidades tecnológicas e obcecados por resultados em produção.
-                  Se você foge da complexidade e quer bater ponto, essa empresa não é pra você. Aqui, entregamos as
-                  bases que revolucionam indústrias — e operamos de qualquer lugar do Brasil.
+                  Se você foge da complexidade, essa empresa não é pra você. Aqui, entregamos as
+                  bases que revolucionam indústrias — lado a lado, na nossa base em União da Vitória/PR.
                 </Text>
 
                 <HStack gap={{ base: 6, md: 10 }} flex={1} justify={{ base: "flex-start", lg: "flex-end" }} w="full">
                   <VStack align="flex-start" gap={1}>
-                    <Text fontFamily="mono" fontSize="2xs" color="fg.subtle">MODELO</Text>
-                    <Text fontSize="sm" fontWeight={600} color="fg">Remoto</Text>
+                    <Text fontFamily="mono" fontSize="2xs" color="fg.subtle">LOCAL</Text>
+                    <Text fontSize="sm" fontWeight={600} color="fg">União da Vitória/PR</Text>
                   </VStack>
                   <VStack align="flex-start" gap={1}>
                     <Text fontFamily="mono" fontSize="2xs" color="fg.subtle">REGIME</Text>
-                    <Text fontSize="sm" fontWeight={600} color="fg">B2B / PJ</Text>
+                    <Text fontSize="sm" fontWeight={600} color="fg">Presencial · CLT</Text>
                   </VStack>
 
                   <Box
@@ -290,8 +257,8 @@ export default function CareersPage() {
                 </Text>
               </Text>
               <Text fontSize="lg" color="whiteAlpha.800" lineHeight={1.8}>
-                Não economizamos na infantaria. O trabalho remoto da SHIFT+G significa que a matriz
-                envia o hardware pesado, paga as assinaturas das melhores IAs que existem para que seu teclado
+                Não economizamos na infantaria. Na base da SHIFT+G em União da Vitória/PR, a matriz
+                entrega o hardware pesado e paga as assinaturas das melhores IAs que existem para que seu teclado
                 escreva código e soluções de forma hiper-produtiva. Propósito importa, mas a infraestrutura te carrega.
               </Text>
             </Box>
@@ -380,10 +347,6 @@ export default function CareersPage() {
 
                 {/* Right Col - Action */}
                 <VStack align={{ base: "flex-start", lg: "flex-end" }} gap={4} w="full">
-                  <VStack align={{ base: "flex-start", lg: "flex-end" }} gap={0}>
-                    <Text fontFamily="mono" fontSize="2xs" color="fg.subtle">COMPENSAÇÃO B2B</Text>
-                    <Text fontSize="lg" fontWeight={800} color="fg">{job.salary}</Text>
-                  </VStack>
                   <Box
                     as="a"
                     // @ts-ignore
@@ -405,7 +368,7 @@ export default function CareersPage() {
                     _hover={{ bg: "blue.solid", color: "white" }}
                     w={{ base: "full", lg: "auto" }}
                   >
-                    Apresentar Arquivo
+                    Apresente-se
                   </Box>
                 </VStack>
               </Grid>
