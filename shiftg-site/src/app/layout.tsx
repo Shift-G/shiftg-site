@@ -109,6 +109,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#1a202c" />
         <meta name="color-scheme" content="light dark" />
         <meta name="format-detection" content="telephone=no" />
+        <meta name="facebook-domain-verification" content="3hvu3uxgpm31cqal9h5ospyv1t1ur0" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
