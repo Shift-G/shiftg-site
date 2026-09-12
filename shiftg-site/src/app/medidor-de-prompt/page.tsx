@@ -1,9 +1,10 @@
+import { Frame } from "@/components/layout/editorial";
 import { Metadata } from "next";
 import { Box, VStack } from "@chakra-ui/react";
 import { Page } from "@/components/layout/page";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { CTAFinalSection } from "@/components/sections/cta-final-section";
+import { ClosingCTA } from "@/components/sections/business";
 import { PromptsGuideSection } from "@/components/sections/prompts-guide-section";
 import { PromptMeterClient } from "@/components/prompt-meter/prompt-meter-client";
 import { SITE_NAME, SITE_URL } from "@/constants";
@@ -17,7 +18,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: `Medidor de Prompt | ${SITE_NAME}`,
-    description: "Pontue seu prompt e veja como deixá-lo muito melhor — na hora.",
+    description:
+      "Pontue seu prompt e veja como deixá-lo muito melhor — na hora.",
     type: "website",
     locale: "pt_BR",
     url: `${SITE_URL}/medidor-de-prompt`,
@@ -36,26 +38,21 @@ export default function MedidorDePromptPage() {
           bg="stone"
           pt={{ base: "20px", md: "60px" }}
           pb={{ base: 16, md: "100px" }}
-          px={{ base: 6, md: "60px", lg: "112px" }}
           position="relative"
           overflow="hidden"
         >
-          {/* grid pattern de fundo (mesma linguagem das outras páginas) */}
-          <Box
-            position="absolute"
-            inset={0}
-            backgroundImage="linear-gradient(#00000004 1px, transparent 1px), linear-gradient(90deg, #00000004 1px, transparent 1px)"
-            backgroundSize="64px 64px"
-            pointerEvents="none"
-          />
-          <Box position="relative" zIndex={1}>
-            <PromptMeterClient />
-          </Box>
+          <Frame>
+            {/* grid pattern de fundo (mesma linguagem das outras páginas) */}
+
+            <Box position="relative" zIndex={1}>
+              <PromptMeterClient />
+            </Box>
+          </Frame>
         </Box>
 
         <PromptsGuideSection />
 
-        <CTAFinalSection />
+        <ClosingCTA />
       </VStack>
 
       <Footer />

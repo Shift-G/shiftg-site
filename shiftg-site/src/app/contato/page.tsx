@@ -1,158 +1,70 @@
-import { Metadata } from "next";
-import {
-  Box,
-  Flex,
-  Grid,
-  HStack,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import { Page } from "@/components/layout/page";
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
+import { Box, Grid, Stack, Text } from "@chakra-ui/react";
+import { SitePage } from "@/components/layout/site-page";
+import { Accent, Eyebrow, Frame, Title } from "@/components/layout/editorial";
 import { GeneralContactForm } from "@/components/forms/GeneralContactForm";
-import {
-  SITE_NAME,
-  SITE_URL,
-  SITE_PHONE,
-  SITE_EMAIL,
-  SITE_ADDRESS,
-  SITE_CITY,
-  SITE_STATE,
-  SITE_COUNTRY,
-  SITE_ZIP
-} from "@/constants";
-import { getWhatsAppLink } from "@/utils/whatsapp";
-
-export const metadata: Metadata = {
-  title: `Contato | ${SITE_NAME}`,
-  description:
-    "Inicie um protocolo. Arquitetos de inteligência artificial e software para elevar sua operação ao nível C-Level.",
-  alternates: {
-    canonical: `${SITE_URL}/contato`,
-  },
-  openGraph: {
-    title: `Contato | ${SITE_NAME}`,
-    description: "Conecte-se com especialistas para redefinir o limite tecnológico do seu negócio.",
-    type: "website",
-    locale: "pt_BR",
-    url: `${SITE_URL}/contato`,
-    siteName: SITE_NAME,
-  },
-};
-
-export default function ContactPage() {
+import { SITE_EMAIL, SITE_PHONE } from "@/constants";
+import { projects } from "@/constants/projects";
+import { pageMetadata } from "@/lib/page-metadata";
+export const metadata = pageMetadata(
+  "Agende uma conversa estratégica",
+  "Converse com a SHIFT+G sobre transformação digital, IA in company e nossos produtos. Atendimento para empresas em todo o Brasil.",
+  "/contato",
+);
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ interesse?: string; projeto?: string }>;
+}) {
+  const query = await searchParams;
+  const project = projects.find((p) => p.slug === query.projeto);
+  const context =
+    project?.name ||
+    (query.interesse === "ia-in-company" ? "IA in company" : undefined);
   return (
-    <Page>
-      <Navbar />
-
-      <VStack gap={0} w="full" as="main" align="stretch">
-
-        {/* ── Hero / Form Section ── */}
-        <Box
-          as="section"
-          minH="100vh"
-          bg="stone"
-          position="relative"
-          px={{ base: 6, md: "60px", lg: "112px" }}
-          pt={{ base: "140px", md: "180px" }}
-          pb={{ base: 16, md: "80px" }}
-        >
-          {/* Subtle math/grid pattern */}
-          <Box
-            position="absolute"
-            inset={0}
-            backgroundImage="linear-gradient(#00000004 1px, transparent 1px), linear-gradient(90deg, #00000004 1px, transparent 1px)"
-            backgroundSize="40px 40px"
-            pointerEvents="none"
-          />
-
+    <SitePage>
+      <Box py={{ base: 12, md: 20 }}>
+        <Frame>
           <Grid
-            templateColumns={{ base: "1fr", lg: "1fr 500px" }}
-            gap={{ base: 12, lg: "80px" }}
-            position="relative"
-            zIndex={2}
+            templateColumns={{ base: "1fr", lg: "1fr 1fr" }}
+            gap={{ base: 12, lg: 16 }}
           >
-            <VStack align="flex-start" gap={10} maxW="700px">
+            <Stack gap={8} align="start">
               <Box>
-                <HStack gap={3} mb={{ base: 6, md: "24px" }}>
-                  <Box w="6px" h="6px" bg="blue.solid" />
-                  <Text
-                    fontFamily="mono"
-                    fontSize="2xs"
-                    fontWeight={600}
-                    letterSpacing="0.14em"
-                    textTransform="uppercase"
-                    color="blue.solid"
-                  >
-                    Protocolo de Atendimento
-                  </Text>
-                </HStack>
-
-                <Text
-                  as="h1"
-                  fontSize={{ base: "48px", md: "clamp(60px, 8vw, 100px)" }}
-                  lineHeight={0.92}
-                  letterSpacing="-2.5px"
-                  color="fg"
-                  mb={6}
-                >
-                  <Text as="span" fontWeight={800}>
-                    Conecte-se aos{" "}
-                  </Text>
-                  <Text
-                    as="span"
-                    fontFamily="serif"
-                    fontWeight={400}
-                    fontStyle="italic"
-                    color="blue.solid"
-                  >
-                    construtores.
-                  </Text>
-                </Text>
-
-                <Text fontSize="lg" color="fg.muted" lineHeight={1.8} maxW="500px">
-                  Estamos prontos para converter a visão bruta do seu negócio
-                  em arquiteturas viáveis. Preencha o formulário ou requisite um
-                  contato direto pelos canais oficiais da operação.
-                </Text>
+                <Eyebrow>Conversa estratégica</Eyebrow>
+                <Title as="h1">
+                  O próximo passo
+                  <br />
+                  começa com
+                  <br />
+                  <Accent>uma boa conversa.</Accent>
+                </Title>
               </Box>
-
-              <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap="1px" bg="blackAlpha.100" p="1px" w="full">
-                <VStack align="flex-start" bg="white" p={{ base: 6, md: 8 }} gap={1}>
-                  <Text fontFamily="mono" fontSize="2xs" fontWeight={700} color="fg.subtle">LINHA DIRETA</Text>
-                  <a href={getWhatsAppLink()}>
-                    <Text fontSize="xl" fontWeight={800} color="blue.solid" letterSpacing="-0.5px">
-                      {SITE_PHONE}
-                    </Text>
-                  </a>
-                </VStack>
-                <VStack align="flex-start" bg="white" p={{ base: 6, md: 8 }} gap={1}>
-                  <Text fontFamily="mono" fontSize="2xs" fontWeight={700} color="fg.subtle">E-MAIL OFICIAL</Text>
-                  <a href={`mailto:${SITE_EMAIL}`}>
-                    <Text fontSize="xl" fontWeight={800} color="fg" letterSpacing="-0.5px">
-                      {SITE_EMAIL}
-                    </Text>
-                  </a>
-                </VStack>
-                <VStack align="flex-start" bg="white" p={{ base: 6, md: 8 }} gap={1} gridColumn={{ md: "span 2" }}>
-                  <Text fontFamily="mono" fontSize="2xs" fontWeight={700} color="fg.subtle">INFRAESTRUTURA BR</Text>
-                  <Text fontSize="xl" fontWeight={800} color="fg" letterSpacing="-0.5px" lineHeight={1.4}>
-                    {SITE_ADDRESS}.<br />{SITE_CITY} — {SITE_STATE}, {SITE_COUNTRY}. {SITE_ZIP}
-                  </Text>
-                </VStack>
-              </Grid>
-            </VStack>
-
-            {/* Formulário Wrapper */}
-            <Box bg="white" border="1px solid" borderColor="blackAlpha.100" position="relative" w="full">
-              <Box position="absolute" top={0} left={0} w="full" h="3px" bg="blue.solid" />
-              <GeneralContactForm />
+              <Text fontSize="xl" lineHeight={1.7} color="blackAlpha.700">
+                Fale sobre o momento da sua empresa, o que limita a operação e
+                onde você quer chegar. Vamos entender como a SHIFT+G pode
+                contribuir.
+              </Text>
+              <Stack gap={5} mt={4}>
+                <Text fontFamily="mono" fontSize="sm" color="blue.solid">
+                  ATENDIMENTO EM TODO O BRASIL
+                </Text>
+                <a href={`mailto:${SITE_EMAIL}`}>{SITE_EMAIL}</a>
+                <a href={`https://wa.me/${SITE_PHONE.replace(/\D/g, "")}`}>
+                  {SITE_PHONE}
+                </a>
+              </Stack>
+            </Stack>
+            <Box
+              bg="off"
+              p={{ base: 6, md: 9 }}
+              borderTop="3px solid"
+              borderColor="blue.solid"
+            >
+              <GeneralContactForm context={context} />
             </Box>
           </Grid>
-        </Box >
-      </VStack >
-      <Footer />
-    </Page >
+        </Frame>
+      </Box>
+    </SitePage>
   );
 }

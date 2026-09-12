@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     default: `${SITE_NAME} | Inteligência Artificial e Dados sob medida`,
   },
   description:
-    "Desenvolvemos soluções de software que transformam dados complexos em decisões estratégicas, entregando autonomia e eficiência para sua empresa.",
+    "Transformação digital para empresas com inteligência artificial, governança de dados, produtos digitais e capacitação prática das equipes.",
   keywords: [
     "inteligência artificial",
     "IA",
@@ -130,7 +130,7 @@ export default function RootLayout({
               url: SITE_URL,
               logo: `${SITE_URL}/apple-icon.png`,
               description:
-                "Desenvolvemos soluções de software que transformam dados complexos em decisões estratégicas, entregando autonomia e eficiência para sua empresa.",
+                "Transformação digital para empresas com inteligência artificial, governança de dados, produtos digitais e capacitação prática das equipes.",
               foundingDate: "2020",
               contactPoint: {
                 "@type": "ContactPoint",

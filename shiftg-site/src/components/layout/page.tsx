@@ -7,7 +7,7 @@ interface PageProps {
 
 export function Page({ children }: PageProps) {
   return (
-    <Box as="main" minH="100vh" bg="bg">
+    <Box id="conteudo" minH="100vh" bg="bg">
       {children}
     </Box>
   );
