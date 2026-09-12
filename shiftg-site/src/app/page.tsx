@@ -3,11 +3,8 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { HomeHero, ClientStrip } from "@/components/sections/home-redesign";
 import { Portfolio, ClientStories } from "@/components/sections/portfolio";
-import {
-  TransformationSection,
-  TrainingSection,
-  ClosingCTA,
-} from "@/components/sections/business";
+import { TrainingSection, ClosingCTA } from "@/components/sections/business";
+import { BusinessPriorities } from "@/components/sections/business-priorities";
 import { InstitutionalSection } from "@/components/sections/institutional";
 import { pageMetadata } from "@/lib/page-metadata";
 export const metadata = pageMetadata(
@@ -23,7 +20,7 @@ export default function HomePage() {
       <Box as="main" id="conteudo">
         <HomeHero />
         <ClientStrip />
-        <TransformationSection />
+        <BusinessPriorities />
         <Portfolio />
         <ClientStories />
         <TrainingSection />
