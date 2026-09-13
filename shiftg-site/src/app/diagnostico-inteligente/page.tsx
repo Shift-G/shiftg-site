@@ -1,24 +1,22 @@
 import { Frame } from "@/components/layout/editorial";
-import { Metadata } from "next";
-import { Box, Flex, Grid, HStack, Text, VStack } from "@chakra-ui/react";
-import { Page } from "@/components/layout/page";
-import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Plumb } from "@/components/ui/plumb";
+import { Navbar } from "@/components/layout/navbar";
+import { Page } from "@/components/layout/page";
 import { ClosingCTA } from "@/components/sections/business";
+import { IllustratedHero } from "@/components/sections/editorial-media";
+import { SITE_NAME, SITE_PHONE, SITE_URL } from "@/constants";
+import { Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
 import {
-  ArrowRight,
-  ShieldCheck,
-  Target,
+  AlertTriangle,
+  BarChart3,
+  CheckCircle2,
   Clock,
   FileText,
   Lightbulb,
-  BarChart3,
-  CheckCircle2,
-  AlertTriangle,
+  ShieldCheck,
+  Target,
 } from "lucide-react";
-import Link from "next/link";
-import { SITE_NAME, SITE_URL, SITE_PHONE } from "@/constants";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: `Diagnóstico Inteligente | ${SITE_NAME}`,
@@ -125,160 +123,17 @@ export default function DiagnosticoPage() {
 
       <VStack gap={0} w="full" as="main" align="stretch">
         {/* ── Hero ── */}
-        <Box
-          as="section"
-          minH="auto"
-          bg="stone"
-          display="flex"
-          flexDirection="column"
-          justifyContent="flex-end"
-          position="relative"
-          overflow="hidden"
-        >
-          <Frame wide>
-            {/* Subtle math/grid pattern */}
-
-            <VStack
-              position="relative"
-              zIndex={2}
-              align="flex-start"
-              pt={{ base: 12, md: 20 }}
-            >
-              <HStack gap={3} mb={{ base: 6, md: "24px" }}>
-                <Box w="6px" h="6px" bg="blue.solid" />
-                <Text
-                  fontFamily="mono"
-                  fontSize="sm"
-                  fontWeight={600}
-                  letterSpacing="0.14em"
-                  textTransform="uppercase"
-                  color="blue.solid"
-                >
-                  Inteligência Artificial
-                </Text>
-              </HStack>
-
-              <Text
-                as="h1"
-                fontSize={{ base: "48px", md: "clamp(60px, 8vw, 130px)" }}
-                lineHeight={1.08}
-                letterSpacing="-2.5px"
-                color="fg"
-                maxW="1400px"
-                mb={0}
-              >
-                <Text as="span" fontWeight={800}>
-                  Diagnóstico
-                </Text>
-                <br />
-                <Text
-                  as="span"
-                  fontFamily="serif"
-                  fontWeight={400}
-                  fontStyle="italic"
-                  color="blue.solid"
-                >
-                  inteligente.
-                </Text>
-              </Text>
-
-              {/* Bottom Info Bar */}
-              <Box
-                borderTop="1px solid"
-                borderColor="blackAlpha.100"
-                mt={{ base: 10, md: "60px" }}
-                pt={{ base: 6, md: "32px" }}
-                pb={{ base: 8, md: "48px" }}
-                w="full"
-              >
-                <Flex
-                  direction={{ base: "column", lg: "row" }}
-                  gap={{ base: 8, lg: "80px" }}
-                  align={{ base: "flex-start", lg: "center" }}
-                >
-                  <Text
-                    fontSize="md"
-                    color="fg.muted"
-                    lineHeight={1.8}
-                    flex={1.2}
-                    maxW="750px"
-                  >
-                    Clareza estratégica para entender exatamente onde a
-                    Inteligência Artificial gera lucro livre e redução de
-                    despesas na sua operação. Pare de apostar no escuro.
-                    Transforme *hype* em números auditáveis antes do primeiro
-                    script desenvolvido.
-                  </Text>
-
-                  <HStack
-                    gap={{ base: 6, md: 10 }}
-                    flex={1}
-                    justify={{ base: "flex-start", lg: "flex-end" }}
-                    w="full"
-                  >
-                    <VStack align="flex-start" gap={1}>
-                      <Text fontFamily="mono" fontSize="sm" color="fg.subtle">
-                        LIFECYCLE
-                      </Text>
-                      <Text fontSize="sm" fontWeight={600} color="fg">
-                        25 Dias
-                      </Text>
-                    </VStack>
-                    <VStack align="flex-start" gap={1}>
-                      <Text fontFamily="mono" fontSize="sm" color="fg.subtle">
-                        OUTPUT
-                      </Text>
-                      <Text fontSize="sm" fontWeight={600} color="fg">
-                        Plano Executivo
-                      </Text>
-                    </VStack>
-
-                    <Box
-                      asChild
-                      display={{ base: "none", md: "inline-flex" }}
-                      alignItems="center"
-                      gap="10px"
-                      bg="blue.solid"
-                      color="white"
-                      px="28px"
-                      py="14px"
-                      fontWeight={600}
-                      fontSize="sm"
-                      transition="all 0.2s"
-                      _hover={{ bg: "blue.fg" }}
-                    >
-                      <Link href={whatsappUrl} target="_blank">
-                        Iniciar Protocolo
-                        <ArrowRight size={14} />
-                      </Link>
-                    </Box>
-                  </HStack>
-
-                  <Box
-                    asChild
-                    display={{ base: "inline-flex", md: "none" }}
-                    alignItems="center"
-                    justifyContent="center"
-                    gap="10px"
-                    bg="blue.solid"
-                    color="white"
-                    w="full"
-                    py="16px"
-                    fontWeight={600}
-                    fontSize="sm"
-                  >
-                    <Link href={whatsappUrl} target="_blank">
-                      Iniciar Protocolo
-                      <ArrowRight size={14} />
-                    </Link>
-                  </Box>
-                </Flex>
-              </Box>
-            </VStack>
-          </Frame>
-        </Box>
-
-        <Plumb />
+        <IllustratedHero
+          eyebrow={"Estratégia / Inteligência artificial"}
+          title={"Diagnóstico"}
+          accent={"inteligente."}
+          description={
+            "Clareza estratégica para entender onde a inteligência artificial pode reduzir despesas e gerar valor na sua operação. Defina prioridades com base no negócio antes de iniciar a implementação."
+          }
+          visual={"pratica"}
+          caption={"Antes de construir a solução, entender a decisão."}
+          tags={["Diagnóstico em 25 dias", "Prioridades", "Plano de ação"]}
+        />
 
         {/* ── Premissa ── */}
         <Box as="section" py={{ base: 16, md: "110px" }} bg="off">

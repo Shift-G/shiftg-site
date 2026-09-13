@@ -1,29 +1,26 @@
 import { Frame } from "@/components/layout/editorial";
-import { Metadata } from "next";
-import { Box, Flex, Grid, HStack, Text, VStack } from "@chakra-ui/react";
-import { Page } from "@/components/layout/page";
-import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Plumb } from "@/components/ui/plumb";
+import { Navbar } from "@/components/layout/navbar";
+import { Page } from "@/components/layout/page";
 import { ClosingCTA } from "@/components/sections/business";
+import { IllustratedHero } from "@/components/sections/editorial-media";
+import { SITE_NAME, SITE_PHONE, SITE_URL } from "@/constants";
+import { Box, Flex, Grid, HStack, Text, VStack } from "@chakra-ui/react";
 import {
-  ArrowRight,
-  Database,
-  Shield,
-  Code,
-  Settings,
-  CreditCard,
   BarChart3,
-  Timer,
-  Lock,
-  MessageCircle,
+  Code,
+  CreditCard,
+  Database,
   Layers,
-  ChevronRight,
-  TrendingUp,
+  Lock,
+  Settings,
+  Shield,
   Target,
+  Timer,
+  TrendingUp,
 } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
-import { SITE_NAME, SITE_URL, SITE_PHONE } from "@/constants";
 
 export const metadata: Metadata = {
   title: `Construa seu SaaS | ${SITE_NAME}`,
@@ -234,184 +231,19 @@ export default function SaasPage() {
 
       <VStack gap={0} w="full" as="main" align="stretch">
         {/* ── Hero ── */}
-        <Box
-          as="section"
-          minH="auto"
-          bg="off"
-          display="flex"
-          flexDirection="column"
-          justifyContent="flex-end"
-          position="relative"
-          overflow="hidden"
-        >
-          <Frame wide>
-            {/* Subtle tech background */}
-
-            {/* Code syntax background element absolute */}
-            <Box
-              position="absolute"
-              right="-5%"
-              top="20%"
-              opacity={0.03}
-              pointerEvents="none"
-              transform="rotate(-5deg)"
-              color="black"
-              fontFamily="mono"
-              fontSize="48px"
-              fontWeight={900}
-              lineHeight={1}
-              whiteSpace="pre"
-              userSelect="none"
-              display={{ base: "none", md: "block" }}
-            >
-              {`npm init @shift-g/saas
-> installing core
-> architecture: multi-tenant
-> scale: infinite
-
-✓ Success!`}
-            </Box>
-
-            <VStack
-              position="relative"
-              zIndex={2}
-              align="flex-start"
-              pt={{ base: 12, md: 20 }}
-            >
-              <HStack gap={3} mb={{ base: 6, md: "24px" }}>
-                <Box w="6px" h="6px" bg="blue.solid" />
-                <Text
-                  fontFamily="mono"
-                  fontSize="sm"
-                  fontWeight={600}
-                  letterSpacing="0.14em"
-                  textTransform="uppercase"
-                  color="blue.solid"
-                >
-                  Fábrica · Construa Seu SaaS
-                </Text>
-              </HStack>
-
-              <Text
-                as="h1"
-                fontSize={{ base: "48px", md: "clamp(60px, 8vw, 130px)" }}
-                lineHeight={1.08}
-                letterSpacing="-2.5px"
-                color="fg"
-                maxW="1300px"
-                mb={0}
-              >
-                <Text as="span" fontWeight={800}>
-                  Software para
-                </Text>
-                <br />
-                <Text
-                  as="span"
-                  fontFamily="serif"
-                  fontWeight={400}
-                  fontStyle="italic"
-                  color="blue.solid"
-                >
-                  gerar receita.
-                </Text>
-              </Text>
-
-              {/* Bottom Info Bar */}
-              <Box
-                borderTop="1px solid"
-                borderColor="blackAlpha.100"
-                mt={{ base: 10, md: "60px" }}
-                pt={{ base: 6, md: "32px" }}
-                pb={{ base: 8, md: "48px" }}
-                w="full"
-              >
-                <Flex
-                  direction={{ base: "column", lg: "row" }}
-                  gap={{ base: 8, lg: "80px" }}
-                  align={{ base: "flex-start", lg: "center" }}
-                >
-                  <Text
-                    fontSize="md"
-                    color="fg.muted"
-                    lineHeight={1.8}
-                    flex={1.2}
-                    maxW="700px"
-                  >
-                    Transforme a sua ideia em uma plataforma recorrente de alta
-                    escalabilidade. Da modelagem da arquitetura multi-tenant ao
-                    deploy serverless, construímos seu produto do zero enquanto
-                    você foca na tração.
-                  </Text>
-
-                  <HStack
-                    gap={{ base: 6, md: 10 }}
-                    flex={1}
-                    justify={{ base: "flex-start", lg: "flex-end" }}
-                    w="full"
-                  >
-                    <VStack align="flex-start" gap={1}>
-                      <Text fontFamily="mono" fontSize="sm" color="fg.subtle">
-                        MVP EM
-                      </Text>
-                      <Text fontSize="sm" fontWeight={600} color="fg">
-                        8-12 Semanas
-                      </Text>
-                    </VStack>
-                    <VStack align="flex-start" gap={1}>
-                      <Text fontFamily="mono" fontSize="sm" color="fg.subtle">
-                        PADRÃO
-                      </Text>
-                      <Text fontSize="sm" fontWeight={600} color="fg">
-                        Multi-tenant
-                      </Text>
-                    </VStack>
-
-                    <Box
-                      asChild
-                      display={{ base: "none", md: "inline-flex" }}
-                      alignItems="center"
-                      gap="10px"
-                      bg="blue.solid"
-                      color="white"
-                      px="28px"
-                      py="14px"
-                      fontWeight={600}
-                      fontSize="sm"
-                      transition="all 0.2s"
-                      _hover={{ bg: "blue.fg" }}
-                    >
-                      <Link href={whatsappUrl} target="_blank">
-                        Falar com Architect
-                        <ArrowRight size={14} />
-                      </Link>
-                    </Box>
-                  </HStack>
-
-                  <Box
-                    asChild
-                    display={{ base: "inline-flex", md: "none" }}
-                    alignItems="center"
-                    justifyContent="center"
-                    gap="10px"
-                    bg="blue.solid"
-                    color="white"
-                    w="full"
-                    py="16px"
-                    fontWeight={600}
-                    fontSize="sm"
-                  >
-                    <Link href={whatsappUrl} target="_blank">
-                      Falar com Architect
-                      <ArrowRight size={14} />
-                    </Link>
-                  </Box>
-                </Flex>
-              </Box>
-            </VStack>
-          </Frame>
-        </Box>
-
-        <Plumb />
+        <IllustratedHero
+          eyebrow={"Fábrica / Construa seu SaaS"}
+          title={"Software para"}
+          accent={"gerar receita."}
+          description={
+            "Transforme a sua ideia em uma plataforma recorrente. Da arquitetura ao produto em operação, construímos a tecnologia enquanto você desenvolve o mercado."
+          }
+          visual={"dados"}
+          caption={
+            "Uma ideia bem estruturada. Uma plataforma pronta para evoluir."
+          }
+          tags={["MVP em 8–12 semanas", "Multi-tenant", "Produto próprio"]}
+        />
 
         {/* ── Engenharia complexa (antiga Challenges) ── */}
         <Box

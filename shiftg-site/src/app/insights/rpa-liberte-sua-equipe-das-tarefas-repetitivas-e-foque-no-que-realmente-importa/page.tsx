@@ -1,22 +1,23 @@
 import { Frame } from "@/components/layout/editorial";
-import { Metadata } from "next";
-import { Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
-import { Page } from "@/components/layout/page";
-import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import {
-  Bot,
-  TrendingUp,
-  Target,
-  Users,
-  Shield,
-  ArrowRight,
-  Zap,
-  DollarSign,
-  BarChart3,
-} from "lucide-react";
-import Link from "next/link";
+import { Navbar } from "@/components/layout/navbar";
+import { Page } from "@/components/layout/page";
+import { EditorialImage } from "@/components/sections/editorial-media";
 import { SITE_NAME, SITE_URL } from "@/constants";
+import { Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
+import {
+  ArrowRight,
+  BarChart3,
+  Bot,
+  DollarSign,
+  Shield,
+  Target,
+  TrendingUp,
+  Users,
+  Zap,
+} from "lucide-react";
+import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: `RPA: Automação Absoluta | ${SITE_NAME}`,
@@ -170,6 +171,13 @@ export default function RPABlogPost() {
                 gargalos crônicos do sistema.
               </Text>
             </VStack>
+            <Box mt={10}>
+              <EditorialImage
+                visual="engenharia"
+                caption="Tecnologia aplicada aos fluxos de trabalho."
+                priority
+              />
+            </Box>
           </Frame>
         </Box>
 

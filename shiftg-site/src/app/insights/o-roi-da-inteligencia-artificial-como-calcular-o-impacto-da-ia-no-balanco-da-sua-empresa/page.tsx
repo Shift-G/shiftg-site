@@ -1,18 +1,19 @@
 import { Frame } from "@/components/layout/editorial";
-import { Metadata } from "next";
-import { Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
-import { Page } from "@/components/layout/page";
-import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { Navbar } from "@/components/layout/navbar";
+import { Page } from "@/components/layout/page";
+import { EditorialImage } from "@/components/sections/editorial-media";
+import { SITE_NAME, SITE_URL } from "@/constants";
+import { Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
 import {
-  TrendingUp,
+  ArrowRight,
+  BarChart3,
   DollarSign,
   Shield,
-  BarChart3,
-  ArrowRight,
+  TrendingUp,
 } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
-import { SITE_NAME, SITE_URL } from "@/constants";
 
 export const metadata: Metadata = {
   title: `O ROI da Inteligência Artificial | ${SITE_NAME}`,
@@ -187,6 +188,13 @@ export default function ROIInteligenciaArtificialBlogPost() {
                 hardware implementado.
               </Text>
             </VStack>
+            <Box mt={10}>
+              <EditorialImage
+                visual="dados"
+                caption="Uma visão estruturada sobre investimento e impacto."
+                priority
+              />
+            </Box>
           </Frame>
         </Box>
 

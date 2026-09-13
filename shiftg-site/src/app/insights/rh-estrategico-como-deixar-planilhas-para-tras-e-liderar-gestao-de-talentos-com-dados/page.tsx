@@ -1,23 +1,23 @@
 import { Frame } from "@/components/layout/editorial";
-import { Metadata } from "next";
-import { Box, Flex, Grid, HStack, Text, VStack } from "@chakra-ui/react";
-import { Page } from "@/components/layout/page";
-import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { Navbar } from "@/components/layout/navbar";
+import { Page } from "@/components/layout/page";
+import { EditorialImage } from "@/components/sections/editorial-media";
+import { SITE_NAME, SITE_URL } from "@/constants";
+import { Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
 import {
-  Users,
+  ArrowRight,
   BarChart3,
   Bot,
-  TrendingUp,
-  Target,
-  Heart,
-  Shield,
-  ArrowRight,
   Brain,
+  Heart,
   Lightbulb,
+  Shield,
+  Target,
+  TrendingUp,
 } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
-import { SITE_NAME, SITE_URL } from "@/constants";
 
 export const metadata: Metadata = {
   title: `RH Estratégico | ${SITE_NAME}`,
@@ -204,6 +204,13 @@ export default function RHEstrategicoBlogPost() {
                 estratégica.
               </Text>
             </VStack>
+            <Box mt={10}>
+              <EditorialImage
+                visual="equipe"
+                caption="Pessoas, informação e decisões na gestão de talentos."
+                priority
+              />
+            </Box>
           </Frame>
         </Box>
 

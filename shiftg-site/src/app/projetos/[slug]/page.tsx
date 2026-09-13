@@ -1,19 +1,24 @@
-import { notFound } from "next/navigation";
-import { Box, Flex, Grid, Heading, Image, Stack, Text } from "@chakra-ui/react";
-import Link from "next/link";
-import { projects } from "@/constants/projects";
-import { SITE_URL } from "@/constants";
-import { pageMetadata } from "@/lib/page-metadata";
-import { SitePage } from "@/components/layout/site-page";
 import {
+  Accent,
   Action,
   EditorialSection,
   Eyebrow,
   Frame,
   Title,
 } from "@/components/layout/editorial";
-import { ClientStories, ProductCard } from "@/components/sections/portfolio";
+import { SitePage } from "@/components/layout/site-page";
 import { ClosingCTA } from "@/components/sections/business";
+import { ClientStories, ProductCard } from "@/components/sections/portfolio";
+import {
+  ProjectFlow,
+  ProjectVisual,
+} from "@/components/sections/project-visual";
+import { SITE_URL } from "@/constants";
+import { projects } from "@/constants/projects";
+import { pageMetadata } from "@/lib/page-metadata";
+import { Box, Flex, Grid, Heading, Stack, Text } from "@chakra-ui/react";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 type Props = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
@@ -63,27 +68,36 @@ export default async function ProjectPage({ params }: Props) {
         }}
       />
       <Box py={{ base: 10, md: 16 }}>
-        <Frame>
+        <Frame wide>
           <Flex
             as="nav"
             aria-label="Caminho da página"
             gap={3}
             fontSize="sm"
             color="blackAlpha.700"
-            mb={12}
+            mb={10}
           >
             <Link href="/ecossistema">Ecossistema</Link>
             <Text aria-hidden="true">/</Text>
             <Text aria-current="page">{p.name}</Text>
           </Flex>
           <Grid
-            templateColumns={{ base: "1fr", lg: "1.6fr 1fr" }}
-            gap={{ base: 10, lg: 16 }}
-            alignItems="start"
+            templateColumns={{ base: "1fr", lg: "1.2fr 1fr" }}
+            gap={{ base: 10, lg: 14 }}
+            alignItems="center"
           >
             <Box>
               <Eyebrow>{p.category}</Eyebrow>
-              <Title as="h1">{p.headline}</Title>
+              <Heading
+                as="h1"
+                fontSize={{ base: "3rem", md: "4.5rem", xl: "5.5rem" }}
+                fontWeight={500}
+                letterSpacing="-0.045em"
+                lineHeight={1.08}
+              >
+                {p.headline.split(" ").slice(0, -2).join(" ")}{" "}
+                <Accent>{p.headline.split(" ").slice(-2).join(" ")}</Accent>
+              </Heading>
               <Text
                 fontSize="xl"
                 color="blackAlpha.700"
@@ -101,78 +115,55 @@ export default async function ProjectPage({ params }: Props) {
                   Conversar sobre o projeto
                 </Action>
               </Flex>
-            </Box>
-            <Stack bg="off" p={{ base: 7, md: 9 }} gap={8}>
-              <Flex
-                minH="120px"
-                align="center"
-                justify="center"
-                bg="white"
-                p={6}
+              <Text
+                mt={10}
+                pt={5}
+                borderTop="1px solid"
+                borderColor="blackAlpha.200"
+                fontFamily="mono"
+                fontSize="sm"
+                color="blue.solid"
               >
-                <Image
-                  src={`/images/products/${p.logo}`}
-                  alt={p.name}
-                  maxW="full"
-                  maxH="88px"
-                  objectFit="contain"
-                />
-              </Flex>
-              <Stack gap={6}>
-                <Box>
-                  <Text
-                    fontFamily="mono"
-                    fontSize="sm"
-                    color="blackAlpha.700"
-                    mb={2}
-                  >
-                    DESENVOLVIMENTO
-                  </Text>
-                  <Text>
-                    {p.ownership}
-                    {p.partner ? ` · ${p.partner}` : ""}
-                  </Text>
-                </Box>
-                {p.stage && (
-                  <Box>
-                    <Text
-                      fontFamily="mono"
-                      fontSize="sm"
-                      color="blackAlpha.700"
-                      mb={2}
-                    >
-                      ESTÁGIO
-                    </Text>
-                    <Text color="blue.solid" fontWeight={600}>
-                      {p.stage}
-                    </Text>
-                  </Box>
-                )}
-                <Box>
-                  <Text
-                    fontFamily="mono"
-                    fontSize="sm"
-                    color="blackAlpha.700"
-                    mb={2}
-                  >
-                    PARA QUEM
-                  </Text>
-                  <Text lineHeight={1.7}>{p.audience}</Text>
-                </Box>
-                {p.instagram && (
-                  <Action secondary href={p.instagram} external>
-                    Instagram do projeto
-                  </Action>
-                )}
-              </Stack>
-            </Stack>
+                {p.ownership}
+                {p.partner ? ` · ${p.partner}` : ""}
+              </Text>
+            </Box>
+            <ProjectVisual project={p} />
           </Grid>
         </Frame>
       </Box>
+      <EditorialSection muted>
+        <Grid templateColumns={{ base: "1fr", md: "1.5fr 1fr" }} gap={10}>
+          <Box>
+            <Eyebrow>Para quem</Eyebrow>
+            <Text
+              fontSize={{ base: "2xl", md: "3xl" }}
+              lineHeight={1.4}
+              letterSpacing="-0.025em"
+            >
+              {p.audience}
+            </Text>
+          </Box>
+          <Stack align="start" gap={4}>
+            <Text fontFamily="mono" fontSize="sm" color="blue.solid">
+              {p.name.toUpperCase()} / CONEXÕES
+            </Text>
+            <Text fontSize="lg" lineHeight={1.7}>
+              Conheça o projeto em seu próprio ambiente e acompanhe sua
+              evolução.
+            </Text>
+            {p.instagram && (
+              <Action secondary href={p.instagram} external>
+                Instagram do projeto
+              </Action>
+            )}
+          </Stack>
+        </Grid>
+      </EditorialSection>
       <EditorialSection>
         <Grid
           templateColumns={{ base: "1fr", md: "1fr 1fr" }}
-          gap={{ base: 10, md: 20 }}
+          gap={{ base: 10, md: 16 }}
         >
           <Box>
             <Eyebrow>O desafio</Eyebrow>
@@ -187,30 +178,7 @@ export default async function ProjectPage({ params }: Props) {
             </Text>
           </Box>
         </Grid>
-        <Grid
-          mt={16}
-          templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }}
-          gap={8}
-        >
-          {p.pillars.map((pillar, i) => (
-            <Box
-              key={pillar.title}
-              borderTop="1px solid"
-              borderColor="blackAlpha.300"
-              pt={6}
-            >
-              <Text color="blue.solid" fontFamily="mono" fontSize="sm" mb={6}>
-                0{i + 1}
-              </Text>
-              <Heading as="h2" fontSize="2xl" fontWeight={500}>
-                {pillar.title}
-              </Heading>
-              <Text mt={4} color="blackAlpha.700" lineHeight={1.8}>
-                {pillar.text}
-              </Text>
-            </Box>
-          ))}
-        </Grid>
+        <ProjectFlow project={p} />
       </EditorialSection>
       {p.caseId && <ClientStories only={p.caseId} />}
       {p.slug === "pontes" && (

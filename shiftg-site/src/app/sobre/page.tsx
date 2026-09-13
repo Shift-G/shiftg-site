@@ -1,17 +1,19 @@
-import { Box, Grid, Heading, Stack, Text } from "@chakra-ui/react";
-import { SitePage } from "@/components/layout/site-page";
 import {
   Accent,
   Action,
   EditorialSection,
   Eyebrow,
-  Frame,
   Title,
 } from "@/components/layout/editorial";
-import { InstitutionalSection } from "@/components/sections/institutional";
-import { ClientStrip } from "@/components/sections/home-redesign";
+import { SitePage } from "@/components/layout/site-page";
 import { ClosingCTA } from "@/components/sections/business";
+import {
+  IllustratedHero,
+  VisualStory,
+} from "@/components/sections/editorial-media";
+import { ClientStrip } from "@/components/sections/home-redesign";
 import { pageMetadata } from "@/lib/page-metadata";
+import { Box, Grid, Heading, Stack, Text } from "@chakra-ui/react";
 export const metadata = pageMetadata(
   "Sobre a SHIFT+G",
   "Estratégia, inteligência artificial e governança de dados. Conheça a SHIFT+G, nossos produtos e a atuação ao lado de empresas e suas equipes.",
@@ -20,36 +22,32 @@ export const metadata = pageMetadata(
 export default function AboutPage() {
   return (
     <SitePage>
-      <Box py={{ base: 14, md: 20 }}>
-        <Frame wide>
-          <Eyebrow>A SHIFT+G</Eyebrow>
-          <Title as="h1">
-            Tecnologia exige visão.
-            <br />
-            Transformação exige
-            <br />
-            <Accent>estar presente.</Accent>
-          </Title>
-          <Grid
-            templateColumns={{ base: "1fr", md: "1fr 1fr" }}
-            gap={10}
-            mt={10}
-          >
-            <Text fontSize="xl" lineHeight={1.7} color="blackAlpha.700">
-              Somos uma empresa de tecnologia focada na transformação digital
-              das organizações com adoção de inteligência artificial e
-              governança de dados.
-            </Text>
-            <Text fontSize="xl" lineHeight={1.7} color="blackAlpha.700">
-              Atuamos ao lado de líderes e equipes, desenvolvemos produtos
-              próprios e construímos soluções em colaboração com parceiros que
-              conhecem seus setores.
-            </Text>
-          </Grid>
-        </Frame>
-      </Box>
+      <IllustratedHero
+        eyebrow={"A SHIFT+G"}
+        title={"Tecnologia exige visão."}
+        accent={"Transformação exige presença."}
+        description={
+          "Somos uma empresa de tecnologia focada na transformação digital das organizações com adoção de inteligência artificial e governança de dados. Atuamos ao lado de líderes e equipes, com produtos próprios e soluções em colaboração."
+        }
+        visual={"equipe"}
+        caption={"Estratégia, inteligência e execução. Na mesma conversa."}
+        tags={["Visão de negócio", "Profundidade técnica", "Proximidade"]}
+        href={"/ecossistema"}
+        cta={"Conheça o que construímos"}
+      />
       <ClientStrip />
-      <InstitutionalSection />
+      <VisualStory
+        visual="engenharia"
+        eyebrow="Nossa capacidade de construir"
+        title={
+          <>
+            Visão estratégica.
+            <br />
+            <Accent>Profundidade técnica.</Accent>
+          </>
+        }
+        description="Da transformação de processos à criação de novos produtos digitais, conectamos o conhecimento do negócio ao trabalho de engenharia. É assim que a estratégia ganha forma dentro da operação."
+      />
       <EditorialSection>
         <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={14}>
           <Box>

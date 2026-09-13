@@ -1,14 +1,14 @@
 import { Frame } from "@/components/layout/editorial";
-import { Metadata } from "next";
-import { Box, Flex, Grid, HStack, Text, VStack } from "@chakra-ui/react";
-import { Page } from "@/components/layout/page";
-import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { Navbar } from "@/components/layout/navbar";
+import { Page } from "@/components/layout/page";
 import { Plumb } from "@/components/ui/plumb";
-import { ArrowRight, Calendar, Clock } from "lucide-react";
-import Link from "next/link";
 import { SITE_NAME, SITE_URL } from "@/constants";
+import { Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
+import { ArrowRight, Calendar, Clock } from "lucide-react";
+import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: `Insights | ${SITE_NAME}`,
@@ -34,8 +34,7 @@ const blogPosts = [
     description:
       "Descubra como transformar o RH operacional em estratégico através de automação inteligente, people analytics e foco na experiência do colaborador. Entenda os 3 pilares da transformação digital no RH.",
     slug: "rh-estrategico-como-deixar-planilhas-para-tras-e-liderar-gestao-de-talentos-com-dados",
-    image:
-      "/insights/rh-estrategico-como-deixar-planilhas-para-tras-e-liderar-gestao-de-talentos-com-dados.webp",
+    image: "/images/editorial/shiftg-institucional.png",
     tags: ["Recursos Humanos", "People Analytics", "Employee Experience"],
     readTime: "8 min",
     publishedAt: "Julho 2025",
@@ -46,8 +45,7 @@ const blogPosts = [
     description:
       "Descubra como o RPA (Robotic Process Automation) pode transformar sua operação, eliminando tarefas repetitivas e liberando sua equipe para atividades estratégicas. Entenda os benefícios, casos de uso e como combinar RPA com IA.",
     slug: "rpa-liberte-sua-equipe-das-tarefas-repetitivas-e-foque-no-que-realmente-importa",
-    image:
-      "/insights/rpa-liberte-sua-equipe-das-tarefas-repetitivas-e-foque-no-que-realmente-importa.webp",
+    image: "/images/editorial/shiftg-engenharia-digital.png",
     tags: ["RPA", "Automação", "Eficiência Operacional"],
     readTime: "6 min",
     publishedAt: "Abril 2025",
@@ -58,8 +56,7 @@ const blogPosts = [
     description:
       "Descubra como calcular o retorno sobre investimento da Inteligência Artificial em sua empresa. Entenda os 4 vetores de retorno e a fórmula prática para medir o impacto financeiro da IA no seu negócio.",
     slug: "o-roi-da-inteligencia-artificial-como-calcular-o-impacto-da-ia-no-balanco-da-sua-empresa",
-    image:
-      "/insights/o-roi-da-inteligencia-artificial-como-calcular-o-impacto-da-ia-no-balanco-da-sua-empresa.webp",
+    image: "/images/editorial/shiftg-arquitetura-dados.png",
     tags: ["Inteligência Artificial", "ROI", "Estratégia de Negócios"],
     readTime: "7 min",
     publishedAt: "Fevereiro 2025",
@@ -70,8 +67,7 @@ const blogPosts = [
     description:
       "Descubra como a transformação digital vai além da tecnologia e se torna uma estratégia essencial de sobrevivência para empresas modernas. Entenda os 4 pilares fundamentais e o roteiro prático em 3 passos.",
     slug: "transformacao-digital-mais-do-que-tecnologia-uma-estrategia-de-sobrevivencia",
-    image:
-      "/insights/transformacao-digital-mais-do-que-tecnologia-uma-estrategia-de-sobrevivencia.webp",
+    image: "/images/editorial/shiftg-in-company.png",
     tags: ["Transformação Digital", "Estratégia", "Inovação"],
     readTime: "8 min",
     publishedAt: "Janeiro 2025",
@@ -194,7 +190,7 @@ export default function InsightsPage() {
               transition="all 0.2s"
               _hover={{ borderColor: "blackAlpha.400" }}
             >
-              {/* Image Placeholder / Banner */}
+              {/* Capa editorial */}
               <Box
                 position="relative"
                 w="full"
@@ -204,11 +200,11 @@ export default function InsightsPage() {
                 borderBottom={{ base: "1px solid", lg: "none" }}
                 borderColor="blackAlpha.200"
               >
-                {/* Se houver imagem válida no futuro, ela entra aqui cobrindo o Box. Por ora, vamos usar um padrão militar/blueprint se a imagem falhar, ou a tag next/image */}
                 <Image
                   src={featuredPost.image}
-                  alt={featuredPost.title}
+                  alt={`Imagem editorial ilustrativa: ${featuredPost.title}`}
                   fill
+                  sizes="(min-width: 1280px) 60vw, 100vw"
                   style={{ objectFit: "cover" }}
                 />
                 <Box
@@ -311,129 +307,127 @@ export default function InsightsPage() {
 
         {/* ── Other Posts Matrix ── */}
         {otherPosts.length > 0 && (
-          <Box
-            as="section"
-            px={{ base: 6, md: "60px", lg: "112px" }}
-            pb={{ base: 20, md: "120px" }}
-            bg="white"
-          >
-            <Text
-              fontFamily="mono"
-              fontSize="sm"
-              fontWeight={700}
-              color="fg.subtle"
-              mb={6}
-              letterSpacing="0.1em"
-            >
-              [ ARQUIVOS DA OPERAÇÃO ]
-            </Text>
+          <Box as="section" pb={{ base: 20, md: "120px" }} bg="white">
+            <Frame>
+              <Text
+                fontFamily="mono"
+                fontSize="sm"
+                fontWeight={700}
+                color="fg.subtle"
+                mb={6}
+                letterSpacing="0.1em"
+              >
+                [ ARQUIVOS DA OPERAÇÃO ]
+              </Text>
 
-            <Grid
-              templateColumns={{
-                base: "1fr",
-                md: "1fr 1fr",
-                lg: "1fr 1fr 1fr",
-              }}
-              gap="1px"
-              bg="blackAlpha.200"
-              p="1px"
-            >
-              {otherPosts.map((post) => (
-                <VStack
-                  key={post.slug}
-                  align="stretch"
-                  bg="white"
-                  gap={0}
-                  transition="all 0.2s"
-                  _hover={{ bg: "off" }}
-                >
-                  <Box
-                    position="relative"
-                    w="full"
-                    aspectRatio="16/9"
-                    bg="stone"
-                    overflow="hidden"
+              <Grid
+                templateColumns={{
+                  base: "1fr",
+                  md: "1fr 1fr",
+                  lg: "1fr 1fr 1fr",
+                }}
+                gap="1px"
+                bg="blackAlpha.200"
+                p="1px"
+              >
+                {otherPosts.map((post) => (
+                  <VStack
+                    key={post.slug}
+                    align="stretch"
+                    bg="white"
+                    gap={0}
+                    transition="all 0.2s"
+                    _hover={{ bg: "off" }}
                   >
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
-                  </Box>
-
-                  <VStack align="stretch" p={8} gap={6} flex={1}>
-                    <HStack flexWrap="wrap" gap={2}>
-                      {post.tags.slice(0, 2).map((tag) => (
-                        <ArticleTag key={tag}>{tag}</ArticleTag>
-                      ))}
-                    </HStack>
-
-                    <VStack align="flex-start" gap={3} flex={1}>
-                      <Text
-                        as="h3"
-                        fontSize="xl"
-                        fontWeight={800}
-                        lineHeight={1.2}
-                        letterSpacing="-0.5px"
-                        color="fg"
-                      >
-                        {post.title}
-                      </Text>
-                      <Text
-                        color="fg.muted"
-                        fontSize="sm"
-                        lineHeight={1.6}
-                        css={{
-                          display: "-webkit-box",
-                          WebkitLineClamp: 3,
-                          WebkitBoxOrient: "vertical",
-                          overflow: "hidden",
-                        }}
-                      >
-                        {post.description}
-                      </Text>
-                    </VStack>
-
-                    <HStack
-                      justify="space-between"
-                      align="center"
-                      pt={4}
-                      borderTop="1px solid"
-                      borderColor="blackAlpha.100"
+                    <Box
+                      position="relative"
                       w="full"
+                      aspectRatio="16/9"
+                      bg="stone"
+                      overflow="hidden"
                     >
-                      <HStack
-                        gap={4}
-                        color="fg.subtle"
-                        fontFamily="mono"
-                        fontSize="sm"
-                        fontWeight={600}
-                      >
-                        <HStack gap={1.5}>
-                          <Calendar size={12} />
-                          <Text>{post.publishedAt.toUpperCase()}</Text>
-                        </HStack>
-                        <HStack gap={1.5}>
-                          <Clock size={12} />
-                          <Text>{post.readTime.toUpperCase()}</Text>
-                        </HStack>
+                      <Image
+                        src={post.image}
+                        alt={`Imagem editorial ilustrativa: ${post.title}`}
+                        fill
+                        sizes="(min-width: 1280px) 33vw, 100vw"
+                        style={{ objectFit: "cover" }}
+                      />
+                    </Box>
+
+                    <VStack align="stretch" p={8} gap={6} flex={1}>
+                      <HStack flexWrap="wrap" gap={2}>
+                        {post.tags.slice(0, 2).map((tag) => (
+                          <ArticleTag key={tag}>{tag}</ArticleTag>
+                        ))}
                       </HStack>
 
-                      <Link href={`/insights/${post.slug}`}>
-                        <Box
-                          color="blue.solid"
-                          _hover={{ transform: "translateX(4px)" }}
-                          transition="all 0.2s"
+                      <VStack align="flex-start" gap={3} flex={1}>
+                        <Text
+                          as="h3"
+                          fontSize="xl"
+                          fontWeight={800}
+                          lineHeight={1.2}
+                          letterSpacing="-0.5px"
+                          color="fg"
                         >
-                          <ArrowRight size={16} />
-                        </Box>
-                      </Link>
-                    </HStack>
+                          {post.title}
+                        </Text>
+                        <Text
+                          color="fg.muted"
+                          fontSize="sm"
+                          lineHeight={1.6}
+                          css={{
+                            display: "-webkit-box",
+                            WebkitLineClamp: 3,
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                          }}
+                        >
+                          {post.description}
+                        </Text>
+                      </VStack>
+
+                      <HStack
+                        justify="space-between"
+                        align="center"
+                        pt={4}
+                        borderTop="1px solid"
+                        borderColor="blackAlpha.100"
+                        w="full"
+                      >
+                        <HStack
+                          gap={4}
+                          color="fg.subtle"
+                          fontFamily="mono"
+                          fontSize="sm"
+                          fontWeight={600}
+                        >
+                          <HStack gap={1.5}>
+                            <Calendar size={12} />
+                            <Text>{post.publishedAt.toUpperCase()}</Text>
+                          </HStack>
+                          <HStack gap={1.5}>
+                            <Clock size={12} />
+                            <Text>{post.readTime.toUpperCase()}</Text>
+                          </HStack>
+                        </HStack>
+
+                        <Link href={`/insights/${post.slug}`}>
+                          <Box
+                            color="blue.solid"
+                            _hover={{ transform: "translateX(4px)" }}
+                            transition="all 0.2s"
+                          >
+                            <ArrowRight size={16} />
+                          </Box>
+                        </Link>
+                      </HStack>
+                    </VStack>
                   </VStack>
-                </VStack>
-              ))}
-            </Grid>
+                ))}
+              </Grid>
+            </Frame>
           </Box>
         )}
       </VStack>

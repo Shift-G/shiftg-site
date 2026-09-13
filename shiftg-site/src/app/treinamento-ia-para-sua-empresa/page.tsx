@@ -1,16 +1,14 @@
-import { Box, Flex, Grid, Heading, Stack, Text } from "@chakra-ui/react";
-import { TrainingImage } from "@/components/sections/institutional";
-import { SitePage } from "@/components/layout/site-page";
 import {
   Accent,
-  Action,
   EditorialSection,
   Eyebrow,
-  Frame,
   Title,
 } from "@/components/layout/editorial";
+import { SitePage } from "@/components/layout/site-page";
 import { ClosingCTA } from "@/components/sections/business";
+import { IllustratedHero } from "@/components/sections/editorial-media";
 import { pageMetadata } from "@/lib/page-metadata";
+import { Box, Grid, Heading, Stack, Text } from "@chakra-ui/react";
 export const metadata = pageMetadata(
   "Treinamento de IA in company em todo o Brasil",
   "A SHIFT+G trabalha dentro da sua empresa, ao lado do time, para aplicar IA aos gargalos reais da operação. Programa definido conforme o desafio da equipe.",
@@ -19,68 +17,25 @@ export const metadata = pageMetadata(
 export default function TrainingPage() {
   return (
     <SitePage>
-      <Box py={{ base: 14, md: 20 }}>
-        <Frame wide>
-          <Grid templateColumns={{ base: "1fr", lg: "1.5fr 1fr" }} gap={12}>
-            <Box>
-              <Eyebrow>IA in company / Todo o Brasil</Eyebrow>
-              <Title as="h1">
-                Aprender IA.
-                <br />
-                <Accent>Resolver o que importa.</Accent>
-              </Title>
-              <Text
-                mt={8}
-                fontSize="xl"
-                lineHeight={1.7}
-                color="blackAlpha.700"
-              >
-                Sua equipe aprende enquanto aplica inteligência artificial aos
-                desafios da própria empresa. Entramos na operação e trabalhamos
-                ao lado do time por um período definido com você.
-              </Text>
-              <Box mt={9}>
-                <Action href="/contato?interesse=ia-in-company">
-                  Planejar o programa da minha empresa
-                </Action>
-              </Box>
-            </Box>
-            <Stack
-              bg="off"
-              p={{ base: 7, md: 10 }}
-              justify="space-between"
-              gap={10}
-            >
-              <Text fontFamily="mono" fontSize="sm" color="blue.solid">
-                O SEU NEGÓCIO DEFINE O PROGRAMA
-              </Text>
-              {[
-                ["Foco", "Os gargalos reais do time"],
-                ["Formato", "Trabalho prático dentro da empresa"],
-                ["Duração", "Definida conforme o escopo"],
-                ["Abrangência", "Atendimento em todo o Brasil"],
-              ].map(([label, value]) => (
-                <Box
-                  key={label}
-                  borderTop="1px solid"
-                  borderColor="blackAlpha.300"
-                  pt={4}
-                >
-                  <Text fontSize="sm" color="blackAlpha.700" mb={2}>
-                    {label}
-                  </Text>
-                  <Text fontSize="xl">{value}</Text>
-                </Box>
-              ))}
-            </Stack>
-          </Grid>
-        </Frame>
-      </Box>
-      <Box pb={{ base: 14, md: 20 }}>
-        <Frame>
-          <TrainingImage />
-        </Frame>
-      </Box>
+      <IllustratedHero
+        eyebrow={"IA in company / Todo o Brasil"}
+        title={"Aprender IA."}
+        accent={"Resolver o que importa."}
+        description={
+          "Sua equipe aprende enquanto aplica inteligência artificial aos desafios da própria empresa. Entramos na operação e trabalhamos ao lado do time por um período definido com você."
+        }
+        visual={"pratica"}
+        caption={
+          "O desafio é da sua empresa. O trabalho é conjunto. O conhecimento fica com o time."
+        }
+        tags={[
+          "Gargalos reais",
+          "Trabalho prático",
+          "Duração conforme o escopo",
+        ]}
+        href={"/contato?interesse=ia-in-company"}
+        cta={"Planejar o programa da minha empresa"}
+      />
       <EditorialSection dark>
         <Eyebrow light>Capacitação com aplicação</Eyebrow>
         <Title>

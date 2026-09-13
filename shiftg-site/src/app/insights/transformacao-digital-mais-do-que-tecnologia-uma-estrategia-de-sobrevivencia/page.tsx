@@ -1,20 +1,21 @@
 import { Frame } from "@/components/layout/editorial";
-import { Metadata } from "next";
-import { Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
-import { Page } from "@/components/layout/page";
-import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { Navbar } from "@/components/layout/navbar";
+import { Page } from "@/components/layout/page";
+import { EditorialImage } from "@/components/sections/editorial-media";
+import { SITE_NAME, SITE_URL } from "@/constants";
+import { Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
 import {
   AlertTriangle,
-  TrendingDown,
-  Users,
+  ArrowRight,
   BarChart3,
   Target,
-  ArrowRight,
+  TrendingDown,
+  Users,
   Zap,
 } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
-import { SITE_NAME, SITE_URL } from "@/constants";
 
 export const metadata: Metadata = {
   title: `Transformação Digital B2B | ${SITE_NAME}`,
@@ -157,6 +158,13 @@ export default function TransformacaoDigitalBlogPost() {
                 zero através de um modelo mental agressivo.
               </Text>
             </VStack>
+            <Box mt={10}>
+              <EditorialImage
+                visual="pratica"
+                caption="A transformação começa na operação da empresa."
+                priority
+              />
+            </Box>
           </Frame>
         </Box>
 

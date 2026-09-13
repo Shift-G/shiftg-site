@@ -1,19 +1,18 @@
-import { Box, Grid, Heading, Text } from "@chakra-ui/react";
-import { SitePage } from "@/components/layout/site-page";
 import {
   Accent,
-  Action,
   EditorialSection,
   Eyebrow,
-  Frame,
   Title,
 } from "@/components/layout/editorial";
+import { SitePage } from "@/components/layout/site-page";
 import {
-  transformationSteps,
   ClosingCTA,
+  transformationSteps,
 } from "@/components/sections/business";
+import { IllustratedHero } from "@/components/sections/editorial-media";
 import { ClientStories } from "@/components/sections/portfolio";
 import { pageMetadata } from "@/lib/page-metadata";
+import { Box, Grid, Heading, Text } from "@chakra-ui/react";
 export const metadata = pageMetadata(
   "Transformação digital para empresas",
   "IA aplicada, integração de processos e governança de dados. A SHIFT+G atua ao lado da liderança e da equipe, da estratégia à implementação.",
@@ -22,40 +21,21 @@ export const metadata = pageMetadata(
 export default function TransformationPage() {
   return (
     <SitePage>
-      <Box py={{ base: 14, md: 20 }}>
-        <Frame wide>
-          <Eyebrow>Transformação digital</Eyebrow>
-          <Title as="h1">
-            Uma operação à altura
-            <br />
-            da sua <Accent>ambição.</Accent>
-          </Title>
-          <Grid
-            templateColumns={{ base: "1fr", md: "1fr 1fr" }}
-            gap={10}
-            mt={10}
-          >
-            <Text fontSize="xl" lineHeight={1.7} color="blackAlpha.700">
-              Quando o negócio cresce, os processos precisam acompanhar.
-              Trabalhamos com a liderança para definir prioridades e com a
-              equipe para transformar a rotina.
-            </Text>
-            <Box>
-              <Text
-                fontSize="lg"
-                lineHeight={1.8}
-                color="blackAlpha.700"
-                mb={7}
-              >
-                IA, integração e governança de dados como parte da mesma agenda:
-                preparar a empresa para operar melhor e construir novas
-                oportunidades.
-              </Text>
-              <Action>Agendar uma conversa estratégica</Action>
-            </Box>
-          </Grid>
-        </Frame>
-      </Box>
+      <IllustratedHero
+        eyebrow={"Transformação digital"}
+        title={"Uma operação à altura"}
+        accent={"da sua ambição."}
+        description={
+          "Quando o negócio cresce, os processos precisam acompanhar. Trabalhamos com a liderança para definir prioridades e com a equipe para transformar a rotina, conectando IA, integração e governança de dados."
+        }
+        visual={"engenharia"}
+        caption={"Próximos da liderança. Presentes na execução."}
+        tags={[
+          "Processos integrados",
+          "IA com contexto",
+          "Governança de dados",
+        ]}
+      />
       <EditorialSection dark>
         <Eyebrow light>Onde atuamos</Eyebrow>
         <Title>

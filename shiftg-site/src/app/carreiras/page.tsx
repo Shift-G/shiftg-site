@@ -1,21 +1,19 @@
 import { Frame } from "@/components/layout/editorial";
-import { Metadata } from "next";
-import { Box, Flex, Grid, HStack, Text, VStack } from "@chakra-ui/react";
-import { Page } from "@/components/layout/page";
-import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Plumb } from "@/components/ui/plumb";
-import { ClosingCTA } from "@/components/sections/business";
+import { Navbar } from "@/components/layout/navbar";
+import { Page } from "@/components/layout/page";
+import { IllustratedHero } from "@/components/sections/editorial-media";
+import { CAREERS_EMAIL, SITE_NAME, SITE_URL } from "@/constants";
+import { Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
 import {
-  ArrowRight,
-  Terminal,
   Activity,
+  ArrowRight,
   Cpu,
   Monitor,
+  Terminal,
   Zap,
 } from "lucide-react";
-import Link from "next/link";
-import { SITE_NAME, SITE_URL, CAREERS_EMAIL } from "@/constants";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: `Carreiras | ${SITE_NAME}`,
@@ -104,141 +102,19 @@ export default function CareersPage() {
 
       <VStack gap={0} w="full" as="main" align="stretch">
         {/* ── Hero ── */}
-        <Box
-          as="section"
-          minH="auto"
-          bg="stone"
-          display="flex"
-          flexDirection="column"
-          justifyContent="flex-end"
-          position="relative"
-          overflow="hidden"
-        >
-          <Frame wide>
-            {/* Subtle math/grid pattern */}
-
-            <VStack
-              position="relative"
-              zIndex={2}
-              align="flex-start"
-              pt={{ base: 12, md: 20 }}
-            >
-              <HStack gap={3} mb={{ base: 6, md: "24px" }}>
-                <Box w="6px" h="6px" bg="blue.solid" />
-                <Text
-                  fontFamily="mono"
-                  fontSize="sm"
-                  fontWeight={600}
-                  letterSpacing="0.14em"
-                  textTransform="uppercase"
-                  color="blue.solid"
-                >
-                  02 Vagas em Aberto
-                </Text>
-              </HStack>
-
-              <Text
-                as="h1"
-                fontSize={{ base: "48px", md: "clamp(60px, 8vw, 130px)" }}
-                lineHeight={1.08}
-                letterSpacing="-2.5px"
-                color="fg"
-                maxW="1400px"
-                mb={0}
-              >
-                <Text as="span" fontWeight={800}>
-                  Aliste-se aos
-                </Text>
-                <br />
-                <Text
-                  as="span"
-                  fontFamily="serif"
-                  fontWeight={400}
-                  fontStyle="italic"
-                  color="blue.solid"
-                >
-                  construtores.
-                </Text>
-              </Text>
-
-              {/* Bottom Info Bar */}
-              <Box
-                borderTop="1px solid"
-                borderColor="blackAlpha.100"
-                mt={{ base: 10, md: "60px" }}
-                pt={{ base: 6, md: "32px" }}
-                pb={{ base: 8, md: "48px" }}
-                w="full"
-              >
-                <Flex
-                  direction={{ base: "column", lg: "row" }}
-                  gap={{ base: 8, lg: "80px" }}
-                  align={{ base: "flex-start", lg: "center" }}
-                >
-                  <Text
-                    fontSize="md"
-                    color="fg.muted"
-                    lineHeight={1.8}
-                    flex={1.2}
-                    maxW="750px"
-                  >
-                    Somos exigentes, austeros com futilidades tecnológicas e
-                    obcecados por resultados em produção. Se você foge da
-                    complexidade, essa empresa não é pra você. Aqui, entregamos
-                    as bases que revolucionam indústrias — lado a lado, na nossa
-                    base em União da Vitória/PR.
-                  </Text>
-
-                  <HStack
-                    gap={{ base: 6, md: 10 }}
-                    flex={1}
-                    justify={{ base: "flex-start", lg: "flex-end" }}
-                    w="full"
-                  >
-                    <VStack align="flex-start" gap={1}>
-                      <Text fontFamily="mono" fontSize="sm" color="fg.subtle">
-                        LOCAL
-                      </Text>
-                      <Text fontSize="sm" fontWeight={600} color="fg">
-                        União da Vitória/PR
-                      </Text>
-                    </VStack>
-                    <VStack align="flex-start" gap={1}>
-                      <Text fontFamily="mono" fontSize="sm" color="fg.subtle">
-                        REGIME
-                      </Text>
-                      <Text fontSize="sm" fontWeight={600} color="fg">
-                        Presencial · CLT
-                      </Text>
-                    </VStack>
-
-                    <Box
-                      as="a"
-                      // @ts-ignore
-                      href="#open-roles"
-                      display={{ base: "none", md: "inline-flex" }}
-                      alignItems="center"
-                      gap="10px"
-                      bg="blue.solid"
-                      color="white"
-                      px="28px"
-                      py="14px"
-                      fontWeight={600}
-                      fontSize="sm"
-                      transition="all 0.2s"
-                      _hover={{ bg: "blue.fg" }}
-                    >
-                      Ver Operações
-                      <ArrowRight size={14} />
-                    </Box>
-                  </HStack>
-                </Flex>
-              </Box>
-            </VStack>
-          </Frame>
-        </Box>
-
-        <Plumb />
+        <IllustratedHero
+          eyebrow={"Carreiras / Construa com a SHIFT+G"}
+          title={"Seu próximo desafio."}
+          accent={"Uma transformação real."}
+          description={
+            "Trabalhe com arquitetura, inteligência artificial e produtos que fazem parte da operação das empresas. Construímos lado a lado, na nossa base em União da Vitória, PR."
+          }
+          visual={"engenharia"}
+          caption={"Pessoas que pensam, constroem e assumem a execução."}
+          tags={["União da Vitória / PR", "Presencial", "CLT"]}
+          href={"#open-roles"}
+          cta={"Conhecer as oportunidades"}
+        />
 
         {/* ── Culture / Setup ── */}
         <Box

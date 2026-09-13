@@ -1,10 +1,11 @@
-import { Box, Grid, Stack, Text } from "@chakra-ui/react";
-import { SitePage } from "@/components/layout/site-page";
-import { Accent, Eyebrow, Frame, Title } from "@/components/layout/editorial";
 import { GeneralContactForm } from "@/components/forms/GeneralContactForm";
+import { Accent, Eyebrow, Frame, Title } from "@/components/layout/editorial";
+import { SitePage } from "@/components/layout/site-page";
+import { EditorialImage } from "@/components/sections/editorial-media";
 import { SITE_EMAIL, SITE_PHONE } from "@/constants";
 import { projects } from "@/constants/projects";
 import { pageMetadata } from "@/lib/page-metadata";
+import { Box, Grid, Stack, Text } from "@chakra-ui/react";
 export const metadata = pageMetadata(
   "Agende uma conversa estratégica",
   "Converse com a SHIFT+G sobre transformação digital, IA in company e nossos produtos. Atendimento para empresas em todo o Brasil.",
@@ -44,7 +45,7 @@ export default async function ContactPage({
                 onde você quer chegar. Vamos entender como a SHIFT+G pode
                 contribuir.
               </Text>
-              <Stack gap={5} mt={4}>
+              <Stack gap={5} mt={4} w="full">
                 <Text fontFamily="mono" fontSize="sm" color="blue.solid">
                   ATENDIMENTO EM TODO O BRASIL
                 </Text>
@@ -52,6 +53,10 @@ export default async function ContactPage({
                 <a href={`https://wa.me/${SITE_PHONE.replace(/\D/g, "")}`}>
                   {SITE_PHONE}
                 </a>
+                <EditorialImage
+                  visual="equipe"
+                  caption="Proximidade para entender. Capacidade para construir."
+                />
               </Stack>
             </Stack>
             <Box
