@@ -81,6 +81,12 @@ const solutionLinks = [
 ];
 const companyLinks = [
   {
+    label: "Atendimento regional",
+    text: "União da Vitória, Porto União, Curitiba e região.",
+    href: "/atendimento",
+    icon: Building2,
+  },
+  {
     label: "Sobre a SHIFT+G",
     text: "Estratégia, engenharia e proximidade.",
     href: "/sobre",

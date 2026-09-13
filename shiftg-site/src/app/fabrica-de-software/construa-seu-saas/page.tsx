@@ -1,10 +1,12 @@
+import { RegionalPresence } from "@/components/sections/regional-presence";
+import { PageSeo } from "@/components/seo/page-seo";
 import { Frame } from "@/components/layout/editorial";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { Page } from "@/components/layout/page";
 import { ClosingCTA } from "@/components/sections/business";
 import { IllustratedHero } from "@/components/sections/editorial-media";
-import { SITE_NAME, SITE_PHONE, SITE_URL } from "@/constants";
+import { SITE_PHONE } from "@/constants";
 import { Box, Flex, Grid, HStack, Text, VStack } from "@chakra-ui/react";
 import {
   BarChart3,
@@ -19,34 +21,14 @@ import {
   Timer,
   TrendingUp,
 } from "lucide-react";
-import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: `Construa seu SaaS | ${SITE_NAME}`,
-  description:
-    "Transforme sua ideia em um SaaS rentável. Desenvolvemos plataformas completas, escaláveis e prontas para o mercado. Da MVP ao produto final.",
-  keywords: [
-    "desenvolvimento saas",
-    "criar plataforma saas",
-    "mvp saas",
-    "software como serviço",
-    "arquitetura saas",
-    "fábrica de software",
-  ],
-  alternates: {
-    canonical: `${SITE_URL}/fabrica-de-software/construa-seu-saas`,
-  },
-  openGraph: {
-    title: `Construa seu SaaS | ${SITE_NAME}`,
-    description:
-      "Da ideia ao SaaS rentável. Desenvolvemos sua plataforma completa e escalável.",
-    type: "website",
-    locale: "pt_BR",
-    url: `${SITE_URL}/fabrica-de-software/construa-seu-saas`,
-    siteName: SITE_NAME,
-  },
-};
+export const metadata = pageMetadata(
+  "Desenvolvimento de SaaS e produtos digitais",
+  "Transforme o conhecimento do seu negócio em um SaaS. Estratégia, arquitetura e desenvolvimento com a Shift+G, empresa de tecnologia em União da Vitória.",
+  "/fabrica-de-software/construa-seu-saas",
+);
 
 /* ── Section Tag ── */
 function SectionTag({ children }: { children: string }) {
@@ -230,6 +212,17 @@ export default function SaasPage() {
       <Navbar />
 
       <VStack gap={0} w="full" as="main" align="stretch">
+        <PageSeo
+          name="Construa seu SaaS"
+          path="/fabrica-de-software/construa-seu-saas"
+          service={{
+            name: "Desenvolvimento de SaaS",
+            description: metadata.description!,
+          }}
+          parents={[
+            { name: "Software sob medida", item: "/fabrica-de-software" },
+          ]}
+        />
         {/* ── Hero ── */}
         <IllustratedHero
           eyebrow={"Fábrica / Construa seu SaaS"}
@@ -697,6 +690,7 @@ export default function SaasPage() {
           </Frame>
         </Box>
 
+        <RegionalPresence />
         <ClosingCTA />
       </VStack>
 

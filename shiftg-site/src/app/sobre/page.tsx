@@ -1,3 +1,5 @@
+import { RegionalPresence } from "@/components/sections/regional-presence";
+import { PageSeo } from "@/components/seo/page-seo";
 import {
   Accent,
   Action,
@@ -15,13 +17,14 @@ import { ClientStrip } from "@/components/sections/home-redesign";
 import { pageMetadata } from "@/lib/page-metadata";
 import { Box, Grid, Heading, Stack, Text } from "@chakra-ui/react";
 export const metadata = pageMetadata(
-  "Sobre a SHIFT+G",
-  "Estratégia, inteligência artificial e governança de dados. Conheça a SHIFT+G, nossos produtos e a atuação ao lado de empresas e suas equipes.",
+  "Empresa de tecnologia em União da Vitória",
+  "Conheça a Shift+G: consultoria em IA, transformação digital e desenvolvimento de software com sede em União da Vitória e atendimento no Paraná e Santa Catarina.",
   "/sobre",
 );
 export default function AboutPage() {
   return (
     <SitePage>
+      <PageSeo name="Sobre a Shift+G" path="/sobre" />
       <IllustratedHero
         eyebrow={"A SHIFT+G"}
         title={"Tecnologia exige visão."}
@@ -144,6 +147,7 @@ export default function AboutPage() {
           ))}
         </Grid>
       </EditorialSection>
+      <RegionalPresence />
       <ClosingCTA />
     </SitePage>
   );

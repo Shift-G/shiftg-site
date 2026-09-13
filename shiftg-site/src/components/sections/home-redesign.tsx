@@ -42,9 +42,9 @@ export function HomeHero() {
             lineHeight={1.65}
             color="blackAlpha.700"
           >
-            Conectamos a visão de quem lidera à tecnologia que faz acontecer.
-            Transformação digital, inteligência artificial e governança de dados
-            dentro da sua operação.
+            Consultoria em inteligência artificial, transformação digital e
+            software sob medida para sua empresa. De União da Vitória e Porto
+            União à sua operação, conectamos estratégia, dados e execução.
           </Text>
           <Flex mt={9} gap={6} align="center" wrap="wrap">
             <Action>Agendar uma conversa estratégica</Action>
@@ -70,8 +70,8 @@ export function HomeHero() {
             fontSize="xs"
             color="blackAlpha.700"
           >
-            <Box w={6} h="1px" bg="blue.solid" /> DO SUL DO BRASIL. PARA TODO O
-            PAÍS.
+            <Box w={6} h="1px" bg="blue.solid" /> DE UNIÃO DA VITÓRIA. PARA A
+            REGIÃO E TODO O BRASIL.
           </Flex>
         </Flex>
         <Flex direction="column" minW={0} bg="black" color="white">

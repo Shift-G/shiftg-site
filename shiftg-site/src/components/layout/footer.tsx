@@ -8,6 +8,7 @@ import {
   SITE_ADDRESS,
   SITE_CITY,
   SITE_STATE,
+  SITE_ZIP,
   INSTAGRAM_URL,
   LINKEDIN_URL,
   INSTITUTIONAL_PDF_URL,
@@ -29,6 +30,8 @@ const groups = [
     title: "SHIFT+G",
     links: [
       ["Sobre nós", "/sobre"],
+      ["Atendimento regional", "/atendimento"],
+      ["Contato", "/contato"],
       ["Insights", "/insights"],
       ["Medidor de prompt", "/medidor-de-prompt"],
       ["Carreiras", "/carreiras"],
@@ -64,7 +67,7 @@ export function Footer() {
               Transformação digital com IA aplicada e governança de dados.
             </Text>
             <Text fontFamily="mono" fontSize="sm">
-              DO SUL DO BRASIL.
+              DE UNIÃO DA VITÓRIA.
               <br />
               PARA TODO O PAÍS.
             </Text>
@@ -102,8 +105,19 @@ export function Footer() {
             <Text fontSize="sm" color="blackAlpha.700">
               {SITE_ADDRESS}
               <br />
-              {SITE_CITY}, {SITE_STATE}
+              {SITE_CITY}, {SITE_STATE} · CEP {SITE_ZIP}
             </Text>
+            <Box
+              asChild
+              fontSize="sm"
+              color="blackAlpha.700"
+              _hover={{ color: "blue.solid" }}
+            >
+              <Link href="/atendimento">
+                Atendimento em Porto União, São Mateus do Sul, Curitiba e
+                região.
+              </Link>
+            </Box>
             <Flex gap={5}>
               <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
                 Instagram

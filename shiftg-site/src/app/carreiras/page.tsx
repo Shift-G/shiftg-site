@@ -1,9 +1,10 @@
+import { PageSeo } from "@/components/seo/page-seo";
 import { Frame } from "@/components/layout/editorial";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { Page } from "@/components/layout/page";
 import { IllustratedHero } from "@/components/sections/editorial-media";
-import { CAREERS_EMAIL, SITE_NAME, SITE_URL } from "@/constants";
+import { CAREERS_EMAIL } from "@/constants";
 import { Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
 import {
   Activity,
@@ -13,25 +14,13 @@ import {
   Terminal,
   Zap,
 } from "lucide-react";
-import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
-  title: `Carreiras | ${SITE_NAME}`,
-  description:
-    "Torne-se um arquiteto na SHIFT+G. Vagas presenciais (CLT) em União da Vitória/PR para FullStack e IA.",
-  alternates: {
-    canonical: `${SITE_URL}/carreiras`,
-  },
-  openGraph: {
-    title: `Carreiras | ${SITE_NAME}`,
-    description:
-      "Vagas presenciais (CLT) em União da Vitória/PR para quem quer construir o futuro da IA e Dados.",
-    type: "website",
-    locale: "pt_BR",
-    url: `${SITE_URL}/carreiras`,
-    siteName: SITE_NAME,
-  },
-};
+export const metadata = pageMetadata(
+  "Carreiras",
+  "Torne-se um arquiteto na SHIFT+G. Vagas presenciais (CLT) em União da Vitória/PR para FullStack e IA.",
+  "/carreiras",
+);
 
 /* ── Section Tag ── */
 function SectionTag({
@@ -101,6 +90,7 @@ export default function CareersPage() {
       <Navbar />
 
       <VStack gap={0} w="full" as="main" align="stretch">
+        <PageSeo name="Carreiras" path="/carreiras" />
         {/* ── Hero ── */}
         <IllustratedHero
           eyebrow={"Carreiras / Construa com a SHIFT+G"}

@@ -1,20 +1,18 @@
+import { PageSeo } from "@/components/seo/page-seo";
 import { Frame } from "@/components/layout/editorial";
-import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import { Page } from "@/components/layout/page";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Box, VStack, HStack, Text } from "@chakra-ui/react";
-import { SITE_NAME, SITE_EMAIL, SITE_URL } from "@/constants";
+import { SITE_EMAIL } from "@/constants";
 import { AlertTriangle, BookOpen } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: `Termos de Serviço | ${SITE_NAME}`,
-  description:
-    "Regras de engajamento tecnológico e limites de responsabilidade corporativa para operação de nossas frotas de I.A e Software.",
-  alternates: {
-    canonical: `${SITE_URL}/termos-de-uso`,
-  },
-};
+export const metadata = pageMetadata(
+  "Termos de uso",
+  "Regras de engajamento tecnológico e limites de responsabilidade corporativa para operação de nossas frotas de I.A e Software.",
+  "/termos-de-uso",
+);
 
 const tosSections = [
   {
@@ -53,6 +51,7 @@ export default function TermosDeUso() {
     <Page>
       <Navbar />
       <VStack gap={0} w="full" as="main" align="stretch" bg="off">
+        <PageSeo name="Termos de uso" path="/termos-de-uso" />
         {/* ── Header ── */}
         <Box
           bg="stone"

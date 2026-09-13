@@ -1,9 +1,10 @@
+import { PageSeo } from "@/components/seo/page-seo";
 import { Frame } from "@/components/layout/editorial";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { Page } from "@/components/layout/page";
 import { EditorialImage } from "@/components/sections/editorial-media";
-import { SITE_NAME, SITE_URL } from "@/constants";
+
 import { Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
 import {
   ArrowRight,
@@ -12,25 +13,15 @@ import {
   Shield,
   TrendingUp,
 } from "lucide-react";
-import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: `O ROI da Inteligência Artificial | ${SITE_NAME}`,
-  description:
-    "Descubra como calcular o retorno sobre investimento da Inteligência Artificial em sua empresa. Entenda os vetores de retorno e a fórmula.",
-  alternates: {
-    canonical: `${SITE_URL}/insights/o-roi-da-inteligencia-artificial-como-calcular-o-impacto-da-ia-no-balanco-da-sua-empresa`,
-  },
-  openGraph: {
-    title: "O ROI Matemático e Bruto da Inteligência Artificial",
-    description:
-      "Descubra como calcular o retorno sobre investimento de sistemas de Inteligência Artificial no seu ecossistema empresarial.",
-    url: `${SITE_URL}/insights/o-roi-da-inteligencia-artificial-como-calcular-o-impacto-da-ia-no-balanco-da-sua-empresa`,
-    type: "article",
-    siteName: SITE_NAME,
-  },
-};
+export const metadata = pageMetadata(
+  "ROI da inteligência artificial: como calcular",
+  "Descubra como calcular o retorno sobre investimento da Inteligência Artificial em sua empresa. Entenda os vetores de retorno e a fórmula.",
+  "/insights/o-roi-da-inteligencia-artificial-como-calcular-o-impacto-da-ia-no-balanco-da-sua-empresa",
+  { type: "article" },
+);
 
 const roiVectors = [
   {
@@ -128,6 +119,16 @@ export default function ROIInteligenciaArtificialBlogPost() {
       <Navbar />
 
       <VStack gap={0} w="full" as="main" align="stretch" bg="off">
+        <PageSeo
+          name="ROI da inteligência artificial: como calcular"
+          path="/insights/o-roi-da-inteligencia-artificial-como-calcular-o-impacto-da-ia-no-balanco-da-sua-empresa"
+          parents={[{ name: "Insights", item: "/insights" }]}
+          article={{
+            title: metadata.title as string,
+            description: metadata.description!,
+            image: "/images/editorial/shiftg-arquitetura-dados.png",
+          }}
+        />
         {/* ── Header ── */}
         <Box
           bg="stone"

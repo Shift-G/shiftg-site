@@ -1,9 +1,10 @@
+import { PageSeo } from "@/components/seo/page-seo";
 import { Frame } from "@/components/layout/editorial";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { Page } from "@/components/layout/page";
 import { EditorialImage } from "@/components/sections/editorial-media";
-import { SITE_NAME, SITE_URL } from "@/constants";
+
 import { Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
 import {
   AlertTriangle,
@@ -14,25 +15,15 @@ import {
   Users,
   Zap,
 } from "lucide-react";
-import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: `Transformação Digital B2B | ${SITE_NAME}`,
-  description:
-    "Descubra como a transformação digital vai muito além do código: é a reconstrução da logística operante e de um fluxo de sobrevivência corporativa.",
-  alternates: {
-    canonical: `${SITE_URL}/insights/transformacao-digital-mais-do-que-tecnologia-uma-estrategia-de-sobrevivencia`,
-  },
-  openGraph: {
-    title: "A Reestruturação Tecnológica e Digital",
-    description:
-      "A sobrevivência B2B ancorada em frameworks consistentes de automação, não apenas na compra empilhada de softwares temporários.",
-    url: `${SITE_URL}/insights/transformacao-digital-mais-do-que-tecnologia-uma-estrategia-de-sobrevivencia`,
-    type: "article",
-    siteName: SITE_NAME,
-  },
-};
+export const metadata = pageMetadata(
+  "Transformação digital: estratégia para empresas",
+  "Descubra como a transformação digital vai muito além do código: é a reconstrução da logística operante e de um fluxo de sobrevivência corporativa.",
+  "/insights/transformacao-digital-mais-do-que-tecnologia-uma-estrategia-de-sobrevivencia",
+  { type: "article" },
+);
 
 const riskFactors = [
   {
@@ -98,6 +89,16 @@ export default function TransformacaoDigitalBlogPost() {
       <Navbar />
 
       <VStack gap={0} w="full" as="main" align="stretch" bg="off">
+        <PageSeo
+          name="Transformação digital: estratégia para empresas"
+          path="/insights/transformacao-digital-mais-do-que-tecnologia-uma-estrategia-de-sobrevivencia"
+          parents={[{ name: "Insights", item: "/insights" }]}
+          article={{
+            title: metadata.title as string,
+            description: metadata.description!,
+            image: "/images/editorial/shiftg-in-company.png",
+          }}
+        />
         {/* ── Header ── */}
         <Box
           bg="stone"

@@ -1,3 +1,4 @@
+import { RegionalPresence } from "@/components/sections/regional-presence";
 import { Box } from "@chakra-ui/react";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -8,8 +9,8 @@ import { BusinessPriorities } from "@/components/sections/business-priorities";
 import { InstitutionalSection } from "@/components/sections/institutional";
 import { pageMetadata } from "@/lib/page-metadata";
 export const metadata = pageMetadata(
-  "Transformação digital, IA e governança de dados",
-  "A SHIFT+G trabalha ao lado de líderes e equipes para transformar operações com IA, governança de dados, produtos digitais e treinamento in company em todo o Brasil.",
+  "IA e software em União da Vitória",
+  "Consultoria em IA, software sob medida e treinamento para empresas em União da Vitória, Porto União, São Mateus do Sul, Curitiba e região.",
   "/",
 );
 
@@ -25,6 +26,7 @@ export default function HomePage() {
         <ClientStories />
         <TrainingSection />
         <InstitutionalSection />
+        <RegionalPresence />
         <ClosingCTA />
       </Box>
       <Footer />

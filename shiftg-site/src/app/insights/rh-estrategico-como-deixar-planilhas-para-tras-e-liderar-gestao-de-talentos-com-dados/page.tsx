@@ -1,9 +1,10 @@
+import { PageSeo } from "@/components/seo/page-seo";
 import { Frame } from "@/components/layout/editorial";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { Page } from "@/components/layout/page";
 import { EditorialImage } from "@/components/sections/editorial-media";
-import { SITE_NAME, SITE_URL } from "@/constants";
+
 import { Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
 import {
   ArrowRight,
@@ -16,25 +17,15 @@ import {
   Target,
   TrendingUp,
 } from "lucide-react";
-import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: `RH Estratégico | ${SITE_NAME}`,
-  description:
-    "Descubra como transformar o RH operacional em estratégico através de automação inteligente, people analytics e foco na experiência do colaborador.",
-  alternates: {
-    canonical: `${SITE_URL}/insights/rh-estrategico-como-deixar-planilhas-para-tras-e-liderar-gestao-de-talentos-com-dados`,
-  },
-  openGraph: {
-    title: "RH Estratégico e People Analytics",
-    description:
-      "Descubra como transformar o RH operacional em estratégico através de automação inteligente e people analytics.",
-    url: `${SITE_URL}/insights/rh-estrategico-como-deixar-planilhas-para-tras-e-liderar-gestao-de-talentos-com-dados`,
-    type: "article",
-    siteName: SITE_NAME,
-  },
-};
+export const metadata = pageMetadata(
+  "RH estratégico com dados e People Analytics",
+  "Descubra como transformar o RH operacional em estratégico através de automação inteligente, people analytics e foco na experiência do colaborador.",
+  "/insights/rh-estrategico-como-deixar-planilhas-para-tras-e-liderar-gestao-de-talentos-com-dados",
+  { type: "article" },
+);
 
 const pillars = [
   {
@@ -145,6 +136,16 @@ export default function RHEstrategicoBlogPost() {
       <Navbar />
 
       <VStack gap={0} w="full" as="main" align="stretch" bg="off">
+        <PageSeo
+          name="RH estratégico com dados e People Analytics"
+          path="/insights/rh-estrategico-como-deixar-planilhas-para-tras-e-liderar-gestao-de-talentos-com-dados"
+          parents={[{ name: "Insights", item: "/insights" }]}
+          article={{
+            title: metadata.title as string,
+            description: metadata.description!,
+            image: "/images/editorial/shiftg-institucional.png",
+          }}
+        />
         {/* ── Header ── */}
         <Box
           bg="stone"

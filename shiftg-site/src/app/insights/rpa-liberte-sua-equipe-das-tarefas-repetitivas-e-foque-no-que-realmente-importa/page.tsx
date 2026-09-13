@@ -1,9 +1,10 @@
+import { PageSeo } from "@/components/seo/page-seo";
 import { Frame } from "@/components/layout/editorial";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { Page } from "@/components/layout/page";
 import { EditorialImage } from "@/components/sections/editorial-media";
-import { SITE_NAME, SITE_URL } from "@/constants";
+
 import { Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
 import {
   ArrowRight,
@@ -16,25 +17,15 @@ import {
   Users,
   Zap,
 } from "lucide-react";
-import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: `RPA: Automação Absoluta | ${SITE_NAME}`,
-  description:
-    "Descubra como o RPA de performance em conjunto à IA pode eliminar operações robóticas dos ombros humanos e fatiar despesas contábeis.",
-  alternates: {
-    canonical: `${SITE_URL}/insights/rpa-liberte-sua-equipe-das-tarefas-repetitivas-e-foque-no-que-realmente-importa`,
-  },
-  openGraph: {
-    title: "Hiperautomação via RPA + I.A.",
-    description:
-      "A aniquilação definitiva das rotinas robóticas através de engines RPA customizadas e blindadas pela inteligência computacional.",
-    url: `${SITE_URL}/insights/rpa-liberte-sua-equipe-das-tarefas-repetitivas-e-foque-no-que-realmente-importa`,
-    type: "article",
-    siteName: SITE_NAME,
-  },
-};
+export const metadata = pageMetadata(
+  "RPA: automação de processos nas empresas",
+  "Descubra como o RPA de performance em conjunto à IA pode eliminar operações robóticas dos ombros humanos e fatiar despesas contábeis.",
+  "/insights/rpa-liberte-sua-equipe-das-tarefas-repetitivas-e-foque-no-que-realmente-importa",
+  { type: "article" },
+);
 
 const useCases = [
   {
@@ -111,6 +102,16 @@ export default function RPABlogPost() {
       <Navbar />
 
       <VStack gap={0} w="full" as="main" align="stretch" bg="off">
+        <PageSeo
+          name="RPA: automação de processos nas empresas"
+          path="/insights/rpa-liberte-sua-equipe-das-tarefas-repetitivas-e-foque-no-que-realmente-importa"
+          parents={[{ name: "Insights", item: "/insights" }]}
+          article={{
+            title: metadata.title as string,
+            description: metadata.description!,
+            image: "/images/editorial/shiftg-engenharia-digital.png",
+          }}
+        />
         {/* ── Header ── */}
         <Box
           bg="stone"

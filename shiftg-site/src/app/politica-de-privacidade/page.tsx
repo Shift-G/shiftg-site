@@ -1,20 +1,18 @@
+import { PageSeo } from "@/components/seo/page-seo";
 import { Frame } from "@/components/layout/editorial";
-import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import { Page } from "@/components/layout/page";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Box, VStack, HStack, Text, Grid } from "@chakra-ui/react";
-import { SITE_NAME, SITE_EMAIL, SITE_URL } from "@/constants";
+import { SITE_EMAIL } from "@/constants";
 import { ShieldAlert, Database, Lock, Fingerprint } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: `Data Compliance & Privacy | ${SITE_NAME}`,
-  description:
-    "Protocolo rígido de proteção de dados (LGPD) e diretrizes de sigilo aplicadas às infraestruturas da Shift+G.",
-  alternates: {
-    canonical: `${SITE_URL}/politica-de-privacidade`,
-  },
-};
+export const metadata = pageMetadata(
+  "Política de privacidade",
+  "Protocolo rígido de proteção de dados (LGPD) e diretrizes de sigilo aplicadas às infraestruturas da Shift+G.",
+  "/politica-de-privacidade",
+);
 
 const policySections = [
   {
@@ -53,6 +51,10 @@ export default function PoliticaPrivacidadePage() {
     <Page>
       <Navbar />
       <VStack gap={0} w="full" as="main" align="stretch" bg="off">
+        <PageSeo
+          name="Política de privacidade"
+          path="/politica-de-privacidade"
+        />
         {/* ── Header ── */}
         <Box
           bg="stone"

@@ -1,3 +1,5 @@
+import { RegionalPresence } from "@/components/sections/regional-presence";
+import { PageSeo } from "@/components/seo/page-seo";
 import {
   Accent,
   EditorialSection,
@@ -10,13 +12,21 @@ import { IllustratedHero } from "@/components/sections/editorial-media";
 import { pageMetadata } from "@/lib/page-metadata";
 import { Box, Grid, Heading, Stack, Text } from "@chakra-ui/react";
 export const metadata = pageMetadata(
-  "Treinamento de IA in company em todo o Brasil",
-  "A SHIFT+G trabalha dentro da sua empresa, ao lado do time, para aplicar IA aos gargalos reais da operação. Programa definido conforme o desafio da equipe.",
+  "Treinamento de IA para empresas | União da Vitória",
+  "Treinamento de inteligência artificial in company em União da Vitória, Porto União, São Mateus do Sul e Curitiba. Aprendizado aplicado à rotina da equipe.",
   "/treinamento-ia-para-sua-empresa",
 );
 export default function TrainingPage() {
   return (
     <SitePage>
+      <PageSeo
+        name="Treinamento de IA"
+        path="/treinamento-ia-para-sua-empresa"
+        service={{
+          name: "Treinamento de inteligência artificial in company",
+          description: metadata.description!,
+        }}
+      />
       <IllustratedHero
         eyebrow={"IA in company / Todo o Brasil"}
         title={"Aprender IA."}
@@ -162,6 +172,7 @@ export default function TrainingPage() {
           </Stack>
         </Grid>
       </EditorialSection>
+      <RegionalPresence />
       <ClosingCTA training />
     </SitePage>
   );

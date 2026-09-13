@@ -7,7 +7,8 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/", "/private/"],
+        // CSS, JavaScript and optimized images must remain crawlable.
+        disallow: ["/api/", "/admin/", "/private/"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

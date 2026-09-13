@@ -1,3 +1,5 @@
+import { RegionalPresence } from "@/components/sections/regional-presence";
+import { PageSeo } from "@/components/seo/page-seo";
 import {
   Accent,
   EditorialSection,
@@ -14,13 +16,21 @@ import { ClientStories } from "@/components/sections/portfolio";
 import { pageMetadata } from "@/lib/page-metadata";
 import { Box, Grid, Heading, Text } from "@chakra-ui/react";
 export const metadata = pageMetadata(
-  "Transformação digital para empresas",
-  "IA aplicada, integração de processos e governança de dados. A SHIFT+G atua ao lado da liderança e da equipe, da estratégia à implementação.",
+  "Consultoria em IA e transformação digital",
+  "IA, automação de processos e governança de dados para empresas em União da Vitória, Porto União, São Mateus do Sul e Curitiba. Da estratégia à execução.",
   "/transformacao-digital",
 );
 export default function TransformationPage() {
   return (
     <SitePage>
+      <PageSeo
+        name="Transformação digital"
+        path="/transformacao-digital"
+        service={{
+          name: "Consultoria em inteligência artificial e transformação digital",
+          description: metadata.description!,
+        }}
+      />
       <IllustratedHero
         eyebrow={"Transformação digital"}
         title={"Uma operação à altura"}
@@ -122,6 +132,7 @@ export default function TransformationPage() {
         </Grid>
       </EditorialSection>
       <ClientStories />
+      <RegionalPresence />
       <ClosingCTA />
     </SitePage>
   );

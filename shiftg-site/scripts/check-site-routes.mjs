@@ -22,6 +22,7 @@ const indexedPaths = [
   "/termos-de-uso",
 ];
 const newPaths = [
+  "/atendimento",
   "/ecossistema",
   "/contato",
   ...[

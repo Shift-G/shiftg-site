@@ -1,3 +1,4 @@
+import { PageSeo } from "@/components/seo/page-seo";
 import { SitePage } from "@/components/layout/site-page";
 import { IllustratedHero } from "@/components/sections/editorial-media";
 import { Portfolio } from "@/components/sections/portfolio";
@@ -10,6 +11,7 @@ export const metadata = pageMetadata(
 export default function EcosystemPage() {
   return (
     <SitePage>
+      <PageSeo name="Ecossistema" path="/ecossistema" />
       <IllustratedHero
         eyebrow={"Produtos e colaborações"}
         title={"Setores diferentes."}

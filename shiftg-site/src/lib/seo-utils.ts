@@ -1,4 +1,18 @@
-import { SITE_NAME, SITE_URL, SITE_EMAIL, SITE_CITY, SITE_STATE, SITE_COUNTRY, INSTAGRAM_URL, LINKEDIN_URL } from "@/constants";
+import {
+  SITE_NAME,
+  SITE_URL,
+  SITE_EMAIL,
+  SITE_CITY,
+  SITE_STATE,
+  SITE_COUNTRY,
+  INSTAGRAM_URL,
+  LINKEDIN_URL,
+  SITE_PHONE,
+  SITE_ADDRESS,
+  SITE_ZIP,
+} from "@/constants";
+
+import { SERVICE_AREAS } from "@/constants/service-areas";
 
 /**
  * SEO Utilities for generating structured data (JSON-LD) schemas
@@ -16,7 +30,7 @@ export interface Article {
   headline: string;
   description: string;
   image: string;
-  datePublished: string;
+  datePublished?: string;
   dateModified?: string;
   author: Author;
   publisher: {
@@ -39,11 +53,9 @@ export interface Service {
   name: string;
   description: string;
   provider: {
-    "@type": "Organization";
-    name: string;
-    url: string;
+    "@id": string;
   };
-  areaServed: string;
+  areaServed: ReturnType<typeof generateAreaServed>;
   serviceType: string;
   url: string;
 }
@@ -67,63 +79,66 @@ export interface BreadcrumbList {
 /**
  * Generate Organization schema
  */
+export function generateAreaServed() {
+  return [
+    ...SERVICE_AREAS.map(({ name, state }) => ({
+      "@type": "City",
+      name,
+      containedInPlace: {
+        "@type": "State",
+        name: state === "PR" ? "Paraná" : "Santa Catarina",
+      },
+    })),
+    { "@type": "Country", name: "Brasil" },
+  ];
+}
+
 export function generateOrganizationSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: `${SITE_NAME} AI & Data`,
-    alternateName: SITE_NAME,
+    "@type": "ProfessionalService",
+    "@id": `${SITE_URL}/#organization`,
+    name: SITE_NAME,
+    alternateName: `${SITE_NAME} AI & Data`,
     url: SITE_URL,
     logo: `${SITE_URL}/apple-icon.png`,
+    image: `${SITE_URL}/opengraph-image`,
     description:
-      "Desenvolvemos soluções de software que transformam dados complexos em decisões estratégicas, entregando autonomia e eficiência para sua empresa.",
+      "Consultoria em inteligência artificial, transformação digital, software sob medida e treinamento para empresas. Sede em União da Vitória, com atendimento em Porto União, São Mateus do Sul, Curitiba e região.",
     foundingDate: "2020",
+    telephone: `+${SITE_PHONE.replace(/\D/g, "")}`,
+    email: SITE_EMAIL,
     contactPoint: {
       "@type": "ContactPoint",
       email: SITE_EMAIL,
-      contactType: "customer service",
-      availableLanguage: ["Portuguese", "English"],
+      telephone: `+${SITE_PHONE.replace(/\D/g, "")}`,
+      contactType: "sales",
+      availableLanguage: ["pt-BR"],
     },
-    sameAs: [
-      LINKEDIN_URL,
-      INSTAGRAM_URL,
-    ],
+    sameAs: [LINKEDIN_URL, INSTAGRAM_URL],
     address: {
       "@type": "PostalAddress",
+      streetAddress: SITE_ADDRESS,
       addressLocality: SITE_CITY,
       addressRegion: SITE_STATE,
-      addressCountry: SITE_COUNTRY,
+      postalCode: SITE_ZIP,
+      addressCountry: SITE_COUNTRY === "Brasil" ? "BR" : SITE_COUNTRY,
     },
-    areaServed: {
-      "@type": "Country",
-      name: "Brasil",
-    },
+    areaServed: generateAreaServed(),
   };
 }
 
-/**
- * Generate WebSite schema with search action
- */
+/** WebSite identity. No SearchAction: Insights has no working site search. */
 export function generateWebSiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: `${SITE_NAME} AI & Data`,
+    "@id": `${SITE_URL}/#website`,
+    name: SITE_NAME,
+    alternateName: `${SITE_NAME} AI & Data`,
     url: SITE_URL,
-    description:
-      "Consultoria estratégica de tecnologia e inteligência artificial para empresas que buscam transformação digital.",
-    publisher: {
-      "@type": "Organization",
-      name: SITE_NAME,
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${SITE_URL}/insights?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
+    inLanguage: "pt-BR",
+    publisher: { "@id": `${SITE_URL}/#organization` },
   };
 }
 
@@ -134,7 +149,7 @@ export function generateArticleSchema(params: {
   title: string;
   description: string;
   image: string;
-  datePublished: string;
+  datePublished?: string;
   dateModified?: string;
   url: string;
   authorName?: string;
@@ -154,7 +169,7 @@ export function generateArticleSchema(params: {
     "@type": "BlogPosting",
     headline: title,
     description: description,
-    image: `${SITE_URL}${image}`,
+    image: new URL(image, SITE_URL).toString(),
     datePublished: datePublished,
     dateModified: dateModified || datePublished,
     author: {
@@ -193,12 +208,8 @@ export function generateServiceSchema(params: {
     "@type": "Service",
     name: name,
     description: description,
-    provider: {
-      "@type": "Organization",
-      name: SITE_NAME,
-      url: SITE_URL,
-    },
-    areaServed: "Brasil",
+    provider: { "@id": `${SITE_URL}/#organization` },
+    areaServed: generateAreaServed(),
     serviceType: serviceType,
     url: url,
   };
@@ -208,7 +219,7 @@ export function generateServiceSchema(params: {
  * Generate BreadcrumbList schema
  */
 export function generateBreadcrumbSchema(
-  items: BreadcrumbItem[]
+  items: BreadcrumbItem[],
 ): BreadcrumbList {
   return {
     "@context": "https://schema.org",
@@ -225,7 +236,9 @@ export function generateBreadcrumbSchema(
 /**
  * Generate FAQ schema
  */
-export function generateFAQSchema(faqs: Array<{ question: string; answer: string }>) {
+export function generateFAQSchema(
+  faqs: Array<{ question: string; answer: string }>,
+) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",

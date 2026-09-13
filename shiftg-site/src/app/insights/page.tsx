@@ -1,31 +1,21 @@
+import { PageSeo } from "@/components/seo/page-seo";
 import { Frame } from "@/components/layout/editorial";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { Page } from "@/components/layout/page";
 import { Plumb } from "@/components/ui/plumb";
-import { SITE_NAME, SITE_URL } from "@/constants";
+
 import { Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
-import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import Image from "next/image";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: `Insights | ${SITE_NAME}`,
-  description:
-    "Inteligência aplicada. Artigos sobre transformação digital, IA, e análise de dados para operações de alta escala.",
-  alternates: {
-    canonical: `${SITE_URL}/insights`,
-  },
-  openGraph: {
-    title: `Insights | ${SITE_NAME}`,
-    description:
-      "Inteligência aplicada. Artigos sobre transformação digital, IA, e análise de dados para operações de alta escala.",
-    url: `${SITE_URL}/insights`,
-    type: "website",
-    siteName: SITE_NAME,
-  },
-};
+export const metadata = pageMetadata(
+  "Insights sobre IA, automação e transformação digital",
+  "Conteúdos da Shift+G sobre inteligência artificial, automação, dados e gestão. Conhecimento para orientar decisões de tecnologia na sua empresa.",
+  "/insights",
+);
 
 const blogPosts = [
   {
@@ -99,6 +89,7 @@ export default function InsightsPage() {
       <Navbar />
 
       <VStack gap={0} w="full" as="main" align="stretch">
+        <PageSeo name="Insights" path="/insights" />
         {/* ── Hero ── */}
         <Box
           as="section"

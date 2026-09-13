@@ -1,10 +1,12 @@
+import { RegionalPresence } from "@/components/sections/regional-presence";
+import { PageSeo } from "@/components/seo/page-seo";
 import { Frame } from "@/components/layout/editorial";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { Page } from "@/components/layout/page";
 import { ClosingCTA } from "@/components/sections/business";
 import { IllustratedHero } from "@/components/sections/editorial-media";
-import { SITE_NAME, SITE_PHONE, SITE_URL } from "@/constants";
+import { SITE_PHONE } from "@/constants";
 import { Box, Grid, HStack, Text, VStack } from "@chakra-ui/react";
 import {
   AlertTriangle,
@@ -16,25 +18,13 @@ import {
   ShieldCheck,
   Target,
 } from "lucide-react";
-import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
-  title: `Diagnóstico Inteligente | ${SITE_NAME}`,
-  description:
-    "Clareza estratégica para entender onde a IA gera impacto real — antes de qualquer investimento alto. Mitigação de riscos e planejamento arquitetural.",
-  alternates: {
-    canonical: `${SITE_URL}/diagnostico-inteligente`,
-  },
-  openGraph: {
-    title: `Diagnóstico Inteligente | ${SITE_NAME}`,
-    description:
-      "Analisamos sua operação e entregamos um plano claro de ações viáveis de IA.",
-    type: "website",
-    locale: "pt_BR",
-    url: `${SITE_URL}/diagnostico-inteligente`,
-    siteName: SITE_NAME,
-  },
-};
+export const metadata = pageMetadata(
+  "Diagnóstico de IA e automação para empresas",
+  "Identifique oportunidades de IA, dados e automação na sua operação. Consultoria em União da Vitória, Porto União, São Mateus do Sul, Curitiba e região.",
+  "/diagnostico-inteligente",
+);
 
 /* ── Section Tag ── */
 function SectionTag({
@@ -122,6 +112,14 @@ export default function DiagnosticoPage() {
       <Navbar />
 
       <VStack gap={0} w="full" as="main" align="stretch">
+        <PageSeo
+          name="Diagnóstico inteligente"
+          path="/diagnostico-inteligente"
+          service={{
+            name: "Diagnóstico de inteligência artificial e automação",
+            description: metadata.description!,
+          }}
+        />
         {/* ── Hero ── */}
         <IllustratedHero
           eyebrow={"Estratégia / Inteligência artificial"}
@@ -513,6 +511,7 @@ export default function DiagnosticoPage() {
           </Frame>
         </Box>
 
+        <RegionalPresence />
         <ClosingCTA />
       </VStack>
 
