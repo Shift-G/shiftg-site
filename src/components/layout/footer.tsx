@@ -1,259 +1,152 @@
-"use client";
-
-import {
-  Box,
-  Grid,
-  Text,
-  Flex,
-  Link as ChakraLink,
-  VStack,
-  HStack,
-} from "@chakra-ui/react";
+import { Box, Flex, Grid, Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
+import { Frame } from "./editorial";
+import { BrandLogo } from "./brand-logo";
 import {
-  MapPin,
-  Instagram,
-  Linkedin,
-} from "lucide-react";
-import {
-  SITE_NAME,
   SITE_EMAIL,
   SITE_PHONE,
   SITE_ADDRESS,
-  INSTAGRAM_URL,
-  LINKEDIN_URL,
   SITE_CITY,
   SITE_STATE,
-  SITE_COUNTRY,
   SITE_ZIP,
+  INSTAGRAM_URL,
+  LINKEDIN_URL,
+  INSTITUTIONAL_PDF_URL,
 } from "@/constants";
-
+const groups = [
+  {
+    title: "O que fazemos",
+    links: [
+      ["Transformação digital", "/transformacao-digital"],
+      ["IA in company", "/treinamento-ia-para-sua-empresa"],
+      ["Ecossistema", "/ecossistema"],
+      ["Desenvolvimento de software", "/fabrica-de-software"],
+      ["Construa seu SaaS", "/fabrica-de-software/construa-seu-saas"],
+      ["Diagnóstico inteligente", "/diagnostico-inteligente"],
+      ["Projetos em clientes", "/#clientes"],
+    ],
+  },
+  {
+    title: "SHIFT+G",
+    links: [
+      ["Sobre nós", "/sobre"],
+      ["Atendimento regional", "/atendimento"],
+      ["Contato", "/contato"],
+      ["Insights", "/insights"],
+      ["Medidor de prompt", "/medidor-de-prompt"],
+      ["Carreiras", "/carreiras"],
+      ["Material institucional", INSTITUTIONAL_PDF_URL],
+    ],
+  },
+];
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <Box as="footer" bg="off" borderTop="1px solid" borderColor="blackAlpha.200" color="fg">
-      <Grid
-        templateColumns={{ base: "1fr", lg: "2fr 1fr 1fr 1.5fr" }}
-      >
-        {/* Col 1 - Marca & Descrição */}
-        <Box
-          p={{ base: 6, md: 8, lg: 10 }}
-          borderRight={{ lg: "1px solid" }}
-          borderBottom={{ base: "1px solid", lg: "none" }}
-          borderColor="blackAlpha.200"
+    <Box
+      as="footer"
+      bg="off"
+      color="black"
+      borderTop="1px solid"
+      borderColor="blackAlpha.200"
+      py={12}
+    >
+      <Frame>
+        <Grid
+          templateColumns={{
+            base: "1fr",
+            md: "1.4fr 1fr 1fr",
+            xl: "1.5fr 1fr 1fr 1.4fr",
+          }}
+          gap={10}
+          pb={12}
         >
-          <HStack gap={3} mb={6}>
-            <Box w="6px" h="6px" bg="blue.solid" />
-            <Text fontFamily="mono" fontSize="2xs" fontWeight={800} letterSpacing="0.1em" textTransform="uppercase" color="blue.solid">
-              {SITE_NAME}
+          <Stack gap={5} align="start">
+            <Box w="200px">
+              <BrandLogo />
+            </Box>
+            <Text fontSize="md" maxW="280px" color="blackAlpha.700">
+              Transformação digital com IA aplicada e governança de dados.
             </Text>
-          </HStack>
-          <Text fontSize="sm" color="fg.muted" lineHeight={1.8} maxW="400px">
-            Operacionais de I.A e Software B2B de vanguarda. Reconstruímos o back-office da sua operação extraindo inteligência pura de sistemas estáticos e acelerando sua escala por vias automatizadas.
-          </Text>
-        </Box>
-
-        {/* Col 2 - Soluções */}
-        <Box
-          p={{ base: 6, md: 8, lg: 10 }}
-          borderRight={{ lg: "1px solid" }}
-          borderBottom={{ base: "1px solid", lg: "none" }}
+            <Text fontFamily="mono" fontSize="sm">
+              DE UNIÃO DA VITÓRIA.
+              <br />
+              PARA TODO O PAÍS.
+            </Text>
+          </Stack>
+          {groups.map((group) => (
+            <Stack key={group.title} gap={4}>
+              <Text
+                fontFamily="mono"
+                fontSize="sm"
+                color="blackAlpha.700"
+                mb={2}
+              >
+                {group.title}
+              </Text>
+              {group.links.map(([label, href]) => (
+                <Box
+                  asChild
+                  key={href}
+                  fontSize="sm"
+                  _hover={{ color: "blue.solid" }}
+                >
+                  <Link href={href}>{label}</Link>
+                </Box>
+              ))}
+            </Stack>
+          ))}
+          <Stack align="start" gap={4}>
+            <Text fontFamily="mono" fontSize="sm" color="blackAlpha.700" mb={2}>
+              Vamos conversar
+            </Text>
+            <a href={`mailto:${SITE_EMAIL}`}>{SITE_EMAIL}</a>
+            <a href={`https://wa.me/${SITE_PHONE.replace(/\D/g, "")}`}>
+              {SITE_PHONE}
+            </a>
+            <Text fontSize="sm" color="blackAlpha.700">
+              {SITE_ADDRESS}
+              <br />
+              {SITE_CITY}, {SITE_STATE} · CEP {SITE_ZIP}
+            </Text>
+            <Box
+              asChild
+              fontSize="sm"
+              color="blackAlpha.700"
+              _hover={{ color: "blue.solid" }}
+            >
+              <Link href="/atendimento">
+                Atendimento em Porto União, São Mateus do Sul, Curitiba e
+                região.
+              </Link>
+            </Box>
+            <Flex gap={5}>
+              <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
+                Instagram
+              </a>
+              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
+            </Flex>
+          </Stack>
+        </Grid>
+        <Flex
+          pt={6}
+          borderTop="1px solid"
           borderColor="blackAlpha.200"
+          justify="space-between"
+          gap={5}
+          wrap="wrap"
+          fontSize="sm"
+          color="blackAlpha.700"
         >
-          <Text fontFamily="mono" fontSize="2xs" fontWeight={700} color="fg.subtle" mb={6} textTransform="uppercase">
-            Setores de Engenharia
+          <Text>
+            © {new Date().getFullYear()} SHIFT+G. Todos os direitos reservados.
           </Text>
-          <VStack align="flex-start" gap={4}>
-            {[
-              { label: "Software & SaaS", href: "/fabrica-de-software" },
-              { label: "Auditoria de Back-Office", href: "/diagnostico-inteligente" },
-              { label: "Treinamento de IA para sua Empresa", href: "/treinamento-ia-para-sua-empresa" },
-              { label: "Digital Core", href: "/transformacao-digital" },
-            ].map((link) => (
-              <ChakraLink
-                key={link.label}
-                asChild
-                fontSize="sm"
-                fontWeight={500}
-                color="fg"
-                display="inline-flex"
-                alignItems="center"
-                gap={2}
-                _hover={{ color: "blue.solid" }}
-                transition="all 0.2s"
-              >
-                <Link href={link.href}>
-                  {link.label}
-                </Link>
-              </ChakraLink>
-            ))}
-          </VStack>
-        </Box>
-
-        {/* Col 3 - Frameworks e Institucional */}
-        <Box
-          p={{ base: 6, md: 8, lg: 10 }}
-          borderRight={{ lg: "1px solid" }}
-          borderBottom={{ base: "1px solid", lg: "none" }}
-          borderColor="blackAlpha.200"
-        >
-          <Text fontFamily="mono" fontSize="2xs" fontWeight={700} color="fg.subtle" mb={6} textTransform="uppercase">
-            Matriz Operacional
-          </Text>
-          <VStack align="flex-start" gap={4}>
-            {[
-              { label: "Missão SHIFT+G", href: "/sobre" },
-              { label: "Painel de Carreiras", href: "/carreiras" },
-              { label: "Intel & Logs (Blog)", href: "/insights" },
-              { label: "Requisição de Contato", href: "/contato" },
-            ].map((link) => (
-              <ChakraLink
-                key={link.label}
-                asChild
-                fontSize="sm"
-                fontWeight={500}
-                color="fg"
-                display="inline-flex"
-                alignItems="center"
-                gap={2}
-                _hover={{ color: "blue.solid" }}
-                transition="all 0.2s"
-              >
-                <Link href={link.href}>
-                  {link.label}
-                </Link>
-              </ChakraLink>
-            ))}
-          </VStack>
-        </Box>
-
-        {/* Col 4 - Target & Intel */}
-        <Box
-          p={{ base: 6, md: 8, lg: 10 }}
-        >
-          <Text fontFamily="mono" fontSize="2xs" fontWeight={700} color="fg.subtle" mb={6} textTransform="uppercase">
-            Protocolos de Comunicação
-          </Text>
-
-          <VStack align="flex-start" gap={6}>
-            <Box>
-              <Text fontSize="xs" fontWeight={700} color="fg.muted" mb={1}>ENDEREÇAMENTO DIRETO</Text>
-              <ChakraLink
-                href={`mailto:${SITE_EMAIL}`}
-                fontSize="sm"
-                fontWeight={600}
-                color="fg"
-                _hover={{ color: "blue.solid" }}
-              >
-                {SITE_EMAIL}
-              </ChakraLink>
-            </Box>
-
-            <Box>
-              <Text fontSize="xs" fontWeight={700} color="fg.muted" mb={1}>LINHA SEGURA</Text>
-              <ChakraLink
-                href={`https://wa.me/${SITE_PHONE.replace(/[^\d]/g, "")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                fontSize="sm"
-                fontWeight={600}
-                color="fg"
-                _hover={{ color: "blue.solid" }}
-              >
-                {SITE_PHONE}
-              </ChakraLink>
-            </Box>
-
-            <Box>
-              <HStack gap={2} mb={2} align="flex-start">
-                <Box mt="2px"><MapPin size={12} color="var(--chakra-colors-fg-muted)" /></Box>
-                <Text fontSize="xs" fontWeight={700} color="fg.muted">QG ESTRATÉGICO</Text>
-              </HStack>
-              <ChakraLink
-                href="https://share.google/pdwxAqtLixXnOV9Pj"
-                target="_blank"
-                rel="noopener noreferrer"
-                _hover={{ textDecoration: "none" }}
-              >
-                <Text fontSize="sm" color="fg" fontWeight={500} _hover={{ color: 'blue.solid' }} transition="color 0.2s">
-                  {SITE_ADDRESS}<br />
-                  {SITE_CITY} - {SITE_STATE}, {SITE_COUNTRY}<br />
-                  {SITE_ZIP}
-                </Text>
-              </ChakraLink>
-            </Box>
-          </VStack>
-        </Box>
-
-      </Grid>
-
-      {/* Roda-pé de Compliance */}
-      <Flex
-        px={{ base: 6, md: 8, lg: 10 }}
-        py={6}
-        borderTop="1px solid"
-        borderColor="blackAlpha.200"
-        direction={{ base: "column", md: "row" }}
-        justify="space-between"
-        align={{ base: "flex-start", md: "center" }}
-        gap={4}
-        bg="white"
-      >
-        <Text fontFamily="mono" fontSize="xs" color="fg.muted" fontWeight={500}>
-          © {currentYear} {SITE_NAME}. STRICT COMPLIANCE PROTOCOL ENABLED.
-        </Text>
-        <HStack gap={6}>
-          <ChakraLink
-            asChild
-            fontFamily="mono"
-            fontSize="2xs"
-            color="fg.muted"
-            textTransform="uppercase"
-            _hover={{ color: "blue.solid" }}
-            transition="color 0.2s"
-          >
-            <Link href="/politica-de-privacidade">
-              Data Privacy
-            </Link>
-          </ChakraLink>
-          <ChakraLink
-            asChild
-            fontFamily="mono"
-            fontSize="2xs"
-            color="fg.muted"
-            textTransform="uppercase"
-            _hover={{ color: "blue.solid" }}
-            transition="color 0.2s"
-          >
-            <Link href="/termos-de-uso">
-              TOS
-            </Link>
-          </ChakraLink>
-          <ChakraLink
-            href={LINKEDIN_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            color="fg.muted"
-            _hover={{ color: "blue.solid" }}
-            transition="color 0.2s"
-          >
-            <Linkedin size={16} />
-          </ChakraLink>
-          <ChakraLink
-            href={INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            color="fg.muted"
-            _hover={{ color: "blue.solid" }}
-            transition="color 0.2s"
-          >
-            <Instagram size={16} />
-          </ChakraLink>
-        </HStack>
-      </Flex>
+          <Flex gap={6} wrap="wrap">
+            <Link href="/politica-de-privacidade">Privacidade</Link>
+            <Link href="/termos-de-uso">Termos de uso</Link>
+          </Flex>
+        </Flex>
+      </Frame>
     </Box>
   );
 }

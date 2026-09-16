@@ -1,201 +1,148 @@
 "use client";
-
 import {
   Box,
+  Button,
+  Field,
+  Grid,
   Input,
-  VStack,
+  Stack,
   Text,
   Textarea,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { z } from "zod";
 import { SITE_PHONE } from "@/constants";
-import { toaster } from "@/components/ui/toaster";
-
-const formSchema = z.object({
-  name: z.string().min(2, "Nome é obrigatório"),
-  email: z.string().email("Email inválido"),
-  phone: z.string().optional(),
-  company: z.string().min(2, "Nome da empresa é obrigatório"),
-  message: z.string().min(10, "A mensagem deve ter pelo menos 10 caracteres"),
+const schema = z.object({
+  name: z.string().trim().min(2, "Informe seu nome."),
+  email: z.string().trim().email("Informe um e-mail válido."),
+  phone: z.string().trim().optional(),
+  company: z.string().trim().min(2, "Informe o nome da empresa."),
+  message: z
+    .string()
+    .trim()
+    .min(10, "Conte um pouco mais sobre o desafio (ao menos 10 caracteres)."),
 });
-
-type FormData = z.infer<typeof formSchema>;
-
-const Field = ({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) => (
-  <VStack align="start" gap={2} w="full">
-    <Text fontFamily="mono" fontSize="2xs" fontWeight={600} letterSpacing="0.05em" color="fg.subtle" textTransform="uppercase">
-      {label}
-    </Text>
-    {children}
-    {error && (
-      <Text color="red.500" fontSize="xs" fontWeight={500}>
-        {error}
-      </Text>
-    )}
-  </VStack>
-);
-
-export function GeneralContactForm() {
-  const [loading, setLoading] = useState(false);
-
+type ContactData = z.infer<typeof schema>;
+export function GeneralContactForm({ context }: { context?: string }) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({
-    resolver: zodResolver(formSchema),
-  });
-
-  const onSubmit = (data: FormData) => {
-    setLoading(true);
-
-    try {
-      const message = `*Protocolo de Contato - SHIFT+G*\n\n*Nome:* ${data.name}\n*Email:* ${data.email}\n*Telefone:* ${data.phone || "Não informado"}\n*Empresa:* ${data.company}\n\n*Mensagem:*\n${data.message}`;
-
-      const encodedMessage = encodeURIComponent(message);
-      const cleanPhone = SITE_PHONE.replace(/\D/g, "");
-      const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodedMessage}`;
-
-      window.open(whatsappUrl, "_blank");
-
-      toaster.create({
-        title: "Redirecionando para o WhatsApp...",
-        type: "success",
-        duration: 3000,
-      });
-    } catch (error) {
-      toaster.create({
-        title: "Erro ao enviar",
-        description: "Tente novamente mais tarde.",
-        type: "error",
-        duration: 3000,
-      });
-    } finally {
-      setLoading(false);
-    }
+  } = useForm<ContactData>({ resolver: zodResolver(schema) });
+  function onSubmit(data: ContactData) {
+    const text = `Olá! Gostaria de agendar uma conversa estratégica com a SHIFT+G.\n\nNome: ${data.name}\nEmpresa: ${data.company}\nE-mail: ${data.email}\nTelefone: ${data.phone || "Não informado"}\nInteresse: ${context || "Transformação digital"}\n\nDesafio: ${data.message}`;
+    window.location.assign(
+      `https://wa.me/${SITE_PHONE.replace(/\D/g, "")}?text=${encodeURIComponent(text)}`,
+    );
+  }
+  const inputStyles = {
+    h: 14,
+    rounded: "none",
+    bg: "white",
+    borderColor: "blackAlpha.400",
+    fontSize: "md",
+    _focusVisible: {
+      outline: "2px solid",
+      outlineColor: "blue.solid",
+      outlineOffset: "2px",
+    },
   };
-
   return (
-    <Box
-      bg="white"
-      p={{ base: 6, md: 10 }}
-      w="full"
-      maxW="xl"
-      mx="auto"
-    >
-      <VStack gap={8} as="form" onSubmit={handleSubmit(onSubmit)} align="stretch">
-        <VStack gap={2} align="start" mb={4}>
-          <Text as="h3" fontSize="2xl" fontWeight={800} color="fg" letterSpacing="-0.5px">
-            Iniciar Diagnóstico
+    <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <Stack gap={6}>
+        <Text as="h2" fontSize="2xl" fontWeight={500}>
+          Conte o que sua empresa precisa.
+        </Text>
+        {context && (
+          <Text fontSize="sm" color="blue.solid">
+            Interesse: {context}
           </Text>
-          <Text color="fg.muted" fontSize="sm" lineHeight={1.6}>
-            Nossa equipe técnica analisa cada requisição para garantir que os especialistas adequados assumam a chamada.
-          </Text>
-        </VStack>
-
-        <VStack gap={5}>
-          <Field label="Nome completo" error={errors.name?.message}>
+        )}
+        <Field.Root invalid={!!errors.name} required>
+          <Field.Label>
+            Seu nome
+            <Field.RequiredIndicator />
+          </Field.Label>
+          <Input autoComplete="name" {...register("name")} {...inputStyles} />
+          <Field.ErrorText>{errors.name?.message}</Field.ErrorText>
+        </Field.Root>
+        <Field.Root invalid={!!errors.company} required>
+          <Field.Label>
+            Empresa
+            <Field.RequiredIndicator />
+          </Field.Label>
+          <Input
+            autoComplete="organization"
+            {...register("company")}
+            {...inputStyles}
+          />
+          <Field.ErrorText>{errors.company?.message}</Field.ErrorText>
+        </Field.Root>
+        <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={5}>
+          <Field.Root invalid={!!errors.email} required>
+            <Field.Label>
+              E-mail corporativo
+              <Field.RequiredIndicator />
+            </Field.Label>
             <Input
-              {...register("name")}
-              placeholder="Nome Completo"
-              size="lg"
-              rounded="none"
-              bg="off"
-              border="1px solid"
-              borderColor="blackAlpha.200"
-              _placeholder={{ color: "blackAlpha.400" }}
-              _focus={{ borderColor: "blue.solid", bg: "white", outline: "none", boxShadow: "none" }}
-            />
-          </Field>
-
-          <Field label="Email corporativo" error={errors.email?.message}>
-            <Input
-              {...register("email")}
               type="email"
-              placeholder="seu@dominio.com.br"
-              size="lg"
-              rounded="none"
-              bg="off"
-              border="1px solid"
-              borderColor="blackAlpha.200"
-              _placeholder={{ color: "blackAlpha.400" }}
-              _focus={{ borderColor: "blue.solid", bg: "white", outline: "none", boxShadow: "none" }}
+              autoComplete="email"
+              {...register("email")}
+              {...inputStyles}
             />
-          </Field>
-
-          <Field label="Telefone / WhatsApp" error={errors.phone?.message}>
+            <Field.ErrorText>{errors.email?.message}</Field.ErrorText>
+          </Field.Root>
+          <Field.Root>
+            <Field.Label>WhatsApp (opcional)</Field.Label>
             <Input
+              type="tel"
+              autoComplete="tel"
               {...register("phone")}
-              placeholder="(00) 00000-0000"
-              size="lg"
-              rounded="none"
-              bg="off"
-              border="1px solid"
-              borderColor="blackAlpha.200"
-              _placeholder={{ color: "blackAlpha.400" }}
-              _focus={{ borderColor: "blue.solid", bg: "white", outline: "none", boxShadow: "none" }}
+              {...inputStyles}
             />
-          </Field>
-
-          <Field label="Nome da empresa" error={errors.company?.message}>
-            <Input
-              {...register("company")}
-              placeholder="Nome da Empresa"
-              size="lg"
-              rounded="none"
-              bg="off"
-              border="1px solid"
-              borderColor="blackAlpha.200"
-              _placeholder={{ color: "blackAlpha.400" }}
-              _focus={{ borderColor: "blue.solid", bg: "white", outline: "none", boxShadow: "none" }}
-            />
-          </Field>
-
-          <Field label="Como podemos ajudar?" error={errors.message?.message}>
-            <Textarea
-              {...register("message")}
-              placeholder="Descreva o escopo primário do seu desafio..."
-              size="lg"
-              rounded="none"
-              bg="off"
-              border="1px solid"
-              borderColor="blackAlpha.200"
-              minH="120px"
-              _placeholder={{ color: "blackAlpha.400" }}
-              _focus={{ borderColor: "blue.solid", bg: "white", outline: "none", boxShadow: "none" }}
-            />
-          </Field>
-        </VStack>
-
-        <Box
-          as="button"
-          //@ts-ignore
+          </Field.Root>
+        </Grid>
+        <Field.Root invalid={!!errors.message} required>
+          <Field.Label>
+            Qual desafio você quer resolver?
+            <Field.RequiredIndicator />
+          </Field.Label>
+          <Textarea
+            {...register("message")}
+            rounded="none"
+            bg="white"
+            borderColor="blackAlpha.400"
+            minH="140px"
+            fontSize="md"
+            placeholder="Conte sobre o gargalo, a prioridade ou a oportunidade que você enxerga."
+            _focusVisible={{
+              outline: "2px solid",
+              outlineColor: "blue.solid",
+              outlineOffset: "2px",
+            }}
+          />
+          <Field.ErrorText>{errors.message?.message}</Field.ErrorText>
+        </Field.Root>
+        <Button
           type="submit"
-          mt={4}
-          display="inline-flex"
-          alignItems="center"
-          justifyContent="center"
-          gap="10px"
           bg="blue.solid"
           color="white"
-          px="28px"
-          py="16px"
-          fontWeight={600}
-          fontSize="sm"
-          transition="all 0.2s"
-          _hover={{ bg: "blue.fg" }}
-          disabled={loading}
-          cursor={loading ? "not-allowed" : "pointer"}
-          opacity={loading ? 0.7 : 1}
+          rounded="none"
+          minH={14}
+          h="auto"
+          py={4}
+          whiteSpace="normal"
+          fontSize="md"
+          _hover={{ bg: "blue.700" }}
         >
-          {loading ? "Processando..." : "Submeter Requisição"}
-          {!loading && <ArrowRight size={14} />}
-        </Box>
-      </VStack>
-    </Box>
+          Continuar no WhatsApp
+        </Button>
+        <Text fontSize="sm" color="blackAlpha.700" lineHeight={1.6}>
+          Vamos abrir o WhatsApp com sua mensagem pronta. Você revisa e envia
+          para nossa equipe para combinar a conversa.
+        </Text>
+      </Stack>
+    </form>
   );
 }

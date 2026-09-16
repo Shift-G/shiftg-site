@@ -1,0 +1,9 @@
+# Hero do Médicos ON
+
+Arquivo: `public/images/editorial/shiftg-medicos-on-telemedicina.webp`
+
+Gerado com a ferramenta integrada ImageGen. Cena editorial ilustrativa, sem retratar profissionais ou instalações reais do projeto.
+
+## Prompt utilizado
+
+Use case: photorealistic-natural. Asset type: exclusive editorial hero image for the Médicos ON telemedicine project on the ShiftGnosis (SHIFT+G) website. Create one square 1:1 image, premium architectural/editorial photography. A Brazilian female physician in her late 30s, natural appearance and calm attentive expression, wearing a clean white medical coat and a dark stethoscope, seated at a minimalist off-white desk during a teleconsultation, looking toward an open slim laptop seen in three-quarter side view. Natural hands, relaxed professional posture; physician and laptop in the central and lower-middle area, safe for a 4:3 crop. The space expresses the SHIFT+G visual identity: bold cobalt blue #003FCD architectural wall plane, warm off-white #f4f4f1 surfaces, precise rectilinear geometry, restrained charcoal details and a small teal accent that nods to Médicos ON. Strong editorial composition, tactile materials, real skin texture, soft lateral daylight, quiet confidence and human care supported by technology. Distinctively medical through coat, stethoscope and teleconsultation context; no administrative group or reception scene. Leave the top-left 25% relatively calm for an existing HTML logo overlay. No text, lettering, logos or watermarks within the image; no readable screens or patient information, no actual known people, no robots, holograms, glowing brains, floating UI, stock-photo handshake or exaggerated smile. A believable illustrative scene combining medicine with the clean, geometric, blue-and-white identity of ShiftGnosis.

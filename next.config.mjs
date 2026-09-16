@@ -75,8 +75,14 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.shiftg.com.br' }],
+        destination: 'https://shiftg.com.br/:path*',
+        permanent: true,
+      },
+      {
         source: '/servicos',
-        destination: '/#solucoes',
+        destination: '/#prioridades',
         permanent: true,
       },
       {

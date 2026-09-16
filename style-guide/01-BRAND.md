@@ -120,7 +120,7 @@ Elevar a maturidade tecnológica das organizações — consultoria, IA, treinam
 | **Site** | https://shiftg.com.br |
 | **Email** | contato@shiftg.com.br |
 | **Comercial** | negocios@shiftg.com.br |
-| **Carreiras** | carreiras@shiftg.com.br |
+| **Carreiras** | vagas@shiftg.com.br |
 | **Telefone** | +55 (42) 99981-8852 |
 | **Instagram** | https://instagram.com/shiftgnosis |
 | **LinkedIn** | https://www.linkedin.com/company/shiftgnosis |

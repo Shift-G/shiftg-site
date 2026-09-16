@@ -1,0 +1,15 @@
+# Imagens editoriais do redesign
+
+Imagens geradas com a ferramenta integrada ImageGen. As cenas são ilustrativas: não representam a equipe real nem os clientes identificados no site.
+
+## Institucional
+
+Destino: `public/images/editorial/shiftg-institucional.webp`
+
+Use case: photorealistic-natural. Asset type: institutional editorial photograph for SHIFT+G, a Brazilian AI, data governance and digital transformation company. Create an original premium architectural business photograph, horizontal 3:2 composition. A small group of four fictional Brazilian business leaders and technical specialists, women and men aged 35-55, working thoughtfully around a long matte charcoal table in an elegant contemporary office. Candid side-on wide framing, subjects occupy the center and right of frame, architecture and quiet negative space at left. They are looking at a few printed process maps and a laptop, discussing work, no one looking at camera. Bright overcast daylight, high contrast, crisp architectural lines, clean white walls, clear glass partitions with one restrained saturated cobalt blue #003FCD vertical panel. Restrained charcoal and white clothing, realistic natural skin tones. Sophisticated annual-report art direction; confident, solid, intelligent, grounded. Natural textures, editorial realism, subtle grain only in the photo. No logo, no readable text, no watermark, no handshakes, no robots, no holographic interfaces, no cyberpunk, no warm beige wash, no gratuitous decorations. Accurate hands and realistic anatomy. This is an illustrative fictional business scene, not a photograph of actual SHIFT+G employees or clients.
+
+## IA in company
+
+Destino: `public/images/editorial/shiftg-in-company.webp`
+
+Use case: photorealistic-natural. Asset type: editorial photograph illustrating practical AI in-company work for SHIFT+G. Original horizontal 3:2 photograph, intentional elevated three-quarter close framing of three colleagues collaborating at a white worktable in a real contemporary Brazilian company. Focus on the hands, tools, and work surface; partial upper torsos at the top edge, faces outside the crop. One colleague points with a dark pen to a precise printed process diagram while another works on a charcoal laptop with a subdued abstract structured interface, screen content too small to read. Several white sheets with fine charcoal lines and restrained cobalt blue #003FCD geometric process blocks, one cobalt folder, otherwise uncluttered. Composition builds strong diagonals and generous white negative space; daylight from left, refined high contrast, tactile paper, sharp architectural simplicity. Palette white, charcoal, saturated brand cobalt with natural skin tones. Mood: focused teamwork, expertise, hands-on capability, institutional credibility. No readable text, no logos, no watermark, no neon, no robots, no floating digital graphics, no staged handshakes. All hands anatomically accurate, no extra fingers. This is a fictional illustrative scene, not an actual client photo.

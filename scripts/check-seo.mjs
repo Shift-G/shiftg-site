@@ -1,0 +1,433 @@
+// Validate the actual production HTML, not only the metadata source objects.
+// Run: node scripts/check-seo.mjs http://localhost:3107
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import http from "node:http";
+import https from "node:https";
+import ts from "typescript";
+
+const base = process.argv[2] || "http://localhost:3107";
+const origin = "https://shiftg.com.br";
+// Use the same catalog as the pages without depending on Node's TS support.
+const projectSource = await readFile(
+  new URL("../src/constants/projects.ts", import.meta.url),
+  "utf8",
+);
+const { outputText } = ts.transpileModule(projectSource, {
+  compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
+});
+const { projects } = await import(
+  `data:text/javascript;base64,${Buffer.from(outputText).toString("base64")}`
+);
+assert.ok(projects.length >= 9, "project catalog must include all nine projects");
+const projectsByPath = new Map(
+  projects.map((project) => [`/projetos/${project.slug}`, project]),
+);
+assert.equal(projectsByPath.size, projects.length, "duplicate project slugs");
+for (const slug of ["medicos-on", "alegra-conecta"])
+  assert.ok(projectsByPath.has(`/projetos/${slug}`), `missing new project: ${slug}`);
+const decode = (value) =>
+  value
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#x27;/g, "'");
+const attribute = (tag, name) =>
+  decode(tag.match(new RegExp(`\\b${name}="([^"]*)"`))?.[1] || "");
+const tags = (html, tag) =>
+  html.match(new RegExp(`<${tag}\\b[^>]*>`, "g")) || [];
+const meta = (html, name) =>
+  attribute(
+    tags(html, "meta").find(
+      (tag) =>
+        attribute(tag, "name") === name || attribute(tag, "property") === name,
+    ) || "",
+    "content",
+  );
+const normalize = (url) => url.replace(/\/$/, "");
+const schemas = (html) =>
+  [
+    ...html.matchAll(
+      /<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g,
+    ),
+  ].flatMap((match) => {
+    const data = JSON.parse(match[1]);
+    return Array.isArray(data) ? data : data["@graph"] || [data];
+  });
+
+const sitemapResponse = await fetch(`${base}/sitemap.xml`);
+assert.equal(sitemapResponse.status, 200);
+const sitemap = await sitemapResponse.text();
+const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
+  decode(match[1]),
+);
+assert.ok(urls.length >= 30, "sitemap must cover the public site");
+assert.equal(new Set(urls).size, urls.length, "duplicate sitemap URLs");
+for (const path of projectsByPath.keys())
+  assert.ok(urls.includes(origin + path), `project missing from sitemap: ${path}`);
+const seenTitles = new Set();
+const seenDescriptions = new Set();
+const imageUrls = new Set();
+const projectImageUrls = new Set();
+const internalLinks = new Set();
+const servicePaths = [
+  "/transformacao-digital",
+  "/fabrica-de-software",
+  "/fabrica-de-software/construa-seu-saas",
+  "/diagnostico-inteligente",
+  "/treinamento-ia-para-sua-empresa",
+];
+const targetCities = [
+  "União da Vitória",
+  "Porto União",
+  "São Mateus do Sul",
+  "Curitiba",
+];
+const recentPosts = new Map([
+  ["/insights/ia-processos-juridicos-tkv-uniao-da-vitoria", "2026-08-31"],
+  ["/insights/ia-medicina-seguranca-do-trabalho-modernizacao", "2026-09-13"],
+]);
+for (const path of recentPosts.keys())
+  assert.ok(urls.includes(origin + path), `missing recent article: ${path}`);
+
+for (const url of urls) {
+  assert.equal(new URL(url).origin, origin, "noncanonical sitemap origin");
+  const path = new URL(url).pathname;
+  const response = await fetch(new URL(path, base), { redirect: "manual" });
+  assert.equal(response.status, 200, `${path}: status`);
+  const html = await response.text();
+  assert.ok(
+    tags(html, "link").some(
+      (tag) =>
+        attribute(tag, "rel") === "describedby" &&
+        attribute(tag, "href") === "/llms.txt",
+    ),
+    `${path}: llms.txt discovery link`,
+  );
+  assert.match(html, /<html[^>]*lang="pt-BR"/, `${path}: language`);
+  const canonicalTags = tags(html, "link").filter(
+    (tag) => attribute(tag, "rel") === "canonical",
+  );
+  assert.equal(canonicalTags.length, 1, `${path}: canonical count`);
+  assert.equal(
+    normalize(attribute(canonicalTags[0], "href")),
+    normalize(url),
+    `${path}: canonical`,
+  );
+  assert.equal(
+    (html.match(/<h1(?:\s|>)/g) || []).length,
+    1,
+    `${path}: h1 count`,
+  );
+  assert.ok(!meta(html, "robots").includes("noindex"), `${path}: noindex`);
+  const title = decode(html.match(/<title>([^<]+)<\/title>/)?.[1] || "");
+  const description = meta(html, "description");
+  assert.ok(title && description, `${path}: missing title/description`);
+  assert.ok(!seenTitles.has(title), `${path}: duplicate title`);
+  assert.ok(
+    !seenDescriptions.has(description),
+    `${path}: duplicate description`,
+  );
+  assert.equal(
+    (title.match(/SHIFT\+G/g) || []).length,
+    1,
+    `${path}: brand duplication`,
+  );
+  seenTitles.add(title);
+  seenDescriptions.add(description);
+  assert.equal(
+    meta(html, "og:title"),
+    title,
+    `${path}: inconsistent social title`,
+  );
+  assert.equal(
+    meta(html, "og:description"),
+    description,
+    `${path}: social description`,
+  );
+  assert.equal(
+    normalize(meta(html, "og:url")),
+    normalize(url),
+    `${path}: social URL`,
+  );
+  assert.equal(
+    meta(html, "twitter:card"),
+    "summary_large_image",
+    `${path}: social card`,
+  );
+  for (const property of ["og:image", "twitter:image"]) {
+    const image = meta(html, property);
+    assert.equal(new URL(image).origin, origin, `${path}: image origin`);
+    imageUrls.add(image);
+  }
+  const structured = schemas(html);
+  if (path === "/" || path === "/ecossistema") {
+    // Strip all scripts so RSC payloads cannot masquerade as crawlable links.
+    const serverHtml = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "");
+    const trackStart = serverHtml.indexOf('id="home-project-track"');
+    if (path === "/")
+      assert.ok(trackStart >= 0, "home: carousel must render without JavaScript");
+    const portfolioHtml = path === "/"
+      ? serverHtml.slice(trackStart).split("</section>")[0]
+      : serverHtml;
+    const serverLinks = new Set(
+      tags(portfolioHtml, "a").map((tag) => attribute(tag, "href")),
+    );
+    for (const projectPath of projectsByPath.keys())
+      assert.ok(
+        serverLinks.has(projectPath) || serverLinks.has(origin + projectPath),
+        `${path}: project must be linked without JavaScript: ${projectPath}`,
+      );
+    const lists = structured.filter(
+      (item) => item["@type"] === "ItemList" && item.name === "Ecossistema SHIFT+G",
+    );
+    assert.equal(lists.length, 1, `${path}: project ItemList count`);
+    assert.equal(lists[0].numberOfItems, projects.length, `${path}: project count`);
+    assert.deepEqual(
+      lists[0].itemListElement.map((item) => ({
+        type: item["@type"],
+        position: item.position,
+        name: item.name,
+        url: item.url,
+        description: item.description,
+      })),
+      projects.map((project, index) => ({
+        type: "ListItem",
+        position: index + 1,
+        name: project.name,
+        url: `${origin}/projetos/${project.slug}`,
+        description: path === "/" ? project.headline : project.summary,
+      })),
+      `${path}: project list must match the visible catalog in order`,
+    );
+  }
+  const project = projectsByPath.get(path);
+  if (project) {
+    const projectTitle = `${project.name} — ${project.category}`;
+    assert.equal(title, `${projectTitle} | SHIFT+G`, `${path}: descriptive title`);
+    assert.equal(
+      description,
+      project.seoDescription ?? project.summary,
+      `${path}: project description`,
+    );
+    const socialImage = `${origin}${path}/opengraph-image`;
+    for (const property of ["og:image", "twitter:image"])
+      assert.equal(meta(html, property), socialImage, `${path}: ${property}`);
+    projectImageUrls.add(socialImage);
+    const webpages = structured.filter((item) => item["@type"] === "WebPage");
+    assert.equal(webpages.length, 1, `${path}: project WebPage count`);
+    const webpage = webpages[0];
+    assert.equal(webpage["@id"], `${url}#webpage`, `${path}: page identity`);
+    assert.equal(webpage.url, url, `${path}: page URL`);
+    assert.equal(webpage.name, projectTitle, `${path}: page name`);
+    assert.equal(webpage.description, description, `${path}: page description`);
+    assert.equal(webpage.isPartOf?.["@id"], `${origin}/#website`);
+    const entity = webpage.mainEntity;
+    assert.equal(entity?.["@type"], "CreativeWork", `${path}: project entity`);
+    assert.equal(entity["@id"], `${url}#project`, `${path}: project identity`);
+    assert.equal(entity.name, project.name, `${path}: project name`);
+    assert.equal(entity.url, project.url, `${path}: official project URL`);
+    assert.equal(entity.description, project.summary, `${path}: project summary`);
+    assert.equal(
+      entity.image,
+      `${origin}/images/products/${project.logo}`,
+      `${path}: project logo`,
+    );
+    imageUrls.add(entity.image);
+  }
+  const organizations = structured.filter(
+    (item) => item["@type"] === "ProfessionalService",
+  );
+  assert.equal(organizations.length, 1, `${path}: local business count`);
+  const business = organizations[0];
+  assert.equal(business.address.addressLocality, "União da Vitória");
+  assert.equal(business.address.addressCountry, "BR");
+  assert.ok(
+    business.address.streetAddress &&
+      business.address.postalCode &&
+      business.telephone,
+  );
+  for (const city of targetCities)
+    assert.ok(
+      business.areaServed.some((area) => area.name === city),
+      `${path}: missing ${city}`,
+    );
+  assert.ok(
+    !JSON.stringify(structured).includes("SearchAction"),
+    `${path}: nonexistent search action`,
+  );
+  if (path !== "/")
+    assert.equal(
+      structured.filter((item) => item["@type"] === "BreadcrumbList").length,
+      1,
+      `${path}: breadcrumbs`,
+    );
+  if (servicePaths.includes(path)) {
+    const service = structured.find((item) => item["@type"] === "Service");
+    assert.ok(service, `${path}: service schema`);
+    assert.equal(service.provider["@id"], business["@id"]);
+    assert.equal(service.url, url);
+  }
+  if (path.startsWith("/insights/")) {
+    assert.equal(meta(html, "og:type"), "article");
+    const article = structured.find((item) => item["@type"] === "BlogPosting");
+    assert.ok(
+      article?.headline && article?.author && article?.image,
+      `${path}: article schema`,
+    );
+    assert.equal(article.mainEntityOfPage["@id"], url);
+    imageUrls.add(article.image);
+    if (recentPosts.has(path)) {
+      assert.equal(
+        article.datePublished,
+        recentPosts.get(path),
+        `${path}: publication date`,
+      );
+      assert.equal(
+        meta(html, "article:published_time"),
+        article.datePublished,
+        `${path}: Open Graph date`,
+      );
+      assert.equal(
+        meta(html, "article:modified_time"),
+        article.dateModified,
+        `${path}: modification date`,
+      );
+      assert.ok(
+        tags(html, "time").some(
+          (tag) =>
+            attribute(tag, "dateTime") === article.datePublished ||
+            attribute(tag, "datetime") === article.datePublished,
+        ),
+        `${path}: visible publication date`,
+      );
+      for (const tag of tags(html, "a")) {
+        const href = attribute(tag, "href");
+        if (href.startsWith("#"))
+          assert.ok(
+            html.includes(`id="${href.slice(1)}"`),
+            `${path}: broken table of contents`,
+          );
+      }
+    }
+  }
+  if (path === "/atendimento") {
+    const faq = structured.find((item) => item["@type"] === "FAQPage");
+    assert.equal(faq?.mainEntity.length, 5);
+    for (const question of faq.mainEntity) {
+      assert.ok(html.includes(question.name), "FAQ question must be visible");
+      assert.ok(
+        html.includes(question.acceptedAnswer.text),
+        "FAQ answer must be visible",
+      );
+    }
+  }
+  if (path === "/insights") {
+    const months = tags(html, "time").map(
+      (tag) => attribute(tag, "dateTime") || attribute(tag, "datetime"),
+    );
+    assert.deepEqual(
+      months,
+      ["2026-09", "2026-08", "2025-07", "2025-04", "2025-02", "2025-01"],
+      "insights must show all six articles, newest first",
+    );
+  }
+  for (const tag of tags(html, "a")) {
+    const href = attribute(tag, "href");
+    if (href.startsWith("/") && !href.startsWith("//"))
+      internalLinks.add(new URL(href, origin).pathname);
+  }
+  console.log(`OK SEO ${path}`);
+}
+
+for (const url of imageUrls) {
+  const response = await fetch(new URL(new URL(url).pathname, base));
+  assert.equal(response.status, 200, `${url}: image unavailable`);
+  assert.match(
+    response.headers.get("content-type") || "",
+    /^image\//,
+    `${url}: not an image`,
+  );
+  if (projectImageUrls.has(url)) {
+    const png = Buffer.from(await response.arrayBuffer());
+    assert.ok(png.length >= 24, `${url}: incomplete social image`);
+    assert.equal(png.subarray(0, 8).toString("hex"), "89504e470d0a1a0a");
+    assert.equal(png.readUInt32BE(16), 1200, `${url}: social image width`);
+    assert.equal(png.readUInt32BE(20), 630, `${url}: social image height`);
+  }
+}
+const knownPaths = new Set(urls.map((url) => new URL(url).pathname));
+const llmsResponse = await fetch(`${base}/llms.txt`);
+assert.equal(llmsResponse.status, 200, "llms.txt status");
+assert.match(
+  llmsResponse.headers.get("content-type") || "",
+  /^text\/plain/,
+  "llms.txt must be plain text",
+);
+const llms = await llmsResponse.text();
+assert.match(llms, /^# SHIFT\+G\n\n> /, "llms.txt title and summary");
+assert.equal(
+  (llms.match(/^# /gm) || []).length,
+  1,
+  "llms.txt must have one main title",
+);
+const llmsLinks = [...llms.matchAll(/\[[^\]]+\]\((https:\/\/[^)]+)\)/g)].map(
+  (match) => new URL(match[1]),
+);
+assert.ok(llmsLinks.length > 0, "llms.txt must link to site content");
+for (const link of llmsLinks) {
+  assert.equal(link.origin, origin, "llms.txt canonical domain");
+  assert.ok(
+    knownPaths.has(link.pathname) ||
+      ["/sitemap.xml", "/robots.txt"].includes(link.pathname),
+    `unknown llms.txt destination: ${link.pathname}`,
+  );
+}
+for (const path of recentPosts.keys())
+  assert.ok(
+    llmsLinks.some((link) => link.pathname === path),
+    `article missing from llms.txt: ${path}`,
+  );
+for (const path of projectsByPath.keys())
+  assert.ok(
+    llmsLinks.some((link) => link.pathname === path),
+    `project missing from llms.txt: ${path}`,
+  );
+for (const path of internalLinks)
+  assert.ok(knownPaths.has(path), `internal page absent from sitemap: ${path}`);
+const robots = await (await fetch(`${base}/robots.txt`)).text();
+assert.ok(
+  !/Disallow:\s*\/_next/i.test(robots),
+  "Next assets must remain crawlable",
+);
+assert.ok(robots.includes(`Sitemap: ${origin}/sitemap.xml`));
+const contact = await (
+  await fetch(`${base}/contato?interesse=ia-in-company&utm_source=seo`)
+).text();
+assert.equal(
+  attribute(
+    tags(contact, "link").find((tag) => attribute(tag, "rel") === "canonical"),
+    "href",
+  ),
+  `${origin}/contato`,
+  "tracking query canonical",
+);
+// Node fetch may discard a custom Host header; use the HTTP client for this check.
+const www = await new Promise((resolve, reject) => {
+  const url = new URL("/atendimento?utm_source=seo", base);
+  const client = url.protocol === "https:" ? https : http;
+  client
+    .get(url, { headers: { host: "www.shiftg.com.br" } }, (response) => {
+      response.resume();
+      resolve(response);
+    })
+    .on("error", reject);
+});
+assert.equal(www.statusCode, 308, "www must redirect permanently");
+assert.equal(www.headers.location, `${origin}/atendimento?utm_source=seo`);
+const services = await fetch(`${base}/servicos`, { redirect: "manual" });
+assert.equal(services.status, 308);
+assert.equal(services.headers.get("location"), "/#prioridades");
+assert.match(await (await fetch(base)).text(), /id="prioridades"/);
+console.log(
+  `Passed: ${urls.length} pages, ${projects.length} projects with SSR links and structured data, ${internalLinks.size} internal destinations, ${imageUrls.size} images, robots, query canonicals and redirects.`,
+);

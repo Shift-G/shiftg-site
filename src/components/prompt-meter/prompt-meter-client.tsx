@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Box, HStack, Input, Text, Textarea, VStack } from "@chakra-ui/react";
 import { ArrowRight, Check } from "lucide-react";
-import { API_URL } from "@/constants";
+import { API_BASE } from "@/constants";
 
 /* ── types (English) — displayed strings stay pt-BR ── */
 interface Criterion {
@@ -23,7 +23,7 @@ interface Analysis {
 }
 
 const EXAMPLES = [
-  "Escreva um e-mail para cobrar um cliente atrasado há 30 dias",
+  "Escreva um e-mail para cobrar um cliente por inadimplência há 30 dias.",
   "Me ajude a criar um plano de marketing",
   "Resuma este relatório",
   "Crie um post para o Instagram da minha empresa",
@@ -46,7 +46,7 @@ export function PromptMeterClient() {
     }
     setView("loading");
     try {
-      const res = await fetch(`${API_URL}/prompt-meter/analyze`, {
+      const res = await fetch(`${API_BASE}/prompt-meter/analyze`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ prompt: value }),
@@ -75,7 +75,7 @@ export function PromptMeterClient() {
       bg="white"
       border="1px solid"
       borderColor="blackAlpha.200"
-      p={{ base: 6, md: 10 }}
+      p={{ base: 4, md: 12 }}
       w="full"
       maxW="720px"
       mx="auto"
@@ -109,7 +109,7 @@ export function PromptMeterClient() {
           </Text>
 
           <Text color="fg.muted" fontSize="md" lineHeight={1.6} mb={6}>
-            Escreva o que você pediria para uma IA. A nossa analisa, pontua e te mostra como deixar muito melhor — na hora.
+            Escreva o que você questionaria a uma IA. Nossa IA analisa, estrutura e disponibiliza aprimoramentos - na hora.
           </Text>
 
           <Textarea
@@ -435,7 +435,7 @@ function LeadCapture({ analysis, prompt }: { analysis: Analysis; prompt: string 
     }
     setLoading(true);
     try {
-      const res = await fetch(`${API_URL}/prompt-meter/lead`, {
+      const res = await fetch(`${API_BASE}/prompt-meter/lead`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
@@ -489,7 +489,7 @@ function LeadCapture({ analysis, prompt }: { analysis: Analysis; prompt: string 
         Receba por e-mail seu prompt melhorado
       </Text>
       <Text fontSize="sm" opacity={0.92} mb={4}>
-        Informe seu nome e e-mail: enviamos a versão reescrita do seu prompt, com a cara da Shift+G.
+        Informe seu nome e e-mail: enviamos a versão reescrita do seu prompt, com o padrão da Shift+G.
       </Text>
 
       <VStack align="stretch" gap={2}>

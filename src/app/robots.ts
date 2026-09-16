@@ -1,17 +1,14 @@
-import { MetadataRoute } from 'next';
-import { SITE_URL } from '@/constants';
+import { MetadataRoute } from "next";
+import { SITE_URL } from "@/constants";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
-        userAgent: '*',
-        allow: '/',
-        disallow: [
-          '/api/',
-          '/_next/',
-          '/admin/',
-        ],
+        userAgent: "*",
+        allow: "/",
+        // CSS, JavaScript and optimized images must remain crawlable.
+        disallow: ["/api/", "/admin/", "/private/"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
