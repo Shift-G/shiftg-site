@@ -158,6 +158,7 @@ export function NavigationContent({
   const info = navigationGroups.find((item) => item.id === group)!;
   const feature = features[group];
   const links = group === "solucoes" ? solutionLinks : companyLinks;
+  const itemCount = group === "ecossistema" ? projects.length : links.length;
   return (
     <Grid
       templateColumns={mobile ? "1fr" : "0.85fr 2fr 1fr"}
@@ -197,7 +198,10 @@ export function NavigationContent({
       <Stack gap={4}>
         <Grid
           templateColumns={mobile ? "1fr" : "repeat(2, minmax(0, 1fr))"}
-          gap={2}
+          gap={0}
+          borderTop="1px solid"
+          borderLeft="1px solid"
+          borderColor="blackAlpha.200"
         >
           {group === "ecossistema"
             ? projects.map((project) => (
@@ -205,12 +209,18 @@ export function NavigationContent({
                   asChild
                   key={project.slug}
                   p={3}
-                  border="1px solid"
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="center"
+                  gap={2}
+                  borderRight="1px solid"
+                  borderBottom="1px solid"
                   borderColor="blackAlpha.200"
-                  _hover={{ bg: "off", borderColor: "blue.solid" }}
+                  _hover={{ bg: "off" }}
                   _focusVisible={{
                     outline: "2px solid",
                     outlineColor: "blue.solid",
+                    outlineOffset: "-2px",
                   }}
                 >
                   <Link
@@ -222,21 +232,16 @@ export function NavigationContent({
                         : undefined
                     }
                   >
-                    <Flex align="center" justify="space-between" gap={3} mb={3}>
-                      <Image
-                        src={`/images/products/${project.logo}`}
-                        alt=""
-                        w="100px"
-                        h="32px"
-                        objectFit="contain"
-                        objectPosition="left center"
-                      />
-                      <ArrowUpRight size={16} aria-hidden="true" />
-                    </Flex>
-                    <Text fontSize="sm" fontWeight={600}>
-                      {project.name}
-                    </Text>
-                    <Text fontSize="xs" color="blackAlpha.700" mt={1}>
+                    <Image
+                      src={`/images/products/${project.logo}`}
+                      alt={project.name}
+                      w="100px"
+                      maxW="full"
+                      h="32px"
+                      objectFit="contain"
+                      objectPosition="left center"
+                    />
+                    <Text fontSize="xs" color="blackAlpha.700">
                       {project.category}
                     </Text>
                   </Link>
@@ -249,12 +254,14 @@ export function NavigationContent({
                     asChild
                     key={item.href}
                     p={4}
-                    border="1px solid"
+                    borderRight="1px solid"
+                    borderBottom="1px solid"
                     borderColor="blackAlpha.200"
-                    _hover={{ bg: "off", borderColor: "blue.solid" }}
+                    _hover={{ bg: "off" }}
                     _focusVisible={{
                       outline: "2px solid",
                       outlineColor: "blue.solid",
+                      outlineOffset: "-2px",
                     }}
                   >
                     <Link
@@ -290,12 +297,21 @@ export function NavigationContent({
           <Box
             asChild
             bg="off"
-            p={4}
+            p={group === "ecossistema" ? 3 : 4}
+            borderRight="1px solid"
+            borderBottom="1px solid"
+            borderColor="blackAlpha.200"
+            gridColumn={!mobile && itemCount % 2 === 0 ? "1 / -1" : undefined}
             display="flex"
             flexDirection="column"
             justifyContent="space-between"
-            gap={4}
+            gap={group === "ecossistema" ? 2 : 4}
             _hover={{ bg: "blue.solid", color: "white" }}
+            _focusVisible={{
+              outline: "2px solid",
+              outlineColor: "blue.solid",
+              outlineOffset: "-2px",
+            }}
           >
             <Link
               href={group === "ecossistema" ? "/ecossistema" : "/contato"}

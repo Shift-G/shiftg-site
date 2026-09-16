@@ -16,6 +16,8 @@ import {
 import { PageSeo } from "@/components/seo/page-seo";
 import { projects } from "@/constants/projects";
 import { pageMetadata } from "@/lib/page-metadata";
+import { JsonLd } from "@/components/seo/json-ld";
+import { generateProjectPageSchema } from "@/lib/project-seo";
 import { Box, Flex, Grid, Heading, Stack, Text } from "@chakra-ui/react";
 import { notFound } from "next/navigation";
 
@@ -28,7 +30,12 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
-  return pageMetadata(project.name, project.summary, `/projetos/${slug}`);
+  return pageMetadata(
+    `${project.name} — ${project.category}`,
+    project.summary,
+    `/projetos/${slug}`,
+    { image: `/projetos/${slug}/opengraph-image` },
+  );
 }
 export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;
@@ -37,6 +44,7 @@ export default async function ProjectPage({ params }: Props) {
   const related = projects.filter((item) => item.slug !== p.slug).slice(0, 2);
   return (
     <SitePage>
+      <JsonLd data={generateProjectPageSchema(p)} />
       <PageSeo
         name={p.name}
         path={`/projetos/${p.slug}`}

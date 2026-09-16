@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, Heading, Image, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Grid, Heading, Image, Text } from "@chakra-ui/react";
 import NextImage from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
@@ -206,7 +206,7 @@ export function HomeHero() {
                 lineHeight={1}
                 letterSpacing="-0.06em"
               >
-                07
+                {String(projects.length).padStart(2, "0")}
               </Text>
               <Text fontFamily="mono" fontSize="xs" lineHeight={1.7}>
                 PROJETOS.

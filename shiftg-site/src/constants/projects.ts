@@ -255,7 +255,7 @@ export const projects: Project[] = [
     url: "https://medicoson.app",
     headline: "Telemedicina mais simples. Cuidado mais próximo.",
     summary:
-      "Plataforma de telemedicina desenvolvida integralmente pela SHIFT+G, em colaboração. Tecnologia e IA para saúde, com foco em simplificar o acesso ao cuidado no Brasil.",
+      "Plataforma de telemedicina lançada oficialmente, desenvolvida integralmente pela SHIFT+G em colaboração. Tecnologia e IA para simplificar o acesso ao cuidado no Brasil.",
     audience:
       "Médicos que buscam uma prática digital mais integrada e pessoas que precisam de acesso mais fácil à telemedicina no Brasil.",
     challenge:

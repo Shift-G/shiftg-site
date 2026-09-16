@@ -4,15 +4,27 @@ import { IllustratedHero } from "@/components/sections/editorial-media";
 import { Portfolio } from "@/components/sections/portfolio";
 import { projects } from "@/constants/projects";
 import { pageMetadata } from "@/lib/page-metadata";
+import { JsonLd } from "@/components/seo/json-ld";
+import {
+  ecosystemDescription,
+  generateEcosystemPageSchema,
+  generateProjectListSchema,
+} from "@/lib/project-seo";
 export const metadata = pageMetadata(
   "Ecossistema de produtos e projetos",
-  "Conheça NearOne, SomosAliados, Thiago, Aderis, Cobres, Pontes, SOMABEM, Médicos ON e AlegraConecta: produtos próprios e colaborações da SHIFT+G.",
+  ecosystemDescription,
   "/ecossistema",
 );
 export default function EcosystemPage() {
   return (
     <SitePage>
       <PageSeo name="Ecossistema" path="/ecossistema" />
+      <JsonLd
+        data={[
+          generateEcosystemPageSchema(),
+          generateProjectListSchema("/ecossistema"),
+        ]}
+      />
       <IllustratedHero
         eyebrow={"Produtos e colaborações"}
         title={"Setores diferentes."}

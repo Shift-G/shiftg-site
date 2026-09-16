@@ -28,6 +28,18 @@ Datas editoriais adotadas para os meses solicitados: 31/08/2026 e 13/09/2026. A 
 
 Os seis artigos compartilham um catálogo usado pela listagem e pelo sitemap, em ordem cronológica. Os textos novos têm autoria institucional, sumário, imagens editoriais identificadas e links para serviços, produtos e atendimento regional. Os cards dos clientes também direcionam aos artigos. As informações específicas de clientes se baseiam nas descrições já públicas em `src/constants/projects.ts`.
 
+## Atualização do ecossistema: nove projetos
+
+O site reúne **30 páginas públicas**, incluindo `/projetos/medicos-on` e `/projetos/alegra-conecta`. O cadastro em `src/constants/projects.ts` alimenta as rotas estáticas, o sitemap, a descrição do ecossistema, suas listas JSON-LD e o catálogo de projetos em `/llms.txt`.
+
+As páginas de projeto agora usam títulos com nome e categoria, URLs canônicas próprias e imagens de compartilhamento individuais de **1200 × 630**, geradas em `/projetos/[slug]/opengraph-image`. Cada página descreve o projeto em JSON-LD como `WebPage` com uma `CreativeWork`, incluindo nome, resumo, imagem, site oficial e estágio quando informado. Não são declarados preços, avaliações ou disponibilidade comercial que não constem no conteúdo.
+
+A home e o Ecossistema possuem `ItemList` com todos os projetos. O carrossel mantém os nove links no HTML inicial; o visitante e os buscadores não dependem de executar JavaScript ou avançar as setas para encontrar as URLs. O Ecossistema também se identifica como `CollectionPage`. Essa marcação descreve o conteúdo e não promete um carrossel nos resultados de busca.
+
+O teste `check:seo` confere cada projeto do cadastro no sitemap, no HTML do carrossel, nas listas estruturadas e no `/llms.txt`. Também verifica as entidades individuais e as imagens sociais, inclusive suas dimensões. Os testes de rotas mantêm verificações explícitas de Médicos ON e AlegraConecta, além de resposta 404 para projetos inexistentes.
+
+Validação desta atualização: build de produção aprovado; `check:seo` aprovado para 30 páginas, 9 projetos, 30 destinos internos e 25 imagens; verificação de rotas aprovada. As imagens de Médicos ON, AlegraConecta e SomosAliados também foram inspecionadas visualmente. A publicação e a solicitação de indexação continuam sendo etapas separadas.
+
 ## Mapa de intenção de busca
 
 Estes termos orientam o conteúdo; não representam uma medição de volume de busca ou de posição atual.
@@ -113,6 +125,6 @@ Limitação preexistente de lint: `pnpm lint` usa `next lint`, indisponível no 
 
 ## Arquivo llms.txt
 
-Em 14/09/2026 foi adicionado `public/llms.txt`, servido em `/llms.txt` como texto UTF-8. O arquivo segue a estrutura Markdown da [proposta llms.txt](https://llmstxt.org/): apresentação da empresa, contexto regional e listas de links para serviços, projetos, Insights e informações complementares. As duas novas postagens estão incluídas. Todas as páginas anunciam o arquivo com `rel="describedby"` no HTML.
+Em 14/09/2026 foi adicionado `/llms.txt`, servido como texto UTF-8. Na atualização do ecossistema, o arquivo público foi substituído pela rota estática `src/app/llms.txt/route.ts`. As entradas de projetos e Insights são geradas a partir dos mesmos cadastros usados pelas páginas e pelo sitemap. O conteúdo segue a estrutura Markdown da [proposta llms.txt](https://llmstxt.org/): apresentação da empresa, contexto regional e listas de links para serviços, projetos, Insights e informações complementares. Todas as páginas anunciam o arquivo com `rel="describedby"` no HTML.
 
-O arquivo contém somente informações públicas e distingue o piloto do Cobres de um produto plenamente lançado. Ao adicionar páginas ou alterar contatos e estágios de projetos, atualizar também o llms.txt. O teste `check:seo` confere sua disponibilidade, formato, descoberta no HTML e destinos. O arquivo complementa o sitemap e o robots.txt; não substitui esses recursos nem garante visibilidade em respostas de IA.
+O arquivo contém somente informações públicas e distingue o piloto do Cobres de um produto plenamente lançado. Novos projetos, estágios e artigos entram automaticamente no próximo build; os textos institucionais e links de serviços continuam sendo mantidos na rota. O teste `check:seo` confere sua disponibilidade, formato, descoberta no HTML e destinos, exigindo a presença de todos os projetos do cadastro. O arquivo complementa o sitemap e o robots.txt; não substitui esses recursos nem garante visibilidade em respostas de IA.

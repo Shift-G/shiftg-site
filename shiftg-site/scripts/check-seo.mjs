@@ -1,11 +1,31 @@
 // Validate the actual production HTML, not only the metadata source objects.
 // Run: node scripts/check-seo.mjs http://localhost:3107
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import http from "node:http";
 import https from "node:https";
+import ts from "typescript";
 
 const base = process.argv[2] || "http://localhost:3107";
 const origin = "https://shiftg.com.br";
+// Use the same catalog as the pages without depending on Node's TS support.
+const projectSource = await readFile(
+  new URL("../src/constants/projects.ts", import.meta.url),
+  "utf8",
+);
+const { outputText } = ts.transpileModule(projectSource, {
+  compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
+});
+const { projects } = await import(
+  `data:text/javascript;base64,${Buffer.from(outputText).toString("base64")}`
+);
+assert.ok(projects.length >= 9, "project catalog must include all nine projects");
+const projectsByPath = new Map(
+  projects.map((project) => [`/projetos/${project.slug}`, project]),
+);
+assert.equal(projectsByPath.size, projects.length, "duplicate project slugs");
+for (const slug of ["medicos-on", "alegra-conecta"])
+  assert.ok(projectsByPath.has(`/projetos/${slug}`), `missing new project: ${slug}`);
 const decode = (value) =>
   value
     .replace(/&amp;/g, "&")
@@ -40,11 +60,14 @@ const sitemap = await sitemapResponse.text();
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
   decode(match[1]),
 );
-assert.ok(urls.length >= 28, "sitemap must cover the public site");
+assert.ok(urls.length >= 30, "sitemap must cover the public site");
 assert.equal(new Set(urls).size, urls.length, "duplicate sitemap URLs");
+for (const path of projectsByPath.keys())
+  assert.ok(urls.includes(origin + path), `project missing from sitemap: ${path}`);
 const seenTitles = new Set();
 const seenDescriptions = new Set();
 const imageUrls = new Set();
+const projectImageUrls = new Set();
 const internalLinks = new Set();
 const servicePaths = [
   "/transformacao-digital",
@@ -137,6 +160,80 @@ for (const url of urls) {
     imageUrls.add(image);
   }
   const structured = schemas(html);
+  if (path === "/" || path === "/ecossistema") {
+    // Strip all scripts so RSC payloads cannot masquerade as crawlable links.
+    const serverHtml = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "");
+    const trackStart = serverHtml.indexOf('id="home-project-track"');
+    if (path === "/")
+      assert.ok(trackStart >= 0, "home: carousel must render without JavaScript");
+    const portfolioHtml = path === "/"
+      ? serverHtml.slice(trackStart).split("</section>")[0]
+      : serverHtml;
+    const serverLinks = new Set(
+      tags(portfolioHtml, "a").map((tag) => attribute(tag, "href")),
+    );
+    for (const projectPath of projectsByPath.keys())
+      assert.ok(
+        serverLinks.has(projectPath) || serverLinks.has(origin + projectPath),
+        `${path}: project must be linked without JavaScript: ${projectPath}`,
+      );
+    const lists = structured.filter(
+      (item) => item["@type"] === "ItemList" && item.name === "Ecossistema SHIFT+G",
+    );
+    assert.equal(lists.length, 1, `${path}: project ItemList count`);
+    assert.equal(lists[0].numberOfItems, projects.length, `${path}: project count`);
+    assert.deepEqual(
+      lists[0].itemListElement.map((item) => ({
+        type: item["@type"],
+        position: item.position,
+        name: item.name,
+        url: item.url,
+        description: item.description,
+      })),
+      projects.map((project, index) => ({
+        type: "ListItem",
+        position: index + 1,
+        name: project.name,
+        url: `${origin}/projetos/${project.slug}`,
+        description: path === "/" ? project.headline : project.summary,
+      })),
+      `${path}: project list must match the visible catalog in order`,
+    );
+  }
+  const project = projectsByPath.get(path);
+  if (project) {
+    const projectTitle = `${project.name} — ${project.category}`;
+    assert.equal(title, `${projectTitle} | SHIFT+G`, `${path}: descriptive title`);
+    assert.equal(
+      description,
+      project.seoDescription ?? project.summary,
+      `${path}: project description`,
+    );
+    const socialImage = `${origin}${path}/opengraph-image`;
+    for (const property of ["og:image", "twitter:image"])
+      assert.equal(meta(html, property), socialImage, `${path}: ${property}`);
+    projectImageUrls.add(socialImage);
+    const webpages = structured.filter((item) => item["@type"] === "WebPage");
+    assert.equal(webpages.length, 1, `${path}: project WebPage count`);
+    const webpage = webpages[0];
+    assert.equal(webpage["@id"], `${url}#webpage`, `${path}: page identity`);
+    assert.equal(webpage.url, url, `${path}: page URL`);
+    assert.equal(webpage.name, projectTitle, `${path}: page name`);
+    assert.equal(webpage.description, description, `${path}: page description`);
+    assert.equal(webpage.isPartOf?.["@id"], `${origin}/#website`);
+    const entity = webpage.mainEntity;
+    assert.equal(entity?.["@type"], "CreativeWork", `${path}: project entity`);
+    assert.equal(entity["@id"], `${url}#project`, `${path}: project identity`);
+    assert.equal(entity.name, project.name, `${path}: project name`);
+    assert.equal(entity.url, project.url, `${path}: official project URL`);
+    assert.equal(entity.description, project.summary, `${path}: project summary`);
+    assert.equal(
+      entity.image,
+      `${origin}/images/products/${project.logo}`,
+      `${path}: project logo`,
+    );
+    imageUrls.add(entity.image);
+  }
   const organizations = structured.filter(
     (item) => item["@type"] === "ProfessionalService",
   );
@@ -250,6 +347,13 @@ for (const url of imageUrls) {
     /^image\//,
     `${url}: not an image`,
   );
+  if (projectImageUrls.has(url)) {
+    const png = Buffer.from(await response.arrayBuffer());
+    assert.ok(png.length >= 24, `${url}: incomplete social image`);
+    assert.equal(png.subarray(0, 8).toString("hex"), "89504e470d0a1a0a");
+    assert.equal(png.readUInt32BE(16), 1200, `${url}: social image width`);
+    assert.equal(png.readUInt32BE(20), 630, `${url}: social image height`);
+  }
 }
 const knownPaths = new Set(urls.map((url) => new URL(url).pathname));
 const llmsResponse = await fetch(`${base}/llms.txt`);
@@ -282,6 +386,11 @@ for (const path of recentPosts.keys())
   assert.ok(
     llmsLinks.some((link) => link.pathname === path),
     `article missing from llms.txt: ${path}`,
+  );
+for (const path of projectsByPath.keys())
+  assert.ok(
+    llmsLinks.some((link) => link.pathname === path),
+    `project missing from llms.txt: ${path}`,
   );
 for (const path of internalLinks)
   assert.ok(knownPaths.has(path), `internal page absent from sitemap: ${path}`);
@@ -320,5 +429,5 @@ assert.equal(services.status, 308);
 assert.equal(services.headers.get("location"), "/#prioridades");
 assert.match(await (await fetch(base)).text(), /id="prioridades"/);
 console.log(
-  `Passed: ${urls.length} pages, ${internalLinks.size} internal destinations, ${imageUrls.size} images, structured data, robots, query canonicals and redirects.`,
+  `Passed: ${urls.length} pages, ${projects.length} projects with SSR links and structured data, ${internalLinks.size} internal destinations, ${imageUrls.size} images, robots, query canonicals and redirects.`,
 );
