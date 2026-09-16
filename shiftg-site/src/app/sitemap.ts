@@ -1,17 +1,10 @@
+import { blogPosts } from "@/constants/insights";
 import { MetadataRoute } from "next";
 import { SITE_URL } from "@/constants";
 import { projects } from "@/constants/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Omit lastModified until a reliable editorial modification date is available.
-
-  // Lista de artigos de insights
-  const insightsSlugs = [
-    "rh-estrategico-como-deixar-planilhas-para-tras-e-liderar-gestao-de-talentos-com-dados",
-    "rpa-liberte-sua-equipe-das-tarefas-repetitivas-e-foque-no-que-realmente-importa",
-    "o-roi-da-inteligencia-artificial-como-calcular-o-impacto-da-ia-no-balanco-da-sua-empresa",
-    "transformacao-digital-mais-do-que-tecnologia-uma-estrategia-de-sobrevivencia",
-  ];
 
   return [
     ...[
@@ -87,7 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
 
     // Artigos individuais de insights
-    ...insightsSlugs.map((slug) => ({
+    ...blogPosts.map(({ slug }) => ({
       url: `${SITE_URL}/insights/${slug}`,
       changeFrequency: "monthly" as const,
       priority: 0.7,

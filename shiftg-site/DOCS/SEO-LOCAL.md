@@ -17,6 +17,17 @@ Implementação de 13/09/2026. Prioridade: União da Vitória e Porto União; de
 - Remoção das declarações da fonte Rubik, que não é usada pelo tema atual.
 - Suporte opcional a `GOOGLE_SITE_VERIFICATION` e `BING_SITE_VERIFICATION`. Nenhum código de verificação foi inventado ou inserido.
 
+## Ampliação editorial: agosto e setembro de 2026
+
+Foram adicionados dois artigos aos Insights, elevando o site a 28 páginas públicas:
+
+- **Agosto:** `/insights/ia-processos-juridicos-tkv-uniao-da-vitoria` — implementação de IA e transformação digital na TKV, com o Cobres apresentado como piloto. Sem métricas de ganho ou funcionalidades atribuídas ao cliente sem comprovação.
+- **Setembro:** `/insights/ia-medicina-seguranca-do-trabalho-modernizacao` — integração de processos, IA e governança em saúde ocupacional, com o contexto público da colaboração com a MEDCuritiba, NearOne e SOMABEM.
+
+Datas editoriais adotadas para os meses solicitados: 31/08/2026 e 13/09/2026. A revisão editorial mais recente é de 14/09/2026. As datas constam no HTML e no JSON-LD, e são propagadas ao Open Graph. Elas não significam que o deploy ou a indexação no Google ocorreram nesses dias.
+
+Os seis artigos compartilham um catálogo usado pela listagem e pelo sitemap, em ordem cronológica. Os textos novos têm autoria institucional, sumário, imagens editoriais identificadas e links para serviços, produtos e atendimento regional. Os cards dos clientes também direcionam aos artigos. As informações específicas de clientes se baseiam nas descrições já públicas em `src/constants/projects.ts`.
+
 ## Mapa de intenção de busca
 
 Estes termos orientam o conteúdo; não representam uma medição de volume de busca ou de posição atual.
@@ -99,3 +110,9 @@ Limitação preexistente de lint: `pnpm lint` usa `next lint`, indisponível no 
 - [Google: políticas de spam, incluindo páginas de entrada](https://developers.google.com/search/docs/essentials/spam-policies#doorway-abuse).
 - [Google: construção e envio de sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap).
 - [Google: uso e limitações do robots.txt](https://developers.google.com/search/docs/crawling-indexing/robots/intro).
+
+## Arquivo llms.txt
+
+Em 14/09/2026 foi adicionado `public/llms.txt`, servido em `/llms.txt` como texto UTF-8. O arquivo segue a estrutura Markdown da [proposta llms.txt](https://llmstxt.org/): apresentação da empresa, contexto regional e listas de links para serviços, projetos, Insights e informações complementares. As duas novas postagens estão incluídas. Todas as páginas anunciam o arquivo com `rel="describedby"` no HTML.
+
+O arquivo contém somente informações públicas e distingue o piloto do Cobres de um produto plenamente lançado. Ao adicionar páginas ou alterar contatos e estágios de projetos, atualizar também o llms.txt. O teste `check:seo` confere sua disponibilidade, formato, descoberta no HTML e destinos. O arquivo complementa o sitemap e o robots.txt; não substitui esses recursos nem garante visibilidade em respostas de IA.

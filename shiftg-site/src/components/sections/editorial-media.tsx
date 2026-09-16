@@ -12,6 +12,11 @@ import {
 } from "@/components/layout/editorial";
 
 export const editorialVisuals = {
+  telemedicina: {
+    file: "shiftg-medicos-on-telemedicina.png",
+    alt: "Cena ilustrativa de uma médica em teleconsulta em um consultório com elementos geométricos azuis e brancos",
+    position: "center",
+  },
   saude: {
     file: "shiftg-saude-conectada.png",
     alt: "Cena ilustrativa de uma equipe administrativa de saúde organizando o atendimento",

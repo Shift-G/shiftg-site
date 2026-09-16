@@ -34,7 +34,7 @@ export const projects: Project[] = [
     challenge:
       "Identificar riscos é uma etapa. Dar continuidade ao cuidado, organizar as informações e acompanhar o que foi feito exige uma gestão conectada à rotina da empresa.",
     approach:
-      "A NearOne reúne avaliação, planos de ação e acompanhamento em um ecossistema digital. A IA apoia a leitura das informações para que a equipe responsável possa definir prioridades e conduzir as ações.",
+      "A NearOne está presente na Dissenha, na Abbaspel e na MEDCuritiba, com sua base de mais de 1.500 empresas clientes. A plataforma reúne avaliação, planos de ação e acompanhamento em um ecossistema digital. A IA apoia a leitura das informações para que a equipe responsável possa definir prioridades e conduzir as ações.",
     pillars: [
       {
         title: "Mapear",
@@ -67,7 +67,7 @@ export const projects: Project[] = [
     challenge:
       "Documentos dispersos e demandas recorrentes consomem o tempo da equipe. Ao mesmo tempo, a base precisa encontrar informações e perceber o valor da sua entidade.",
     approach:
-      "O SomosAliados reúne a gestão documental e uma IA apoiada nos documentos do sindicato. O aplicativo do associado aproxima a entidade da base com acesso a benefícios, informações e comunidade.",
+      "O SomosAliados já está presente em dois sindicatos: o SINDESPOL, de Londrina, e o SEEB (Sindicato dos Bancários), de União da Vitória. A plataforma reúne a gestão documental e uma IA apoiada nos documentos do sindicato. O aplicativo do associado aproxima a entidade da base com acesso a benefícios, informações e comunidade.",
     pillars: [
       {
         title: "Conhecimento institucional",
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     category: "Política",
     ownership: "Em colaboração",
     partner: "TPC & Co",
-    logo: "logo-thiago-tpc-e-co.jpg",
+    logo: "logo-thiago.png",
     url: "https://thiago.tpcco.com.br/",
     headline: "Inteligência artificial no contexto da política.",
     summary:
@@ -245,6 +245,68 @@ export const projects: Project[] = [
       },
     ],
     caseId: "medcuritiba",
+  },
+  {
+    slug: "medicos-on",
+    name: "Médicos ON",
+    category: "Telemedicina",
+    ownership: "Ecossistema SHIFT+G",
+    logo: "logo-medicos-on.png",
+    url: "https://medicoson.app",
+    headline: "Telemedicina mais simples. Cuidado mais próximo.",
+    summary:
+      "Plataforma de telemedicina desenvolvida integralmente pela SHIFT+G, em colaboração. Tecnologia e IA para saúde, com foco em simplificar o acesso ao cuidado no Brasil.",
+    audience:
+      "Médicos que buscam uma prática digital mais integrada e pessoas que precisam de acesso mais fácil à telemedicina no Brasil.",
+    challenge:
+      "A telemedicina precisa ser simples para quem atende e para quem busca cuidado. Conectar profissionais, organizar serviços e facilitar a jornada de atendimento são partes desse desafio.",
+    approach:
+      "Desenvolvido integralmente pela SHIFT+G, o Médicos ON é um projeto em colaboração que reúne tecnologia e IA para saúde na proposta de uma telemedicina abrangente e simplificada. A plataforma foi concebida para conectar perfil profissional, agenda, teleconsulta e prontuário em uma mesma experiência. Já lançado oficialmente, o Médicos ON conecta tecnologia e cuidado para facilitar o acesso à telemedicina no Brasil.",
+    pillars: [
+      {
+        title: "Acesso ao cuidado",
+        text: "Uma proposta para aproximar médicos e pacientes e tornar a telemedicina mais fácil e acessível no Brasil.",
+      },
+      {
+        title: "Serviços conectados",
+        text: "Perfil profissional, agenda, teleconsulta e prontuário pensados como partes de uma jornada integrada.",
+      },
+      {
+        title: "Tecnologia e IA para saúde",
+        text: "Desenvolvimento integral pela SHIFT+G, com tecnologia e inteligência artificial voltadas à simplificação dos serviços de saúde.",
+      },
+    ],
+  },
+  {
+    slug: "alegra-conecta",
+    name: "AlegraConecta",
+    category: "Descontos e comunidade",
+    ownership: "Em colaboração",
+    logo: "logo-alegra-conecta.png",
+    url: "https://alegraconecta.com.br",
+    headline: "Mais benefícios. Mais força para a comunidade.",
+    summary:
+      "Clube de Descontos ALEGRA: benefícios para assinantes em estabelecimentos credenciados, apoio à comunidade e incentivo ao comércio local. Um projeto em colaboração com a SHIFT+G.",
+    audience:
+      "Pessoas que buscam descontos e benefícios, comunidades que querem fortalecer seus vínculos e estabelecimentos que fazem parte do comércio local.",
+    challenge:
+      "Aproximar pessoas, comunidades e negócios locais exige criar valor para todos. Os descontos incentivam novas descobertas, enquanto o apoio à comunidade fortalece as relações que fazem parte do dia a dia.",
+    approach:
+      "O AlegraConecta conecta pessoas a oportunidades e benefícios por meio do Clube de Descontos ALEGRA. Assinantes têm acesso a descontos em estabelecimentos credenciados e podem apoiar suas comunidades. Desenvolvido em colaboração com a SHIFT+G, o projeto reúne economia no dia a dia, proximidade com a comunidade e valorização dos negócios locais.",
+    pillars: [
+      {
+        title: "Descontos e benefícios",
+        text: "Assinantes acessam descontos na rede credenciada, conforme as condições de cada estabelecimento.",
+      },
+      {
+        title: "Apoio à comunidade",
+        text: "Uma conexão que aproxima as pessoas das comunidades das quais fazem parte e facilita o apoio às suas iniciativas.",
+      },
+      {
+        title: "Comércio local",
+        text: "Uma rede que incentiva a descoberta de estabelecimentos e valoriza os negócios que movimentam a comunidade.",
+      },
+    ],
   },
 ];
 

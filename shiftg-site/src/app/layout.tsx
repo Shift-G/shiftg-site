@@ -97,6 +97,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+        <link rel="describedby" type="text/plain" href="/llms.txt" />
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
 
         <JsonLd

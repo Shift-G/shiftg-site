@@ -131,7 +131,7 @@ export function Navbar() {
       >
         <Frame wide>
           <Flex
-            h={{ base: 20, lg: 24 }}
+            h={{ base: 18, lg: 20 }}
             align="center"
             justify="space-between"
             gap={6}
@@ -140,10 +140,7 @@ export function Navbar() {
               <Box
                 asChild
                 flexShrink={0}
-                w={{ base: "140px", xl: "168px" }}
-                css={{
-                  "& svg": { width: "100%", height: "auto", maxHeight: "60px" },
-                }}
+                w={{ base: "168px", xl: "200px" }}
               >
                 <Link href="/" aria-label="SHIFT+G — início" onClick={close}>
                   <BrandLogo />
@@ -236,7 +233,7 @@ export function Navbar() {
                       borderTop="1px solid"
                       borderBottom="3px solid"
                       borderColor="blue.solid"
-                      maxH="calc(100dvh - 96px)"
+                      maxH="calc(100dvh - 81px)"
                       overflowY="auto"
                     >
                       <Box py={8}>

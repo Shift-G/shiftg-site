@@ -40,7 +40,7 @@ const sitemap = await sitemapResponse.text();
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
   decode(match[1]),
 );
-assert.ok(urls.length >= 26, "sitemap must cover the public site");
+assert.ok(urls.length >= 28, "sitemap must cover the public site");
 assert.equal(new Set(urls).size, urls.length, "duplicate sitemap URLs");
 const seenTitles = new Set();
 const seenDescriptions = new Set();
@@ -59,6 +59,12 @@ const targetCities = [
   "São Mateus do Sul",
   "Curitiba",
 ];
+const recentPosts = new Map([
+  ["/insights/ia-processos-juridicos-tkv-uniao-da-vitoria", "2026-08-31"],
+  ["/insights/ia-medicina-seguranca-do-trabalho-modernizacao", "2026-09-13"],
+]);
+for (const path of recentPosts.keys())
+  assert.ok(urls.includes(origin + path), `missing recent article: ${path}`);
 
 for (const url of urls) {
   assert.equal(new URL(url).origin, origin, "noncanonical sitemap origin");
@@ -66,6 +72,14 @@ for (const url of urls) {
   const response = await fetch(new URL(path, base), { redirect: "manual" });
   assert.equal(response.status, 200, `${path}: status`);
   const html = await response.text();
+  assert.ok(
+    tags(html, "link").some(
+      (tag) =>
+        attribute(tag, "rel") === "describedby" &&
+        attribute(tag, "href") === "/llms.txt",
+    ),
+    `${path}: llms.txt discovery link`,
+  );
   assert.match(html, /<html[^>]*lang="pt-BR"/, `${path}: language`);
   const canonicalTags = tags(html, "link").filter(
     (tag) => attribute(tag, "rel") === "canonical",
@@ -165,6 +179,39 @@ for (const url of urls) {
     );
     assert.equal(article.mainEntityOfPage["@id"], url);
     imageUrls.add(article.image);
+    if (recentPosts.has(path)) {
+      assert.equal(
+        article.datePublished,
+        recentPosts.get(path),
+        `${path}: publication date`,
+      );
+      assert.equal(
+        meta(html, "article:published_time"),
+        article.datePublished,
+        `${path}: Open Graph date`,
+      );
+      assert.equal(
+        meta(html, "article:modified_time"),
+        article.dateModified,
+        `${path}: modification date`,
+      );
+      assert.ok(
+        tags(html, "time").some(
+          (tag) =>
+            attribute(tag, "dateTime") === article.datePublished ||
+            attribute(tag, "datetime") === article.datePublished,
+        ),
+        `${path}: visible publication date`,
+      );
+      for (const tag of tags(html, "a")) {
+        const href = attribute(tag, "href");
+        if (href.startsWith("#"))
+          assert.ok(
+            html.includes(`id="${href.slice(1)}"`),
+            `${path}: broken table of contents`,
+          );
+      }
+    }
   }
   if (path === "/atendimento") {
     const faq = structured.find((item) => item["@type"] === "FAQPage");
@@ -176,6 +223,16 @@ for (const url of urls) {
         "FAQ answer must be visible",
       );
     }
+  }
+  if (path === "/insights") {
+    const months = tags(html, "time").map(
+      (tag) => attribute(tag, "dateTime") || attribute(tag, "datetime"),
+    );
+    assert.deepEqual(
+      months,
+      ["2026-09", "2026-08", "2025-07", "2025-04", "2025-02", "2025-01"],
+      "insights must show all six articles, newest first",
+    );
   }
   for (const tag of tags(html, "a")) {
     const href = attribute(tag, "href");
@@ -195,6 +252,37 @@ for (const url of imageUrls) {
   );
 }
 const knownPaths = new Set(urls.map((url) => new URL(url).pathname));
+const llmsResponse = await fetch(`${base}/llms.txt`);
+assert.equal(llmsResponse.status, 200, "llms.txt status");
+assert.match(
+  llmsResponse.headers.get("content-type") || "",
+  /^text\/plain/,
+  "llms.txt must be plain text",
+);
+const llms = await llmsResponse.text();
+assert.match(llms, /^# SHIFT\+G\n\n> /, "llms.txt title and summary");
+assert.equal(
+  (llms.match(/^# /gm) || []).length,
+  1,
+  "llms.txt must have one main title",
+);
+const llmsLinks = [...llms.matchAll(/\[[^\]]+\]\((https:\/\/[^)]+)\)/g)].map(
+  (match) => new URL(match[1]),
+);
+assert.ok(llmsLinks.length > 0, "llms.txt must link to site content");
+for (const link of llmsLinks) {
+  assert.equal(link.origin, origin, "llms.txt canonical domain");
+  assert.ok(
+    knownPaths.has(link.pathname) ||
+      ["/sitemap.xml", "/robots.txt"].includes(link.pathname),
+    `unknown llms.txt destination: ${link.pathname}`,
+  );
+}
+for (const path of recentPosts.keys())
+  assert.ok(
+    llmsLinks.some((link) => link.pathname === path),
+    `article missing from llms.txt: ${path}`,
+  );
 for (const path of internalLinks)
   assert.ok(knownPaths.has(path), `internal page absent from sitemap: ${path}`);
 const robots = await (await fetch(`${base}/robots.txt`)).text();
@@ -218,16 +306,15 @@ assert.equal(
 const www = await new Promise((resolve, reject) => {
   const url = new URL("/atendimento?utm_source=seo", base);
   const client = url.protocol === "https:" ? https : http;
-  client.get(url, { headers: { host: "www.shiftg.com.br" } }, (response) => {
-    response.resume();
-    resolve(response);
-  }).on("error", reject);
+  client
+    .get(url, { headers: { host: "www.shiftg.com.br" } }, (response) => {
+      response.resume();
+      resolve(response);
+    })
+    .on("error", reject);
 });
 assert.equal(www.statusCode, 308, "www must redirect permanently");
-assert.equal(
-  www.headers.location,
-  `${origin}/atendimento?utm_source=seo`,
-);
+assert.equal(www.headers.location, `${origin}/atendimento?utm_source=seo`);
 const services = await fetch(`${base}/servicos`, { redirect: "manual" });
 assert.equal(services.status, 308);
 assert.equal(services.headers.get("location"), "/#prioridades");

@@ -13,11 +13,10 @@ import {
   ProjectFlow,
   ProjectVisual,
 } from "@/components/sections/project-visual";
-import { SITE_URL } from "@/constants";
+import { PageSeo } from "@/components/seo/page-seo";
 import { projects } from "@/constants/projects";
 import { pageMetadata } from "@/lib/page-metadata";
 import { Box, Flex, Grid, Heading, Stack, Text } from "@chakra-ui/react";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -38,49 +37,13 @@ export default async function ProjectPage({ params }: Props) {
   const related = projects.filter((item) => item.slug !== p.slug).slice(0, 2);
   return (
     <SitePage>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "SHIFT+G",
-                item: SITE_URL,
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Ecossistema",
-                item: `${SITE_URL}/ecossistema`,
-              },
-              {
-                "@type": "ListItem",
-                position: 3,
-                name: p.name,
-                item: `${SITE_URL}/projetos/${p.slug}`,
-              },
-            ],
-          }),
-        }}
+      <PageSeo
+        name={p.name}
+        path={`/projetos/${p.slug}`}
+        parents={[{ name: "Ecossistema", item: "/ecossistema" }]}
       />
       <Box py={{ base: 10, md: 16 }}>
         <Frame wide>
-          <Flex
-            as="nav"
-            aria-label="Caminho da página"
-            gap={3}
-            fontSize="sm"
-            color="blackAlpha.700"
-            mb={10}
-          >
-            <Link href="/ecossistema">Ecossistema</Link>
-            <Text aria-hidden="true">/</Text>
-            <Text aria-current="page">{p.name}</Text>
-          </Flex>
           <Grid
             templateColumns={{ base: "1fr", lg: "1.2fr 1fr" }}
             gap={{ base: 10, lg: 14 }}

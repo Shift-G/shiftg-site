@@ -7,6 +7,10 @@ export const projectVisuals: Record<
   string,
   { image: EditorialVisual; caption: string }
 > = {
+  "medicos-on": {
+    image: "telemedicina",
+    caption: "Tecnologia para simplificar a telemedicina e aproximar o cuidado.",
+  },
   nearone: {
     image: "equipe",
     caption: "Pessoas, trabalho e informação conectados ao cuidado.",
@@ -34,6 +38,10 @@ export const projectVisuals: Record<
   somabem: {
     image: "saude",
     caption: "Uma rede que aproxima empresas, pessoas e benefícios.",
+  },
+  "alegra-conecta": {
+    image: "pratica",
+    caption: "Descontos que aproximam pessoas. Conexões que fortalecem a comunidade.",
   },
 };
 export function ProjectVisual({ project }: { project: Project }) {

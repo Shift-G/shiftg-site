@@ -20,7 +20,13 @@ export function PageSeo({
   name: string;
   path: string;
   service?: { name: string; description: string };
-  article?: { title: string; description: string; image: string };
+  article?: {
+    title: string;
+    description: string;
+    image: string;
+    datePublished?: string;
+    dateModified?: string;
+  };
   parents?: BreadcrumbItem[];
 }) {
   const crumbs = [
@@ -52,7 +58,7 @@ export function PageSeo({
         borderBottom="1px solid"
         borderColor="blackAlpha.200"
       >
-        <Frame>
+        <Frame wide>
           <Flex
             as="nav"
             aria-label="Caminho da página"

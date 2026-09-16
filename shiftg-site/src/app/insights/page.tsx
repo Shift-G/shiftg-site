@@ -1,3 +1,4 @@
+import { blogPosts } from "@/constants/insights";
 import { PageSeo } from "@/components/seo/page-seo";
 import { Frame } from "@/components/layout/editorial";
 import { Footer } from "@/components/layout/footer";
@@ -12,57 +13,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = pageMetadata(
-  "Insights sobre IA, automação e transformação digital",
-  "Conteúdos da Shift+G sobre inteligência artificial, automação, dados e gestão. Conhecimento para orientar decisões de tecnologia na sua empresa.",
+  "Insights sobre processos, pessoas e transformação digital",
+  "Experiências da Shift+G dentro das empresas: evolução dos processos, redução de esforço repetitivo e novas possibilidades a partir do que já existe.",
   "/insights",
 );
-
-const blogPosts = [
-  {
-    title:
-      "RH Estratégico: Como Deixar as Planilhas para Trás e Liderar a Gestão de Talentos com Dados",
-    description:
-      "Descubra como transformar o RH operacional em estratégico através de automação inteligente, people analytics e foco na experiência do colaborador. Entenda os 3 pilares da transformação digital no RH.",
-    slug: "rh-estrategico-como-deixar-planilhas-para-tras-e-liderar-gestao-de-talentos-com-dados",
-    image: "/images/editorial/shiftg-institucional.png",
-    tags: ["Recursos Humanos", "People Analytics", "Employee Experience"],
-    readTime: "8 min",
-    publishedAt: "Julho 2025",
-  },
-  {
-    title:
-      "RPA: Liberte sua Equipe das Tarefas Repetitivas e Foque no que Realmente Importa",
-    description:
-      "Descubra como o RPA (Robotic Process Automation) pode transformar sua operação, eliminando tarefas repetitivas e liberando sua equipe para atividades estratégicas. Entenda os benefícios, casos de uso e como combinar RPA com IA.",
-    slug: "rpa-liberte-sua-equipe-das-tarefas-repetitivas-e-foque-no-que-realmente-importa",
-    image: "/images/editorial/shiftg-engenharia-digital.png",
-    tags: ["RPA", "Automação", "Eficiência Operacional"],
-    readTime: "6 min",
-    publishedAt: "Abril 2025",
-  },
-  {
-    title:
-      "O ROI da Inteligência Artificial: Como Calcular o Impacto da IA no Balanço da sua Empresa",
-    description:
-      "Descubra como calcular o retorno sobre investimento da Inteligência Artificial em sua empresa. Entenda os 4 vetores de retorno e a fórmula prática para medir o impacto financeiro da IA no seu negócio.",
-    slug: "o-roi-da-inteligencia-artificial-como-calcular-o-impacto-da-ia-no-balanco-da-sua-empresa",
-    image: "/images/editorial/shiftg-arquitetura-dados.png",
-    tags: ["Inteligência Artificial", "ROI", "Estratégia de Negócios"],
-    readTime: "7 min",
-    publishedAt: "Fevereiro 2025",
-  },
-  {
-    title:
-      "Transformação Digital: Mais do que Tecnologia, uma Estratégia de Sobrevivência",
-    description:
-      "Descubra como a transformação digital vai além da tecnologia e se torna uma estratégia essencial de sobrevivência para empresas modernas. Entenda os 4 pilares fundamentais e o roteiro prático em 3 passos.",
-    slug: "transformacao-digital-mais-do-que-tecnologia-uma-estrategia-de-sobrevivencia",
-    image: "/images/editorial/shiftg-in-company.png",
-    tags: ["Transformação Digital", "Estratégia", "Inovação"],
-    readTime: "8 min",
-    publishedAt: "Janeiro 2025",
-  },
-];
 
 /* ── Tags Component ── */
 function ArticleTag({ children }: { children: string }) {
@@ -149,9 +103,9 @@ export default function InsightsPage() {
                 lineHeight={1.8}
                 maxW="600px"
               >
-                Arquivo técnico sobre arquiteturas escaláveis, automação
-                inteligente e decisões orientadas a dados. Conhecimento
-                destilado para C-Levels e engenheiros.
+                A Shift+G entra na rotina das empresas e trabalha com o que elas
+                já têm para melhorar processos, reduzir esforços repetitivos e
+                liberar tempo. Conheça experiências construídas junto às equipes.
               </Text>
             </VStack>
           </Frame>
@@ -241,7 +195,9 @@ export default function InsightsPage() {
                     letterSpacing="-1px"
                     color="fg"
                   >
-                    {featuredPost.title}
+                    <Link href={`/insights/${featuredPost.slug}`}>
+                      {featuredPost.title}
+                    </Link>
                   </Text>
                   <Text color="fg.muted" fontSize="md" lineHeight={1.6}>
                     {featuredPost.description}
@@ -251,6 +207,8 @@ export default function InsightsPage() {
                 <HStack
                   justify="space-between"
                   align="center"
+                  flexWrap="wrap"
+                  gap={4}
                   pt={4}
                   borderTop="1px solid"
                   borderColor="blackAlpha.100"
@@ -265,7 +223,9 @@ export default function InsightsPage() {
                   >
                     <HStack gap={2}>
                       <Calendar size={14} />
-                      <Text>{featuredPost.publishedAt.toUpperCase()}</Text>
+                      <time dateTime={featuredPost.publicationMonth}>
+                        {featuredPost.publishedAt.toUpperCase()}
+                      </time>
                     </HStack>
                     <HStack gap={2}>
                       <Clock size={14} />
@@ -273,7 +233,10 @@ export default function InsightsPage() {
                     </HStack>
                   </HStack>
 
-                  <Link href={`/insights/${featuredPost.slug}`}>
+                  <Link
+                    href={`/insights/${featuredPost.slug}`}
+                    aria-label={`Ler artigo: ${featuredPost.title}`}
+                  >
                     <Box
                       display="inline-flex"
                       alignItems="center"
@@ -362,7 +325,9 @@ export default function InsightsPage() {
                           letterSpacing="-0.5px"
                           color="fg"
                         >
-                          {post.title}
+                          <Link href={`/insights/${post.slug}`}>
+                            {post.title}
+                          </Link>
                         </Text>
                         <Text
                           color="fg.muted"
@@ -389,6 +354,7 @@ export default function InsightsPage() {
                       >
                         <HStack
                           gap={4}
+                          flexWrap="wrap"
                           color="fg.subtle"
                           fontFamily="mono"
                           fontSize="sm"
@@ -396,7 +362,9 @@ export default function InsightsPage() {
                         >
                           <HStack gap={1.5}>
                             <Calendar size={12} />
-                            <Text>{post.publishedAt.toUpperCase()}</Text>
+                            <time dateTime={post.publicationMonth}>
+                              {post.publishedAt.toUpperCase()}
+                            </time>
                           </HStack>
                           <HStack gap={1.5}>
                             <Clock size={12} />
@@ -404,7 +372,10 @@ export default function InsightsPage() {
                           </HStack>
                         </HStack>
 
-                        <Link href={`/insights/${post.slug}`}>
+                        <Link
+                          href={`/insights/${post.slug}`}
+                          aria-label={`Ler artigo: ${post.title}`}
+                        >
                           <Box
                             color="blue.solid"
                             _hover={{ transform: "translateX(4px)" }}

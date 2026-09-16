@@ -1,3 +1,4 @@
+import { recentInsights } from "@/constants/recent-insights";
 import { Box, Flex, Grid, Heading, Image, Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -111,7 +112,11 @@ export function Portfolio({ full = false }: { full?: boolean }) {
         templateColumns={{
           base: "1fr",
           md: "repeat(2, 1fr)",
-          xl: "repeat(3, 1fr)",
+        }}
+        css={{
+          "@media (min-width: 1024px)": {
+            gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+          },
         }}
         gap="1px"
         bg="blackAlpha.200"
@@ -126,7 +131,12 @@ export function Portfolio({ full = false }: { full?: boolean }) {
           bg="blue.solid"
           color="white"
           justify="space-between"
-          gridColumn={{ xl: "span 2" }}
+          gridColumn={{ md: `span ${2 - (projects.length % 2)}` }}
+          css={{
+            "@media (min-width: 1024px)": {
+              gridColumn: `span ${3 - (projects.length % 3)}`,
+            },
+          }}
           gap={8}
         >
           <Eyebrow light>Da operação ao produto</Eyebrow>
@@ -163,105 +173,113 @@ export function ClientStories({ only }: { only?: string }) {
   };
   return (
     <EditorialSection id="clientes" muted>
-      <Stack
-        align="center"
-        textAlign="center"
+      <Flex
+        direction={{ base: "column", lg: "row" }}
+        align={{ base: "start", lg: "end" }}
+        justify="space-between"
+        gap={8}
         mb={{ base: 10, md: 14 }}
-        gap={0}
       >
-        <Eyebrow>Empresas e lideranças</Eyebrow>
-        <Title>
-          Confiança de quem lidera.
-          <br />
-          <Accent>Presença onde importa.</Accent>
-        </Title>
+        <Box>
+          <Eyebrow>Empresas e lideranças</Eyebrow>
+          <Title>
+            Confiança de quem lidera.
+            <br />
+            <Accent>Presença onde importa.</Accent>
+          </Title>
+        </Box>
         <Text
-          mt={6}
-          maxW="640px"
+          maxW="320px"
           fontSize="lg"
           color="blackAlpha.700"
           lineHeight={1.7}
         >
           Relações próximas com empresas que colocam a transformação em prática.
         </Text>
-      </Stack>
-      <Grid
-        templateColumns={{
-          base: "1fr",
-          lg: only ? "1fr" : "repeat(3, minmax(0, 1fr))",
-        }}
-        gap={6}
-        maxW={only ? "3xl" : "full"}
-        mx="auto"
-      >
-        {cases.map((c) => (
-          <Stack
+      </Flex>
+      <Stack gap={0} borderTop="1px solid" borderColor="blackAlpha.300">
+        {cases.map((c, index) => (
+          <Grid
             as="article"
             key={c.id}
-            className="group"
-            bg="white"
-            border="1px solid"
-            borderColor="blackAlpha.200"
-            borderTop="3px solid"
-            borderTopColor="blue.solid"
-            p={{ base: 7, md: 8 }}
-            gap={0}
+            templateColumns={{ base: "1fr", md: "180px minmax(0, 1fr)", lg: "220px minmax(0, 1fr) 240px" }}
+            columnGap={{ base: 6, lg: 10 }}
+            rowGap={7}
+            py={{ base: 8, md: 10 }}
+            borderBottom="1px solid"
+            borderColor="blackAlpha.300"
+            alignItems="start"
           >
-            <Flex h="90px" align="center" mb={8}>
-              <Image
-                src={`/images/partners/${c.logo}`}
-                alt={c.company}
-                maxW="200px"
-                maxH="64px"
-                objectFit="contain"
-                loading="lazy"
-                filter="grayscale(1)"
-                opacity={0.7}
-                transition="filter 240ms ease, opacity 240ms ease"
-                _groupHover={{ filter: "grayscale(0)", opacity: 1 }}
-                _groupFocusWithin={{ filter: "grayscale(0)", opacity: 1 }}
-              />
-            </Flex>
-            <Heading
-              as="h3"
-              fontWeight={500}
-              fontSize="2xl"
-              letterSpacing="-0.03em"
-              lineHeight={1.2}
-            >
-              {headlines[c.id]}
-            </Heading>
-            <Text
-              mt={5}
-              lineHeight={1.8}
-              color="blackAlpha.700"
-              fontSize="md"
-              flex={1}
-            >
-              {c.description}
-            </Text>
-            <Box
-              mt={8}
-              pt={6}
-              borderTop="1px solid"
-              borderColor="blackAlpha.200"
-            >
-              <Text fontWeight={600}>{c.person}</Text>
-              <Text fontSize="sm" color="blackAlpha.700" mt={1}>
-                {c.role}
+            <Stack gap={6}>
+              <Text fontFamily="mono" fontSize="xs" color="blue.solid">
+                0{index + 1} / {c.location}
               </Text>
-              <Text fontSize="sm" color="blackAlpha.700" mt={1}>
-                {c.location}
+              <Flex h="64px" align="center">
+                <Image
+                  src={`/images/partners/${c.logo}`}
+                  alt={c.company}
+                  maxW="180px"
+                  maxH="56px"
+                  objectFit="contain"
+                  loading="lazy"
+                />
+              </Flex>
+            </Stack>
+            <Stack gap={5} minW={0}>
+              <Heading
+                as="h3"
+                fontWeight={500}
+                fontSize={{ base: "2xl", md: "3xl" }}
+                letterSpacing="-0.03em"
+                lineHeight={1.2}
+              >
+                {headlines[c.id]}
+              </Heading>
+              <Text lineHeight={1.8} color="blackAlpha.700" fontSize="md">
+                {c.description}
               </Text>
-            </Box>
-            <Box mt={6}>
+              <Flex gap={2} wrap="wrap">
+                {c.tags.map((tag) => (
+                  <Text
+                    key={tag}
+                    fontSize="xs"
+                    color="blackAlpha.700"
+                    border="1px solid"
+                    borderColor="blackAlpha.300"
+                    px={3}
+                    py={1}
+                  >
+                    {tag}
+                  </Text>
+                ))}
+              </Flex>
+            </Stack>
+            <Stack
+              align="stretch"
+              gap={1}
+              gridColumn={{ md: "2", lg: "auto" }}
+              borderLeft={{ lg: "1px solid" }}
+              borderColor="blackAlpha.300"
+              pl={{ lg: 6 }}
+            >
               <Action secondary href={`/projetos/${c.project}`}>
                 Conheça o projeto
               </Action>
-            </Box>
-          </Stack>
+              {recentInsights
+                .filter((post) => post.clientCase === c.id)
+                .map((post) => (
+                  <Action
+                    key={post.slug}
+                    secondary
+                    href={`/insights/${post.slug}`}
+                  >
+                    Leia o artigo sobre {c.company}
+                  </Action>
+                ))}
+            </Stack>
+          </Grid>
         ))}
-      </Grid>
+      </Stack>
     </EditorialSection>
   );
 }

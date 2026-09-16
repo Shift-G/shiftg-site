@@ -22,10 +22,13 @@ const indexedPaths = [
   "/termos-de-uso",
 ];
 const newPaths = [
+  "/insights/ia-processos-juridicos-tkv-uniao-da-vitoria",
+  "/insights/ia-medicina-seguranca-do-trabalho-modernizacao",
   "/atendimento",
   "/ecossistema",
   "/contato",
   ...[
+    "medicos-on",
     "nearone",
     "somosaliados",
     "thiago",
@@ -33,6 +36,7 @@ const newPaths = [
     "cobres",
     "pontes",
     "somabem",
+    "alegra-conecta",
   ].map((slug) => `/projetos/${slug}`),
 ];
 const paths = [...indexedPaths, ...newPaths];

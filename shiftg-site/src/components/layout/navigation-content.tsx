@@ -34,7 +34,7 @@ export const navigationGroups: {
   {
     id: "ecossistema",
     label: "Ecossistema",
-    eyebrow: "07 PROJETOS / IA APLICADA",
+    eyebrow: `${String(projects.length).padStart(2, "0")} PROJETOS / IA APLICADA`,
     title: "Tecnologia que já tem nome e aplicação.",
     description: "Produtos próprios e colaborações, em diferentes setores.",
   },

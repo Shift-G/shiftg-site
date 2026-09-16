@@ -60,7 +60,7 @@ export function Footer() {
           pb={12}
         >
           <Stack gap={5} align="start">
-            <Box w="150px" css={{ "& svg": { width: "100%", height: "64px" } }}>
+            <Box w="200px">
               <BrandLogo />
             </Box>
             <Text fontSize="md" maxW="280px" color="blackAlpha.700">

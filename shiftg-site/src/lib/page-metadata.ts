@@ -4,15 +4,19 @@ export function pageMetadata(
   title: string,
   description: string,
   path: string,
-  options: { type?: "website" | "article"; image?: string } = {},
+  options: {
+    type?: "website" | "article";
+    image?: string;
+    publishedTime?: string;
+    modifiedTime?: string;
+  } = {},
 ): Metadata {
   const url = new URL(path, SITE_URL).toString();
   const socialTitle = `${title} | ${SITE_NAME}`;
   const images = [
     {
       url: options.image ?? "/opengraph-image",
-      width: 1200,
-      height: 630,
+      ...(options.image ? {} : { width: 1200, height: 630 }),
       alt: socialTitle,
     },
   ];
@@ -26,6 +30,13 @@ export function pageMetadata(
       description,
       url,
       type: options.type ?? "website",
+      ...(options.type === "article"
+        ? {
+            publishedTime: options.publishedTime,
+            modifiedTime: options.modifiedTime,
+            authors: [`${SITE_URL}/sobre`],
+          }
+        : {}),
       locale: "pt_BR",
       siteName: SITE_NAME,
       images,
