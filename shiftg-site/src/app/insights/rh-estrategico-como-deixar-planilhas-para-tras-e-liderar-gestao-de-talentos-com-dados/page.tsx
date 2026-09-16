@@ -143,7 +143,7 @@ export default function RHEstrategicoBlogPost() {
           article={{
             title: metadata.title as string,
             description: metadata.description!,
-            image: "/images/editorial/shiftg-institucional.png",
+            image: "/images/editorial/shiftg-institucional.webp",
           }}
         />
         {/* ── Header ── */}

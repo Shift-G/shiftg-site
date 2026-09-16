@@ -126,7 +126,7 @@ export default function ROIInteligenciaArtificialBlogPost() {
           article={{
             title: metadata.title as string,
             description: metadata.description!,
-            image: "/images/editorial/shiftg-arquitetura-dados.png",
+            image: "/images/editorial/shiftg-arquitetura-dados.webp",
           }}
         />
         {/* ── Header ── */}

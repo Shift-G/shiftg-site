@@ -83,7 +83,7 @@ export function CareersHero() {
           bg="off"
         >
           <NextImage
-            src="/images/editorial/shiftg-engenharia-digital.png"
+            src="/images/editorial/shiftg-engenharia-digital.webp"
             alt="Cena ilustrativa de duas pessoas construindo uma solução digital em conjunto"
             fill
             priority

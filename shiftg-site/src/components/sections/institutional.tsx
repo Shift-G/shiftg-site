@@ -42,7 +42,7 @@ export function InstitutionalSection() {
         </Box>
         <Stack gap={0}>
           <Image
-            src="/images/editorial/shiftg-institucional.png"
+            src="/images/editorial/shiftg-institucional.webp"
             alt="Cena ilustrativa de líderes e especialistas trabalhando juntos em uma decisão de negócio"
             w="full"
             aspectRatio="4/5"
@@ -65,7 +65,7 @@ export function InstitutionalSection() {
 export function TrainingImage() {
   return (
     <Image
-      src="/images/editorial/shiftg-in-company.png"
+      src="/images/editorial/shiftg-in-company.webp"
       alt="Cena ilustrativa de uma equipe trabalhando com processos e ferramentas digitais"
       w="full"
       aspectRatio="3/2"

@@ -124,7 +124,7 @@ const features = {
     text: "Trabalhamos ao lado da equipe sobre os desafios da sua operação.",
     cta: "Conhecer o programa",
     href: "/treinamento-ia-para-sua-empresa",
-    image: "shiftg-in-company.png",
+    image: "shiftg-in-company.webp",
   },
   ecossistema: {
     label: "CENTELHA PR 2026 / SELECIONADO",
@@ -140,7 +140,7 @@ const features = {
     text: "Do sul do Brasil, construímos a transformação com empresas de todo o país.",
     cta: "Conheça a SHIFT+G",
     href: "/sobre",
-    image: "shiftg-institucional.png",
+    image: "shiftg-institucional.webp",
   },
 };
 

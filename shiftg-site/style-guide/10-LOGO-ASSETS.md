@@ -118,7 +118,7 @@ Dimensões renderizadas: width="222" height="48"
 
 ```
 public/
-├── logo.png                        # Logo PNG alta resolução
+├── logo.webp                       # Logo WebP alta resolução
 ├── logo-shift-gnosis.png           # Logo alternativa
 ├── favicon.ico                     # Favicon
 ├── apple-icon.png                  # Apple Touch Icon

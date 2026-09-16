@@ -34,7 +34,7 @@ export const recentInsights: RecentInsight[] = [
     "title": "MEDCuritiba: o conhecimento da operação abre novas possibilidades",
     "seoTitle": "MEDCuritiba: evolução da operação e novos produtos",
     "description": "A Shift+G atua junto à MEDCuritiba para evoluir processos e transformar a experiência em saúde do trabalho em novas soluções e serviços.",
-    "image": "/images/editorial/insight-medcuritiba-operacao-e-conhecimento.png",
+    "image": "/images/editorial/insight-medcuritiba-operacao-e-conhecimento.webp",
     "imageAlt": "Cena editorial de profissionais de saúde, gestão e tecnologia planejando juntos melhorias no fluxo de uma clínica",
     "tags": [
       "Saúde ocupacional",
@@ -126,7 +126,7 @@ export const recentInsights: RecentInsight[] = [
     "title": "TKV: menos esforço repetitivo, mais tempo para o trabalho jurídico",
     "seoTitle": "TKV: menos retrabalho, mais tempo para a equipe",
     "description": "Na TKV, a Shift+G reduziu esforços repetitivos, transformou conferências manuais em validações humanas e liberou horas para o trabalho jurídico.",
-    "image": "/images/editorial/insight-tkv-validacao-humana.png",
+    "image": "/images/editorial/insight-tkv-validacao-humana.webp",
     "imageAlt": "Cena editorial de uma profissional jurídica validando informações no computador com uma consultora ao lado",
     "tags": [
       "Eficiência operacional",

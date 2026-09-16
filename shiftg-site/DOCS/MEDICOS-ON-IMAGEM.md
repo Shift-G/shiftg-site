@@ -1,6 +1,6 @@
 # Hero do Médicos ON
 
-Arquivo: `public/images/editorial/shiftg-medicos-on-telemedicina.png`
+Arquivo: `public/images/editorial/shiftg-medicos-on-telemedicina.webp`
 
 Gerado com a ferramenta integrada ImageGen. Cena editorial ilustrativa, sem retratar profissionais ou instalações reais do projeto.
 

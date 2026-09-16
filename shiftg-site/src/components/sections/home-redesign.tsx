@@ -82,7 +82,7 @@ export function HomeHero() {
             overflow="hidden"
           >
             <NextImage
-              src="/images/editorial/shiftg-institucional.png"
+              src="/images/editorial/shiftg-institucional.webp"
               alt="Cena ilustrativa de líderes e especialistas trabalhando juntos em uma decisão de negócio"
               fill
               priority
@@ -244,11 +244,11 @@ export function HomeHero() {
   );
 }
 const clients = [
-  ["TKV Advogados Associados", "logo-tkv.png", "https://tkvadvogados.com.br"],
+  ["TKV Advogados Associados", "logo-tkv.webp", "https://tkvadvogados.com.br"],
   ["MEDCuritiba", "logo-medcuritiba.png", "https://medcuritiba.com.br"],
   ["Abbaspel", "logo-abbaspel.png", "https://abbaspel.com.br"],
   ["Dissenha", "logo-dissenha.png", "https://dissenha.com.br"],
-  ["Sindespol", "logo-sindespol-transparente.png", "https://sindespol.com.br"],
+  ["Sindespol", "logo-sindespol-transparente.webp", "https://sindespol.com.br"],
 ];
 export function ClientStrip() {
   return (

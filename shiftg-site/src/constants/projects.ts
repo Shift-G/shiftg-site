@@ -282,7 +282,7 @@ export const projects: Project[] = [
     name: "AlegraConecta",
     category: "Descontos e comunidade",
     ownership: "Em colaboração",
-    logo: "logo-alegra-conecta.png",
+    logo: "logo-alegra-conecta.webp",
     url: "https://alegraconecta.com.br",
     headline: "Mais benefícios. Mais força para a comunidade.",
     summary:
@@ -317,7 +317,7 @@ export const clientCases = [
     person: "Alessandro Koslowski",
     role: "TKV Advogados Associados",
     location: "União da Vitória, PR",
-    logo: "logo-tkv.png",
+    logo: "logo-tkv.webp",
     title: "IA incorporada à rotina de um escritório de advocacia.",
     description:
       "Transformação digital e implementação de inteligência artificial na TKV, incluindo o piloto do Cobres, sistema de cobrança com IA.",

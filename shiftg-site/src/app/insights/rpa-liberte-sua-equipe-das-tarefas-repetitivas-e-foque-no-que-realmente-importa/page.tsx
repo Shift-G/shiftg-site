@@ -109,7 +109,7 @@ export default function RPABlogPost() {
           article={{
             title: metadata.title as string,
             description: metadata.description!,
-            image: "/images/editorial/shiftg-engenharia-digital.png",
+            image: "/images/editorial/shiftg-engenharia-digital.webp",
           }}
         />
         {/* ── Header ── */}

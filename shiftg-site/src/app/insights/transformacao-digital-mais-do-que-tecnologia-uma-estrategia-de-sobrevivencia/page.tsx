@@ -96,7 +96,7 @@ export default function TransformacaoDigitalBlogPost() {
           article={{
             title: metadata.title as string,
             description: metadata.description!,
-            image: "/images/editorial/shiftg-in-company.png",
+            image: "/images/editorial/shiftg-in-company.webp",
           }}
         />
         {/* ── Header ── */}

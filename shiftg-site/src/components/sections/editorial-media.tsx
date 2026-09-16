@@ -13,32 +13,32 @@ import {
 
 export const editorialVisuals = {
   telemedicina: {
-    file: "shiftg-medicos-on-telemedicina.png",
+    file: "shiftg-medicos-on-telemedicina.webp",
     alt: "Cena ilustrativa de uma médica em teleconsulta em um consultório com elementos geométricos azuis e brancos",
     position: "center",
   },
   saude: {
-    file: "shiftg-saude-conectada.png",
+    file: "shiftg-saude-conectada.webp",
     alt: "Cena ilustrativa de uma equipe administrativa de saúde organizando o atendimento",
     position: "65% center",
   },
   engenharia: {
-    file: "shiftg-engenharia-digital.png",
+    file: "shiftg-engenharia-digital.webp",
     alt: "Cena ilustrativa de profissionais desenvolvendo uma solução digital",
     position: "center",
   },
   dados: {
-    file: "shiftg-arquitetura-dados.png",
+    file: "shiftg-arquitetura-dados.webp",
     alt: "Ilustração conceitual de estruturas conectadas por pontes azuis, representando arquitetura e integração de dados",
     position: "65% center",
   },
   equipe: {
-    file: "shiftg-institucional.png",
+    file: "shiftg-institucional.webp",
     alt: "Cena ilustrativa de líderes e especialistas trabalhando juntos em uma decisão de negócio",
     position: "65% center",
   },
   pratica: {
-    file: "shiftg-in-company.png",
+    file: "shiftg-in-company.webp",
     alt: "Cena ilustrativa de uma equipe trabalhando sobre processos e ferramentas digitais",
     position: "center",
   },

@@ -7,7 +7,7 @@ const legacyInsights = [
     description:
       "Descubra como transformar o RH operacional em estratégico através de automação inteligente, people analytics e foco na experiência do colaborador. Entenda os 3 pilares da transformação digital no RH.",
     slug: "rh-estrategico-como-deixar-planilhas-para-tras-e-liderar-gestao-de-talentos-com-dados",
-    image: "/images/editorial/shiftg-institucional.png",
+    image: "/images/editorial/shiftg-institucional.webp",
     tags: ["Recursos Humanos", "People Analytics", "Employee Experience"],
     readTime: "8 min",
     publishedAt: "Julho 2025",
@@ -19,7 +19,7 @@ const legacyInsights = [
     description:
       "Descubra como o RPA (Robotic Process Automation) pode transformar sua operação, eliminando tarefas repetitivas e liberando sua equipe para atividades estratégicas. Entenda os benefícios, casos de uso e como combinar RPA com IA.",
     slug: "rpa-liberte-sua-equipe-das-tarefas-repetitivas-e-foque-no-que-realmente-importa",
-    image: "/images/editorial/shiftg-engenharia-digital.png",
+    image: "/images/editorial/shiftg-engenharia-digital.webp",
     tags: ["RPA", "Automação", "Eficiência Operacional"],
     readTime: "6 min",
     publishedAt: "Abril 2025",
@@ -31,7 +31,7 @@ const legacyInsights = [
     description:
       "Descubra como calcular o retorno sobre investimento da Inteligência Artificial em sua empresa. Entenda os 4 vetores de retorno e a fórmula prática para medir o impacto financeiro da IA no seu negócio.",
     slug: "o-roi-da-inteligencia-artificial-como-calcular-o-impacto-da-ia-no-balanco-da-sua-empresa",
-    image: "/images/editorial/shiftg-arquitetura-dados.png",
+    image: "/images/editorial/shiftg-arquitetura-dados.webp",
     tags: ["Inteligência Artificial", "ROI", "Estratégia de Negócios"],
     readTime: "7 min",
     publishedAt: "Fevereiro 2025",
@@ -43,7 +43,7 @@ const legacyInsights = [
     description:
       "Descubra como a transformação digital vai além da tecnologia e se torna uma estratégia essencial de sobrevivência para empresas modernas. Entenda os 4 pilares fundamentais e o roteiro prático em 3 passos.",
     slug: "transformacao-digital-mais-do-que-tecnologia-uma-estrategia-de-sobrevivencia",
-    image: "/images/editorial/shiftg-in-company.png",
+    image: "/images/editorial/shiftg-in-company.webp",
     tags: ["Transformação Digital", "Estratégia", "Inovação"],
     readTime: "8 min",
     publishedAt: "Janeiro 2025",

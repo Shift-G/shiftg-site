@@ -4,7 +4,7 @@ Geradas com a ferramenta integrada ImageGen. Cenas editoriais ilustrativas; não
 
 ## tkv
 
-Arquivo: `public/images/editorial/insight-tkv-validacao-humana.png`
+Arquivo: `public/images/editorial/insight-tkv-validacao-humana.webp`
 
 Prompt utilizado:
 
@@ -12,7 +12,7 @@ Use case: photorealistic-natural. Asset type: unique editorial cover for Shift+G
 
 ## medcuritiba
 
-Arquivo: `public/images/editorial/insight-medcuritiba-operacao-e-conhecimento.png`
+Arquivo: `public/images/editorial/insight-medcuritiba-operacao-e-conhecimento.webp`
 
 Prompt utilizado:
 
